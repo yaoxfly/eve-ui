@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="markdown-body">
@@ -7,14 +8,11 @@
 </template>
 
 <script>
-import Md from './Install.md'
+import Md from './CustomTheme.md'
 export default {
-  name: 'Install',
+  name: 'CustomTheme',
   components: {
     Md
   }
 }
 </script>
-
-<style lang='scss' >
-</style>

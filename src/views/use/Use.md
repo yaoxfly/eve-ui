@@ -42,7 +42,7 @@ export default new Vuex.Store({
 npm install babel-plugin-component -D
 ```
 
-然后，将 .babelrc 修改为：
+然后在根目录(即src的同级目录下)创建.babelrc文件，并将.babelrc文件修改为：
 
 ```js
 {

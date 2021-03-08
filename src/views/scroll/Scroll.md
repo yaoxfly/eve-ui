@@ -188,11 +188,10 @@ export default {
 </script>
 ```
 
-
 ### Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
 | ----- | ------ | ----- | ----- | - |
-| data | 是否开始滚动 |array | — | [] | 
+| data | 数据 |array | — | [] | 
 | width  | 滚动菜单的宽度 | string | — | 100% | 
 | scroll | 是否开始滚动 |boolean | — | true | 
 | slides-per-view | 滚动显示的个数 |number | — |5| 

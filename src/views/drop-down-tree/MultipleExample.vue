@@ -75,7 +75,8 @@ export default {
   methods: {
     /**@description 当复选框被点击的时候触发
        * @param  {Object}  data  //传递给 data 属性的数组中该节点所对应的对象(当前点击)
-       * @param  {Object}  checked //树目前的选中状态对象，包含 checkedNodes、checkedKeys、halfCheckedNodes、halfCheckedKeys 四个属性
+       * @param  {Object}  checked //树目前的选中状态对象，包含 checkedNodes、checkedKeys、
+       * halfCheckedNodes、halfCheckedKeys 四个属性
       * @author yx
      */
     check (data, checked) {

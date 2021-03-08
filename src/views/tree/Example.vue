@@ -1,6 +1,11 @@
 <template>
   <div>
-    <eve-tree :data="data"></eve-tree>
+    <eve-tree
+      :data="data"
+      @append="append"
+      @remove="remove"
+      @edit="edit"
+    ></eve-tree>
   </div>
 </template>
 <script>
@@ -8,6 +13,9 @@
 export default {
   data () {
     return {
+      convertSetting: {
+        convert: true
+      },
       data: [
         {
           id: 1,
@@ -63,6 +71,16 @@ export default {
       ],
     }
   },
-  methods: {}
+  methods: {
+    append (node, data) {
+      console.log(node, data)
+    },
+    remove (node, data) {
+      console.log(node, data)
+    },
+    edit (node, data) {
+      console.log(node, data)
+    }
+  }
 }
 </script>

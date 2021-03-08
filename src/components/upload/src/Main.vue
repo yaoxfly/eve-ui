@@ -30,6 +30,7 @@
       :before-upload="handleBeforeUpload"
       :before-remove="handleBeforeRemove"
       :auto-upload="autoUpload"
+      :disabled="disabled"
       v-bind="$attrs"
     >
       <slot>
@@ -71,7 +72,11 @@
     </el-upload>
 
     <!-- 预览-放大图用 -->
-    <el-dialog :visible.sync="dialog.visible" title="预览">
+    <el-dialog
+      :visible.sync="dialog.visible"
+      title="预览"
+      :append-to-body="appendToBody"
+    >
       <img width="100%" :src="dialog.imageUrl" alt="" />
     </el-dialog>
   </div>
@@ -214,6 +219,17 @@ export default {
       default: 'text'
     },
 
+    //是否禁用
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+
+    // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
+    appendToBody: {
+      type: Boolean,
+      default: () => false
+    },
   },
 
   data () {
@@ -227,7 +243,6 @@ export default {
         imageUrl: '', //图片地址
         visible: false //是否显示
       },
-      isHideAdd: false, //当uploadType类型是picture-card的时候, 超过限制张数，隐藏新增按钮。
       permission: true, //是否允许上传
       tempUploadType: 'text' //上传类型(内部判断逻辑用)
     }
@@ -264,7 +279,8 @@ export default {
         },
         //上传类型是照片墙的时候
         'picture-card': () => {
-          this.isHideAdd = fileList.length >= this.limit
+          this.fileLists = fileList
+          this.$emit('update:fileList', this.fileLists)
         }
       }
       KeyMap[this.tempUploadType] && KeyMap[this.tempUploadType]()
@@ -288,7 +304,8 @@ export default {
        * @param  {Array}  fileList 文件列表信息(被删除后剩余的列表信息)
       */
     handleOnRemove (file, fileList) {
-      this.isHideAdd = false
+      this.fileLists = fileList
+      this.$emit('update:fileList', this.fileLists)
       this.onRemove(file, fileList)
     },
 
@@ -342,9 +359,15 @@ export default {
     abort () {
       this.$refs.upload.abort()
     }
-
-
   },
+
+  computed: {
+    //当uploadType类型是picture-card的时候, 超过限制张数，隐藏新增按钮,注意:要对fileLists赋值才会监听到
+    isHideAdd () {
+      return this.fileLists.length >= this.limit || this.disabled
+    }
+  },
+
   watch: {
     //文件列表
     fileList: {
@@ -380,7 +403,6 @@ export default {
       immediate: true
     }
   },
-
 
 }
 </script>

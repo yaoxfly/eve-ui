@@ -15,18 +15,25 @@ const routes = [
         component: () => import('../views/install/Install.vue'),
         meta: { title: '开发指南' }
       },
+
       {
         path: '/use',
         name: '快速上手',
         component: () => import('../views/use/Use.vue'),
-
       },
+
       {
         path: '/cli',
         name: '脚手架',
         component: () => import('../views/eve-cli/EveCli.vue'),
-
       },
+
+      {
+        path: '/custom-theme',
+        name: '自定义主题',
+        component: () => import('../views/custom-theme/CustomTheme.vue'),
+      },
+
       {
         path: '/main',
         name: 'Main',
@@ -102,6 +109,11 @@ const routes = [
         path: '/scroll',
         name: 'Scroll',
         component: () => import('../views/scroll/Scroll.vue'),
+      },
+      {
+        path: '/iframe',
+        name: 'Iframe',
+        component: () => import('../views/iframe/Iframe.vue'),
       },
     ]
   },

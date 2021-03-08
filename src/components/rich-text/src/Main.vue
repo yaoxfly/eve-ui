@@ -114,7 +114,7 @@ export default {
         //使用的插件
         plugins: ['wordcount', 'ax_wordlimit', 'help'],
         //工具栏展示的插件
-        toolbar: 'undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat | anchor | restoredraft | code | charmap | codesample | ltr rtl  | fullpage | fullscreen | help | hr | image  | insertdatetime | link | nonbreaking | pagebreak | paste | preview | print | save | searchreplace | template | toc | visualblocks | visualchars | wordcount',
+        toolbar: 'undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat | anchor | restoredraft | code | charmap | codesample | ltr rtl  | fullpage | fullscreen | help | hr | insertdatetime | link | nonbreaking | pagebreak | paste | preview | print | save | searchreplace | template | toc | visualblocks | visualchars | wordcount',
         // 去水印
         branding: false,
         // 允许粘贴图像
@@ -123,12 +123,12 @@ export default {
         media_live_embeds: true,
         //是否隐藏最上方menu
         menubar: false,
-        // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
-        images_upload_handler: (blobInfo, success) => {
-          console.log(blobInfo, success, 111)
-          const img = 'data:image/jpeg;base64,' + blobInfo.base64()
-          success(img)
-        },
+        // // // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
+        // images_upload_handler: (blobInfo, success) => {
+        //   console.log(blobInfo, success, 111)
+        //   const img = 'data:image/jpeg;base64,' + blobInfo.base64()
+        //   success(img)
+        // },
         video_template_callback: function (data) {
           return '<span class="mce-preview-object mce-object-video" contenteditable="false" data-mce-object="video" data-mce-p-allowfullscreen="allowfullscreen" data-mce-p-frameborder="no" data-mce-p-scrolling="no" data-mce-p-src=' + data.source + ' data-mce-p-width=' + data.width + ' data-mce-p-height=' + data.height + ' data-mce-p-controls="controls" data-mce-html="%20"> <video width=' + data.width + ' height=' + data.height + ' controls="controls"> <source src=' + data.source + ' type=' + data.sourcemime + '></source> </video> </span>'
         },
@@ -139,9 +139,9 @@ export default {
         //当内容无变化时禁用保存按钮,当有变化时，保存按钮变为可点击状态。
         save_enablewhendirty: true,
         //保存回调函数
-        save_onsavecallback: function () {
-          console.log('已保存')
-        },
+        // save_onsavecallback: function () {
+        //   console.log('已保存')
+        // },
         //该插件实现了自定义内容模板。
         templates: [
           {
@@ -176,7 +176,7 @@ export default {
           [0x2601, 'cloud']
         ],
         //字数限制最大值
-        ax_wordlimit_num: 40,
+        ax_wordlimit_num: 0,
         //字数限制的回调
         ax_wordlimit_callback: (editor, txt, num) => {
           const str = txt.substr(0, num)

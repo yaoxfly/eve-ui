@@ -67,7 +67,7 @@ npm i node-sass  sass-loader --save-dev
 在node_modules 里找到 eve-ui 删除掉，先关闭编译器再删除，否则有权限问题，删除后再重新 执行 npm i eve-ui 
 ```
 
-3.使用nrm命令失败，可以下载指定的版本，解决方案如下：
+3.使用`nrm`命令失败，可以下载指定的版本，解决方案如下：
 ```js
 //1.0.0版本是较低的版本，可根据自己的需求更改
 npm i nrm@1.0.0 -g

@@ -1,0 +1,174 @@
+.eve-header {
+  // width: 100%;
+  background: $--color-primary;
+  border-bottom: 0;
+  display: flex;
+  padding: 0 20px;
+  color: white;
+  font-size: 14px;
+  &__flex-start {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &__flex-end {
+    @extend .eve-header__flex-start;
+    justify-content: flex-end;
+    line-height: 0.5;
+  }
+  &__flex-column {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    line-height: 1.5;
+  }
+  &__title {
+    padding-left: 16px;
+  }
+
+  &__logo {
+    width: 40px;
+    height: auto;
+  }
+
+  &__right {
+    margin-left: auto;
+    position: relative;
+  }
+
+  &__center {
+    margin-left: 50px;
+    white-space: nowrap;
+  }
+
+  &__button {
+    cursor: pointer;
+    user-select: none;
+    &:not(:first-child) {
+      margin-left: 50px;
+    }
+  }
+
+  &__icon-img {
+    width: 20px;
+    height: auto;
+  }
+
+  &__icon-item {
+    cursor: pointer;
+    user-select: none;
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+    &:nth-last-child(2) {
+      margin-right: 8px;
+    }
+    &:nth-last-child(3) {
+      margin-right: 28px;
+    }
+    white-space: nowrap;
+  }
+
+  &__circle {
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 12.3px;
+      top: -5.2px;
+      content: attr(number);
+      z-index: 2;
+      font-size: 12px;
+    }
+    &::after {
+      position: absolute;
+      background: red;
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+      left: 8px;
+      top: -10px;
+      border-radius: 50%;
+      display: block;
+      content: '';
+    }
+  }
+
+  &__triangle {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 5px solid white;
+      right: 10px;
+    }
+  }
+
+  &__dialog-title {
+    display: block;
+    padding: 10px 20px;
+  }
+
+  &__dialog-border {
+    border-bottom: 1px solid #333;
+    opacity: 0.1;
+  }
+  &__dialog-footer {
+    display: block;
+    color: #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    opacity: 0.6;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  &__dialog-footer-button {
+    user-select: none;
+    cursor: pointer;
+  }
+  //隐藏菜单底下的线
+  // ::v-deep .el-menu.el-menu--horizontal {
+  //   border-bottom: solid 1px transparent;
+  // }
+  .el-menu.el-menu--horizontal {
+    border-bottom: solid 1px transparent;
+  }
+  .el-menu-item.is-active {
+    // color:$--color-deep-primary;
+  }
+}
+// ::v-deep .eve-header__dialog {
+.eve-header__dialog {
+  position: absolute;
+  top: 42px;
+  width: 300px;
+  min-height: 350px;
+  z-index: 1;
+  left: -150px;
+  .el-dialog {
+    position: absolute;
+    width: 100%;
+    min-height: 150px;
+    font-size: 14px;
+    z-index: 1;
+    margin-right: 200px;
+    box-shadow: 2px 2px 5px #e9e6e6;
+  }
+  .el-dialog__header {
+    position: relative;
+    padding: 5px 0;
+    color: black;
+  }
+  .el-dialog__body {
+    padding: 5px 20px 10px 20px;
+  }
+  .el-dialog__footer {
+    padding: 0;
+  }
+}

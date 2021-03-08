@@ -87,6 +87,7 @@
             class="eve-header__dialog"
             :visible.sync="visible"
             :modal="false"
+            :top="'0'"
             :lock-scroll="false"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
@@ -168,7 +169,7 @@ export default {
     //header 背景 
     background: {
       type: String,
-      default: '#409EFF'
+      default: ''
     },
 
     //header高度
@@ -268,6 +269,7 @@ export default {
       default: () => '#fff'
     },
 
+
     //当前激活菜单的文字颜色(中间菜单)
     activeTextColor: {
       type: String,
@@ -340,7 +342,6 @@ export default {
       path: 'path', // 路径
       children: 'children' //树结构数据的孩子节点
     },
-
   },
 
   data () {
@@ -354,11 +355,7 @@ export default {
       },
     }
   },
-
-  mounted () {
-
-  },
-
+  mounted () { },
   methods: {
     /**@description  中间部分导航按钮点击事件
      * @author yx
@@ -373,7 +370,12 @@ export default {
      */
     rightContentButton (param) {
       const { data: { dialog = false } = {} } = param || {}
-      this.visible = dialog
+      //如果有配置dialog:true则可以弹出或隐藏框，否则只能隐藏框
+      if (dialog) {
+        this.visible = !this.visible
+      } else {
+        this.visible = false
+      }
       this.$emit('right-content-button', param)
     },
 
@@ -404,7 +406,6 @@ export default {
       })
       return obj
     },
-
   },
 
   watch: {
@@ -415,184 +416,12 @@ export default {
       },
       immediate: true,
     },
-
   }
 }
-
-
-
 </script>
-<style lang='scss' scoped >
-.eve-header {
-  // width: 100%;
-
-  border-bottom: 0;
-  display: flex;
-  padding: 0 20px;
-  color: white;
-  font-size: 14px;
-  &__flex-start {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  &__flex-end {
-    @extend .eve-header__flex-start;
-    justify-content: flex-end;
-    line-height: 0.5;
-  }
-  &__flex-column {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    line-height: 1.5;
-  }
-  &__title {
-    padding-left: 16px;
-  }
-
-  &__logo {
-    width: 40px;
-    height: auto;
-  }
-
-  &__right {
-    margin-left: auto;
-    position: relative;
-  }
-
-  &__center {
-    margin-left: 50px;
-    white-space: nowrap;
-  }
-
-  &__button {
-    cursor: pointer;
-    user-select: none;
-    &:not(:first-child) {
-      margin-left: 50px;
-    }
-  }
-
-  &__icon-img {
-    width: 20px;
-    height: auto;
-  }
-
-  &__icon-item {
-    cursor: pointer;
-    user-select: none;
-    &:not(:last-child) {
-      margin-right: 14px;
-    }
-    &:nth-last-child(2) {
-      margin-right: 8px;
-    }
-    &:nth-last-child(3) {
-      margin-right: 28px;
-    }
-    white-space: nowrap;
-  }
-
-  &__circle {
-    position: relative;
-    &::before {
-      position: absolute;
-      left: 12.3px;
-      top: -5.2px;
-      content: attr(number);
-      z-index: 2;
-      font-size: 12px;
-    }
-    &::after {
-      position: absolute;
-      background: red;
-      width: 15px;
-      height: 15px;
-      font-size: 12px;
-      left: 8px;
-      top: -10px;
-      border-radius: 50%;
-      display: block;
-      content: '';
-    }
-  }
-
-  &__triangle {
-    position: relative;
-    &::before {
-      position: absolute;
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 5px solid white;
-      right: 10px;
-    }
-  }
-
-  &__dialog-title {
-    display: block;
-    padding: 10px 20px;
-  }
-
-  &__dialog-border {
-    border-bottom: 1px solid #333;
-    opacity: 0.1;
-  }
-  &__dialog-footer {
-    display: block;
-    color: #333;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    opacity: 0.6;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  &__dialog-footer-button {
-    user-select: none;
-    cursor: pointer;
-  }
-  //隐藏菜单底下的线
-  ::v-deep .el-menu.el-menu--horizontal {
-    border-bottom: solid 1px transparent;
-  }
-}
-
-::v-deep .eve-header__dialog {
-  position: absolute;
-  top: 42px;
-  width: 300px !important ;
-  min-height: 350px;
-  z-index: 1;
-  left: -150px;
-
-  .el-dialog {
-    position: absolute;
-    width: 100%;
-    min-height: 150px;
-    margin-top: 0 !important;
-    font-size: 14px;
-    z-index: 1;
-    margin-right: 200px;
-    box-shadow: 2px 2px 5px #e9e6e6;
-  }
-  .el-dialog__header {
-    position: relative;
-    padding: 5px 0;
-    color: black;
-  }
-  .el-dialog__body {
-    padding: 5px 20px 10px 20px;
-  }
-  .el-dialog__footer {
-    padding: 0;
-  }
-}
+<style lang='scss'>
+@import 'eve-ui/src/assets/style/base.scss';
+@import './header.scss';
 </style>
 
  

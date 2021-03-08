@@ -7,14 +7,11 @@
 </template>
 
 <script>
-import Md from './Install.md'
+import Md from './Iframe.md'
 export default {
-  name: 'Install',
+  name: 'Iframe',
   components: {
     Md
   }
 }
 </script>
-
-<style lang='scss' >
-</style>

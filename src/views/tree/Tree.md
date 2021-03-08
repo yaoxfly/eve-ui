@@ -13,9 +13,11 @@
 <script>
 
 import Example from './Example'
+import ConverExample from './ConverExample'
 export default {
   components: {
     Example,
+    ConverExample
   }
 }
 </script>
@@ -25,9 +27,12 @@ export default {
 ``` html
 <template>
   <div>
-     <eve-tree
-      :data='data'
-     ></eve-tree>
+    <eve-tree
+      :data="data"
+      @append="append"
+      @remove="remove"
+      @edit="edit"
+    ></eve-tree>
   </div>
 </template>
 <script>
@@ -35,67 +40,148 @@ export default {
 export default {
   data () {
     return {
+      convertSetting: {
+        convert: true
+      },
       data: [
         {
-        id: 1,
-        label: '一级 1',
-        disabled: true, //设置某个节点不能被选择
-        children: [{
-          id: 4,
-          label: '二级 1-1',
+          id: 1,
+          label: '一级 1',
+          disabled: true, //设置某个节点不能被选择
           children: [{
-            id: 9,
-            label: '三级 1-1-1'
-          }]
-        }]
-      }, {
-        id: 2,
-        label: '一级 2',
-        children: [{
-          id: 5,
-          label: '二级 2-1',
-          children: [{
-            id: 6,
-            label: '三级 2-1-1',
-
+            id: 4,
+            label: '二级 1-1',
+            children: [{
+              id: 9,
+              label: '三级 1-1-1'
+            }]
           }]
         }, {
+          id: 2,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1',
+            children: [{
+              id: 6,
+              label: '三级 2-1-1',
+
+            }]
+          }, {
+            id: 3,
+            label: '二级 2-2',
+
+            children: [{
+              id: 7,
+              label: '三级 2-2-1'
+            }]
+          }]
+        }, {
+          label: '一级 3',
+          id: 8,
+          children: [{
+            id: 10,
+            label: '二级 3-1',
+            children: [{
+              id: 11,
+              label: '三级 3-1-1'
+            }]
+          }, {
+            label: '二级 3-2',
+            id: 12,
+            children: [{
+              id: 13,
+              label: '三级 3-2-1'
+            }]
+          }]
+        }
+      ],
+    }
+  },
+  methods: {
+    append (node, data) {
+      console.log(node, data)
+    },
+    remove (node, data) {
+      console.log(node, data)
+    },
+    edit (node, data) {
+      console.log(node, data)
+    }
+  }
+}
+</script>
+```
+
+# 普通数据转树
+<template>
+  <div>
+    <ConverExample/>
+  </div>
+</template>
+
+# 演示代码
+
+```html
+<template>
+  <div>
+    <eve-tree
+      :data="data"
+      :convert-setting="convertSetting"
+      @append="append"
+      @remove="remove"
+      @edit="edit"
+    ></eve-tree>
+  </div>
+</template>
+<script>
+
+export default {
+  data () {
+    return {
+      convertSetting: {
+        convert: true,
+      },
+      data: [
+        {
+          id: 1,
+          label: '一级 1',
+          pid: -1
+        },
+        {
+          id: 2,
+          label: '二级 1',
+          pid: 1
+        },
+        {
           id: 3,
-          label: '二级 2-2',
-
-          children: [{
-            id: 7,
-            label: '三级 2-2-1'
-          }]
-        }]
-      }, {
-        label: '一级 3',
-        id: 8,
-        children: [{
-          id: 10,
-          label: '二级 3-1',
-          children: [{
-            id: 11,
-            label: '三级 3-1-1'
-          }]
-        }, {
-          label: '二级 3-2',
-          id: 12,
-          children: [{
-            id: 13,
-            label: '三级 3-2-1'
-          }]
-        }]
-      }
+          label: '二级 1',
+          pid: -1
+        },
+        {
+          id: 4,
+          label: '二级 1',
+          pid: 2
+        }
       ],
     }
   },
 
   methods: {
+    append (node, data) {
+      console.log(node, data)
+    },
+    remove (node, data) {
+      console.log(node, data)
+    },
+    edit (node, data) {
+      console.log(node, data)
+    }
   }
 }
 </script>
 ```
+
 
 ###  Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -117,7 +203,6 @@ export default {
 | highlight-current | 是否高亮当前选中节点 | boolean | — | true |
 | filter-node-method | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(value, data, node,prop) | — | — |
 
-
 >   1.当同时有data和lazy的情况下，lazy优先级更高，会覆盖data的配置; 2.node-key属性，设置默认展开和默认选中的节点时必须设置
 
 ###  Attributes(自定义)
@@ -129,7 +214,18 @@ export default {
 | operate |是否显示 添加、删除、编辑等按钮| boolean | — | true |
 | operate-color |设置添加、删除、编辑等按钮的颜色| string | — |  — |
 | is-show-filter |是否开启节点过滤| boolean | — |  true |
+| convert-setting |树形结构数据转换设置；普通数据转树结构数据必须设置的属性；详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
 
+### convert-setting
+`普通数据转树结构数据`必须设置的属性，当前值可以不用全部设置，内部有默认值，可只设置其中一个(要看数据格式是否和当前设置的默认值是否相匹配)。
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| ----| ----| --- | ---- | ----- |
+| convert |是否开启普通数据转换为树结构数据| boolean | — |  false |
+| id |节点的唯一标识键值| string | — | id |
+| pid |节点的父id键值| string | — | pid |
+| topmostPid |最顶层数据的父id,当前值必须设置正确，否则可能转换不成功。| string,number | — | -1 |
+
+> tips:注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
 
 ###  Events
 | 事件名称 | 说明 | 回调参数  |
@@ -173,7 +269,6 @@ Tree 内部使用了 Node 类型的对象来包装用户传入的数据，用来
 | ----| ----| --- | 
 | addNode| 添加节点数据--外部添加节点数据(默认添加孩子节点数据) | (data,newChild) 接收两个object类型的参数 1.当前节点的数据 2.新的节点数据 格式 {label:'',children:''} ,label和children属性值要和以上属性props的值一致|
 | resetChecked| 清空节点 | — |
-
 
  ###  Scoped Slot
  | name | 说明 | 

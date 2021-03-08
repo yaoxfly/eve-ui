@@ -83,7 +83,7 @@ export default {
     // 当前激活菜单的文字颜色
     activeTextColor: {
       type: String,
-      default: '#409EFF'
+      default: ''
     },
 
     // 是否水平折叠收起菜单（仅在 mode 为 vertical 时可用）
@@ -300,9 +300,7 @@ export default {
     }
   }
 }
-
 </script>
-
 
 <style lang='scss' scoped >
 .eve-menu {
@@ -312,7 +310,6 @@ export default {
     background: #fff;
   }
 }
-
 //隐藏滚动条的横向滚动条
 ::v-deep .el-scrollbar__wrap {
   overflow-x: hidden;
@@ -323,65 +320,14 @@ export default {
 :v-deep .el-scrollbar__bar.is-horizontal > div {
   height: 120%;
 }
-
 ::v-deep .eve-menu__border-right-none.el-menu {
   border-right: solid 1px transparent !important;
 }
 </style>
 
  <style lang="scss" >
-//  菜单收缩时element会给菜单添加el-menu--collapse类，这时候把文字和下拉图标隐藏掉即可,
-/* element-ui 的<el-menu>标签本身希望里面嵌套的是<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，但是却嵌套了其他标签,而导致收折就隐藏不了文字。*/
-.el-menu--collapse .el-submenu__title span {
-  height: 0;
-  width: 0;
-  overflow: hidden;
-  visibility: hidden;
-  display: inline-block;
-}
-.el-menu--collapse .el-submenu__icon-arrow {
-  display: none;
-}
-
-//没有排除el-menu--collapse类会没有动画,el-menu--collapse这里设置收缩后的宽度,默认64
-.eve-menu:not(.el-menu--collapse) {
-  width: 100%;
-}
-
-.eve-menu__menu-item {
-  .el-submenu__title:focus,
-  .el-submenu__title:hover {
-    background: #f0f3f6 !important;
-    border-right: 3px solid #409eff;
-  }
-  /*里面最底层孩子项的颜色 */
-  .el-menu-item:focus,
-  .el-menu-item:hover {
-    background: #f0f3f6 !important;
-    border-right: 3px solid #409eff;
-  }
-  .el-menu-item.is-active {
-    background: #f0f3f6 !important;
-    border-right: 3px solid #409eff;
-  }
-}
-
-/*加快收缩的动画 */
-.collapse-transition {
-  transition: 0.2s height, 0.1s padding-top, 0.1s padding-bottom;
-}
-.horizontal-collapse-transition {
-  transition: 0s width, 0s padding-left, 0s padding-right;
-}
-.horizontal-collapse-transition .el-submenu__title .el-submenu__icon-arrow {
-  -webkit-transition: 0s;
-  transition: 0s;
-  opacity: 0;
-}
-.el-submenu .el-menu-item {
-  min-width: 0;
-  width: 100%;
-}
+@import 'eve-ui/src/assets/style/base.scss';
+@import './menu.scss';
 </style>
 
 

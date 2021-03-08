@@ -536,7 +536,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 ###  Attributes
@@ -561,9 +560,10 @@ export default {
 | auto-upload | 是否在选取文件后立即进行上传 |	boolean  |  — | false |
 | file-list| 上传的文件列表, 例如: [{name: 'food.jpg', url: 'https://xxx.cdn.com/xxx.jpg'}] |	array  |  — | [] |
 | http-request |覆盖默认的上传行为，可以自定义上传的实现 |	function(data) |  — | — |
-| limit |最大允许上传个数 -- 0是无限制 |  number | — |2|
-| on-exceed |文件超出个数限制时的钩子 |  function(files, fileList) | — |—|
-
+| disabled |是否禁用 |	boolean |  — | false |
+| limit | 最大允许上传个数 -- 0是无限制 |  number | — | 3 |
+| on-exceed | 文件超出个数限制时的钩子 | function(files, fileList) | — | — |
+| append-to-body | 预览的时候 Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true |boolean  | — | false |
 
 > 当 `drag`属性为`true` 时`list-type`属性可不设置，默认`text`即可,设置其他类型如`picture-card`样式会错乱。  `file-list`存储的是已上传成功的列表
 
@@ -581,7 +581,6 @@ export default {
 | clearFiles  |清空已上传的文件列表（该方法不支持在 before-upload 中调用） | — | 
 | abort |取消上传请求  | （ file: fileList 中的 file 对象 ）  |
 | submit |手动上传文件列表  | —  |
-
 
 ###  Slot
 | name | 说明 | 

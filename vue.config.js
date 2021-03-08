@@ -38,5 +38,10 @@ module.exports = {
     extract: true,
     // 是否在构建css样式映射，false将提高构建速度
     sourceMap: false,
+    // loaderOptions: {
+    //   scss: {
+    //     prependData: '@import "@/assets/style/base.scss";'
+    //   }
+    // }
   },
 }

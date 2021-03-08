@@ -19,6 +19,7 @@
       :loading="loading"
       :destroy-on-close="destroyOnClose"
       :fullscreen="fullscreen"
+      :append-to-body="appendToBody"
       @closed="closed"
       @close="close"
     >
@@ -143,6 +144,12 @@ export default {
       default: () => false
     },
 
+    // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
+    appendToBody: {
+      type: Boolean,
+      default: () => false
+    },
+
     /* 自定义的属性 */
 
     // 内容
@@ -193,13 +200,14 @@ export default {
       type: Boolean,
       default: () => true
     }
-
   },
+
   data () {
     return {
       isShow: false // 是否显示
     }
   },
+
   computed: {},
   watch: {
     visible: {

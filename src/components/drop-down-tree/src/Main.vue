@@ -41,7 +41,7 @@
               </el-input>
             </slot>
             <el-tree
-              :data="data"
+              :data="tempData"
               :props="props"
               class="eve-drop-down-tree__item"
               :class="[!onlyLeaf && 'eve-drop-down-tree__is-active']"
@@ -97,57 +97,7 @@ export default {
     //树的数据
     data: {
       type: Array,
-      default: () => [
-        // {
-        //   id: 1,
-        //   label: '一级 1',
-        //   children: [{
-        //     id: 2,
-        //     label: '二级 1-1',
-        //     children: [{
-        //       id: 3,
-        //       label: '三级 1-1-1'
-        //     }
-        //     ]
-        //   }]
-        // }, {
-        //   id: 4,
-        //   label: '一级 2',
-        //   children: [{
-        //     id: 5,
-        //     label: '二级 2-1',
-        //     children: [{
-        //       id: 6,
-        //       label: '三级 2-1-1'
-        //     }]
-        //   }, {
-        //     id: 7,
-        //     label: '二级 2-2',
-        //     children: [{
-        //       id: 8,
-        //       label: '三级 2-2-1'
-        //     }]
-        //   }]
-        // }, {
-        //   id: 9,
-        //   label: '一级 3',
-        //   children: [{
-        //     id: 10,
-        //     label: '二级 3-1',
-        //     children: [{
-        //       id: 11,
-        //       label: '三级 3-1-1'
-        //     }]
-        //   }, {
-        //     id: 12,
-        //     label: '二级 3-2',
-        //     children: [{
-        //       id: 13,
-        //       label: '三级 3-2-1'
-        //     }]
-        //   }]
-        // }
-      ]
+      default: () => []
     },
 
     //绑定的值
@@ -234,8 +184,13 @@ export default {
     isShowfilter: {
       type: Boolean,
       default: () => true
-    }
+    },
 
+    //树形结构数据转换设置
+    convertSetting: {
+      type: Object,
+      default: () => { }
+    }
   },
 
   data () {
@@ -252,12 +207,18 @@ export default {
       number: '', //未在select中显示的tags转换成个数
       numberLeft: '', //数字的偏移量
       spacing: 6, //相邻两个页签的间距
-      random: this.getGenerateMixed(32) //随机数防止页面调用多个当前组件样式冲突
+      random: this.getGenerateMixed(32), //随机数防止页面调用多个当前组件样式冲突
+      tempData: [], //树的数据(内部处理逻辑用)
+      tempConvertSetting: //树形结构数据转换设置(内部处理逻辑用)
+      {
+        id: 'id', //节点的唯一标识键值
+        pid: 'pid', //节点的父id键值
+        topmostPid: -1, //最顶层数据的pid,当前值必须设置正确，否则可能转换不成功。
+        convert: false //是否开启普通数据转换为树结构数据
+      }
     }
   },
-  mounted () {
-
-  },
+  mounted () { },
   methods: {
     /**@description  节点被点击时的回调
       * @author yx
@@ -337,7 +298,6 @@ export default {
       if (!value) return true
       return data[this.props.label].indexOf(value) !== -1
     },
-
 
     /**@description 当复选框被点击的时候触发
        * @param  {Object}  data  //传递给 data 属性的数组中该节点所对应的对象(当前点击)
@@ -445,7 +405,31 @@ export default {
           num++
         }
       })
+    },
+
+    /**@description 普通数据根据pid转树数据
+     *  @param  {Array}  data 要转换的数据
+     *  @param  {minix}  parentId 父id --最顶层数据的父id，有可能是空、0、-1根据后台数据格式决定,默认是-1,注意:相同值，数字的number和字符串的number不相等
+     * @author yx
+     */
+    convertToTree (data, parentId = this.tempConvertSetting.topmostPid) {
+      const itemArr = []
+      const length = data.length
+      const { children } = this.props
+      const { pid, id } = this.tempConvertSetting
+      for (let i = 0; i < length; i++) {
+        const node = data[i]
+        if (node[pid] === parentId) {
+          const childrenData = this.convertToTree(data, node[id])
+          if (childrenData.length > 0) {
+            node[children] = childrenData
+          }
+          itemArr.push(node)
+        }
+      }
+      return itemArr
     }
+
   },
   watch: {
     // v-model绑定的值(select)--父修改-子接收
@@ -489,10 +473,32 @@ export default {
       //获取值
       this.$emit('change', newValue)
     },
+
     filterText (val) {
       //对树节点进行筛选操作
       this.$refs.tree.filter(val)
-    }
+    },
+
+    convertSetting: {
+      handler (newValue) {
+        Object.assign(this.tempConvertSetting, newValue)
+      },
+      immediate: true
+    },
+    //当前监听内部有用到convertSetting，所以必须让data在convertSetting的后面监听
+    data: {
+      handler (newValue) {
+        const { convert } = this.tempConvertSetting
+        if (convert) {
+          this.tempData = this.convertToTree(newValue)
+          this.$emit('update:data', this.tempData)
+        } else {
+          this.tempData = newValue
+          this.$emit('update:data', this.tempData)
+        }
+      },
+      immediate: true
+    },
   }
 }
 </script>

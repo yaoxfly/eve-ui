@@ -12,5 +12,6 @@
     "table-pagination":"./src/components/table-pagination/index.js",
     "tag-views":"./src/components/tag-views/index.js",
     "tree": "./src/components/tree/index.js",
-    "upload":"./src/components/upload/index.js"
+    "upload":"./src/components/upload/index.js",
+    "iframe":".//src/components/iframe/index.js"
 }

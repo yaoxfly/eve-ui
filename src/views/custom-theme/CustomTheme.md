@@ -1,5 +1,36 @@
-//颜色变量--注意：当前文件不可重命名或删除,按需引入插件格式需要。
-/*element-ui*/
+# 自定义主题
+`eve-ui` 默认提供一套主题，`CSS` 命名采用 `BEM` 的风格，方便使用者覆盖样式。
+
+### 在项目中改变 `SCSS` 变量切换主题
+`eve-ui` 的 `theme-chalk` 使用 `SCSS` 编写，如果你的项目也使用了`SCSS`，那么可以直接在项目中改变 `eve-ui` 的样式变量。新建一个样式文件,例如`eve-ui-variables.scss`把它放进`src/assets/style`，没有当前目录就创建目录，写入以下内容：
+
+```js
+/* 改变主题色变量 */
+$--color-primary: teal;
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+/* element-ui样式 */
+@import "~element-ui/packages/theme-chalk/src/index";
+/* eve-ui样式 */
+@import '~eve-ui/src/assets/style/theme-chalk/index';
+```
+之后，在项目的入口文件中，直接引入以上样式文件即可（无需引入`element-ui`和`eve-ui`编译好的 `CSS` 文件）：
+
+```js
+//引入element-ui
+import ElementUI from 'element-ui'
+Vue.use(ElementUI)
+
+//引入eve-ui
+import eveUi from 'eve-ui'
+Vue.use(eveUi)
+import '@/assets/style/eve-ui-variables.scss' 
+```
+>tips: 注意使用`scss`变量改变主题，需要安装`node-sass`和`sass-loader` 
+
+内置的颜色变量
+```js
+
 /* Color 基础颜色
 -------------------------- */
 /// color|1|Brand Color|0 --主题色
@@ -103,3 +134,4 @@ $--calendar-selected-background-color: #f2f8fe !default;
 $--avatar-font-color: #fff !default;
 /// color||Color|0
 $--avatar-background-color: #c0c4cc !default;
+```

@@ -20,6 +20,7 @@ export default {
 # 演示代码
 
 ```html
+
 <template>
   <div>
     <eve-rich-text
@@ -36,7 +37,14 @@ export default {
     return {
       value: '',
       init: {
-        height: 327
+        height: 327,
+        plugins: ['image'],
+        // // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
+        images_upload_handler: (blobInfo, success) => {
+          console.log(blobInfo, success, 111)
+          const img = 'data:image/jpeg;base64,' + blobInfo.base64()
+          success(img)
+        },
       }
     }
   },
@@ -82,8 +90,8 @@ export default {
 | templates |自定义内容模板 |  array |  —  | —|
 | textpattern_patterns |快速排版（类似markdown） |  array |  —  | —|
 | charmap |自定义该窗口中可选的特殊字符 |  array |  —  | —|
-| ax_wordlimit_num |字数限制最大值 |  number |  —  | —|
-| ax_wordlimit_callback |字数限制的回调 |  function |  —  | —|
+| ax_wordlimit_num |字数限制最大值 |  number |  —  | 0(无限制) |
+| ax_wordlimit_callback |字数限制的回调 |  function |  —  | — |
 
 ### plugins
 | 插件   | 说明 | 

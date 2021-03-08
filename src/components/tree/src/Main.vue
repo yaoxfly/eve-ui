@@ -14,7 +14,7 @@
       class="eve-tree"
       :class="[!onlyLeaf && 'eve-tree__is-active']"
       :props="props"
-      :data="data"
+      :data="tempData"
       :load="load"
       :lazy="lazy"
       :node-key="nodeKey"
@@ -232,6 +232,16 @@ export default {
       default: true
     },
 
+    //对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏
+    filterNodeMethod: {
+      type: Function,
+      default: (value, data, node, props) => {
+        const { label } = props || {}
+        if (!value) return true
+        return data[label].indexOf(value) !== -1
+      }
+    },
+
     /*自定义属性 */
     //整颗树的宽度，固定宽度有横向滚动条，100%可向外自动扩伸(不出现横向滚动条)
     width: {
@@ -261,22 +271,25 @@ export default {
       default: () => true
     },
 
-    //对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏
-    filterNodeMethod: {
-      type: Function,
-      default: (value, data, node, props) => {
-        const { label } = props || {}
-        if (!value) return true
-        return data[label].indexOf(value) !== -1
-      }
+    //树形结构数据转换设置
+    convertSetting: {
+      type: Object,
+      default: () => { }
     }
-
   },
   mounted () { },
   data () {
     return {
       filterText: '', //关键字过滤文本
       id: '', //被选中节点的id或者唯一值
+      tempData: [], //树的数据(内部处理逻辑用)
+      tempConvertSetting: //树形结构数据转换设置(内部处理逻辑用)
+      {
+        id: 'id', //节点的唯一标识键值
+        pid: 'pid', //节点的父id键值
+        topmostPid: -1, //最顶层数据的pid,当前值必须设置正确，否则可能转换不成功。
+        convert: false //是否开启普通数据转换为树结构数据
+      }
     }
   },
 
@@ -512,12 +525,56 @@ export default {
       this.$refs.tree.setCheckedKeys([])
       // this.$refs.tree.setCheckedNodes([])
     },
+
+    /**@description 普通数据根据pid转树数据
+     *  @param  {Array}  data 要转换的数据
+     *  @param  {minix}  parentId 父id --最顶层数据的父id，有可能是空、0、-1根据后台数据格式决定,默认是-1,注意:相同值，数字的number和字符串的number不相等
+     * @author yx
+     */
+    convertToTree (data, parentId = this.tempConvertSetting.topmostPid) {
+      const itemArr = []
+      const length = data.length
+      const { children } = this.props
+      const { pid, id } = this.tempConvertSetting
+      for (let i = 0; i < length; i++) {
+        const node = data[i]
+        if (node[pid] === parentId) {
+          const childrenData = this.convertToTree(data, node[id])
+          if (childrenData.length > 0) {
+            node[children] = childrenData
+          }
+          itemArr.push(node)
+        }
+      }
+      return itemArr
+    }
   },
 
   watch: {
     filterText (val) {
       this.$refs.tree.filter(val)
-    }
+    },
+    convertSetting: {
+      handler (newValue) {
+        Object.assign(this.tempConvertSetting, newValue)
+      },
+      immediate: true
+    },
+    //当前监听内部有用到convertSetting，所以必须让data在convertSetting的后面监听
+    data: {
+      handler (newValue) {
+        const { convert } = this.tempConvertSetting
+        if (convert) {
+          this.tempData = this.convertToTree(newValue)
+          this.$emit('update:data', this.tempData)
+        } else {
+          this.tempData = newValue
+          this.$emit('update:data', this.tempData)
+        }
+      },
+      immediate: true
+    },
+
   }
 }
 </script>

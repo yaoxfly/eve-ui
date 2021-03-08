@@ -8,18 +8,19 @@
   <div>
     <Example/>
   </div>
-  
 </template>
 
 <script>
 
 import Example from './Example'
 import MultipleExample from './MultipleExample'
+import ConverExample from './ConverExample'
 
 export default {
   components: {
     Example,
     MultipleExample,
+    ConverExample
   }
 }
 </script>
@@ -113,7 +114,6 @@ export default {
 ```
 
 多选
-
 <template>
   <div>
     <MultipleExample/>
@@ -132,7 +132,9 @@ export default {
       column-collapse-tags
       multiple
       @check="check"
-    ></eve-drop-down-tree>
+      @clear="clear"
+    >
+    </eve-drop-down-tree>
   </div>
 </template>
 <script>
@@ -198,11 +200,86 @@ export default {
   methods: {
     /**@description 当复选框被点击的时候触发
        * @param  {Object}  data  //传递给 data 属性的数组中该节点所对应的对象(当前点击)
-       * @param  {Object}  checked //树目前的选中状态对象，包含 checkedNodes、checkedKeys、halfCheckedNodes、halfCheckedKeys 四个属性
+       * @param  {Object}  checked //树目前的选中状态对象，包含 checkedNodes、checkedKeys、
+       * halfCheckedNodes、halfCheckedKeys 四个属性
       * @author yx
      */
     check (data, checked) {
       console.log(data, checked, 'check')
+    },
+    clear () {
+      console.log('clear')
+    }
+  }
+}
+</script>
+```
+
+# 普通数据转树
+
+<template>
+  <div>
+    <ConverExample/>
+  </div>
+</template>
+
+# 演示代码
+```html
+
+<template>
+  <div>
+    <eve-drop-down-tree
+      :data="data"
+      :width="250"
+      v-model="value"
+      :convert-setting="convertSetting"
+      @node-click="nodeClick"
+    ></eve-drop-down-tree>
+  </div>
+</template>
+<script>
+
+export default {
+  data () {
+    return {
+      convertSetting: {
+        convert: true
+      },
+      data: [
+        {
+          id: 1,
+          label: '一级 1',
+          pid: -1
+        },
+        {
+          id: 2,
+          label: '二级 1',
+          pid: 1
+        },
+        {
+          id: 3,
+          label: '一级 2',
+          pid: -1
+        },
+        {
+          id: 4,
+          label: '三级 1',
+          pid: 2
+        }
+      ],
+      //双向绑定的值--如果初始就有值可回显
+      value: ''
+    }
+  },
+  methods: {
+    /**@description  节点被点击时的回调
+     * @author yx
+     * @param  {Object}  data 递给 data 属性的数组中该节点所对应的对象
+     * @param  {Object}  node 节点对应的 Node
+     * @param  {Object}  indeterminate 节点组件本身
+    */
+    nodeClick (data, node, indeterminate) {
+      console.log(data, node, indeterminate, 'nodeClick')
     }
   }
 }
@@ -226,6 +303,18 @@ export default {
 | height |option高度| string/number | — |   200 |
 | accordion |是否每次只打开一个同级树节点| boolean | — |   false |
 | auto-expand-parent |展开子节点的时候是否自动展开父节点| boolean | — |   true |
+| convert-setting |树形结构数据转换设置,详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
+
+### convert-setting
+`普通数据转树结构数据`必须设置的属性，当前值可以不用全部设置，内部有默认值，可只设置其中一个(要看数据格式是否和当前设置的默认值是否相匹配)。
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| ----| ----| --- | ---- | ----- |
+| convert |是否开启普通数据转换为树结构数据| boolean | — |  false |
+| id |节点的唯一标识键值| string | — | id |
+| pid |节点的父id键值| string | — | pid |
+| topmostPid |最顶层数据的父id,当前值必须设置正确，否则可能转换不成功。| string,number | — | -1 |
+
+> tips:注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
 
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -241,7 +330,7 @@ export default {
 | remove-tag |   多选模式下移除tag时触发 | 返回一个key值 | 
 
 ### Function
-DropDownTree 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 DropDownTree 拥有如下方法：
+`DropDownTree` 内部使用了 `Node` 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 `DropDownTree` 拥有如下方法：
 | 方法名 | 说明 | 参数  |
 | ----| ----| --- | 
 | setCurrentKey| 设置当前选中(高亮)的节点，使用此方法必须设置 node-key 属性，若没有节点被选中则返回 null | 节点的key一般是id |

@@ -99,6 +99,7 @@ export default {
 | close-on-press-escape  | 是否可以通过按下 ESC 关闭 Dialog   | boolean | —  | false  |
 | center  | 是否对头部和底部采用居中布局  | boolean | —      | false  |
 | destroy-on-close | 关闭时销毁 Dialog 中的元素 | boolean | —      | false   |
+| append-to-body | Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true |boolean| —|false |
 | content (自定义)  | Dialog 的内容,也可通过 slot （见下表）传入   | string  | —    | —      |
 | title-style (自定义)   | Dialog 的标题的样式  | object  | — | —    |
 | isDrag (自定义)  | Dialog 是否可以拖拽   | boolean | — | false  |

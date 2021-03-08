@@ -12,11 +12,13 @@ import container from './components/container'
 import main from './components/main'
 import tagViews from './components/tag-views'
 import dropDownTree from './components/drop-down-tree'
+import iframe from './components/iframe'
 const components = [
     tablePagination, dialog, selectForm, menu, header, richText, tree,
     scroll, breadcrumb, upload, container, main,
     tagViews,
-    dropDownTree
+    dropDownTree,
+    iframe
 ]
 // 定义 install 方法
 const install = function (Vue) {
