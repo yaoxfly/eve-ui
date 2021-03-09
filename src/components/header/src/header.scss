@@ -146,18 +146,17 @@
 // ::v-deep .eve-header__dialog {
 .eve-header__dialog {
   position: absolute;
-  top: 42px;
-  width: 300px;
-  min-height: 350px;
   z-index: 1;
-  left: -150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &.el-dialog__wrapper {
+    overflow: visible;
+  }
   .el-dialog {
-    position: absolute;
     width: 100%;
-    min-height: 150px;
+    height: auto;
     font-size: 14px;
-    z-index: 1;
-    margin-right: 200px;
     box-shadow: 2px 2px 5px #e9e6e6;
   }
   .el-dialog__header {

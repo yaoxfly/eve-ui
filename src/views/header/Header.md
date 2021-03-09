@@ -124,11 +124,16 @@ export default {
 | dialog-title |对话框的标题 | string | — |  — |
 | dialog-border |对话框的线,默认显示 | boolean | — |  true |
 | dialog-button |对话框的按钮 | array | — |  [] |
+| dialog-top |对话框距离顶部的距离 | number | — |   42 |
+| dialog-width |对话框的宽度,高度已经自适应了 | number | — |   300 |
 | linkage-tag-menu |左边菜单数据：联动页签、左边菜单组件，配置后切换顶部菜单，页面默认跳转左侧菜单的第一个，如果存在二级，则跳转到二级菜单的第一个 | array | — |  [] |
 | config |配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 | object | — |   — |
 | config |配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 | object | — |   — |
 | slides-per-view |滚动显示的个数 | number | — |   5 |
 | background-color |滚动内容背景颜色 | string | — |   transparent |
+
+
+
 
 
 ### right-content

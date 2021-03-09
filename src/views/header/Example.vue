@@ -9,8 +9,8 @@
       :right-content="rightContent"
     >
       <template #dialog-content
-        >这里是内容，可以用slot覆盖 ，slot名：dialog-content</template
-      >
+        >这里是内容，可以用slot覆盖 ，slot名：dialog-content
+      </template>
     </eve-header>
   </div>
 </template>

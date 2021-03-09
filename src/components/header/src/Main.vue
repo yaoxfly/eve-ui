@@ -93,7 +93,9 @@
             :close-on-press-escape="false"
             :show-close="false"
             :style="{
-              left: `-${155 + dialogRight}px`,
+              left: `-${baseLeft + dialogRight}px`,
+              width: `${dialogWidth}px`,
+              top: `${dialogTop}px`,
             }"
           >
             <template #title>
@@ -125,7 +127,12 @@
               </div>
             </span>
           </el-dialog>
-          <div class="eve-header__triangle"></div>
+          <div
+            class="eve-header__triangle"
+            :style="{
+              top: `${triangleTop}px`,
+            }"
+          ></div>
         </div>
       </section>
     </header>
@@ -302,7 +309,7 @@ export default {
     //对话框的距离右边的距离
     dialogRight: {
       type: Number,
-      default: () => 5
+      default: () => 10
     },
 
     //对话框的标题
@@ -329,13 +336,21 @@ export default {
         }
       ]
     },
-
+    //对话框的宽度
+    dialogWidth: {
+      type: Number,
+      default: () => 300
+    },
+    //对话框距离顶部的距离
+    dialogTop: {
+      type: Number,
+      default: () => 42
+    },
     //左边菜单数据：联动页签、左边菜单组件，配置后切换顶部菜单，页面默认跳转左侧菜单的第一个，如果存在二级，则跳转到二级菜单的第一个
     linkageTagMenu: {
       type: Array,
       default: () => []
     },
-
     // 配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认
     config: {
       text: 'text', //文本
@@ -348,11 +363,13 @@ export default {
     return {
       visible: false, // 是否显示
       //key默认配置--配置菜单、面包屑数据的text、path、children等key值(内部用可被config覆盖)
+      baseLeft: 150, //基准距离，当前对话框宽度减去当前150就是这位移的基础值
       tempConfig: {
         text: 'text', //文本
         path: 'path', // 路径
         children: 'children' //树结构数据的孩子节点
       },
+
     }
   },
   mounted () { },
@@ -408,6 +425,12 @@ export default {
     },
   },
 
+  computed: {
+    triangleTop () {
+      return this.dialogTop - 42
+    }
+  },
+
   watch: {
     config: {
       handler (val) {
@@ -416,6 +439,14 @@ export default {
       },
       immediate: true,
     },
+
+    //对话框的宽度
+    dialogWidth: {
+      handler (val) {
+        this.baseLeft = val - 150
+      },
+      immediate: true,
+    }
   }
 }
 </script>
