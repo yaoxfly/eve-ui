@@ -97,6 +97,7 @@
               width: `${dialogWidth}px`,
               top: `${dialogTop}px`,
             }"
+            :append-to-body="dialogAppendToBody"
           >
             <template #title>
               <span class="eve-header__dialog-title">
@@ -131,6 +132,7 @@
             class="eve-header__triangle"
             :style="{
               top: `${triangleTop}px`,
+              right: `${triangleRight}px`,
             }"
           ></div>
         </div>
@@ -138,7 +140,6 @@
     </header>
   </div>
 </template>
-
 <script>
 
 import mixins from 'eve-ui/src/components/scroll/src/mixins.js'
@@ -276,7 +277,6 @@ export default {
       default: () => '#fff'
     },
 
-
     //当前激活菜单的文字颜色(中间菜单)
     activeTextColor: {
       type: String,
@@ -341,11 +341,19 @@ export default {
       type: Number,
       default: () => 300
     },
+
     //对话框距离顶部的距离
     dialogTop: {
       type: Number,
       default: () => 42
     },
+
+    // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
+    dialogAppendToBody: {
+      type: Boolean,
+      default: () => false
+    },
+
     //左边菜单数据：联动页签、左边菜单组件，配置后切换顶部菜单，页面默认跳转左侧菜单的第一个，如果存在二级，则跳转到二级菜单的第一个
     linkageTagMenu: {
       type: Array,
@@ -369,7 +377,6 @@ export default {
         path: 'path', // 路径
         children: 'children' //树结构数据的孩子节点
       },
-
     }
   },
   mounted () { },
@@ -428,6 +435,9 @@ export default {
   computed: {
     triangleTop () {
       return this.dialogTop - 42
+    },
+    triangleRight () {
+      return this.dialogRight - 10
     }
   },
 
@@ -439,7 +449,6 @@ export default {
       },
       immediate: true,
     },
-
     //对话框的宽度
     dialogWidth: {
       handler (val) {

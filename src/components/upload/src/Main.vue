@@ -251,7 +251,7 @@ export default {
   created () { },
   mounted () {
     // console.log(this.$attrs)
-    this.$refs.upload.$el.removeAttribute('http-request')
+    // this.$refs.upload.$el.removeAttribute('http-request')
   },
   methods: {
     /** @description    点击文件列表中已上传的文件时的钩子(回调) 

@@ -179,21 +179,22 @@ export default {
         ax_wordlimit_num: 0,
         //字数限制的回调
         ax_wordlimit_callback: (editor, txt, num) => {
-          const str = txt.substr(0, num)
-          this.myValue = ''
+          //TODO:截断后会把格式清掉,先不截断
+          // const str = txt.substr(0, num)
+          // this.myValue = ''s
           this.$message.error(`当前字数${txt.length}，已超过最大限制字数${num}`)
-          this.tempDisabled = true
+          // this.tempDisabled = true
           setTimeout(() => {
-            this.tempDisabled = false
-            tinymce.execCommand('mceInsertContent', false, str)
-            this.$emit('update:value', this.myValue)
-            this.$emit('update:disabled', this.tempDisabled)
+            // this.tempDisabled = false
+            // tinymce.execCommand('mceInsertContent', false, str)
+            // this.$emit('update:value', this.myValue)
+            // this.$emit('update:disabled', this.tempDisabled)
           }, 0)
-        }
+        },
       },
       myValue: this.value, //富文本的值
       tempDisabled: false, //禁用(内部用)
-      key: 0
+      key: 0 //更新富文本
     }
   },
 

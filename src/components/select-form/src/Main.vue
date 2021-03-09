@@ -531,11 +531,11 @@ export default {
      *  @author yx
      */
     getNum (param) {
-      // console.log(this.offset(this.$refs.reset.$el), 11)
+      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 250 //自动计算的左边的间距
       const {
         winWidth, formWidth, labelWidth,
-        leftWidth = this.leftFormWidth !== 0 ? this.leftFormWidth : this.offset(this.$refs.formValidate.$el).left,
-        rightWidth = this.$refs.reset ? this.offset(this.$refs.reset.$el).right : 0
+        leftWidth = this.leftFormWidth !== 0 ? this.leftFormWidth : left,
+        rightWidth = this.$refs.reset ? this.offset(this.$refs.reset.$el).right : 0 //自动计算的右边的间距
       } = param || {}
       // 250是左边导航的宽度  230:右边查询重置收起等按钮的宽度  288:formWidth 120:label   1366-250-200/408=2.24 Math.floor()
       return Math.floor((winWidth - leftWidth - this.rightButtonWidth - rightWidth) / (formWidth + labelWidth))
