@@ -54,7 +54,8 @@ export default {
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
 | ----- | ------ | ----- | ----- | - |
 | separator  | 面包屑分割符  |string| — |  / | 
-| separator-class | 图标分割符 el-icon-arrow-right 可使用相应的 iconfont 作为分隔符,注意这将使 separator 设置失效 | string | — |  —  | 
+| separator-class | 图标分隔符 class  例如 el-icon-arrow-right 可使用相应的iconfont(字体图标) 作为分隔符,注意这将使 separator 设置失效 | string | — |  —  | 
+| replace |  在进行路由跳转时，启用replace将不会向 history 添加新记录 |  boolean | — |   false  |
 | menu| 菜单数据--内置了转换方法可自动转换成面包屑数据(推荐),刷新也不会没 |  array | — | [] |
 | data | 自定义面包屑数据--自己转换而来的数据，如有传菜单数据会替换掉这个数据|  array | — | [] |
 | width | 宽度 |   number, string | — | 100% |
@@ -64,6 +65,7 @@ export default {
 | icon | 是否显示图标 |  boolean | — |  true  |
 | icon-left |  图标、图片等离左边的距离 |  number, string | — |  10  |
 | config |  配置菜单、面包屑数据的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 |  object | — |   —   |
+
 
 ### icon-class
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

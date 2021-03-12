@@ -1,4 +1,4 @@
-# TablePagination 表格&分页
+# TablePagination 表格分页
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比，分页或其他自定义操作。
 
@@ -250,6 +250,9 @@ export default {
 </script>
 ```
 
+
+> 当前组件扩展了所有`element-ui的Table组件`的属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
+
 ### Table Attributes
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -272,8 +275,6 @@ export default {
 | lazy   | 是否懒加载子节点数据   | Boolean | — | false |
 | load   | 加载子节点数据的函数,lazy为true时生效,函数第二个参数包含了节点的层级信息--树懒加载用   | Function | — | — |
 | default-sort   | 默认的排序列的 prop 和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序   | Object | order: ascending, descending | 如果只指定了prop, 没有指定order, 则默认顺序是ascending |
-
-> `element-ui`的`table`的属性和事件(不包括`Table-column Attributes`)都可传入,内置了接收方法。
 
 ###  Table  Attributes (自定义)
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |

@@ -19,12 +19,13 @@
     </div>
 
     <section :style="{ paddingLeft: checkString(Left) }">
-      <el-breadcrumb :separator="separator" :separator-class="separatorClass">
+      <el-breadcrumb v-bind="$attrs">
         <template v-for="(item, index) in breadcrumbData">
           <el-breadcrumb-item
             v-if="item[tempConfig.path]"
             :to="{ path: item[tempConfig.path] }"
             :key="`eve-breadcrumb${index}`"
+            v-bind="$attrs"
           >
             <span> {{ item[tempConfig.text] }}</span></el-breadcrumb-item
           >
@@ -40,26 +41,13 @@
 import BreadcrumbIcon from './BreadcrumbIcon.vue'
 export default {
   name: 'EveBreadcrumb',
+  inheritAttrs: false,
   components: {
     BreadcrumbIcon
   },
   props: {
-    /*饿了么自带属性 */
-
-    //面包屑分割符
-    separator: {
-      type: String,
-      default: () => '/'
-    },
-
-    //图标分割符 el-icon-arrow-right 可使用相应的 iconfont 作为分隔符,注意这将使 separator 设置失效
-    separatorClass: {
-      type: String,
-      default: () => ''
-    },
 
     /*自定义属性 */
-
     //自定义面包屑数据--自己转换而来的数据，如有传菜单数据会替换掉这个数据
     data: {
       type: Array,

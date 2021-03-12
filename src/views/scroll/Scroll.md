@@ -1,4 +1,4 @@
-  # Scroll
+  # Scroll 滚动
   滚动组件
   # 基础用法
 
@@ -210,5 +210,3 @@ export default {
 | name  | 说明 |
 |  - |   -     |
 |  content | 中间按钮的内容,参数 { data, index, row}， data：整体数据；index：下标；row：一行数据 |
-
-

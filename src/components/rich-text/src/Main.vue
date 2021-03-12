@@ -12,7 +12,10 @@
       :init="tempInit"
       :disabled="tempDisabled"
       @onClick="onClick"
+      @onBlur="onBlur"
       :key="key"
+      v-bind="$attrs"
+      v-on="$listeners"
     >
     </editor>
   </div>
@@ -72,6 +75,8 @@ export default {
     Editor
   },
   name: 'EveRichText',
+  //子组件的顶层标签元素中,不会渲染出父组件传递过来的属性。
+  inheritAttrs: false,
   //双向绑定
   model: {
     prop: 'value', //要存在于props
@@ -192,7 +197,7 @@ export default {
           }, 0)
         },
       },
-      myValue: this.value, //富文本的值
+      myValue: this.value, //富文本的值(内部用)
       tempDisabled: false, //禁用(内部用)
       key: 0 //更新富文本
     }
@@ -205,15 +210,24 @@ export default {
 
   },
   methods: {
-
     /**@description  聚焦事件
      * @author yx
      * @param  {Object}  e 事件对象
      */
     onClick (e) {
-      console.log(e, tinymce, 11)
+      // console.log(e, tinymce, 11)
       this.$emit('on-click', e, tinymce)
     },
+
+    /**@description  失焦事件
+     * @author yx
+     * @param  {Object}  e 事件对象
+     */
+    onBlur (e) {
+      // console.log(e, tinymce, 3333333333)
+      this.$emit('on-blur', e, tinymce)
+    },
+
     /**@description  清空内容
        * @author yx
        */
@@ -294,6 +308,20 @@ export default {
       }
       return res
     },
+
+    /**@description  获取文本(过滤html标签只获取的文本)和字数
+     * @author yx 
+     */
+    getText () {
+      const html = this.myValue;
+      const reg = new RegExp("<.+?>", "g");
+      let text = html.replace(reg, '');
+      text = text.replace(/\n/g, '');
+      text = text.replace(/&nbsp;/g, ' ');
+      const num = text.length;
+      return { text: text, num: num }
+
+    }
   },
 
   watch: {

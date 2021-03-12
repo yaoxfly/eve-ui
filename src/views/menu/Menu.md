@@ -1,6 +1,6 @@
-  # Menu
+  # Menu 菜单
   菜单组件,与Header和Breadcrumb以及TagViews组件有联动关系。
-  > tips: 全局样式 `li{
+  > 全局样式 `li{
     display: inline-block;`} 会影响到菜单三级(包括三级)以上的样式及布局,设置当前样式时不要设置为全局，以免导致菜单样式错乱。
   # 基础用法
  <template>
@@ -80,7 +80,7 @@ export default {
 | top   |   距离顶部(header)的距离|  number | — | 42 |
 | config   |   配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 |  object | — | {} |
 
->tips: 设置了`box-sizing: border-box`后会影响`top`属性,如果出现菜单纵向没铺满的`bug`,可自由调节当前值到铺满的为止，或者设置`top`值为`0`并在`app.vue`中添加样式 `body{overflow: hidden;}`
+> 设置了`box-sizing: border-box`后会影响`top`属性,如果出现菜单纵向没铺满的`bug`,可自由调节当前值到铺满的为止，或者设置`top`值为`0`并在`app.vue`中添加样式 `body{overflow: hidden;}`
 
 ### data 
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -93,7 +93,7 @@ export default {
 | icon | 菜单的图标  | string |  — | — |
 
 
-> tips: `path`是唯一的，不能配置一样的`path`，如果父菜单没有跳转的功能，就不需要配置`path`
+>  `path`是唯一的，不能配置一样的`path`，如果父菜单没有跳转的功能，就不需要配置`path`
 
 ### config
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

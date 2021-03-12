@@ -1,4 +1,4 @@
-  # 查询表单
+  # SelectForm 查询表单
    查询条件的集合体,灵活配置查询条件表单，支持自适应收缩/展开等其他自定义操作,常配合TablePagination组件使用。
 
   # 基础用法
@@ -12,9 +12,11 @@
 <script>
 
 import Example from './Example'
+import SlotExample from './SlotExample'
 export default {
   components: {
     Example,
+    SlotExample
   }
 }
 </script>
@@ -24,16 +26,15 @@ export default {
 ```html
 <template>
   <div>
-    <eve-select-form
-      :rules="rules"
-      :model="model"
-      :data="data"
-      @handle-submit="handleSubmit"
-    >
-      <template #input>
-        <span class="eve-select-form__demo">追加内容</span>
-      </template>
-    </eve-select-form>
+    <div>
+      <eve-select-form
+        :rules="rules"
+        :model="model"
+        :data="data"
+        @handle-submit="handleSubmit"
+      >
+      </eve-select-form>
+    </div>
   </div>
 </template>
 <script>
@@ -47,7 +48,8 @@ export default {
           {
             label: '统一社会信用代码：',
             prop: 'name',
-            type: 'input',
+            type: 'input', 
+            maxlength: 5, //输入长度的限制
           },
 
           {
@@ -161,6 +163,242 @@ export default {
 }
 </script>
 
+<style  scoped>
+.eve-select-form__demo {
+  position: absolute;
+  right: -60px;
+  top: 10px;
+}
+</style>
+```
+
+ # 高级用法
+`SelectForm` 提供了很多`slot`，以下就典型的选择几个`slot`做范例。
+<template>
+  <div>
+    <SlotExample/>
+  </div>
+</template>
+
+# 演示代码
+
+```html
+<template>
+  <div>
+    <div>
+      <eve-select-form
+        :rules="rules"
+        :model="model"
+        :data="data"
+        @handle-submit="handleSubmit"
+      >
+        <template #level>
+          <eve-drop-down-tree
+            :data="treeData"
+            :width="288"
+            v-model="model.level"
+            @node-click="nodeClick"
+          ></eve-drop-down-tree>
+        </template>
+        <!--这里的插槽名是动态的-->
+        <template #input-name> 我是插槽追加的 </template>
+      </eve-select-form>
+    </div>
+  </div>
+</template>
+<script>
+
+export default {
+  data () {
+    return {
+      //表单数据
+      data:
+        [
+          {
+            label: '等级(插槽下拉树)：',
+            prop: 'level', //当前值就是你要传给后台的key值，也就是插槽名，所以插槽名是动态的，嗯，就是这么酷
+            type: 'custom', //自定义类型，就是用slot来加入其它自定义的表单组件
+          },
+
+          {
+            label: '统一社会信用代码：',
+            prop: 'name',
+            type: 'input',
+          },
+
+          {
+            label: '所属部门：',
+            prop: 'department',
+            type: 'select',
+            option: [
+              {
+                label: '北京市',
+                value: 'beijing'
+              },
+              {
+                label: '上海市',
+                value: 'shanghai'
+              },
+              {
+                label: '深圳市',
+                value: 'shenzhen'
+              }
+            ]
+          },
+          {
+            label: '状态：',
+            prop: 'status',
+            type: 'checkbox',
+            option: [
+              {
+                label: '北京市',
+                value: 'beijing1'
+              },
+              {
+                label: '上海市',
+                value: 'shanghai2'
+              },
+              {
+                label: '深圳市',
+                value: 'shenzhen3'
+              }
+            ]
+          },
+          {
+            label: '地址：',
+            prop: 'address',
+            type: 'radio',
+            option: [
+              {
+                label: '北京市',
+                value: 'beijing'
+              },
+              {
+                label: '上海市',
+                value: 'shanghai'
+              },
+              {
+                label: '深圳市',
+                value: 'shenzhen'
+              }
+            ]
+          },
+          {
+            label: '日期：',
+            prop: 'date',
+            type: 'date',
+            // pickerType: 'date', //类型可选为:date、datetime
+            // valueFormat: 'yyyy-MM', //输出值的格式转换
+            // format: 'yyyy-MM'//选择框里的值的格式转换
+          },
+          {
+            label: '时间：',
+            prop: 'time',
+            type: 'time',
+            // valueFormat: 'mm:ss', //输出值的格式转换
+            // format: 'mm:ss'//选择框里的值的格式转换
+          }
+        ],
+
+      //树的数据
+      treeData: [
+        {
+          id: 1,
+          label: '一级 1',
+          children: [{
+            id: 2,
+            label: '二级 1-1',
+            children: [{
+              id: 3,
+              label: '三级 1-1-1'
+            }
+            ]
+          }]
+        }, {
+          id: 4,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1',
+            children: [{
+              id: 6,
+              label: '三级 2-1-1'
+            }]
+          }, {
+            id: 7,
+            label: '二级 2-2',
+            children: [{
+              id: 8,
+              label: '三级 2-2-1'
+            }]
+          }]
+        }, {
+          id: 9,
+          label: '一级 3',
+          children: [{
+            id: 10,
+            label: '二级 3-1',
+            children: [{
+              id: 11,
+              label: '三级 3-1-1'
+            }]
+          }, {
+            id: 12,
+            label: '二级 3-2',
+            children: [{
+              id: 13,
+              label: '三级 3-2-1'
+            }]
+          }]
+        }
+      ],
+
+      //表单双向绑定(prop)--点击查询按钮时获取值-重置验证时也要用到
+      model: {
+        name: '',
+        department: '',
+        status: [], //checkbox是多选的时候，声明时一定要写成数组形式，否则会出现选一个全部勾选情况。
+        address: '',
+        date: '',
+        time: '',
+        level: ''
+      },
+
+      //规则
+      rules: {
+        name: [
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+        ],
+        department: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+        ],
+        status: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+        ],
+        date: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+          { min: 3, max: 32, message: '长度在 3 到 32 个字符', trigger: 'blur' }
+        ],
+      }
+    }
+  },
+
+  methods: {
+    handleSubmit (emit) {
+      console.log(emit)
+    },
+    /**@description  节点被点击时的回调
+    * @author yx
+    * @param  {Object}  data 递给 data 属性的数组中该节点所对应的对象
+    * @param  {Object}  node 节点对应的 Node
+    * @param  {Object}  indeterminate 节点组件本身
+   */
+    nodeClick (data, node, indeterminate) {
+      console.log(data, node, indeterminate, 'nodeClick')
+    }
+  }
+}
+</script>
 
 <style  scoped>
 .eve-select-form__demo {
@@ -170,6 +408,8 @@ export default {
 }
 </style>
 ```
+
+
 
 ### Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -185,14 +425,6 @@ export default {
 | right-button-width | 右边查询、重置等按钮的宽度 |  number | — | 230 |
 | right-button-data | 右边按钮的数组--当前数组会覆盖默认的按钮,个性化需求用，详细配置见下表| array | — | [] |
 
-### right-button-data
-| 参数   | 说明 | 类型  | 可选值 | 默认值 |
-| ----- | ------ | ----- | ----- | - |
-| value  | 按钮文本 | string | — | — | 
-| buttonClassName |按钮的样式名称| string | — | —|
-| iconClassName |按钮的icon名称| string | — | —|  
-| valueClassName |按钮文本的样式| string | — | —| 
-| type |按钮的类型| string| search(查询)、 reset(重置)、packUp(展开或收起)， 默认就是普通的按钮 | — | 
 
 ### Data Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -207,6 +439,16 @@ export default {
 | pickerOptions  | 当前时间日期选择器特有的选项参考下表  | object | — |  {}  | 
 | formWidth  | 表单的宽度  | number | — |   没写默认是跟着全局属性formWidth  | 
 | labelWidth  | 表单左边的文本的宽度  | number | — | 没写默认是跟着全局属性labelWidth| 
+| maxlength  | input类型的表单的原生属性，最大输入长度  | number | — | 32 | 
+
+### right-button-data
+| 参数   | 说明 | 类型  | 可选值 | 默认值 |
+| ----- | ------ | ----- | ----- | - |
+| value  | 按钮文本 | string | — | — | 
+| buttonClassName |按钮的样式名称| string | — | —|
+| iconClassName |按钮的icon名称| string | — | —|  
+| valueClassName |按钮文本的样式| string | — | —| 
+| type |按钮的类型| string| search(查询)、 reset(重置)、packUp(展开或收起)， 默认就是普通的按钮 | — | 
 
 
 ###  日期格式

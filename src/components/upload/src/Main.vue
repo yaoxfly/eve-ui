@@ -403,7 +403,6 @@ export default {
       immediate: true
     }
   },
-
 }
 </script>
 
@@ -419,39 +418,15 @@ export default {
 ::v-deep .el-button {
   padding: 9px 15px;
 }
-
-::v-deep .eve-upload {
-  .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .el-upload:hover {
-    border-color: #409eff;
-  }
-  &__icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  &__img {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-}
-
 ::v-deep .el-icon-close-tip {
   display: none !important;
 }
-
 ::v-deep .el-upload-list__item-name {
   cursor: pointer;
 }
 </style>
 
+<style lang="scss">
+@import 'eve-ui/src/assets/style/base.scss';
+@import './upload.scss';
+</style>

@@ -12,25 +12,13 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 /* element-ui样式 */
 @import "~element-ui/packages/theme-chalk/src/index";
 /* eve-ui样式 */
-@import '~eve-ui/src/assets/style/theme-chalk/index';
+@import "~eve-ui/src/assets/style/theme-chalk/index";
 ```
-之后，在项目的入口文件中，直接引入以上样式文件即可（无需引入`element-ui`和`eve-ui`编译好的 `CSS` 文件）：
 
-```js
-//引入element-ui
-import ElementUI from 'element-ui'
-Vue.use(ElementUI)
-
-//引入eve-ui
-import eveUi from 'eve-ui'
-Vue.use(eveUi)
-import '@/assets/style/eve-ui-variables.scss' 
-```
->tips: 注意使用`scss`变量改变主题，需要安装`node-sass`和`sass-loader` 
+> 注意使用`scss`变量改变主题，需要安装`node-sass`和`sass-loader` 
 
 内置的颜色变量
 ```js
-
 /* Color 基础颜色
 -------------------------- */
 /// color|1|Brand Color|0 --主题色

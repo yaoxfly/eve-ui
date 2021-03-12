@@ -1,4 +1,4 @@
-  # Main
+  # Main 简单布局
    简单布局组件，简单快速搭建一个中间内容区域，用于基础框架搭建的，复杂的布局可用Container组件,可用Main组件嵌套Container组件一起使用,如果和Container组件嵌套使用，Main组件不要开启滚动，Container组件已自带滚动。
   # 基础用法
 
@@ -151,7 +151,7 @@ export default {
 | scroll |  是否开启滚动 |  boolean | — | false |
 | shrink-width |    面包屑的收缩按钮，收缩后菜单的宽度,如果有padding、margin也要算进去 |  number | — | 64 |
 
-> tips: `spacing`(间距)如果看不到，要在`app.vue`文件中设置背景色 ，设置当前页面的背景色如：`body{ background: #f5f7fa}`;
+> `spacing`(间距)如果看不到，要在`app.vue`文件中设置背景色 ，设置当前页面的背景色如：`body{ background: #f5f7fa}`;
 
 
 ### Slot

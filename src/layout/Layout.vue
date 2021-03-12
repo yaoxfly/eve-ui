@@ -84,7 +84,6 @@ export default {
 }
 </script>
  
-
 <style lang='scss' scoped>
 .layout {
   width: 100%;

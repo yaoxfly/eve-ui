@@ -1,4 +1,4 @@
-# Iframe 
+# Iframe  内联框架
 基于html标签iframe封装的组件，iframe元素会创建包含另外一个文档的内联框架（即行内框架）。
 # 基本用法
 

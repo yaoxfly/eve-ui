@@ -1,5 +1,5 @@
-  # RichText
-   富文本组件，基于tinymce富文本插件，添加了字数限制，集成了各种插件，等自定义功能。
+  # RichText 富文本
+   富文本组件，基于tinymce富文本插件，添加了字数限制，集成了各种插件，等自定义功能，
   # 基础用法
 
  <template>
@@ -20,14 +20,19 @@ export default {
 # 演示代码
 
 ```html
-
 <template>
   <div>
     <eve-rich-text
       v-model="value"
       @on-click="onClick"
+      @on-blur="onBlur"
       :init="init"
+      ref="eve-rich-text"
     ></eve-rich-text>
+
+    <el-button :style="{ marginTop: '25px' }" @click="getText"
+      >获取富文本的文本和字数</el-button
+    >
   </div>
 </template>
 <script>
@@ -39,7 +44,8 @@ export default {
       init: {
         height: 327,
         plugins: ['image'],
-        // // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
+        ax_wordlimit_num: 40,
+        // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
         images_upload_handler: (blobInfo, success) => {
           console.log(blobInfo, success, 111)
           const img = 'data:image/jpeg;base64,' + blobInfo.base64()
@@ -48,18 +54,26 @@ export default {
       }
     }
   },
-  mounted () {
-
-  },
+  mounted () { },
   methods: {
     //聚焦事件
     onClick () {
       console.log(this.value)
+    },
+    //失焦事件
+    onBlur (e, func) {
+      console.log(e, func)
+    },
+    //获取富文本的文本
+    getText () {
+      console.log(this.$refs['eve-rich-text'].getText())
     }
   }
 }
 </script>
 ```
+
+> 当前组件扩展了所有`timymce`的事件和属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`tinymce`官方文档，当前页面底部附带链接,
 
 ### Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -133,15 +147,17 @@ export default {
 | 事件名称 | 说明 | 回调参数  |
 | ----| ----| --- | 
 | on-click | 聚焦事件| function(e,tinymce)  包含事件对象，以及富文本本身| 
-
+| on-blur | 失焦事件| function(e,tinymce)  包含事件对象，以及富文本本身| 
 ### Function
 | 方法名 | 说明 | 参数  |
 | ----| ----| --- | 
 | initialize | 初始化富文本 | — |  
 | update | 强制更新富文本 | — |  
 | clear | 清空富文本的值 | — |  
+| getText |  获取文本(过滤html标签只获取的文本)和字数 | — |  
+
 
 ### 参考
 更多的内容参考[tinymce官方文档](http://tinymce.ax-z.cn/plugins/charmap.php)
-
 > 按住ctrl再点击链接，通过新窗口打开文档。
+

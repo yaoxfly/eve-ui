@@ -1,4 +1,4 @@
-# Tree
+# Tree 树
 
 用清晰的层级结构展示信息，可展开或折叠。
 
@@ -14,10 +14,12 @@
 
 import Example from './Example'
 import ConverExample from './ConverExample'
+import LeftExample from './LeftExample'
 export default {
   components: {
     Example,
-    ConverExample
+    ConverExample,
+    LeftExample
   }
 }
 </script>
@@ -29,6 +31,105 @@ export default {
   <div>
     <eve-tree
       :data="data"
+      @append="append"
+      @remove="remove"
+      @edit="edit"
+    ></eve-tree>
+  </div>
+</template>
+<script>
+
+export default {
+  data () {
+    return {
+      convertSetting: {
+        convert: true
+      },
+      data: [
+        {
+          id: 1,
+          label: '一级 1',
+          disabled: true, //设置某个节点不能被选择
+          children: [{
+            id: 4,
+            label: '二级 1-1',
+            children: [{
+              id: 9,
+              label: '三级 1-1-1'
+            }]
+          }]
+        }, {
+          id: 2,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1',
+            children: [{
+              id: 6,
+              label: '三级 2-1-1',
+
+            }]
+          }, {
+            id: 3,
+            label: '二级 2-2',
+
+            children: [{
+              id: 7,
+              label: '三级 2-2-1'
+            }]
+          }]
+        }, {
+          label: '一级 3',
+          id: 8,
+          children: [{
+            id: 10,
+            label: '二级 3-1',
+            children: [{
+              id: 11,
+              label: '三级 3-1-1'
+            }]
+          }, {
+            label: '二级 3-2',
+            id: 12,
+            children: [{
+              id: 13,
+              label: '三级 3-2-1'
+            }]
+          }]
+        }
+      ],
+    }
+  },
+  methods: {
+    append (node, data) {
+      console.log(node, data)
+    },
+    remove (node, data) {
+      console.log(node, data)
+    },
+    edit (node, data) {
+      console.log(node, data)
+    }
+  }
+}
+</script>
+```
+
+# 只选中叶子节点
+`only-leaf`属性设置为`true`，会使得除了最底层的节点(叶子节点)可以被选中，其他节点(有三角符号,可展开收缩的节点)无法选中。
+<template>
+  <div>
+    <LeftExample/>
+  </div>
+</template>
+
+# 演示代码
+```html
+<template>
+  <div>
+    <eve-tree
+      :data="data"
+      only-leaf
       @append="append"
       @remove="remove"
       @edit="edit"
@@ -182,6 +283,7 @@ export default {
 </script>
 ```
 
+> 当前组件扩展了所有`element-ui的Tree组件`的事件和属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
 
 ###  Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -205,12 +307,20 @@ export default {
 
 >   1.当同时有data和lazy的情况下，lazy优先级更高，会覆盖data的配置; 2.node-key属性，设置默认展开和默认选中的节点时必须设置
 
-###  Attributes(自定义)
 
+### props
+| 参数 | 说明 | 类型  | 可选值 | 默认值|
+| ----| ----| --- |--- | ---|
+| label| 指定节点标签为节点对象的某个属性值 | string| —| —|
+| children | 指定子树为节点对象的某个属性值 | string | —| —|
+| isLeaf| 指定节点是否为叶子节点，仅在指定了lazy属性的情况下生效 |boolean |—| —|
+
+
+###  Attributes(自定义)
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
 | width |整颗树的宽度，固定宽度有横向滚动条，100%可向外自动扩伸(不出现横向滚动条)| string, number | — | 100% |
-| only-leaf |是否只选中、高亮、编辑叶子节点(最底层的节点)| boolean | — | true |
+| only-leaf |是否只选中、高亮、编辑叶子节点(最底层的节点)| boolean | — | false |
 | operate |是否显示 添加、删除、编辑等按钮| boolean | — | true |
 | operate-color |设置添加、删除、编辑等按钮的颜色| string | — |  — |
 | is-show-filter |是否开启节点过滤| boolean | — |  true |
@@ -225,7 +335,7 @@ export default {
 | pid |节点的父id键值| string | — | pid |
 | topmostPid |最顶层数据的父id,当前值必须设置正确，否则可能转换不成功。| string,number | — | -1 |
 
-> tips:注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
+> 注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
 
 ###  Events
 | 事件名称 | 说明 | 回调参数  |
@@ -239,20 +349,12 @@ export default {
 | node-drag-end | 拖拽结束时（可能未成功）触发的事件 |  共四个参数，依次为：被拖拽节点对应的 Node、结束拖拽时最后进入的节点（可能为空）、被拖拽节点的放置位置（before、after、inner）、event | 
 | node-drop | 拖拽成功完成时触发的事件 | 共四个参数，依次为：被拖拽节点对应的 Node、结束拖拽时最后进入的节点、被拖拽节点的放置位置（before、after、inner）、event | 
 
-### props
-| 参数 | 说明 | 类型  | 可选值 | 默认值|
-| ----| ----| --- |--- | ---|
-| label| 指定节点标签为节点对象的某个属性值 | string| —| —|
-| children | 指定子树为节点对象的某个属性值 | string | —| —|
-| isLeaf| 指定节点是否为叶子节点，仅在指定了lazy属性的情况下生效 |boolean |—| —|
-
 ###  Events (自定义)
 | 事件名称 | 说明 | 回调参数  |
 | ----| ----| --- | 
 | append| 点击添加节点图标回调 | 返回一个对象，里面有两个参数， node： 当前节点的 Node 对象，data  当前节点的数据|
 | remove| 删除节点图标回调 |返回一个对象，里面有两个参数， node： 当前节点的 Node 对象，data  当前节点的数据|
 | edit|  修改节点图标回调 |返回一个对象，里面有两个参数， node： 当前节点的 Node 对象，data  当前节点的数据|
-
 
 ### Function
 Tree 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 Tree 拥有如下方法：
@@ -262,7 +364,6 @@ Tree 内部使用了 Node 类型的对象来包装用户传入的数据，用来
 | getCheckedKeys|若节点可被选择（即 show-checkbox 为 true），则返回目前被选中的节点的 key 所组成的数组,通过key获取节点| (leafOnly) 接收一个 boolean 类型的参数，若为 true 则仅返回被选中的叶子节点的 keys，默认值为 false|
 | setCheckedNodes|设置目前勾选的节点，使用此方法必须设置 node-key 属性|(nodes) 接收勾选节点数据的数组 |
 | setCheckedKeys|通过 keys 设置目前勾选的节点，使用此方法必须设置 node-key 属性|(keys, leafOnly) 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，若为 true 则仅设置叶子节点的选中状态，默认值为 false |
-
 
 ### Function (自定义)
 | 方法名 | 说明 | 参数  |

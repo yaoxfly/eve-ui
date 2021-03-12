@@ -852,48 +852,27 @@ export default {
 </script>
 
 <style  lang='scss' scoped>
-.eve-table-pagination {
-  // margin: 0 24px;
-  text-align: center;
-  &__filters ::v-deep .el-table__column-filter-trigger i {
-    display: none;
-  }
-  &__button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  &__button-text {
-    color: #409eff;
-    cursor: pointer;
-    user-select: none;
-    &:not(:first-child) {
-      padding-left: 16px;
-    }
-  }
-}
 ::v-deep .el-button {
   padding: 0;
   padding: 10px;
 }
-
 ::v-deep .el-table .cell.el-tooltip {
   //防止使用插槽或render时tree的箭头会偏移
   // display: flex;
   // align-items: center;
 }
-
 //  ::v-deep .warning-row {
 //   background: oldlace;
 // }
-
 //  ::v-deep .success-row {
 //   background: #f0f9eb;
 // }
 //  ::v-deep .red {
 //   background: red;
 //   color: white;
-
 // }
+</style>
+<style lang='scss'>
+@import 'eve-ui/src/assets/style/base.scss';
+@import './table-pagination.scss';
 </style>

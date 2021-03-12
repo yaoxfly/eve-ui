@@ -1,4 +1,4 @@
-  # TagViews 
+  # TagViews  页签
   显示当前打开的页面名称，快速切换之前打开的任意页面。
   # 基础用法
  <template>

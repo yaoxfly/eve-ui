@@ -2,8 +2,7 @@
 
 由于在私域 `npm`镜像 下，所以下载组件、插件的时候，会有些变化，请按照步骤来下载组件，否则会下载失败。如果 1、2 两步 之前已经操作过,不需要再重复操作。
 
-> tips:  1. 以下插件包，都基于`node.js`环境，请正确搭建好`node.js`环境，否则安装后可能无法正常使用。如果无法正常使用， 解决方案： [参考链接](https://blog.csdn.net/zixinghuanyue/article/details/100057262)。
-
+> 以下插件包，都基于`node.js`环境，请正确搭建好`node.js`环境，否则安装后可能无法正常使用。如果无法正常使用， 解决方案： [参考链接](https://blog.csdn.net/zixinghuanyue/article/details/100057262)。
 
 ### 1.全局安装 nrm
 
@@ -15,8 +14,7 @@ npm i nrm -g
 ```js
 nrm add enpm http://192.168.200.127:8081/repository/npm-public/
 ```
-
-> tips:查看是否已经添加，可以使用`nrm ls`查看,也可查看其它已经拥有的镜像，如果遇到使用`nrm ls`或其他`nrm`命令失败，可能原因是你的`node`版本过低或过高，支持不了最新版本的`nrm`,需要对`nrm`降级,详细解决方案，看最后面的`Q问题`。
+> 查看是否已经添加，可以使用`nrm ls`查看,也可查看其它已经拥有的镜像，如果遇到使用`nrm ls`或其他`nrm`命令失败，可能原因是你的`node`版本过低或过高，支持不了最新版本的`nrm`,需要对`nrm`降级,详细解决方案，看最后面的`Q问题`。
 
 ###  3.切换到 enpm 镜像
 
@@ -29,14 +27,14 @@ nrm use enpm
 npm i eve-ui
 ```
 
-> tips: `enpm`镜像可以下载和更新外域的包了，可不需要再切换为`npm`、`taobao`等镜像，如果出现下载外域的包发生错误的情况，就再切换回`npm`、`taobao`等镜像下载。
+>  `enpm`镜像可以下载和更新外域的包了，可不需要再切换为`npm`、`taobao`等镜像，如果出现下载外域的包发生错误的情况，就再切换回`npm`、`taobao`等镜像下载。
 
 ###  5.安装 element-ui
 
 ```js
 npm i element-ui 
 ```
-> tips: `eve-ui`基于`element-ui`，所以`element-ui`必须下载
+>  `eve-ui`基于`element-ui`，所以`element-ui`必须下载
 
 ### 6. eslint校验问题
 
@@ -52,7 +50,7 @@ dist/
 lib/
  *.md
 ```
-> tips：主要`lib`目录，当期目录不能省略
+> 主要`lib`目录，当期目录不能省略
 
 
 ###  Q问题

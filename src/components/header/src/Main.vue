@@ -280,7 +280,7 @@ export default {
     //当前激活菜单的文字颜色(中间菜单)
     activeTextColor: {
       type: String,
-      default: () => 'blue'
+      default: () => ''
     },
 
     //右边的内容：一般是图标或者是文本 //require这里不能用@会引入调用这个工程的src下的图片,只能用相对路径。

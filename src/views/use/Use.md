@@ -30,7 +30,7 @@ export default new Vuex.Store({
   }
 })
 ```
-> tips:组件库里`store`不管是完整引入还是按需，都需要引入，否则某些组件的功能会不完整,比如`Menu`和`TagViews`等组件的联动功能，由于组件是基于`element-ui`的所以`element-ui`也要引入。
+> 组件库里`store`不管是完整引入还是按需，都需要引入，否则某些组件的功能会不完整,比如`Menu`和`TagViews`等组件的联动功能，由于组件是基于`element-ui`的所以`element-ui`也要引入。
 
 ## 按需引入(全局)
 

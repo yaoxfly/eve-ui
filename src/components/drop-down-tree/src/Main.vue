@@ -44,7 +44,10 @@
               :data="tempData"
               :props="props"
               class="eve-drop-down-tree__item"
-              :class="[!onlyLeaf && 'eve-drop-down-tree__is-active']"
+              :class="[
+                !onlyLeaf && 'eve-drop-down-tree__is-active',
+                multiple && 'eve-drop-down-tree__multiple',
+              ]"
               :node-key="nodeKey"
               :highlight-current="true"
               :expand-on-click-node="false"
@@ -58,6 +61,8 @@
               @check="check"
               @node-click="nodeClick"
               ref="tree"
+              v-bind="$attrs"
+              v-on="$listeners"
             ></el-tree>
           </section>
         </el-scrollbar>
@@ -88,6 +93,7 @@
 
 export default {
   name: 'EveDropDownTree',
+  inheritAttrs: false,
   //双向绑定
   model: {
     prop: 'value', //要存在于props
@@ -108,7 +114,7 @@ export default {
     //是否只选中和高亮叶子节点
     onlyLeaf: {
       type: Boolean,
-      default: () => true
+      default: () => false
     },
 
     //配置选项
@@ -141,7 +147,7 @@ export default {
     // 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
     checkStrictly: {
       type: Boolean,
-      default: () => true
+      default: () => false
     },
 
     //多选时是否将选中值按文字的形式展示(是否添加+number)--注意：这个属性设置true会覆盖columnCollapseTags属性
@@ -503,48 +509,8 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped >
-.eve-drop-down-tree {
-  position: relative;
-  display: flex;
-  align-items: center;
-  &__select-input {
-    margin: 10px 0;
-  }
-  &__content {
-    padding: 0 20px;
-  }
-  &__option {
-    background-color: #fff;
-  }
-}
 
-::v-deep .eve-drop-down-tree__item {
-  user-select: none;
-  .el-tree-node:focus > .el-tree-node__content {
-    background: transparent;
-  }
-  // // 去掉hover背景色
-  // .el-tree-node:hover > .el-tree-node__content {
-  //   background-color: transparent;
-  // }
-}
-//全部
-.eve-drop-down-tree__is-active::v-deep.el-tree--highlight-current {
-  .el-tree-node.is-current > .el-tree-node__content {
-    background-color: transparent;
-    color: #409eff;
-  }
-}
-//only叶子
-::v-deep.el-tree--highlight-current {
-  .el-tree-node.is-current > .el-tree-node__content {
-    background-color: transparent;
-    .is-leaf + .el-tree-node__label {
-      color: #409eff;
-    }
-  }
-}
+<style lang='scss' scoped >
 ::v-deep.el-select-dropdown__item.is-disabled {
   cursor: default;
   padding: 0;
@@ -559,26 +525,11 @@ export default {
 ::v-deep .el-scrollbar__bar.is-horizontal > div {
   height: 120%;
 }
+</style>
 
-::v-deep .eve-drop-down-tree__column-collapse-tags {
-  .el-select__tags {
-    overflow: hidden;
-    height: 28px;
-  }
-}
-
-.eve-drop-down-tree__number {
-  position: absolute;
-  left: 0;
-  z-index: 99;
-  color: #909399;
-  width: 30px;
-  height: 24px;
-  background-color: #f4f4f0;
-  text-align: center;
-  line-height: 26px;
-  font-size: 12px;
-}
+<style lang='scss'>
+@import 'eve-ui/src/assets/style/base.scss';
+@import './drop-down-tree.scss';
 </style>
 
 

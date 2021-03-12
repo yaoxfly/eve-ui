@@ -37,6 +37,7 @@ export default {
       :right-button-data="dialog.rightButtonData"
       width="50%"
       ref="dialog"
+      
     >
     </eve-dialog>
   </div>
@@ -82,7 +83,7 @@ export default {
 </style>
 ```
 
-> `visible` 一定要加上 `sync`,起到同步修改的作用，以上方法和属性中除了`visible.sync` 一定要在父组件设置外，其他都有默认值，如无特殊需求可不设置。
+> 当前组件扩展了所有`element-ui的Dialog`的事件和属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
 
 ### Attributes
 
@@ -108,6 +109,8 @@ export default {
 | right-button-data (自定义) | Dialog 右边按钮的数据 | array  | — | [{ value: '取 消'},{ type: 'primary', value:'确 定'} ] |
 | is-sure-close (自定义) | 点击确定是否关闭 Dialog| boolean | — | true|
 
+> `visible` 一定要加上 `sync`,起到同步修改的作用，以上方法和属性中除了`visible.sync` 一定要在父组件设置外，其他都有默认值，如无特殊需求可不设置。
+
 ### Slot
 | name                 | 说明                          |
 | -------------------- | ----------------------------|
@@ -122,5 +125,5 @@ export default {
 | --------------------- | ----------------------------- | -------- |
 | close                 | Dialog 关闭前的回调         | —        |
 | closed                | Dialog 关闭动画结束时的回调  | —        |
-| left-button(自定义)   | Dialog 左边按钮点击事件的回调 |  {index:index,//按钮下标 value:value //按钮值}        |
-| right-button (自定义) | Dialog 右边按钮点击事件的回调 |  {index:index,//按钮下标 value:value //按钮值}  |
+| left-button(自定义)    | Dialog 左边按钮操作区，所有按钮的点击事件的回调 |  {index:index,//按钮下标 value:value //按钮值} |
+| right-button (自定义)  | Dialog 右边按钮操作区，所有按钮的点击事件的回调 |  {index:index,//按钮下标 value:value //按钮值} |

@@ -36,83 +36,83 @@ const routes = [
 
       {
         path: '/main',
-        name: 'Main',
+        name: 'Main 简单布局',
         component: () => import('../views/main/Main.vue'),
         meta: { title: '布局组件' }
       },
       {
         path: '/container',
-        name: 'Container',
+        name: 'Container 容器',
         component: () => import('../views/container/Container.vue')
       },
       {
         path: '/header',
-        name: 'Header',
+        name: 'Header 头部导航',
         component: () => import('../views/header/Header.vue'),
         meta: { title: '导航组件' }
       },
       {
         path: '/menu',
-        name: 'Menu',
+        name: 'Menu 菜单',
         component: () => import('../views/menu/Menu.vue'),
       },
       {
         path: '/breadcrumb',
-        name: 'Breadcrumb',
+        name: 'Breadcrumb 面包屑',
         component: () => import('../views/breadcrumb/Breadcrumb.vue'),
       },
       {
         path: '/tagViews',
-        name: 'TagViews',
+        name: 'TagViews 页签',
         component: () => import('../views/tag-views/TagViews.vue'),
       },
       {
         path: '/dialog',
-        name: 'Dialog',
+        name: 'Dialog 对话框',
         component: () => import('../views/dialog/Dialog.vue'),
         meta: { title: '常用组件' }
       },
 
       {
         path: '/tablePagination',
-        name: 'TablePagination',
+        name: 'TablePagination 表格分页',
         component: () => import('../views/table-pagination/TablePagination.vue')
       },
       {
         path: '/selectForm',
-        name: 'SelectForm',
+        name: 'SelectForm 查询表单',
         component: () => import('../views/select-form/SelectForm.vue')
       },
       {
         path: '/tree',
-        name: 'Tree',
+        name: 'Tree 树',
         component: () => import('../views/tree/Tree.vue')
       },
       {
         path: '/dropDownTree',
-        name: 'DropDownTree',
+        name: 'DropDownTree 下拉树',
         component: () => import('../views/drop-down-tree/DropDownTree.vue')
       },
       {
         path: '/upload',
-        name: 'Upload',
+        name: 'Upload 上传',
         component: () => import('../views/upload/Upload.vue')
       },
 
       {
         path: '/richText',
-        name: 'RichText',
+        name: 'RichText 富文本',
         component: () => import('../views/rich-text/RichText.vue'),
         meta: { title: '其他' }
       },
       {
         path: '/scroll',
-        name: 'Scroll',
+        name: 'Scroll 滚动',
         component: () => import('../views/scroll/Scroll.vue'),
       },
       {
         path: '/iframe',
-        name: 'Iframe',
+        name: 'Iframe 内联框架',
         component: () => import('../views/iframe/Iframe.vue'),
       },
     ]

@@ -1,35 +1,3 @@
-::v-deep.eve-scroll__menu.eve-scroll__menu-item {
-  // 标题选中颜色和线
-  .el-submenu.is-active .el-submenu__title {
-    span {
-      border-bottom: 2px solid #409eff;
-      padding: 0 10px 10px 10px;
-    }
-  }
-  .el-menu-item.is-active {
-    span {
-      border-bottom: 2px solid #409eff;
-      padding: 0 10px 10px 10px;
-    }
-  }
-}
-
-::v-deep.eve-scroll__menu.eve-header__menu-item {
-  // 标题选中颜色和线
-  .el-submenu.is-active .el-submenu__title {
-    span {
-      border-bottom: 2px solid blue;
-      padding: 0 10px 10px 10px;
-    }
-  }
-  .el-menu-item.is-active {
-    span {
-      border-bottom: 2px solid blue;
-      padding: 0 10px 10px 10px;
-    }
-  }
-}
-
 .eve-scroll {
   width: 100%;
   &__content {
@@ -53,7 +21,7 @@
   }
 }
 
-::v-deep .eve-scroll__swiper {
+.eve-scroll__swiper {
   .swiper-button-prev:after,
   .swiper-button-next:after {
     font-size: 14px;
@@ -71,7 +39,7 @@
   }
 }
 
-::v-deep.eve-scroll__menu {
+.eve-scroll__menu {
   user-select: none;
   .el-menu.el-menu--horizontal {
     border-bottom: solid 1px transparent;
@@ -80,88 +48,16 @@
   .el-submenu__title {
     color: white;
   }
-
   // 标题选中颜色和线
   .el-submenu .el-submenu__title {
     span {
       padding: 0 10px 10px 10px;
     }
   }
-
   //去掉箭头
   .el-submenu__title i {
     color: transparent;
   }
-
-  .el-menu-item {
-    span {
-      padding: 0 10px 10px 10px;
-    }
-  }
-}
-.eve-scroll {
-  width: 100%;
-  &__content {
-    text-align: center;
-  }
-  &__swiper {
-    //防止鼠标右击出现border
-    outline: none;
-  }
-  &__menu {
-    width: 100%;
-  }
-  &__item {
-    outline: none;
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-  }
-}
-
-::v-deep .eve-scroll__swiper {
-  .swiper-button-prev:after,
-  .swiper-button-next:after {
-    font-size: 14px;
-  }
-
-  .swiper-button-next,
-  .swiper-container-rtl .swiper-button-prev {
-    // color: white;
-    right: -10px;
-  }
-  .swiper-button-prev,
-  .swiper-container-rtl .swiper-button-next {
-    // color: white;
-    left: -10px;
-  }
-}
-
-::v-deep.eve-scroll__menu {
-  user-select: none;
-  .el-menu.el-menu--horizontal {
-    border-bottom: solid 1px transparent;
-  }
-  /* 菜单的标题 */
-  .el-submenu__title {
-    color: white;
-  }
-
-  // 标题选中颜色和线
-  .el-submenu .el-submenu__title {
-    span {
-      padding: 0 10px 10px 10px;
-    }
-  }
-
-  //去掉箭头
-  .el-submenu__title i {
-    color: transparent;
-  }
-
   .el-menu-item {
     span {
       padding: 0 10px 10px 10px;
@@ -169,23 +65,28 @@
   }
 }
 
-::v-deep.eve-scroll__menu.eve-scroll__menu-item {
+/****scroll-menu****/
+.eve-scroll__menu.eve-scroll__menu-item {
   // 标题选中颜色和线
   .el-submenu.is-active .el-submenu__title {
     span {
-      border-bottom: 2px solid #409eff;
+      border-bottom: 2px solid $--color-primary;
       padding: 0 10px 10px 10px;
     }
   }
   .el-menu-item.is-active {
     span {
-      border-bottom: 2px solid #409eff;
+      border-bottom: 2px solid $--color-primary;
       padding: 0 10px 10px 10px;
     }
   }
+  .el-menu-item.is-active {
+    color: $--color-primary;
+  }
 }
 
-::v-deep.eve-scroll__menu.eve-header__menu-item {
+/****hdader-scroll-menu****/
+.eve-scroll__menu.eve-header__menu-item {
   // 标题选中颜色和线
   .el-submenu.is-active .el-submenu__title {
     span {
@@ -193,6 +94,7 @@
       padding: 0 10px 10px 10px;
     }
   }
+
   .el-menu-item.is-active {
     span {
       border-bottom: 2px solid blue;
@@ -201,6 +103,98 @@
   }
 }
 
-::v-deep .eve-scroll__border-none.el-menu.el-menu--horizontal {
+.eve-scroll__border-none.el-menu.el-menu--horizontal {
   border-bottom: solid 1px transparent;
+}
+
+/*header组件的菜单样式 */
+.eve-header__menu-item {
+  .el-submenu__title:focus,
+  .el-submenu__title:hover {
+    background-color: transparent !important;
+    color: blue !important;
+  }
+  .el-submenu.is-active {
+    .el-submenu__title {
+      color: blue;
+    }
+  }
+  /*里面最底层孩子项的颜色 */
+  .el-menu-item:focus,
+  .el-menu-item:hover {
+    background-color: transparent !important;
+    color: blue !important;
+  }
+  .el-menu-item.is-active {
+    span {
+      color: blue;
+    }
+  }
+}
+
+ul[role='menu'] {
+  .eve-header__menu-item {
+    .el-menu-item {
+      background-color: $--color-primary !important;
+    }
+    .el-submenu__title {
+      background-color: $--color-primary !important;
+    }
+    .el-submenu__title i {
+      color: #fff;
+    }
+    .el-submenu__title span {
+      color: blue;
+    }
+  }
+}
+
+/*以下是纯粹的scroll组件的菜单样式 */
+.eve-scroll__menu-item {
+  .el-submenu__title:focus,
+  .el-submenu__title:hover {
+    background-color: transparent !important;
+    color: $--color-primary !important;
+  }
+  .el-submenu.is-active {
+    .el-submenu__title {
+      color: $--color-primary;
+    }
+  }
+
+  .eve-scroll__swiper {
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+      color: $--color-primary;
+    }
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+      color: $--color-primary;
+    }
+  }
+
+  .el-menu-item:focus,
+  .el-menu-item:hover {
+    background-color: transparent !important;
+    color: $--color-primary !important;
+  }
+  .el-menu-item.is-active {
+    span {
+      color: $--color-primary;
+    }
+  }
+}
+
+ul[role='menu'] {
+  .eve-scroll__menu-item {
+    .el-menu-item {
+      background-color: #fff !important;
+    }
+    .el-submenu__title {
+      background-color: #fff !important;
+    }
+    .el-submenu__title span {
+      color: $--color-primary;
+    }
+  }
 }

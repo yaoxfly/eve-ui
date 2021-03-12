@@ -1,4 +1,4 @@
-  # Header
+  # Header 头部导航
    头部导航,包含logo,平台名称，导航按钮，退出登录按钮等功能
   # 基础用法
 
@@ -114,8 +114,8 @@ export default {
 | background |  背景颜色 |  string | — | #409EFF |
 | height |  header高度 |  number | — | 55 |
 | swiper-button-color |  滚动两边按钮的颜色 |  string | swiper-button-white (白)，swiper-button-black(黑)| swiper-button-white |
-| scroll |  是否开启滚动 |  boolean | — | false |
-| navigation-width |  导航按钮的宽度--如果开启滚动必须固定一个宽度，不能使用百分比 | string | — | 100% |
+| scroll |  是否开启滚动,开启当前属性必须设置`navigation-width`属性为一个固定宽度 |  boolean | — | false |
+| navigation-width | 导航按钮的宽度--如果开启滚动必须固定一个宽度，例如`:navigation-width="'700px'"`，注意要带单位`px`,不要使用百分比 | string | — | 100% |
 | navigation-button | 导航按钮的数据 | array | — | [] |
 | text-color | 字体颜色(中间菜单) | string | — | #fff |
 | active-text-color | 当前激活菜单的文字颜色(中间菜单) | string | — | blue |

@@ -1,4 +1,4 @@
-# DropDownTree
+# DropDownTree 下拉树
 
 下拉选择树，用清晰的层级结构展示信息，用下拉菜单来选择信息
 
@@ -14,12 +14,14 @@
 
 import Example from './Example'
 import MultipleExample from './MultipleExample'
+import LeftExample from './LeftExample'
 import ConverExample from './ConverExample'
 
 export default {
   components: {
     Example,
     MultipleExample,
+    LeftExample,
     ConverExample
   }
 }
@@ -215,6 +217,104 @@ export default {
 </script>
 ```
 
+# 只选中叶子节点
+only-leaf属性设置为true，会使得除了最底层的节点(叶子节点)可以被选中，其他节点(有三角符号,可展开收缩的节点)无法选中。
+<template>
+  <div>
+    <LeftExample/>
+  </div>
+</template>
+
+# 演示代码
+
+
+```html
+<template>
+  <div>
+    <eve-drop-down-tree
+      :data="data"
+      :width="250"
+      v-model="value"
+      only-leaf
+      @node-click="nodeClick"
+    ></eve-drop-down-tree>
+  </div>
+</template>
+<script>
+
+export default {
+  data () {
+    return {
+      data: [
+        {
+          id: 1,
+          label: '一级 1',
+          children: [{
+            id: 2,
+            label: '二级 1-1',
+            children: [{
+              id: 3,
+              label: '三级 1-1-1'
+            }
+            ]
+          }]
+        }, {
+          id: 4,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1',
+            children: [{
+              id: 6,
+              label: '三级 2-1-1'
+            }]
+          }, {
+            id: 7,
+            label: '二级 2-2',
+            children: [{
+              id: 8,
+              label: '三级 2-2-1'
+            }]
+          }]
+        }, {
+          id: 9,
+          label: '一级 3',
+          children: [{
+            id: 10,
+            label: '二级 3-1',
+            children: [{
+              id: 11,
+              label: '三级 3-1-1'
+            }]
+          }, {
+            id: 12,
+            label: '二级 3-2',
+            children: [{
+              id: 13,
+              label: '三级 3-2-1'
+            }]
+          }]
+        }
+      ],
+      //双向绑定的值--如果初始就有值可回显
+      value: ''
+    }
+  },
+  methods: {
+    /**@description  节点被点击时的回调
+     * @author yx
+     * @param  {Object}  data 递给 data 属性的数组中该节点所对应的对象
+     * @param  {Object}  node 节点对应的 Node
+     * @param  {Object}  indeterminate 节点组件本身
+    */
+    nodeClick (data, node, indeterminate) {
+      console.log(data, node, indeterminate, 'nodeClick')
+    }
+  }
+}
+</script>
+```
+
 # 普通数据转树
 
 <template>
@@ -286,6 +386,7 @@ export default {
 </script>
 ```
 
+> 当前组件扩展了所有`element-ui的Tree组件`的事件和属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
 ###  Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
@@ -296,7 +397,7 @@ export default {
 | node-key  | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的 | string | — |  id |
 | default-expand-all	  | 是否默认展开所有节点 | boolean | — |  false |
 | multiple|  节点是否多选| boolean | — |  false |
-| check-strictly|   在显示复选框的情况下，是否严格的遵循父子不互相关联的做法| boolean | — |  true |
+| check-strictly|   在显示复选框的情况下，是否严格的遵循父子不互相关联的做法| boolean | — |  false |
 | collapse-tags|   多选时是否将选中值按文字的形式展示(是否添加+number)--注意：这个属性设置true会覆盖columnCollapseTags属性| boolean | — |  false |
 | column-collapse-tags |(推荐)多选时是否将选中值按文字的形式自适应展示(是否自适应添加+number),可展示多个页签,collapseTag非自适应展示,只展示一个页签后面就跟着一个number。| boolean | — |   false |
 | width |select宽度| string/number | — |  300 |
@@ -304,6 +405,12 @@ export default {
 | accordion |是否每次只打开一个同级树节点| boolean | — |   false |
 | auto-expand-parent |展开子节点的时候是否自动展开父节点| boolean | — |   true |
 | convert-setting |树形结构数据转换设置,详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
+
+### props
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| ----| ----| --- | ---- | ----- |
+| label | 指定节点标签为节点对象的某个属性值 | string | — | label |
+| children | 指定子树为节点对象的某个属性值 | string | — | children |
 
 ### convert-setting
 `普通数据转树结构数据`必须设置的属性，当前值可以不用全部设置，内部有默认值，可只设置其中一个(要看数据格式是否和当前设置的默认值是否相匹配)。
@@ -314,13 +421,7 @@ export default {
 | pid |节点的父id键值| string | — | pid |
 | topmostPid |最顶层数据的父id,当前值必须设置正确，否则可能转换不成功。| string,number | — | -1 |
 
-> tips:注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
-
-### props
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| ----| ----| --- | ---- | ----- |
-| label | 指定节点标签为节点对象的某个属性值 | string | — |— |
-| children | 指定子树为节点对象的某个属性值 | string | — |— |
+> 注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
 
 ###  Events
 | 事件名称 | 说明 | 回调参数  |

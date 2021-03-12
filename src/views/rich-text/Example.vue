@@ -4,8 +4,14 @@
     <eve-rich-text
       v-model="value"
       @on-click="onClick"
+      @on-blur="onBlur"
       :init="init"
+      ref="eve-rich-text"
     ></eve-rich-text>
+
+    <el-button :style="{ marginTop: '25px' }" @click="getText"
+      >获取富文本的文本和字数</el-button
+    >
   </div>
 </template>
 <script>
@@ -32,6 +38,14 @@ export default {
     //聚焦事件
     onClick () {
       console.log(this.value)
+    },
+    //失焦事件
+    onBlur (e, func) {
+      console.log(e, func)
+    },
+    //获取富文本的文本
+    getText () {
+      console.log(this.$refs['eve-rich-text'].getText())
     }
   }
 }

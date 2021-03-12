@@ -37,6 +37,8 @@
       @node-drop="nodeDrop"
       @check-change="checkChange"
       @node-click="nodeClick"
+      v-bind="$attrs"
+      v-on="$listeners"
     >
       <div
         class="eve-tree__custom-tree-node"
@@ -89,6 +91,7 @@
 <script>
 export default {
   name: 'EveTree',
+  inheritAttrs: false,
   props: {
     // 展示数据
     data: {
@@ -251,7 +254,7 @@ export default {
     //是否只选中、高亮、编辑叶子节点(最底层的节点)
     onlyLeaf: {
       type: Boolean,
-      default: () => true
+      default: () => false
     },
     //是否显示 添加、删除、编辑等按钮
     operate: {
@@ -580,27 +583,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.eve-tree {
-  user-select: none;
-  &__custom-tree-node {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-    padding-right: 8px;
-  }
-  &__filter {
-    margin-bottom: 28px;
-  }
-  &__custom-tree-button {
-    display: none;
-  }
-  &__custom-tree-label {
-    cursor: pointer;
-  }
-}
-
 .el-icon-circle-plus-outline:before {
   font-size: 16px;
 }
@@ -610,51 +592,13 @@ export default {
 .el-icon-edit:before {
   font-size: 16px;
 }
-
 ::v-deep .el-tree-node__content:hover {
   cursor: default;
   // background: transparent;
 }
-
-//全部
-.eve-tree__is-active::v-deep.el-tree--highlight-current {
-  .el-tree-node.is-current > .el-tree-node__content {
-    background-color: transparent;
-    color: #409eff;
-  }
-}
-//only叶子
-::v-deep.el-tree--highlight-current {
-  .el-tree-node.is-current > .el-tree-node__content {
-    background-color: transparent;
-    .is-leaf + .eve-tree__custom-tree-node {
-      .eve-tree__custom-tree-label {
-        color: #409eff !important;
-      }
-    }
-  }
-}
-
-::v-deep.eve-tree {
-  .el-tree-node:focus > .el-tree-node__content {
-    background: transparent;
-  }
-  // // 去掉hover背景色
-  // .el-tree-node:hover > .el-tree-node__content {
-  //   background-color: transparent;
-  // }
-}
-
-.eve-tree__custom-tree:hover {
-  .eve-tree__custom-tree-button {
-    display: block;
-  }
-}
-
-.is-leaf + .eve-tree__custom-leaf-tree:hover {
-  .eve-tree__custom-tree-button {
-    display: block;
-  }
-}
 </style>
 
+<style lang="scss">
+@import 'eve-ui/src/assets/style/base.scss';
+@import './tree.scss';
+</style>

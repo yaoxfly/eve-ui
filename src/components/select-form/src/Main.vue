@@ -15,6 +15,35 @@
       <section class="eve-select-form__flex">
         <div class="eve-select-form__flex-start">
           <template v-for="(item, index) in data">
+            <!--自定义类型，用slot来定义各种类型-->
+            <section
+              class="eve-select-form__flex-row-center"
+              v-if="item.type === 'custom'"
+              :key="`custom${index}`"
+            >
+              <label
+                class="eve-select-form__from-lable"
+                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :class="[checkHidden(index)]"
+              >
+                <span
+                  class="eve-select-form__asterisk"
+                  v-if="checkAsterisk(item.prop, rules)"
+                >
+                  *
+                </span>
+                {{ item.label }}</label
+              >
+              <el-form-item
+                :prop="item.prop"
+                class="eve-select-form__formItem"
+                :class="[checkHidden(index)]"
+              >
+                <slot :name="item.prop" :row="item" :data="data">
+                  请放置各种表单
+                </slot>
+              </el-form-item>
+            </section>
             <!-- input-->
             <section
               class="eve-select-form__flex-row-center"
@@ -41,15 +70,22 @@
               >
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-input
-                    v-model="model[item.prop]"
+                    v-model.trim="model[item.prop]"
                     :placeholder="item.placeholder || '请输入'"
                     :style="{ width: `${getFormWidth(item.formWidth)}px` }"
+                    :maxlength="item.maxlength || 32"
                     clearable
                   ></el-input>
                 </slot>
               </el-form-item>
-              <slot name="input"></slot>
-              <slot :name="`input-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="input"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`input-${item.prop}`"></slot>
+              </section>
             </section>
 
             <!--date-picker -->
@@ -91,8 +127,14 @@
                   ></el-date-picker>
                 </slot>
               </el-form-item>
-              <slot name="date-picker"></slot>
-              <slot :name="`date-picker-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="date-picker"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`date-picker-${item.prop}`"></slot>
+              </section>
             </section>
 
             <!--time-picker -->
@@ -136,8 +178,14 @@
                   </el-time-picker>
                 </slot>
               </el-form-item>
-              <slot name="time-picker"></slot>
-              <slot :name="`time-picker-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="time-picker"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`time-picker-${item.prop}`"></slot>
+              </section>
             </section>
 
             <!-- select-->
@@ -182,8 +230,13 @@
                   </el-select>
                 </slot>
               </el-form-item>
-              <slot name="select"></slot>
-              <slot :name="`select-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="select"></slot>
+              </section>
+              <section :class="[checkHidden(index)]">
+                <slot :name="`select-${item.prop}`"></slot>
+              </section>
             </section>
 
             <!--radio-->
@@ -223,8 +276,14 @@
                   </el-radio-group>
                 </slot>
               </el-form-item>
-              <slot name="radio"></slot>
-              <slot :name="`radio-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="radio"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`radio-${item.prop}`"></slot>
+              </section>
             </section>
 
             <!--checkbox-->
@@ -267,8 +326,14 @@
                   </el-checkbox-group>
                 </slot>
               </el-form-item>
-              <slot name="checkbox"></slot>
-              <slot :name="`checkbox-${item.prop}`"></slot>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="checkbox"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`checkbox-${item.prop}`"></slot>
+              </section>
             </section>
           </template>
 

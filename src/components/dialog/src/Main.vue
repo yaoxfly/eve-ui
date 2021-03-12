@@ -22,10 +22,9 @@
       :append-to-body="appendToBody"
       @closed="closed"
       @close="close"
+      v-bind="$attrs"
+      v-on="$listeners"
     >
-      <div v-loading="loading">
-        <slot>{{ content }}</slot>
-      </div>
       <template #title>
         <slot name="title">
           <span class="eve-dialog__title" :style="titleStyle">
@@ -33,9 +32,14 @@
           </span>
         </slot>
       </template>
+
+      <div v-loading="loading">
+        <slot>{{ content }}</slot>
+      </div>
+
       <template #footer>
         <slot name="footer">
-          <div class="eve-dialog__footer">
+          <div class="eve-dialog__footer" v-loading="loading">
             <div>
               <slot name="leftFooter">
                 <template v-for="(item, index) in leftButtonData">
@@ -74,6 +78,7 @@
 import elDragDialog from './drag.js'
 export default {
   name: 'EveDialog',
+  inheritAttrs: false,
   directives: {
     elDragDialog
   },
@@ -195,6 +200,7 @@ export default {
         }
       ]
     },
+
     // 点击确定是否关闭Dialog
     isSureClose: {
       type: Boolean,
@@ -246,7 +252,6 @@ export default {
       }
       this.$emit('right-button', param)
     },
-
     /** @description 关闭模态框前的事件
      * @author yx
      */
@@ -254,7 +259,6 @@ export default {
       this.$emit('update:visible', false)
       this.$emit('closed')
     },
-
     /** @description 右边的关闭按钮
      * @author yx
      */
@@ -273,9 +277,15 @@ export default {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    ::v-deep .el-loading-spinner .circular {
+      display: none;
+    }
   }
-}
-.el-dialog__wrapper {
-  user-select: none;
+  ::v-deep .el-loading-spinner {
+    margin-top: -8px;
+  }
+  .el-dialog__wrapper {
+    user-select: none;
+  }
 }
 </style>

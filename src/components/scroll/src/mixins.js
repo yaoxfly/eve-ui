@@ -126,7 +126,7 @@ export default {
     //当前激活菜单的文字颜色
     activeTextColor: {
       type: String,
-      default: () => '#409eff'
+      default: () => ''
     },
     //默认蓝色 swiper-button-white(白)/swiper-button-black(黑)
     swiperButtonColor: {

@@ -147,74 +147,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+@import 'eve-ui/src/assets/style/base.scss';
 @import './scroll.scss';
 </style>
 
-<style  lang="scss"  >
-/*header组件的菜单样式 */
-.eve-header__menu-item {
-  .el-submenu__title:focus,
-  .el-submenu__title:hover {
-    background-color: transparent !important;
-    color: blue !important;
-  }
-}
-
-/*里面最底层孩子项的颜色 */
-.eve-header__menu-item {
-  .el-menu-item:focus,
-  .el-menu-item:hover {
-    background-color: transparent !important;
-    color: blue !important;
-  }
-}
-
-ul[role='menu'] {
-  .eve-header__menu-item {
-    .el-menu-item {
-      background-color: #409eff !important;
-    }
-    .el-submenu__title {
-      background-color: #409eff !important;
-    }
-    .el-submenu__title i {
-      color: #fff;
-    }
-  }
-}
-
-/*纯粹的scroll组件的菜单样式 */
-.eve-scroll__menu-item {
-  .el-submenu__title:focus,
-  .el-submenu__title:hover {
-    background-color: transparent !important;
-    color: #409eff !important;
-  }
-}
-
-/*里面最底层孩子项的颜色 */
-.eve-scroll__menu-item {
-  .el-menu-item:focus,
-  .el-menu-item:hover {
-    background-color: transparent !important;
-    color: #409eff !important;
-  }
-}
-
-ul[role='menu'] {
-  .eve-scroll__menu-item {
-    .el-menu-item {
-      background-color: #fff !important;
-    }
-    .el-submenu__title {
-      background-color: #fff !important;
-    }
-    // .el-submenu__title i {
-    // }
-  }
-}
-</style>
 
 
 
