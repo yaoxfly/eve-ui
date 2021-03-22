@@ -20,6 +20,8 @@
         `eve-drop-down-tree__select${random}`,
         columnCollapseTags && 'eve-drop-down-tree__column-collapse-tags',
       ]"
+      :filterable="filterable"
+      :filter-method="filterMethod"
     >
       <el-option
         :label="label"
@@ -30,16 +32,6 @@
       >
         <el-scrollbar style="width: 100%; height: 100%">
           <section class="eve-drop-down-tree__content">
-            <slot name="filter">
-              <el-input
-                v-if="isShowfilter"
-                placeholder="请输入关键字进行过滤"
-                v-model="filterText"
-                class="eve-drop-down-tree__select-input"
-                ref="input"
-              >
-              </el-input>
-            </slot>
             <el-tree
               :data="tempData"
               :props="props"
@@ -186,8 +178,8 @@ export default {
       default: () => false
     },
 
-    //是否显示关键字过滤
-    isShowfilter: {
+    //是否可搜索
+    filterable: {
       type: Boolean,
       default: () => true
     },
@@ -204,7 +196,6 @@ export default {
       id: '', //被选中节点的id或者唯一值
       tempValue: this.multiple ? [] : '', //组件内部v-model绑定的值
       label: '', //被选中节点的label值
-      filterText: '', //过滤的值
       option: [], //多选时选中的lable和key组合的数组
       showCheckbox: this.multiple, //节点是否可被选择--多选默认可选择
       defaultExpandedKeys: [], //默认展开的节点的 key 的数组
@@ -272,7 +263,6 @@ export default {
       this.tempValue = '' //清空真实值
       this.label = '' //清空select框里的label值
       this.id = null
-      this.filterText = ''
       this.setCurrentKey(null)
       this.setCheckedKeys([])
       this.defaultExpandedKeys = []
@@ -280,10 +270,11 @@ export default {
     },
 
     /** @description  下拉框出现/隐藏时触发
+      * @param  {boolean}  flag // 回调参数 出现则为true，隐藏则为 false
       * @author yx
-     */
-    visibleChange () {
-      this.filterText = ''
+      */
+    visibleChange (flag) {
+      this.$emit('visible-change', flag)
     },
 
     /** @description  多选模式下移除tag时触发
@@ -434,6 +425,16 @@ export default {
         }
       }
       return itemArr
+    },
+
+    /**@description 过滤查找
+     * @param  {string}  val  当前select框的输入值
+     * @author yx
+     */
+    filterMethod (val) {
+      //清除左边两边的空格
+      val = val.replace(/(^\s*)|(\s*$)/g, '')
+      this.$refs.tree.filter(val)
     }
 
   },
@@ -478,11 +479,6 @@ export default {
     tempValue (newValue) {
       //获取值
       this.$emit('change', newValue)
-    },
-
-    filterText (val) {
-      //对树节点进行筛选操作
-      this.$refs.tree.filter(val)
     },
 
     convertSetting: {

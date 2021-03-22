@@ -1,7 +1,7 @@
   # Main 简单布局
-   简单布局组件，简单快速搭建一个中间内容区域，用于基础框架搭建的，复杂的布局可用Container组件,可用Main组件嵌套Container组件一起使用,如果和Container组件嵌套使用，Main组件不要开启滚动，Container组件已自带滚动。
+   简单布局组件，简单快速搭建一个中间内容区域，用于基础框架搭建的，复杂的布局可用`Container`组件,可用`Main`组件嵌套`Container`组件一起使用,如果和`Container`组件嵌套使用，`Main`组件不要开启滚动，`Container`组件已自带滚动。
   # 基础用法
-
+   加上`border`属性可带边框,`padding`设置内间距
  <template>
   <div>
     <Example/>
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import Example from './Example'
 export default {
   components: {
@@ -23,7 +22,7 @@ export default {
 ```html
 <template>
   <div>
-    <eve-main :left="460" scroll>
+    <eve-main :left="660" scroll  border padding="20px 30px">
       <div class="eve-main-content__demo">
         中间内容块 中间内容块 中间内容块 中间内容块 中间内容块 中间内容块
         中间内容块中间内容块中间内容块中间内容块中间内容块 中间内容块 中间内容块
@@ -133,10 +132,8 @@ export default {
 
 <style scoped>
 .eve-main-content__demo {
-  border: 1px solid #e2dada;
   line-height: 2;
   font-size: 14px;
-  padding: 0 20px;
 }
 </style> 
 ```
@@ -150,10 +147,11 @@ export default {
 | background |  背景颜色 |  string | — | #fff |
 | scroll |  是否开启滚动 |  boolean | — | false |
 | shrink-width |    面包屑的收缩按钮，收缩后菜单的宽度,如果有padding、margin也要算进去 |  number | — | 64 |
+| border |  是否带有边框 |  boolean | — | false |
+| padding | 内间距，css原生写法, 例如："20px 30px 20px 15px"，要带单位px | string | — | 0 |
+
 
 > `spacing`(间距)如果看不到，要在`app.vue`文件中设置背景色 ，设置当前页面的背景色如：`body{ background: #f5f7fa}`;
-
-
 ### Slot
 | name                 | 说明                         |
 | -------------------- | ---------------------------- |

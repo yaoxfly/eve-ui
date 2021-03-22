@@ -1,9 +1,9 @@
 # DropDownTree 下拉树
 
-下拉选择树，用清晰的层级结构展示信息，用下拉菜单来选择信息
+下拉选择树，用清晰的层级结构展示信息，用下拉菜单来选择信息,并提供了搜索功能
 
 # 基础用法
-单选
+单选(可搜索)
 <template>
   <div>
     <Example/>
@@ -115,7 +115,7 @@ export default {
 </script>
 ```
 
-多选
+多选(可搜索)
 <template>
   <div>
     <MultipleExample/>
@@ -226,7 +226,6 @@ only-leaf属性设置为true，会使得除了最底层的节点(叶子节点)�
 </template>
 
 # 演示代码
-
 
 ```html
 <template>
@@ -387,12 +386,14 @@ export default {
 ```
 
 > 当前组件扩展了所有`element-ui的Tree组件`的事件和属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
+
 ###  Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
 | data  | 展示数据 | array | — | — |
 | value / v-model  | 绑定值|  string / array | — | — |
 | only-leaf  | 是否只选中和高亮叶子节点 | boolean | — | true |
+| filterable |是否可搜索 | boolean | — |true |
 | props  | 配置选项，具体看下表 | object | — |  {children: 'children', label: 'label'} |
 | node-key  | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的 | string | — |  id |
 | default-expand-all	  | 是否默认展开所有节点 | boolean | — |  false |
@@ -406,11 +407,13 @@ export default {
 | auto-expand-parent |展开子节点的时候是否自动展开父节点| boolean | — |   true |
 | convert-setting |树形结构数据转换设置,详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
 
+
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
 | label | 指定节点标签为节点对象的某个属性值 | string | — | label |
 | children | 指定子树为节点对象的某个属性值 | string | — | children |
+
 
 ### convert-setting
 `普通数据转树结构数据`必须设置的属性，当前值可以不用全部设置，内部有默认值，可只设置其中一个(要看数据格式是否和当前设置的默认值是否相匹配)。
@@ -423,12 +426,14 @@ export default {
 
 > 注意: `topmostPid`属性值，其中`number`类型和`string`类型的数字是不相等的，比如`-1`和`'-1'`这两个值是不相等的。
 
+
 ###  Events
 | 事件名称 | 说明 | 回调参数  |
 | ----| ----| --- | 
 | node-click | 节点被点击时的回调 |  共三个参数，依次为：传递给 data 属性的数组中该节点所对应的对象、节点对应的 Node、节点组件本身。 | 
 | clear | 清空选择的数据 | — | 
 | remove-tag |   多选模式下移除tag时触发 | 返回一个key值 | 
+
 
 ### Function
 `DropDownTree` 内部使用了 `Node` 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 `DropDownTree` 拥有如下方法：
@@ -441,8 +446,3 @@ export default {
 | getHalfCheckedNodes|多选--若节点可被选择，则返回目前半选中的节点所组成的数组| —|
 | getCurrentKey|获取当前被选中节点的 key，使用此方法必须设置 node-key 属性，若没有节点被选中则返回 null| —|
 | getCurrentNode|单选--获取当前被选中节点的 data，若没有节点被选中则返回 null| —|
-
-### Slot
-| name | 说明 | 
-| ----| ----|  
-| filter | 关键字过滤的插槽  |

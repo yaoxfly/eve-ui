@@ -36,7 +36,14 @@
       <slot>
         <!-- 单独上传一张图片 -->
         <section v-if="tempUploadType === 'picture'">
-          <img v-if="imageUrl" :src="imageUrl" class="eve-upload__img" />
+          <div v-if="imageUrl">
+            <el-image
+              fit="conver"
+              :src="imageUrl"
+              class="eve-upload__img"
+              :preview-src-list="srcList"
+            />
+          </div>
           <i v-else class="el-icon-plus eve-upload__icon"></i>
         </section>
 
@@ -64,25 +71,34 @@
 
       <!-- 触发文件选择框的内容 -->
       <template #trigger> <slot name="trigger"></slot> </template>
-
       <!-- 文件缩略图--自定义黑色框里的按钮 -->
       <template v-slot:file="{ file }">
-        <slot name="file" :file="file"></slot>
+        <slot name="file" :file="file"> </slot>
       </template>
     </el-upload>
 
     <!-- 预览-放大图用 -->
-    <el-dialog
+    <el-image
+      ref="imagePreviewer"
+      v-show="false"
+      :src="dialog.imageUrl"
+      :preview-src-list="srcList"
+      fit="conver"
+      lazy
+      :z-index="zIndex"
+    />
+    <!-- <el-dialog
       :visible.sync="dialog.visible"
       title="预览"
       :append-to-body="appendToBody"
     >
       <img width="100%" :src="dialog.imageUrl" alt="" />
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
 <script>
+
 
 export default {
   name: 'EveUpload',
@@ -205,6 +221,19 @@ export default {
       type: Array,
       default: () => []
     },
+
+    //是否禁用
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+
+    // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
+    // appendToBody: {
+    //   type: Boolean,
+    //   default: () => false
+    // },
+
     /* 自定义属性 */
 
     //提示说明文字
@@ -219,17 +248,23 @@ export default {
       default: 'text'
     },
 
-    //是否禁用
-    disabled: {
+    //是否开启图片预染功能
+    preview: {
       type: Boolean,
-      default: false
+      default: true
     },
 
-    // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
-    appendToBody: {
-      type: Boolean,
-      default: () => false
+    //设置图片预览的 z-index
+    zIndex: {
+      type: Number,
+      default: 2000
     },
+
+    //验证上传的文件是否有重复
+    repeat: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data () {
@@ -249,18 +284,19 @@ export default {
   },
 
   created () { },
-  mounted () {
-    // console.log(this.$attrs)
-    // this.$refs.upload.$el.removeAttribute('http-request')
-  },
+  mounted () { },
   methods: {
-    /** @description    点击文件列表中已上传的文件时的钩子(回调) 
+    /** @description   点击文件列表中已上传的文件时的钩子(回调) 
       * @author yx
       * @param  {Object}  file  文件详细信息
      */
     handleOnPreview (file) {
-      this.dialog.imageUrl = file.url
-      this.dialog.imageUrl && (this.dialog.visible = true)
+      //当文件列表类型为picture和picture-card的时候才开启预览功能
+      if (this.preview && (this.listType === 'picture' || this.listType === 'picture-card')) {
+        this.dialog.imageUrl = file.url
+        // this.dialog.imageUrl && (this.dialog.visible = true)
+        this.$refs.imagePreviewer.clickHandler()
+      }
       this.onPreview(file)
     },
 
@@ -274,8 +310,8 @@ export default {
         //上传类型是单张图片的时候--显示图片
         picture: () => {
           this.fileLists = []
-          this.$emit('update:fileList', this.fileLists)
           this.imageUrl = URL.createObjectURL(file.raw)
+          this.$emit('update:fileList', this.fileLists)
         },
         //上传类型是照片墙的时候
         'picture-card': () => {
@@ -283,6 +319,7 @@ export default {
           this.$emit('update:fileList', this.fileLists)
         }
       }
+      this.repeat && this.filterRepeat(fileList) && this.$message.warning('文件名重复')
       KeyMap[this.tempUploadType] && KeyMap[this.tempUploadType]()
       this.onChange(file, fileList)
     },
@@ -353,11 +390,31 @@ export default {
       this.$refs.upload.clearFiles()
     },
 
-    /** @description 取消上传请求 , file: fileList 中的 file 对象 ）
+    /** @description 取消上传请求 , file: fileList 中的 file 对象 
        * @author yx
      */
-    abort () {
-      this.$refs.upload.abort()
+    abort (file) {
+      this.$refs.upload.abort(file)
+    },
+
+    /** @description 过滤重名的文件
+      * @param  {Array}  fileList 文件列表
+      * @author yx
+     */
+    filterRepeat (fileList) {
+      const obj = {}
+      let flag = false
+      fileList.some(item => {
+        if (obj[item.name]) {
+          flag = true
+          return
+        } else {
+          Object.assign(obj, {
+            [item.name]: item.name
+          })
+        }
+      })
+      return flag
     }
   },
 
@@ -365,6 +422,10 @@ export default {
     //当uploadType类型是picture-card的时候, 超过限制张数，隐藏新增按钮,注意:要对fileLists赋值才会监听到
     isHideAdd () {
       return this.fileLists.length >= this.limit || this.disabled
+    },
+    //路径列表
+    srcList () {
+      return this.fileLists.filter(item => item.url).map(item => item.url)
     }
   },
 

@@ -3,6 +3,7 @@
 通过点击或者拖拽上传文件,已集成多种上传类型的样式，加强了部分功能，如删除前的提示，超出个数限制提示,照片墙超出个数自动隐藏+等功能。
 
 # 基础用法
+通过action来提交上传的地址
 
 ## 手动上传
 
@@ -35,7 +36,6 @@ export default {
 </script>
 
 ## 自动上传
-
 <template>
   <div>
     <BaseExample/>
@@ -44,8 +44,8 @@ export default {
 
 
 # 演示代码
+#### 手动上传
 ``` html
-<!--手动上传-->
 <template>
   <div>
     <eve-upload
@@ -109,9 +109,10 @@ export default {
   }
 }
 </script>
+```
 
-
-<!--自动上传-->
+#### 自动上传
+``` html
 <template>
   <div>
     <eve-upload
@@ -126,7 +127,6 @@ export default {
   </div>
 </template>
 <script>
-
 export default {
   data () {
     return {
@@ -161,18 +161,17 @@ export default {
       this.permission = isJPG && isLt2M
       return this.permission
     },
-
     //清空上传的列表
     clear () {
       this.$refs.upload.clearFiles()
     },
-
   }
 }
 </script>
 ```
 
 # 自定义上传
+通过ajax来提交上传地址
 
 ## 手动上传
 
@@ -194,8 +193,8 @@ export default {
 
 # 演示代码
 
+#### 手动上传
 ```html
-<!--手动上传-->
 <template>
   <div>
     <eve-upload
@@ -264,9 +263,8 @@ export default {
 }
 </script>
 ```
-
+#### 自动上传
 ```html
-<!--自动上传-->
 <template>
   <div>
     <eve-upload
@@ -547,7 +545,7 @@ export default {
 | data  | 上传时附带的额外参数| object | — | {} |
 | name  | 上传的文件字段名 | string | — | file |
 | with-credentials  | 是否支持发送 cookie 凭证信息 | boolean | — | false |
-| show-fileList  | 是否显示已上传文件列表 | boolean | — | true |
+| show-file-list  | 是否显示已上传文件列表 | boolean | — | true |
 | drag  | 是否启用拖拽上传| boolean | — |  false|
 | accept  | 上传的文件类型 |string  |.jpg,.jpeg,.png,.gif,.bmp,.pdf等(小写转大写也可以) | — |
 | on-preview  |	点击文件列表中已上传的文件时的钩子 |	function(file)  |  — | — |
@@ -563,7 +561,6 @@ export default {
 | disabled |是否禁用 |	boolean |  — | false |
 | limit | 最大允许上传个数 -- 0是无限制 |  number | — | 3 |
 | on-exceed | 文件超出个数限制时的钩子 | function(files, fileList) | — | — |
-| append-to-body | 预览的时候 Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true |boolean  | — | false |
 
 > 当 `drag`属性为`true` 时`list-type`属性可不设置，默认`text`即可,设置其他类型如`picture-card`样式会错乱。  `file-list`存储的是已上传成功的列表
 
@@ -572,8 +569,12 @@ export default {
 | ----| ----| --- | ---- | ----- |
 | upload-type |上传类型 | string | text(按钮)/picture(单张图片)/picture-card(照片墙)/drag(拖拽上传) | text  |
 | tip |提示说明文字| string | — | 上传提示说明文字，可传属性也可用slot,slot名和属性名一样都是tip (例子：只能上传jpg/png文件，且不超过500kb)|
+| preview | 是否开启图片预染功能 |boolean| — | true |
+| z-index | 设置图片预览的 z-index |number| — | 2000 |
+| repeat  | 验证上传的文件是否有重复 |boolean| — | false |
 
-> 当`list-type`为`picture-card`时,当前值会强制设置为`picture-card`,`show-file-list`要设置为`true`,否则看不见已经添加的图片；当`drag`为`true`时，当前值会强制转换为`drag`。
+
+>  当`list-type`(文件列表类型)为`picture-card`时,`upload-type`(上传类型)会强制设置为`picture-card`；`show-file-list`要设置为`true`,否则看不见已经添加的图片；当`drag`为`true`时，当前值会强制转换为`drag`。
 
 ###  Methods
 | 方法名 | 说明 | 参数 | 
@@ -581,6 +582,8 @@ export default {
 | clearFiles  |清空已上传的文件列表（该方法不支持在 before-upload 中调用） | — | 
 | abort |取消上传请求  | （ file: fileList 中的 file 对象 ）  |
 | submit |手动上传文件列表  | —  |
+| filterRepeat | 过滤重名的文件  | （fileList：文件列表） |
+
 
 ###  Slot
 | name | 说明 | 
@@ -592,4 +595,4 @@ export default {
  ###  Scoped Slot
  | name | 说明 | 
  | ----| ----|  
- |file|文件缩略图--黑色框里的各种按钮，参数为 { file }|
+ |file|文件缩略图--自定义图片展示，黑色框里的各种按钮，参数为 { file }|

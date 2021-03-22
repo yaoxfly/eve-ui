@@ -118,7 +118,6 @@ import 'eve-ui/lib/eve-ui.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
-
 ```
 
 在模板上简单使用
@@ -161,6 +160,9 @@ import Tree from 'eve-ui/lib/tree'
 import 'eve-ui/lib/theme-chalk/tree.css'
 import Upload from 'eve-ui/lib/upload'
 import 'eve-ui/lib/theme-chalk/upload.css'
+import Iframe from 'eve-ui/lib/iframe'
+import 'eve-ui/lib/theme-chalk/iframe.css'
+
 export default {
   components: {
     Breadcrumb,
@@ -176,7 +178,8 @@ export default {
     TablePagination,
     TagViews,
     Tree,
-    Upload
+    Upload,
+    Iframe
   },
 }
 ```

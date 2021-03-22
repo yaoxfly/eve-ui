@@ -6,6 +6,7 @@
 <template>
   <div
     class="eve-main"
+    :class="[border && 'eve-main__border']"
     :style="{
       margin: `${spacing}px`,
       width: `calc(100vw - ${tempLeft + 2 * spacing}px`,
@@ -14,9 +15,11 @@
   >
     <section class="eve-main__content" :style="{ background: background }">
       <el-scrollbar style="height: 100%" v-if="scroll">
-        <slot> </slot>
+        <div :style="{ padding: padding }">
+          <slot> </slot>
+        </div>
       </el-scrollbar>
-      <div v-else>
+      <div v-else :style="{ padding: padding }">
         <slot></slot>
       </div>
     </section>
@@ -47,19 +50,28 @@ export default {
       type: String,
       default: () => '#fff'
     },
-
     //是否开启滚动
     scroll: {
       type: Boolean,
       default: () => false
     },
-
     // 面包屑、页签的收缩按钮，收缩后左侧的宽度，如果有padding、margin也要算进去
     shrinkWidth: {
       type: Number,
       default: () => 64
-    }
+    },
 
+    // 是否带有边框
+    border: {
+      type: Boolean,
+      default: () => false
+    },
+
+    // 内间距
+    padding: {
+      type: String,
+      default: () => '0'
+    }
   },
   data () {
     return {
@@ -91,8 +103,10 @@ export default {
     height: 100%;
     overflow: hidden;
   }
+  &__border {
+    border: 1px solid #e2dada;
+  }
 }
-
 //隐藏element-ui静态滚动条的横向滚动条
 ::v-deep .el-scrollbar__wrap {
   overflow-x: hidden;
@@ -112,7 +126,6 @@ export default {
 //   width: 8px;
 //   height: 8px;
 // }
-
 // ::-webkit-scrollbar-thumb {
 //   //滚动条的设置
 //   background-color: rgba(144, 147, 153, 0.5);
@@ -120,7 +133,6 @@ export default {
 //   min-height: 10px;
 //   border-radius: 3px;
 // }
-
 // ::-webkit-scrollbar-thumb:hover {
 //   background-color: rgba(144, 147, 153, 0.5);
 // }

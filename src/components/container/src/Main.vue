@@ -14,7 +14,9 @@
     <!--center(中间一整块)布局-->
     <section class="eve-container__main" v-if="layout === 'center'">
       <el-scrollbar style="height: 100%">
-        <slot> </slot>
+        <div :style="{ padding: padding }">
+          <slot> </slot>
+        </div>
       </el-scrollbar>
     </section>
 
@@ -26,7 +28,9 @@
         :style="{ width: `${proportion[0] * 100}px` }"
       >
         <el-scrollbar style="height: 100%">
-          <slot name="left"></slot>
+          <div :style="{ padding: padding }">
+            <slot name="left"></slot>
+          </div>
         </el-scrollbar>
       </div>
       <!--右-->
@@ -38,7 +42,9 @@
         }"
       >
         <el-scrollbar style="height: 100%">
-          <slot name="right"></slot>
+          <div :style="{ padding: padding }">
+            <slot name="right"></slot>
+          </div>
         </el-scrollbar>
       </div>
     </section>
@@ -51,7 +57,9 @@
           class="eve-container__up"
           :style="{ minHeight: `${proportion[0] * 10}vh` }"
         >
-          <slot name="up"></slot>
+          <div :style="{ padding: padding }">
+            <slot name="up"></slot>
+          </div>
         </div>
         <!--下-->
         <div
@@ -63,7 +71,9 @@
             marginTop: `${spacing}px`,
           }"
         >
-          <slot name="down"></slot>
+          <div :style="{ padding: padding }">
+            <slot name="down"></slot>
+          </div>
         </div>
       </el-scrollbar>
     </section>
@@ -98,6 +108,12 @@ export default {
       type: String,
       default: () => '#f5f7fa'
     },
+
+    //内间距
+    padding: {
+      type: String,
+      default: () => '0'
+    }
   },
 
   data () {
@@ -135,7 +151,6 @@ export default {
   &__main {
     width: 100%;
     height: 100%;
-    // padding: 20px 10px;
     background: white;
   }
   &__left-right {
@@ -147,13 +162,11 @@ export default {
 
   &__left {
     width: 100%;
-    // padding: 20px 10px;
     background: white;
   }
 
   &__right {
     width: 100%;
-    // padding: 20px 10px;
     background: white;
     overflow: hidden;
     min-width: 800px;
@@ -167,12 +180,10 @@ export default {
   &__up {
     width: 100%;
     background: white;
-    // padding: 20px 10px;
   }
 
   &__down {
     width: 100%;
-    // padding: 20px 10px;
     background: white;
   }
 }

@@ -44,4 +44,12 @@ module.exports = {
     //   }
     // }
   },
+  devServer: {
+    host: '0.0.0.0', // 允许外部ip访问
+    https: false, // 启用https
+    overlay: { // 错误、警告在页面弹出
+      warnings: true,
+      errors: true
+    },
+  }
 }

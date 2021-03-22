@@ -36,12 +36,14 @@
         </slot>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
         <div
+          v-show="showPoint"
           class="swiper-button-prev"
           :class="swiperButtonColor"
           slot="button-prev"
           @click="prev"
         ></div>
         <div
+          v-show="showPoint"
           class="swiper-button-next"
           :class="swiperButtonColor"
           slot="button-next"
@@ -103,6 +105,9 @@ export default {
   computed: {
     swiper () {
       return this.$refs.mySwiper.$swiper
+    },
+    showPoint () {
+      return this.data.length > this.swiperOptions.slidesPerView
     }
   },
   data () {
@@ -143,7 +148,10 @@ export default {
       },
       immediate: true,
     },
-  }
+  },
+
+
+
 }
 </script>
 

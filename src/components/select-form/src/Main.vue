@@ -351,6 +351,11 @@
             <div v-if="rightButtonData.length > 0">
               <template v-for="(item, index) in rightButtonData">
                 <el-button
+                  v-if="
+                    !item.type ||
+                    item.type !== 'pack-up' ||
+                    (item.type === 'pack-up' && isShowExpand)
+                  "
                   :class="item.buttonClassName"
                   :key="`rightButtonData_${index}`"
                   @click="

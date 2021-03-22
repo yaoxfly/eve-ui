@@ -1,6 +1,6 @@
 <template>
   <div>
-    <eve-main :left="660" scroll>
+    <eve-main :left="660" scroll padding="20px 30px" border>
       <div class="eve-main-content__demo">
         中间内容块 中间内容块 中间内容块 中间内容块 中间内容块 中间内容块
         中间内容块中间内容块中间内容块中间内容块中间内容块 中间内容块 中间内容块
@@ -110,10 +110,8 @@ export default {
 
 <style scoped>
 .eve-main-content__demo {
-  border: 1px solid #e2dada;
   line-height: 2;
   font-size: 14px;
-  padding: 0 20px;
 }
 </style> 
 

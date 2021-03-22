@@ -449,6 +449,7 @@ export default {
       },
       immediate: true,
     },
+
     //对话框的宽度
     dialogWidth: {
       handler (val) {
