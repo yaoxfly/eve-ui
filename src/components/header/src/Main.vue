@@ -56,22 +56,26 @@
                 v-if="item.type === 'icon'"
                 :key="`${item.value}icon`"
                 class="eve-header__icon-item"
-                :class="[item.number ? 'eve-header__circle' : '']"
-                :number="item.number"
+                :class="[
+                  item.number ? 'eve-header__circle' : '',
+                  parseInt(item.number) > 99 && 'eve-header__circle-plus',
+                ]"
+                :number="parseInt(item.number) < 99 ? item.number : 99"
               >
                 <img
                   :src="item.value"
                   class="eve-header__icon-img"
                   @click="rightContentButton({ index: index, data: item })"
                 />
+                <div
+                  v-if="parseInt(item.number) > 99"
+                  class="eve-header__circle-plus-add"
+                >
+                  +
+                </div>
               </section>
 
-              <section
-                v-else
-                :key="`${item.content}icon`"
-                :class="[item.number ? 'eve-header__circle' : '']"
-                :number="item.number"
-              >
+              <section v-else :key="`${item.content}icon`">
                 <span
                   class="eve-header__icon-item"
                   @click="rightContentButton({ index: index, data: item })"

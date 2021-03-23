@@ -139,8 +139,8 @@ export default {
 | ----- | ------ | ----- | ----- | - |
 | type | 类型 | string |  icon、text ,当是文本的时候可不需要填写 | text |
 | value | 内容值 | string |  — |  — |
-| number | 图标上显示数字 | string |  — | children |
-| dialog | 设置这个属性后,点击这个按钮会弹出对话框 | boolean |  — | true |
+| number | 图标上显示数字,文本设置了也不会显示 | string/number |  — | — |
+| dialog | 设置这个属性后,点击这个按钮会弹出对话框 | boolean |  — | false |
 
 
 ### config
