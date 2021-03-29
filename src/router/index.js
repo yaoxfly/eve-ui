@@ -34,6 +34,14 @@ const routes = [
         component: () => import('../views/custom-theme/CustomTheme.vue'),
       },
 
+
+      {
+        path: '/request',
+        name: 'Request 发起请求',
+        component: () => import('../views/request/Request.vue'),
+        meta: { title: '网络' }
+      },
+
       {
         path: '/main',
         name: 'Main 简单布局',
