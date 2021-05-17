@@ -38,37 +38,39 @@
       </div>
 
       <template #footer>
-        <slot name="footer">
-          <div class="eve-dialog__footer" v-loading="loading">
-            <div>
-              <slot name="leftFooter">
-                <template v-for="(item, index) in leftButtonData">
-                  <el-button
-                    :key="index"
-                    :type="item.type"
-                    @click="leftButton({ index: index, value: item.value })"
-                  >
-                    {{ item.value }}
-                  </el-button>
-                </template>
-              </slot>
-            </div>
+        <div class="eve-dialog__loading">
+          <slot name="footer">
+            <div class="eve-dialog__footer" v-loading="loading">
+              <div>
+                <slot name="leftFooter">
+                  <template v-for="(item, index) in leftButtonData">
+                    <el-button
+                      :key="index"
+                      :type="item.type"
+                      @click="leftButton({ index: index, value: item.value })"
+                    >
+                      {{ item.value }}
+                    </el-button>
+                  </template>
+                </slot>
+              </div>
 
-            <div>
-              <slot name="rightFooter">
-                <template v-for="(item, index) in rightButtonData">
-                  <el-button
-                    :key="index"
-                    :type="item.type"
-                    @click="rightButton({ index: index, value: item.value })"
-                  >
-                    {{ item.value }}
-                  </el-button>
-                </template>
-              </slot>
+              <div>
+                <slot name="rightFooter">
+                  <template v-for="(item, index) in rightButtonData">
+                    <el-button
+                      :key="index"
+                      :type="item.type"
+                      @click="rightButton({ index: index, value: item.value })"
+                    >
+                      {{ item.value }}
+                    </el-button>
+                  </template>
+                </slot>
+              </div>
             </div>
-          </div>
-        </slot>
+          </slot>
+        </div>
       </template>
     </el-dialog>
   </div>
@@ -277,10 +279,14 @@ export default {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__loading {
     ::v-deep .el-loading-spinner .circular {
       display: none;
     }
   }
+
   ::v-deep .el-loading-spinner {
     margin-top: -8px;
   }
