@@ -223,9 +223,26 @@ export default {
     findBreadcrumb (path, data, save = true) {
       data = Array.from(data)
       let arr = []
+      //删除多余的父节点
+      if (save) {
+        let flag = 0
+        this.breadcrumb.forEach(res => {
+          if (res.flag) {
+            flag++
+          }
+        })
+        if (flag === 2) {
+          this.breadcrumb.splice(0, 1)
+        }
+      }
+      //处理菜单数据
       data.some(item => {
         if (item[this.tempConfig.path] === path) {
           arr.push(item)
+          //不包含父级的菜单处理
+          if (item.flag === 0) {
+            this.breadcrumb = []
+          }
           save && this.breadcrumb.push(item)
           return true
         } else if (item[this.tempConfig.children]) {
@@ -235,7 +252,9 @@ export default {
             return true
           } else {
             if (save) {
-              this.breadcrumb = []
+              this.breadcrumb = this.breadcrumb.filter(res => {
+                return res.flag === 1
+              })
             }
             return false
           }
@@ -244,12 +263,20 @@ export default {
       return arr
     },
 
-    /**@description  转换后的面包屑数据--放在v-for循环中的最终数据
+    /**@description  转换后的面包屑数据--放在v-for循环中的最终数据(菜单转换的数据,只支持到三层)
      * @author yx
      * @param  {String}  path path 路径
      * @param  {Array}  data 菜单数据
      */
     formatBreadcrumb (path, data) {
+      // 支持三级menu的标志位设计
+      data.forEach(res => {
+        if (res.children) {
+          res.flag = 1 //一级菜单有孩子的标识
+        } else {
+          res.flag = 0 //一级菜单无孩子的标识
+        }
+      })
       this.breadcrumb = [] //初始化防止重复添加
       this.findBreadcrumb(path, data)
       const arr = []
@@ -290,10 +317,10 @@ export default {
     $route: {
       handler (val, oldVal) {
         this.route = val
-        const menu = this.findBreadcrumb(this.route.path, this.menu, false)
+        const menu = this.findBreadcrumb(this.route.path, this.menu, false) //根据路径找最底层的菜单
         //判断外面传进来的菜单的路径(path)是否有加斜杆,无论路径(path)是否带斜杆都可以找到(path兼容斜杆)。
         const path = menu.length > 0 ? this.route.path : this.route.path.split('/')[1]
-        this.breadcrumbData = Array.from(this.formatBreadcrumb(path, this.menu))
+        this.breadcrumbData = Array.from(this.formatBreadcrumb(path, this.menu)) //
       },
       immediate: true,
     },
