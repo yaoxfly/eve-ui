@@ -1,6 +1,6 @@
 <template>
   <div>
-    <eve-breadcrumb :menu="menu"></eve-breadcrumb>
+    <eve-breadcrumb :data="data"></eve-breadcrumb>
   </div>
 </template>
 <script>
@@ -8,15 +8,15 @@
 export default {
   name: 'Breadcrumb',
   data () {
-    //菜单数据
     return {
-      menu: [{
-        text: 'Breadcrumb',
-        path: '/breadcrumb'
-      },
-      {
-        text: '安装',
-      }]
+      data: [
+        {
+          text: '导航组件',
+        },
+        {
+          text: 'Breadcrumb',
+        }
+      ]
     }
   },
   mounted () {

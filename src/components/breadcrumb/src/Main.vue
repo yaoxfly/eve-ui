@@ -197,23 +197,6 @@ export default {
       this.$emit('icon-click')
     },
 
-    /** @description 存储缓存--刷新时面包屑不刷新，传自定义数据时用
-    * @param  {String}  data  要存储的数据
-    * @param  {String}  name  缓存的名字
-    * @author yx
-    */
-    saveCache (data, name = 'breadcrumd') {
-      sessionStorage.setItem(name, JSON.stringify(data))
-    },
-
-    /** @description 获取缓存，传自定义数据时用
-      * @param  {String}  name  缓存的名字
-      * @author yx
-     */
-    getCache (name = 'breadcrumd') {
-      return JSON.parse(sessionStorage.getItem(name))
-    },
-
     /**@description  根据菜单数据查找面包屑数据
         * @author yx
         * @param  {String}  path path 路径
@@ -302,6 +285,7 @@ export default {
     data: {
       handler (val, oldVal) {
         this.breadcrumbData = Array.from(val)
+        // console.log(this.breadcrumbData, 1)
       },
       immediate: true,
     },
@@ -316,23 +300,27 @@ export default {
     //放data后,menu前
     $route: {
       handler (val, oldVal) {
+        // console.log(val, '路由数据变化')
+        if (this.menu.length <= 0) return
         this.route = val
         const menu = this.findBreadcrumb(this.route.path, this.menu, false) //根据路径找最底层的菜单
         //判断外面传进来的菜单的路径(path)是否有加斜杆,无论路径(path)是否带斜杆都可以找到(path兼容斜杆)。
         const path = menu.length > 0 ? this.route.path : this.route.path.split('/')[1]
         this.breadcrumbData = Array.from(this.formatBreadcrumb(path, this.menu)) //
+        // console.log(this.breadcrumbData, 111)
       },
       immediate: true,
     },
 
     menu: {
       handler (val, oldVal) {
-        if (val <= 0) return
+        if (val.length <= 0) return
         //路由子路由配置中无论是带/还是不带斜杆,路由监听时总是带有斜杆
         const menu = this.findBreadcrumb(this.route.path, val, false)
         //判断外面传进来的菜单的路径(path)是否有加斜杆,无论路径(path)是否带斜杆都可以找到(path兼容斜杆)。
         const path = menu.length > 0 ? this.route.path : this.route.path.split('/')[1]
         this.breadcrumbData = Array.from(this.formatBreadcrumb(path, val))
+        // console.log(this.breadcrumbData)
       },
       immediate: true,
     }

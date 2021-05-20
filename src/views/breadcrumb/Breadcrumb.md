@@ -20,7 +20,7 @@ export default {
 ```html
 <template>
   <div>
-    <eve-breadcrumb :menu="menu"></eve-breadcrumb>
+    <eve-breadcrumb :data="data"></eve-breadcrumb>
   </div>
 </template>
 <script>
@@ -28,15 +28,15 @@ export default {
 export default {
   name: 'Breadcrumb',
   data () {
-    //菜单数据
     return {
-      menu: [{
-        text: 'Breadcrumb',
-        path: '/breadcrumb'
-      },
-      {
-        text: '安装',
-      }]
+      data: [
+        {
+          text: '导航组件',
+        },
+        {
+          text: 'Breadcrumb',
+        }
+      ]
     }
   },
   mounted () {
@@ -56,8 +56,8 @@ export default {
 | separator  | 面包屑分割符  |string| — |  / | 
 | separator-class | 图标分隔符 class  例如 el-icon-arrow-right 可使用相应的iconfont(字体图标) 作为分隔符,注意这将使 separator 设置失效 | string | — |  —  | 
 | replace |  在进行路由跳转时，启用replace将不会向 history 添加新记录 |  boolean | — |   false  |
-| menu| 菜单数据--内置了转换方法可自动转换成面包屑数据(推荐),刷新也不会没 |  array | — | [] |
-| data | 自定义面包屑数据--自己转换而来的数据，如有传菜单数据会替换掉这个数据|  array | — | [] |
+| menu| 菜单数据--菜单和面包屑数据同享一份数据时可使用，内置了转换方法可自动转换成面包屑数据，数据格式参考Menu组件 |  array | — | [] |
+| data | 面包屑数据，如有传菜单数据会替换掉这个数据 |  array | — | []； 范例:[{text:'导航组件',path:'/test'},{text:'Breadcrumb'}] |
 | width | 宽度 |   number, string | — | 100% |
 | height |  高度 |  number, string | — | 50 |
 | Left | 文本离左边的距离 |  number, string | — |  20 |
@@ -66,6 +66,7 @@ export default {
 | icon-left |  图标、图片等离左边的距离 |  number, string | — |  10  |
 | config |  配置菜单、面包屑数据的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 |  object | — |   —   |
 
+>  `menu` 属性转换的面包屑数据，内部做好了缓存功能,刷新页面，数据也不丢失，`data`属性需自行处理缓存功能，可监听路由处理。
 
 ### icon-class
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -86,12 +87,6 @@ export default {
 | 事件名称 | 说明 | 回调参数  |
 | ----| ----| --- | 
 | icon-click | 左边图标的回调事件 | — |
-
-### Function
-| 方法名 | 说明 | 参数  |
-| ----| ----| --- | 
-| saveCache | 存储缓存--刷新时面包屑不刷新，传自定义数据时用|   function (data, name = 'breadcrumd');两个参数，data要存储的数据, name 缓存的名字默认是breadcrumd| 
-| getCache | 获取缓存，传自定义数据时用 |  function ( name = 'breadcrumd');  name 缓存的名字 | 
 
 ### Slot
 | 方法名 | 说明 
