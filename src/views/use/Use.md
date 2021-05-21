@@ -1,5 +1,5 @@
 #  快速上手
-本节将介绍如何在项目中使用 `eve-ui`
+本节将介绍如何在项目中使用 `eve-ui`,并在最底部介绍了`ie`兼容的一些说明。
 
 # 引入 eve-ui
 你可以引入整个 `eve-ui`，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 `eve-ui`。
@@ -183,3 +183,25 @@ export default {
   },
 }
 ```
+
+## 兼容ie 
+目前组件库只支持ie11, ie11以下不支持,兼容ie11,需要做以下操作
+
+首先下载`babel-polyfill`
+
+```js
+npm i babel-polyfill --save-dev
+```
+
+在`main.js`文件最顶部引入
+
+```js
+import 'babel-polyfill'
+```
+
+接着在`vue.config.js`(如果没有可以在根目录创建一个)配置属性`transpileDependencies`
+
+```js
+transpileDependencies: ['eve-ui'] 
+```
+

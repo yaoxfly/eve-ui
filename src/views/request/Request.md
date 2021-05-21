@@ -6,11 +6,15 @@
 ```js
   Request.requests(url, param, type, config)
     .then(res=>{
-      console.log(res)
+      console.log(res, '请求状态200,即接口请求成功时执行')
     })   
     //可省略
     .catch(error => {
-      console.log(error)
+      console.log(error, '请求状态非200,500,401等,即接口请求失败时执行')
+    })
+     //可省略
+    .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
     })
 }
 ```
@@ -23,9 +27,13 @@
     })
     //可省略
     .catch(error => {
-      console.log(error)
+      console.log(error, '请求返回的状态非200,是500,401等状态的，即接口请求失败时执行')
     })
-
+     //可省略
+    .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
+    })
+    
 ```
 
 执行 post 请求
@@ -35,12 +43,15 @@
    .then(res=>{
     console.log(res)
    })
-     //可省略
+  //可省略
    .catch(error => {
-    console.log(error)
-   })
+       console.log(error, '请求返回的状态非200,是500,401等状态的，即接口请求失败时执行')
+    })
+     //可省略
+   .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
+    })
 ```
-
 
 执行 put 请求
 
@@ -49,10 +60,14 @@
     .then(res=>{
       console.log(res)
     })
-    //可省略
+     //可省略
    .catch(error => {
-    console.log(error)
-   })
+       console.log(error, '请求返回的状态非200,是500,401等状态的，即接口请求失败时执行')
+    })
+     //可省略
+   .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
+    })
 
 ```
 
@@ -64,8 +79,12 @@
       console.log(res)
     })
       //可省略
-    .catch(error => {
-      console.log(error)
+   .catch(error => {
+       console.log(error, '请求返回的状态非200,是500,401等状态的，即接口请求失败时执行')
+    })
+     //可省略
+   .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
     })
 ```
 
@@ -76,9 +95,13 @@
     .then(res=>{
       console.log(res)
     })
-      //可省略
-    .catch(error => {
-      console.log(error)
+     //可省略
+   .catch(error => {
+       console.log(error, '请求返回的状态非200,是500,401等状态的，即接口请求失败时执行')
+    })
+     //可省略
+   .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
     })
 ```
 
@@ -104,9 +127,14 @@ axios.get('/user?ID=12345')
   .then(response=>{
       console.log(response);
     })
-  .catch(error=> {
-      console.log(error);
-    });
+  //可省略
+   .catch(error => {
+      console.log(error, '请求状态非200,500,401等,即接口请求失败时执行')
+    })
+     //可省略
+    .finally(res => {
+      console.log('接口请求无论成功还是失败都会执行')
+    })
 
 // 上面的请求也可以这样做
  axios.get('/user', {
@@ -119,7 +147,7 @@ axios.get('/user?ID=12345')
     })
   .catch(error=> {
         console.log(error);
-    });
+    })
 ```
 
 执行 post 请求
@@ -133,7 +161,7 @@ axios.post('/user', {
   })
   .catch(error=> {
     console.log(error);
-  });
+  })
 ```
 
 也可以通过向 `axios` 传递相关配置来创建请求
@@ -164,9 +192,8 @@ axios({
 });
 ```
 
->  更多的内容参考: [axios官网](http://www.axios-js.com/);  如果用的是`flyio`请求,可以参考
+>  以上请求的方法中,都带有`catch`和`finally`方法,更多的内容参考: [axios官网](http://www.axios-js.com/);  如果用的是`flyio`请求,可以参考
  [flyio官网](https://www.npmjs.com/package/flyio)
-
 
 ### 配置说明
 在`src`(源代码)文件夹新建`request`文件夹，放入请求库工具类(当前工具类默认已经集成在脚手架工程里，包括`src`文件夹和`index.js`文件)，在`request`文件夹里建立`config.js`文件(与`index.js`文件同级),并在`config.js`中引入请求库,以下是具体的配置。
@@ -194,7 +221,7 @@ export default new Request({
     timeout: 30000,
     baseURL: process.env.VUE_APP_SERVER, //后台api的域名、ip等
     withCredentials: false,
-    // 请求拦截前 config是axios/fly
+    // 请求拦截前执行 ,config是axios/fly
     interceptionBefore: config => {
       //添加token
       // const token = cache.getCache('token')
@@ -202,16 +229,13 @@ export default new Request({
       //   config.headers.Authorization = 'bearer' + ' ' + token
       // }
     },
-
-    // 请求拦截后
+    // 请求拦截后执行,即接口请求结束时执行
     interceptionAfter: response => { },
-
     // 是否JSONParse返回的数据--部分返回的数据不需要jsonParse
     jsonParse: response => {
-      // 可自由添加不需要JSONParse的数据,true就是需要false就是不需要的
+      // 可自由添加不需要JSONParse的数据的逻辑方法,true就是需要false就是不需要的
       return true
     }
-
   },
 
   /* loading配置 */
@@ -242,8 +266,8 @@ export default new Request({
     success: 'success', // 与后台规定的是否成功键值名
     key: 'code', // 与后台规定的状态码的键值名
     msg: 'msg', // 与后台规定的消息键值名 key值必须是msg,右边可改。
-    value: -1, // 与后台规定的表示登录失败的code值
-    // 接口异常默认提示的方法/登录失败等操作也可在这里进行处理
+    value: -1, // 与后台规定的表示登录失败的code值,值相等时触发下面的notLogin方法
+    // 接口异常(接口500,403等报错时执行）
     tipShow: (err, response) => {
       setTimeout(() => {
         $this.$Message({
@@ -252,7 +276,7 @@ export default new Request({
         })
       }, 200)
 
-      // 登录失败的处理,失败就跳到登录页
+      //后端使用http状态码返回时401时，登录失败的处理方式
       if (response.status === 401) {
         router.push({
           path: '/login'
@@ -260,7 +284,7 @@ export default new Request({
       }
     },
 
-    // 登录失败提示
+    // 登录失败时执行--与后台规定的表示登录失败的code值相等时触发的方法
     notLogin: err => {
       setTimeout(() => {
         $this.$Message({
@@ -270,7 +294,7 @@ export default new Request({
       }, 200)
     },
 
-    // 不成功的提示
+    // 请求状态码200, 但业务上不成功时执行,即code!==0
     notSuccessful: (code, err) => {
       setTimeout(() => {
         err && $this.$Message({
@@ -311,16 +335,18 @@ export default {
   },
   methods: {
     getTest () {
-      test.getTest({
-        aa: 12
-      }).then(res => {
-        console.log(res)
-      })
-    }
+      test.getTest({})
+        .then(res => {
+          console.log(res, '请求状态200,即接口请求成功时执行')
+        }).catch(res => {
+          console.log(res, '请求状态非200,500,401等,即接口请求失败时执行')
+        }).finally(res => {
+          console.log('接口请求无论成功还是失败都会执行')
+        })
+    },
   }
 }
 ```
-
 ### parameter
 参数顺序按以下排列
 | 参数   | 说明 | 类型  | 必填 | 可选值 | 默认值 | 方法差异说明 |
