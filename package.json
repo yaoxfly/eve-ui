@@ -5,7 +5,7 @@
   "private": false,
   "license": "MIT",
   "author": "yaoxfly",
-  "main": "src/index.js",
+  "main": "lib/eve-ui.umd.min.js",
   "files": [
     "src",
     "lib",
@@ -23,7 +23,6 @@
     "node": "node ./build/node.base.js",
     "node:edp": "node ./build/node.edit.package.js",
     "node:pa": "node ./build/node.publish.after.js",
-    "prepublishOnly": "npm run lib",
     "publish": "npm version patch -f & npm run node:pa"
   },
   "dependencies": {
