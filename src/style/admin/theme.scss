@@ -1,0 +1,8 @@
+/* 改变主题色变量 */
+@import './base.scss';
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+/* element-ui样式 */
+@import '~element-ui/packages/theme-chalk/src/index';
+/* eve-ui样式 */
+@import '~eve-ui/src/assets/style/theme-chalk/index';

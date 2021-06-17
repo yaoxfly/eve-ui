@@ -1,3 +1,4 @@
+//打包组件的css
 const path = require('path')
 const merge = require('webpack-merge')
 const webpackBaseConfig = require('./webpack.base.js')

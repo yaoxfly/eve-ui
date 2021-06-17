@@ -5,7 +5,7 @@
       :src="src"
       :scrolling="scrolling"
       frameborder="0"
-      :style="{ height: `calc(100vh - ${top}px)` }"
+      :style="{ height: `calc(100vh - ${top}px)`, width: '100%' }"
     ></iframe>
   </div>
 </template>
@@ -33,9 +33,3 @@ export default {
   }
 }
 </script>
-
-<style >
-.eve-iframe {
-  width: 100%;
-}
-</style>

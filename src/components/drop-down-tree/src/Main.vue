@@ -151,7 +151,7 @@ export default {
     //select宽度
     width: {
       type: [String, Number],
-      default: () => 300
+      default: () => '100%'
     },
 
     //option高度
@@ -504,24 +504,6 @@ export default {
   }
 }
 </script>
-
-
-<style lang='scss' scoped >
-::v-deep.el-select-dropdown__item.is-disabled {
-  cursor: default;
-  padding: 0;
-}
-//隐藏滚动条的横向滚动条
-::v-deep .el-scrollbar__wrap {
-  overflow-x: hidden;
-}
-::v-deep .el-scrollbar__bar.is-vertical > div {
-  width: 120%;
-}
-::v-deep .el-scrollbar__bar.is-horizontal > div {
-  height: 120%;
-}
-</style>
 
 <style lang='scss'>
 @import 'eve-ui/src/assets/style/base.scss';

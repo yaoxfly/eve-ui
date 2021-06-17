@@ -2,7 +2,6 @@
   <div>
     <div>
       <eve-select-form
-        :rules="rules"
         :model="model"
         :data="data"
         @handle-submit="handleSubmit"
@@ -178,23 +177,6 @@ export default {
         time: '',
         level: ''
       },
-
-      //规则
-      rules: {
-        name: [
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-        ],
-        department: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-        ],
-        status: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-        ],
-        date: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 32, message: '长度在 3 到 32 个字符', trigger: 'blur' }
-        ],
-      }
     }
   },
 

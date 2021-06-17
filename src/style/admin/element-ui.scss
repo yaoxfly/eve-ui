@@ -1,0 +1,780 @@
+/*-----按钮------*/
+
+//超小型按钮 size=mini
+.el-button--mini {
+  padding: 5.5px 12px;
+  font-size: 13px;
+}
+
+//小型按钮  size=small
+.el-button--small {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/*-----卡片------*/
+.el-card__header {
+  padding: 10px 20px; //调整高度40
+  font-size: $--font-size-title;
+  font-weight: bold;
+  color: $--color-text-primary;
+}
+
+.el-card {
+  color: $--color-text-regular;
+  font-size: $--font-size-content;
+}
+
+.el-card.is-always-shadow {
+  box-shadow: 0 0 6px $--border-color-lighter;
+}
+
+/*-----消息框------*/
+.el-message-box {
+  padding-bottom: 0;
+}
+
+.el-message-box__header {
+  padding: 0 12px;
+  border-bottom: 1px solid $--border-color-lighter;
+  line-height: $--height;
+  height: $--height;
+  display: flex;
+  align-items: center;
+}
+
+.el-message-box__title {
+  font-size: $--font-size-title;
+  font-weight: bold;
+}
+
+.el-message-box__headerbtn {
+  top: 12px;
+}
+
+.el-message-box__btns {
+  padding: 0 15px 0;
+  text-align: center;
+  .el-button {
+    @extend .el-button--mini;
+  }
+}
+
+.el-message-box__content {
+  font-size: $--font-size-content;
+}
+
+.el-message-box__btns {
+  padding: 0;
+  text-align: center;
+  height: $--height;
+  line-height: $--height;
+}
+
+.el-message-box__status {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  font-size: 20px !important;
+}
+
+/*-----对话框------*/
+.el-dialog__header {
+  padding: 10.5px 20px; //调整高度40
+  font-size: $--font-size-title;
+  font-weight: bold;
+  color: $--color-text-primary;
+}
+
+.el-dialog__body {
+  padding: 30px 10px;
+  font-size: $--font-size-content;
+}
+
+//小图标
+.el-dialog__headerbtn {
+  top: 12px;
+}
+
+//按钮
+.el-dialog__footer {
+  .el-button {
+    @extend .el-button--mini;
+  }
+}
+
+//底部按钮的间距
+.el-dialog__footer {
+  padding: 0 10px;
+  height: $--height;
+  line-height: $--height;
+}
+
+/*-----标签页------*/
+
+//普通版本的线
+.el-tabs__nav-wrap:after {
+  background-color: $--border-color-base;
+}
+//选型卡版本的线
+.el-tabs--card > .el-tabs__header {
+  border-bottom: 1px solid $--border-color-base;
+}
+
+.el-tabs__content,
+.el-tabs__item {
+  font-size: $--font-size-content;
+}
+
+.el-tabs__item {
+  line-height: 32px;
+  height: 32px;
+}
+
+/*-----步骤条------*/
+//横向的
+.el-steps--horizontal {
+  //细线
+  .el-step__icon {
+    width: 10px;
+    height: 10px;
+    font-size: $--font-size-content;
+  }
+
+  .el-step__icon-inner {
+    display: none;
+  }
+
+  .el-step__head.is-wait {
+    border-color: $--border-color-base;
+  }
+
+  .el-step__icon.is-text {
+    border: 1px solid transparent;
+    box-shadow: $--color-text-placeholder 0px 0px 4px;
+    &::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $--border-color-base;
+    }
+  }
+
+  .el-step__head.is-finish {
+    .el-step__icon.is-text {
+      border: 1px solid transparent;
+      box-shadow: $--color-text-placeholder 0px 0px 4px;
+      &::after {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: $--color-primary;
+      }
+    }
+  }
+  .el-step__head.is-wait {
+    .el-step__icon.is-text {
+      border: 1px solid transparent;
+      box-shadow: $--color-text-placeholder 0px 0px 4px;
+    }
+  }
+
+  .el-step__title {
+    font-size: $--font-size-content;
+    color: $--color-text-regular;
+  }
+
+  .el-step__title.is-finish {
+    font-size: $--font-size-content;
+    color: $--color-text-regular;
+  }
+
+  .el-step__title.is-process {
+    font-size: $--font-size-content;
+    font-weight: normal;
+  }
+
+  .el-step__head.is-process {
+    border-color: $--border-color-base;
+  }
+
+  .el-step__title.is-wait {
+    color: $--color-text-secondary;
+  }
+
+  .el-step__head.is-process .el-step__icon.is-text {
+    border: 1px solid transparent;
+    background: $--color-primary;
+    box-shadow: $--color-primary 0px 0px 4px;
+    &::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  .el-step.is-horizontal .el-step__line {
+    top: 14px;
+  }
+  .el-step__head.is-finish .el-step__line-inner {
+    border-width: 1px !important;
+    width: 100% !important;
+  }
+}
+
+//进度条
+.el-steps--simple {
+  padding: 10px 8%; //调整高度40
+  background: $--border-color-extra-light;
+}
+
+.el-step.is-simple {
+  .el-step__icon {
+    display: none;
+  }
+  .el-step__title {
+    font-size: $--font-size-title; //这里特定14px
+    color: $--color-text-regular;
+  }
+  .el-step__arrow::before,
+  .el-step__arrow::after {
+    height: 13px;
+  }
+  .el-step__title.is-process {
+    color: $--color-primary;
+    font-weight: bold;
+  }
+  .el-step__title.is-finish {
+    color: $--color-text-primary;
+    font-weight: bold;
+  }
+  .el-step__title.is-wait {
+    color: $--color-text-secondary;
+    font-weight: bold;
+  }
+
+  .el-step__title.is-process + .el-step__arrow {
+    &::before {
+      background: $--color-primary;
+    }
+    &::after {
+      background: $--color-primary;
+    }
+  }
+
+  .el-step__title.is-finish + .el-step__arrow {
+    &::before {
+      background: $--color-text-primary;
+    }
+    &::after {
+      background: $--color-text-primary;
+    }
+  }
+}
+
+/*-----分页------*/
+$--pagination-width-height: 22px;
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .btn-next {
+  height: $--pagination-width-height;
+  width: $--pagination-width-height;
+  padding: 0;
+}
+
+.el-pagination span:not([class*='suffix']),
+.el-pagination button {
+  line-height: $--pagination-width-height;
+  font-size: $--font-size-content-small;
+  height: $--pagination-width-height;
+}
+
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .el-pager li {
+  min-width: $--pagination-width-height;
+  height: $--pagination-width-height;
+  line-height: 22px;
+}
+
+.el-pagination__sizes .el-input .el-input__inner {
+  font-size: $--font-size-content-small;
+}
+
+.el-input--mini .el-input__inner {
+  height: $--pagination-width-height;
+  line-height: $--pagination-width-height;
+}
+
+.el-pagination__editor.el-input .el-input__inner {
+  height: $--pagination-width-height;
+}
+
+.el-pagination {
+  margin-top: 5px !important;
+}
+
+.el-pagination__sizes {
+  .el-input--suffix .el-input__inner {
+    padding: 0;
+    padding-right: 48px !important;
+  }
+}
+
+.el-pagination__sizes {
+  .el-input--mini .el-input__icon {
+    line-height: 22px;
+  }
+}
+
+/*-----表格------*/
+.el-table--medium th,
+.el-table--medium td {
+  padding: 0 0;
+}
+
+.el-table {
+  th {
+    font-size: $--font-size-content;
+    color: $--color-text-primary;
+    font-weight: normal;
+    background: $--color-primary-light-9 !important;
+  }
+  td {
+    font-size: $--font-size-content;
+    color: $--color-text-regular;
+  }
+  // // 配置fixed:'right'时的颜色
+  // .el-table__fixed-right th.is-leaf {
+  //   background: #fff !important;
+  // }
+}
+
+//表格最底部的线
+.el-table--group::after,
+.el-table--border::after,
+.el-table::before {
+  background-color: $--color-primary-light-9;
+}
+
+//表格右边的线
+.el-table--border th,
+.el-table--border td {
+  border-right: 1px solid $--color-primary-light-9;
+}
+
+//表格底部的线
+.el-table th.is-leaf,
+.el-table td {
+  border-bottom: 1px solid $--color-primary-light-9;
+}
+
+/*-----面包屑------*/
+
+.eve-breadcrumb .el-breadcrumb {
+  font-size: $--font-size-content-small;
+}
+
+.eve-breadcrumb-icon {
+  font-size: 20px !important;
+}
+.eve-breadcrumb {
+  height: 30px !important;
+}
+
+/*-----main主体布局组件------*/
+
+.eve-main {
+  margin: 5px !important;
+  width: calc(100vw - #{$--eve-menu-width} - 10px) !important;
+  height: calc(100vh - 65px - 30px - 10px) !important;
+}
+
+/*-----树------*/
+$--eve-tree-height: 24px;
+.eve-tree__custom-tree-label {
+  font-size: $--font-size-content;
+  color: $--color-text-primary;
+}
+.eve-tree__filter {
+  margin-bottom: 2px;
+  .el-input--suffix .el-input__inner {
+    height: $--eve-tree-height;
+  }
+  .el-input {
+    font-size: $--font-size-content;
+  }
+}
+.el-input__icon {
+  line-height: $--eve-tree-height;
+}
+
+.eve-tree {
+  .el-input__inner {
+    //input内边距
+    padding: $eveCommonInputPadding;
+    //input高度
+    height: $eveCommonInputHeight;
+    line-height: 1;
+  }
+  .el-tree-node__content > .el-tree-node__expand-icon {
+    padding: 2px;
+  }
+}
+
+//树的按钮
+.eve-tree__custom-tree-button {
+  .el-button--mini {
+    padding: 0;
+  }
+}
+
+/*-----时间线(时间轴)------*/
+
+.el-steps--vertical {
+  .el-step__icon {
+    width: 10px;
+    height: 10px;
+    font-size: $--font-size-content;
+    left: 7px;
+    top: -11px;
+  }
+
+  .el-step__icon-inner {
+    display: none;
+  }
+
+  .el-step__head.is-wait {
+    border-color: $--border-color-base;
+  }
+
+  .el-step__icon.is-text {
+    border: 1px solid transparent;
+    box-shadow: $--color-text-placeholder 0px 0px 4px;
+    &::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $--border-color-base;
+    }
+  }
+
+  .el-step__head.is-finish {
+    .el-step__icon.is-text {
+      border: 1px solid transparent;
+      box-shadow: $--color-text-placeholder 0px 0px 4px;
+      &::after {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: $--color-primary;
+      }
+    }
+  }
+
+  .el-step__head.is-wait {
+    .el-step__icon.is-text {
+      border: 1px solid transparent;
+      box-shadow: $--color-text-placeholder 0px 0px 4px;
+    }
+  }
+
+  .el-step__title {
+    font-size: $--font-size-content;
+    color: $--color-text-regular;
+    line-height: 10px !important;
+  }
+
+  .el-step__title.is-process {
+    font-size: $--font-size-content;
+    font-weight: normal;
+  }
+
+  .el-step__head.is-process {
+    border-color: $--border-color-base;
+  }
+
+  .el-step__title.is-wait {
+    color: $--color-text-secondary;
+  }
+  .el-step__description.is-wait {
+    color: $--color-text-secondary;
+  }
+
+  .el-step__head.is-process .el-step__icon.is-text {
+    border: 1px solid transparent;
+    background: $--color-primary;
+    box-shadow: $--color-primary 0px 0px 4px;
+    &::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  .el-step.is-horizontal .el-step__line {
+    top: 14px;
+  }
+  .el-step__head.is-finish .el-step__line-inner {
+    border-width: 1px !important;
+    height: 100% !important;
+  }
+
+  .el-step__description.is-finish {
+    color: $--color-text-secondary;
+  }
+
+  .el-step__description.is-process {
+    color: $--color-text-secondary;
+  }
+}
+
+//常规类型
+// .el-timeline-item__node--normal {
+//   background: #fff;
+//   box-shadow: $--color-text-placeholder 0px 0px 4px;
+//   &::after {
+//     content: '';
+//     width: 6px;
+//     height: 6px;
+//     border-radius: 50%;
+//     background: $--color-primary;
+//   }
+// }
+
+// .el-timeline-item__content {
+//   color: $--color-text-regular;
+//   font-size: $--font-size-content;
+// }
+
+// .el-timeline-item__timestamp {
+//   color: $--color-text-secondary;
+//   font-size: $--font-size-content-small;
+// }
+
+// .el-timeline-item__tail {
+//   border-left: 2px solid $--color-primary;
+// }
+
+// //卡片类型
+// .el-timeline-item__timestamp.is-top {
+//   color: $--color-text-regular;
+//   font-size: $--font-size-content;
+// }
+
+// .el-timeline-item__content {
+//   .el-card {
+//     color: $--color-text-secondary;
+//     font-size: $--font-size-content-small;
+//     line-height: 2;
+//   }
+//   .el-card__body {
+//     padding: 0;
+//     padding: 8px 0 0 8px;
+//     min-height: 75px;
+//     box-sizing: border-box;
+//   }
+// }
+
+/*-----header组件------*/
+.eve-header {
+  background: $--eve-header-background;
+}
+.eve-header__dialog .el-dialog__header {
+  height: 0;
+}
+
+/*-----动态表格------*/
+
+//超小版本下拉单选弹出框样式-高度和边距取input输入框的高度和边距变量
+.el-select-dropdown__item {
+  height: $eveCommonInputHeight;
+  line-height: $eveCommonInputHeight;
+  font-size: $--font-size-small;
+  padding: $eveCommonInputPadding;
+}
+//超小版本下拉多选弹出框样式-高度和边距取input输入框的高度和边距变量
+.el-cascader-node {
+  height: $eveCommonInputHeight;
+  line-height: $eveCommonInputHeight;
+  font-size: $--font-size-small;
+  padding: $eveCommonInputPadding;
+  .el-cascader-node__label {
+    padding: $eveCommonInputPadding;
+  }
+}
+
+//表格th label新增必填项*号
+.el-table th.must > .cell:before {
+  content: '* ';
+  color: $--color-danger;
+}
+
+/*-----查询表单组件 eve-select-form------*/
+.eve-select-form {
+  font-size: $--font-size-content;
+  .el-button {
+    @extend .el-button--mini;
+  }
+
+  .eve-select-form__from-lable {
+    padding-top: 6.5px;
+    padding-bottom: 8.5px;
+    margin-top: 0;
+  }
+
+  .el-input--suffix .el-input__inner {
+    font-size: $--font-size-content;
+    //input高度
+    height: 24px;
+    line-height: 24px;
+    padding: 0 4px;
+  }
+
+  .el-input__icon.el-icon-date,
+  .el-input__icon.el-icon-time {
+    margin-top: 0;
+  }
+
+  .el-date-editor,
+  .el-icon-time {
+    .el-input__inner {
+      padding-left: 30px;
+    }
+  }
+
+  .el-input__suffix {
+    top: -1px;
+  }
+
+  .el-input__icon {
+    margin-top: 2px;
+  }
+
+  //Radio单选框
+  .el-radio-group {
+    min-height: 24px;
+    //横向属性
+    &.horizontal {
+      padding: 5px 0;
+    }
+    //纵向属性-设置为块级元素，并设置上下间距
+    &.vertical .el-radio {
+      padding: 4px 0;
+      display: block;
+    }
+    //radio选中字体不跟随变化（常规文字）-#606266
+    .el-radio__input.is-checked + .el-radio__label {
+      color: $--color-text-regular;
+    }
+    .el-radio__label {
+      font-size: $--font-size-small;
+      padding-left: 4px;
+    }
+
+    //radio由[实心白]改为[实心蓝]效果
+    .el-radio__input.is-checked .el-radio__inner {
+      background: #fff;
+    }
+    .el-radio__inner::after {
+      width: 5px;
+      height: 5px;
+      background-color: $--color-primary;
+    }
+  }
+
+  //checkbox复选框
+  .el-checkbox {
+    //纵向属性
+    &.vertical .el-checkbox {
+      padding: 4px 0;
+      display: block;
+    }
+    .el-checkbox__label {
+      font-size: $--font-size-small;
+      padding-left: 4px;
+    }
+
+    //checkbox由[白色勾]改为[蓝色勾]效果
+    .el-checkbox__input.is-checked .el-checkbox__inner,
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+      background-color: #fff;
+      //三级边框-#ebeef5
+      border-color: 1px solid $--border-color-lighter;
+    }
+    .el-checkbox__inner::after {
+      border-color: $--color-primary;
+    }
+    //checkbox选中字体不跟随变化
+    .el-checkbox__input.is-checked + .el-checkbox__label {
+      //常规文字-#606266
+      color: $--color-text-regular;
+    }
+  }
+
+  .el-form-item__content {
+    margin-top: 3px;
+  }
+
+  .eve-select-form__form {
+    .el-form-item__content {
+      margin-top: 5px;
+    }
+  }
+
+  .el-checkbox-group {
+    margin-bottom: 1px;
+    min-height: 24px;
+  }
+}
+
+/*-----输入框、select框的placeholder修改------*/
+.el-input input::-webkit-input-placeholder {
+  font-size: $--font-size-content !important;
+}
+.el-input input::-moz-input-placeholder {
+  font-size: $--font-size-content !important;
+}
+.el-input input::-ms-input-placeholder {
+  font-size: $--font-size-content !important;
+}
+
+/*-----下拉树------*/
+.eve-drop-down-tree__content {
+  padding: 0;
+}
+
+.eve-drop-down-tree {
+  .el-input {
+    font-size: $--font-size-content;
+  }
+}
+
+.el-tree-node__label {
+  font-size: 13px;
+  color: $--color-text-primary;
+}
+
+.eve-drop-down-tree {
+  .el-input__inner {
+    //input内边距
+    padding: $eveCommonInputPadding;
+    //input高度
+    height: $eveCommonInputHeight;
+    line-height: 1;
+  }
+}
+
+.eve-drop-down-tree__item {
+  .el-tree-node__content > .el-tree-node__expand-icon {
+    padding: 2px;
+  }
+}

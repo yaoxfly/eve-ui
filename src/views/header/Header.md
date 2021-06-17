@@ -112,7 +112,7 @@ export default {
 | sub-title | 副标题 |  string | — | — |
 | left-width |  左边包含logo和系统名的宽度 |  number | — | 250 |
 | background |  背景颜色 |  string | — | #409EFF |
-| height |  header高度 |  number | — | 55 |
+| height |  header高度 |  number | — | 65 |
 | swiper-button-color |  滚动两边按钮的颜色 |  string | swiper-button-white (白)，swiper-button-black(黑)| swiper-button-white |
 | scroll |  是否开启滚动,开启当前属性必须设置`navigation-width`属性为一个固定宽度 |  boolean | — | false |
 | navigation-width | 导航按钮的宽度--如果开启滚动必须固定一个宽度，例如`:navigation-width="'700px'"`，注意要带单位`px`,不要使用百分比 | string | — | 100% |
@@ -120,7 +120,7 @@ export default {
 | text-color | 字体颜色(中间菜单) | string | — | #fff |
 | active-text-color | 当前激活菜单的文字颜色(中间菜单) | string | — | blue |
 | right-content | 右边的内容：一般是图标或者是文本，详细配置见下表 | array | — | — |
-| dialog-right |对话框的距离右边的距离 | number | — |  10 |
+| dialog-left |对话框的距离左边的间距,单位是百分比 | number | — |  84 |
 | dialog-top |对话框距离顶部的距离 | number | — |   42 |
 | dialog-width |对话框的宽度,高度已经自适应了，可不需要设定 | number | — |   300 |
 | dialog-title |对话框的标题 | string | — |  — |

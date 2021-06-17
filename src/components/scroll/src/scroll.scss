@@ -1,3 +1,7 @@
+//hdader-scroll-menu的border-bottom
+$--eve-scroll-border-bottom: 2px solid transparent;
+$--eve-scroll-color-active: #fff;
+$--eve-scroll-color: $--border-color-light;
 .eve-scroll {
   width: 100%;
   &__content {
@@ -70,13 +74,13 @@
   // 标题选中颜色和线
   .el-submenu.is-active .el-submenu__title {
     span {
-      border-bottom: 2px solid $--color-primary;
+      border-bottom: $--eve-scroll-border-bottom;
       padding: 0 10px 10px 10px;
     }
   }
   .el-menu-item.is-active {
     span {
-      border-bottom: 2px solid $--color-primary;
+      border-bottom: $--eve-scroll-border-bottom;
       padding: 0 10px 10px 10px;
     }
   }
@@ -90,14 +94,14 @@
   // 标题选中颜色和线
   .el-submenu.is-active .el-submenu__title {
     span {
-      border-bottom: 2px solid blue;
+      border-bottom: $--eve-scroll-border-bottom;
       padding: 0 10px 10px 10px;
     }
   }
 
   .el-menu-item.is-active {
     span {
-      border-bottom: 2px solid blue;
+      border-bottom: $--eve-scroll-border-bottom;
       padding: 0 10px 10px 10px;
     }
   }
@@ -112,22 +116,50 @@
   .el-submenu__title:focus,
   .el-submenu__title:hover {
     background-color: transparent !important;
-    color: blue !important;
+    color: $--eve-scroll-color-active !important;
+    font-weight: bold;
   }
+
+  //标题的颜色
+  .el-submenu .el-submenu__title span {
+    color: $--eve-scroll-color;
+  }
+
+  //标题选中的颜色
   .el-submenu.is-active {
     .el-submenu__title {
-      color: blue;
+      span {
+        color: $--eve-scroll-color-active;
+        font-weight: bold;
+      }
     }
   }
+
+  .el-menu-item {
+    span {
+      color: $--eve-scroll-color;
+      &:focus {
+        color: $--eve-scroll-color-active;
+        font-weight: bold;
+      }
+      &:hover {
+        color: $--eve-scroll-color-active;
+        font-weight: bold;
+      }
+    }
+  }
+
   /*里面最底层孩子项的颜色 */
   .el-menu-item:focus,
   .el-menu-item:hover {
     background-color: transparent !important;
-    color: blue !important;
+    color: $--eve-scroll-color-active !important;
+    font-weight: bold;
   }
   .el-menu-item.is-active {
     span {
-      color: blue;
+      color: $--eve-scroll-color-active;
+      font-weight: bold;
     }
   }
 }
@@ -136,15 +168,35 @@ ul[role='menu'] {
   .eve-header__menu-item {
     .el-menu-item {
       background-color: $--color-primary !important;
+
+      &:focus {
+        background-color: $--color-primary-light-2 !important;
+      }
+      &:hover {
+        background-color: $--color-primary-light-2 !important;
+      }
+      span {
+        color: $--eve-scroll-color-active;
+        font-weight: bold;
+      }
     }
     .el-submenu__title {
       background-color: $--color-primary !important;
+      &:focus {
+        background-color: $--color-primary-light-2 !important;
+      }
+      &:hover {
+        background-color: $--color-primary-light-2 !important;
+      }
     }
+    //小图标
     .el-submenu__title i {
-      color: #fff;
+      color: $--eve-scroll-color-active;
+      font-weight: bold;
     }
     .el-submenu__title span {
-      color: blue;
+      color: $--eve-scroll-color-active;
+      font-weight: bold;
     }
   }
 }

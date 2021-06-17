@@ -143,7 +143,7 @@ export default {
 | ----- | ------ | ----- | ----- | - |
 | height-differ  | 高度差,顶部导航+面包屑+两个spacing的高度之和 | number | — | 125 | 
 | spacing | 距离外部间距，4个方位统一间距 | number | — | 10 | 
-| left | 距离左边的距离(一般是菜单的宽度) |  number | — | 200 |
+| left | 距离左边的距离(一般是菜单的宽度) |  number | — | 256 |
 | background |  背景颜色 |  string | — | #fff |
 | scroll |  是否开启滚动 |  boolean | — | false |
 | shrink-width |    面包屑的收缩按钮，收缩后菜单的宽度,如果有padding、margin也要算进去 |  number | — | 64 |

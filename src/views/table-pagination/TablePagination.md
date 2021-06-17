@@ -250,7 +250,6 @@ export default {
 </script>
 ```
 
-
 > 当前组件扩展了所有`element-ui的Table组件`的属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
 
 ### Table Attributes
@@ -269,6 +268,7 @@ export default {
 | row-class-name    | 给某一行指定一个样式   | Function({row, rowIndex})/String   | —  | — |
 | cell-class-name  | 给某一列指定一个样式 | Function({row, column, rowIndex, columnIndex})/String | —  |— |
 | header-row-class-name  | 表头行的 className 的回调方法   | Function({row, rowIndex})/String   | — | —  |
+| header-cell-class-name  | 表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。  | Function({row, column, rowIndex, columnIndex})/String   | — | —  |
 | empty-text  | 空数据时显示的文本内容，也可以通过 slot="empty" 设置 | string  | —  | 暂无数据  |
 | row-key   | 行数据的 Key，用来优化 Table 的渲染--一般传主键值，在使用 reserve-selection 功能与显示树形数据时，该属性是必填的   | String, Function | — | id  |
 | tree-props   | 渲染嵌套数据(树)的配置选项,hasChildren用来懒加载   | Object | — | { children: 'children', hasChildren: 'hasChildren' }  |
@@ -328,6 +328,7 @@ export default {
 | is-show-pagination  | 是否显示分页  | boolean  |— | true |
 | top  | 分页距离表格的距离   | number | — | 24  |
 | align  | 分页的位置   | string | center、left、right | center  |
+| jump-text |  分页前往的文本 | string| — | 跳至 |
 
 
 ###  Button  Attributes
@@ -360,7 +361,7 @@ export default {
 ###  Table Event
 | 事件名称 | 说明 | 回调参数 | 
 | ----| ----| --- | 
-| btn-operate  |当用户手动勾选全选 Checkbox 时触发的事件 | [] (id数组或者当前行数据的数组) |
+| btn-operate  |按钮的操作事件 | {} (按钮的文本数据、按钮的下标、当前行数据，当前行数据的下标) |
 | select  |当用户手动勾选数据行的 Checkbox 时触发的事件 | [] (id数组或者当前行数据的数组) |
 | select-all  |当用户手动勾选全选 Checkbox 时触发的事件 | [] (id数组或者当前行数据的数组) |
 | current-row-change  | 当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性 |currentRow, oldCurrentRow|

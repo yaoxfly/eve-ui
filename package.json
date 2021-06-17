@@ -1,6 +1,6 @@
 {
   "name": "eve-ui",
-  "version": "1.0.29",
+  "version": "1.0.40",
   "description": "eve-ui",
   "private": false,
   "license": "MIT",
@@ -8,14 +8,16 @@
   "main": "src/index.js",
   "files": [
     "src",
-    "lib"
+    "lib",
+    "style"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "npm run build:lib &  npm run webpack:com  & npm run webpack:css  &  npm run node  & npm run node:edp",
+    "lib": "npm run build:lib &  npm run webpack:com  & npm run webpack:css  &  npm run node  & npm run node:edp  &  npm run build:eve-common",
     "build:lib": "vue-cli-service build --target lib --name eve-ui --dest lib src/index.js",
+    "build:eve-common": "vue-cli-service build --target lib --name eve-common --dest style src/style/admin/index.scss",
     "webpack:com": "webpack --mode production --config build/webpack.component.js",
     "webpack:css": "webpack --mode production --config build/webpack.css.js",
     "node": "node ./build/node.base.js",

@@ -346,7 +346,10 @@
         </div>
 
         <!--按钮的值-->
-        <el-form-item class="eve-select-form__form">
+        <el-form-item
+          class="eve-select-form__form"
+          :style="{ marginTop: marginTop + 'px' }"
+        >
           <slot name="right-button">
             <div v-if="rightButtonData.length > 0">
               <template v-for="(item, index) in rightButtonData">
@@ -390,6 +393,10 @@
               >
                 {{ isHidden ? '展开' : '收起' }}
               </span>
+              <i
+                v-if="isShowExpand"
+                :class="[isHidden ? 'el-icon-arrow-down' : 'el-icon-arrow-up']"
+              ></i>
             </div>
           </slot>
         </el-form-item>
@@ -530,13 +537,13 @@ export default {
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
       type: Number,
-      default: 288 // 1093 
+      default: 232 // 1093 
     },
 
     // 所有左边label的宽度
     labelWidth: {
       type: Number,
-      default: 140 // 1093 
+      default: 126 // 1093 
     },
 
     // 当参数为空时是否过滤参数
@@ -567,6 +574,12 @@ export default {
     rightButtonData: {
       type: Array,
       default: () => []
+    },
+
+    //右边查询等按钮距离顶部的距离
+    marginTop: {
+      type: [Number, String],
+      default: () => ''
     }
   },
 
@@ -783,63 +796,7 @@ export default {
 
 }
 </script>
-<style lang="scss" scoped>
-.eve-select-form {
-  color: #606266;
-  font-size: 14px;
-  &__flex-start {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex: auto;
-  }
-
-  &__flex-row-center {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  &__pack-up {
-    margin-left: 8px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  &__form {
-    width: 230;
-    flex: none;
-  }
-
-  &__from-lable {
-    word-break: break-all;
-    word-wrap: break-word;
-    text-align: right;
-    margin-right: 4px;
-    margin-bottom: 25px;
-  }
-  &__display-none {
-    display: none;
-  }
-
-  &__display-block {
-    display: block;
-  }
-
-  &__flex {
-    display: flex;
-    align-items: stretch;
-  }
-
-  &__asterisk {
-    color: red;
-  }
-}
-//修改input的宽度
-// ::v-deep .el-input__inner {
-//   height: 34px;
-// }
+<style lang="scss" >
+@import 'eve-ui/src/assets/style/base.scss';
+@import './select-form.scss';
 </style>

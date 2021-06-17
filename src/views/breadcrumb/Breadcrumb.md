@@ -59,10 +59,10 @@ export default {
 | menu| 菜单数据--菜单和面包屑数据同享一份数据时可使用，内置了转换方法可自动转换成面包屑数据，数据格式参考Menu组件 |  array | — | [] |
 | data | 面包屑数据，如有传菜单数据会替换掉这个数据 |  array | — | []； 范例:[{text:'导航组件',path:'/test'},{text:'Breadcrumb'}] |
 | width | 宽度 |   number, string | — | 100% |
-| height |  高度 |  number, string | — | 50 |
+| height |  高度 |  number, string | — | 40 |
 | Left | 文本离左边的距离 |  number, string | — |  20 |
 | icon-class | 左边字体图标类，详细参数见下表 |  object | — |  —  |
-| icon | 是否显示图标 |  boolean | — |  true  |
+| icon | 是否显示收缩图标 |  boolean | — |  false  |
 | icon-left |  图标、图片等离左边的距离 |  number, string | — |  10  |
 | config |  配置菜单、面包屑数据的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 |  object | — |   —   |
 
@@ -86,7 +86,7 @@ export default {
 ### Events
 | 事件名称 | 说明 | 回调参数  |
 | ----| ----| --- | 
-| icon-click | 左边图标的回调事件 | — |
+| icon-click | 左边收缩图标的回调事件 | — |
 
 ### Slot
 | 方法名 | 说明 

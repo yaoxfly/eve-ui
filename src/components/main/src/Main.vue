@@ -43,7 +43,7 @@ export default {
     //距离左边的距离(一般是菜单的宽度)
     left: {
       type: Number,
-      default: () => 200
+      default: () => 256
     },
     //背景颜色
     background: {

@@ -16,6 +16,8 @@
         <div class="layout__left">
           <eve-menu
             :data="data"
+            :padding-left="20"
+            :width="200"
             :top="140"
             class="layout__menu"
             :border-right="false"

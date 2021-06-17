@@ -41,15 +41,54 @@
 .collapse-transition {
   transition: 0.2s height, 0.1s padding-top, 0.1s padding-bottom;
 }
+
 .horizontal-collapse-transition {
   transition: 0s width, 0s padding-left, 0s padding-right;
 }
+
 .horizontal-collapse-transition .el-submenu__title .el-submenu__icon-arrow {
   -webkit-transition: 0s;
   transition: 0s;
   opacity: 0;
 }
+
 .el-submenu .el-menu-item {
   min-width: 0;
   width: 100%;
+}
+
+.el-submenu .el-menu-item {
+  height: 46px;
+  line-height: 46px;
+  // padding-left: 12px !important;
+}
+
+.el-submenu__title {
+  height: 46px;
+  line-height: 46px;
+  // padding-left: 12px !important;
+}
+
+.eve-menu__item-border-right-none .eve-menu__menu-item .el-menu-item {
+  border-right: none;
+}
+
+.eve-menu__item-border-right-none .eve-menu__menu-item {
+  .el-submenu__title:focus,
+  .el-submenu__title:hover {
+    border-right: none;
+  }
+}
+
+//菜单的高度、调整
+.eve-menu {
+  .el-submenu__title {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .el-menu-item {
+    height: 40px;
+    line-height: 40px;
+  }
 }

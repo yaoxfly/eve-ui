@@ -42,9 +42,6 @@ export default {
 export default {
   data () {
     return {
-      convertSetting: {
-        convert: true
-      },
       data: [
         {
           id: 1,
@@ -141,9 +138,6 @@ export default {
 export default {
   data () {
     return {
-      convertSetting: {
-        convert: true
-      },
       data: [
         {
           id: 1,

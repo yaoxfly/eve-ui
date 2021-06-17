@@ -130,7 +130,7 @@ export default {
     //高度
     height: {
       type: [Number, String],
-      default: () => 50
+      default: () => 40
     },
     // 文本离左边的距离
     Left: {
@@ -150,7 +150,7 @@ export default {
     //是否显示图标
     icon: {
       type: Boolean,
-      default: () => true
+      default: () => false
     },
 
     // 图标、图片等离左边的距离
@@ -328,7 +328,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .eve-breadcrumb {
   display: flex;
   align-items: center;
@@ -341,9 +341,9 @@ export default {
     cursor: pointer;
     font-size: 24px;
   }
-}
-
-::v-deep .el-breadcrumb {
-  font-size: 16px;
+  .el-breadcrumb {
+    font-size: 16px;
+  }
 }
 </style>
+

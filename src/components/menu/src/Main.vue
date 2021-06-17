@@ -8,7 +8,10 @@
     <el-scrollbar style="height: 100%">
       <el-menu
         class="eve-menu"
-        :class="[!borderRight && 'eve-menu__border-right-none']"
+        :class="{
+          'eve-menu__border-right-none': !borderRight,
+          'eve-menu__item-border-right-none': !itemBorderRight,
+        }"
         :router="router"
         :unique-opened="uniqueOpened"
         :default-active="active"
@@ -25,6 +28,7 @@
           v-for="(item, index) in data"
           :menu-data="item"
           :key="`eve-menu${index}`"
+          :padding-left="paddingLeft"
         ></menu-item>
       </el-menu>
     </el-scrollbar>
@@ -121,7 +125,7 @@ export default {
     // 宽度
     width: {
       type: Number,
-      default: 200
+      default: 256
     },
     /* 距离顶部(header)的距离(原本属性是height现在改完top),设置了box-sizing: border-box后会影响这个值,如果设置当前值还会出现没铺满的bug
     请设置当前值为0并在app.vue中添加样式 body{overflow: hidden;}
@@ -140,16 +144,31 @@ export default {
         title: 'title', //分组的title
       })
     },
+
     // 面包屑的收缩按钮，收缩后菜单的宽度,如果有padding、margin也要算进去
     shrinkWidth: {
       type: Number,
       default: () => 64
     },
-    //是否有右边的线
+
+    //菜单整体右边边框的线
     borderRight: {
       type: Boolean,
       default: () => true
-    }
+    },
+
+    //菜单选项右边边框的线
+    itemBorderRight: {
+      type: Boolean,
+      default: () => false
+    },
+
+    //菜单距离左边距离
+    paddingLeft: {
+      type: [String, Number],
+      default: 20
+    },
+
   },
   data () {
     return {
@@ -320,6 +339,7 @@ export default {
 :v-deep .el-scrollbar__bar.is-horizontal > div {
   height: 120%;
 }
+//黑色的线条
 ::v-deep .eve-menu__border-right-none.el-menu {
   border-right: solid 1px transparent !important;
 }

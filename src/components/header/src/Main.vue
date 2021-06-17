@@ -75,12 +75,14 @@
                 </div>
               </section>
 
-              <section v-else :key="`${item.content}icon`">
-                <span
-                  class="eve-header__icon-item"
-                  @click="rightContentButton({ index: index, data: item })"
-                  >{{ item.value }}
-                </span>
+              <section
+                v-else
+                :key="`${item.content}icon`"
+                @click="rightContentButton({ index: index, data: item })"
+                class="eve-header__icon-item"
+              >
+                <span>{{ item.value }} </span>
+                <i class="el-icon-caret-bottom" v-if="item.dialog"></i>
               </section>
             </template>
           </div>
@@ -97,7 +99,7 @@
             :close-on-press-escape="false"
             :show-close="false"
             :style="{
-              left: `-${baseLeft + dialogRight}px`,
+              left: `${dialogLeft}%`,
               width: `${dialogWidth}px`,
               top: `${dialogTop}px`,
             }"
@@ -162,20 +164,23 @@ export default {
       type: String,
       // default: require('../../../assets/logo.png')
     },
+
     // 标题
     title: {
       type: String,
       default: 'XXX平台系统'
     },
+
     //副标题
     subTitle: {
       type: String,
       default: 'XXXXXXXXX子系统'
     },
+
     // 左边包含logo和系统名的宽度
     leftWidth: {
       type: Number,
-      default: 250
+      default: 210
     },
 
     //header 背景 
@@ -187,7 +192,7 @@ export default {
     //header高度
     height: {
       type: Number,
-      default: 55
+      default: 65
     },
 
     //默认白 swiper-button-white(白)/swiper-button-black(黑)
@@ -207,6 +212,7 @@ export default {
       type: String,
       default: () => '100%'
     },
+
     // 导航按钮的数据
     navigationButton:
     {
@@ -310,16 +316,16 @@ export default {
         // }
       ]
     },
-    //对话框的距离右边的距离
-    dialogRight: {
+    //对话框的距离左边距离的百分比
+    dialogLeft: {
       type: Number,
-      default: () => 10
+      default: () => 84
     },
 
     //对话框的标题
     dialogTitle: {
       type: String,
-      default: () => '李四，上午好！'
+      default: () => ''
     },
 
     //对话框的线--默认显示
@@ -340,16 +346,17 @@ export default {
         }
       ]
     },
+
     //对话框的宽度
     dialogWidth: {
       type: Number,
-      default: () => 300
+      default: () => 268
     },
 
     //对话框距离顶部的距离
     dialogTop: {
       type: Number,
-      default: () => 42
+      default: () => 44
     },
 
     // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
@@ -468,5 +475,4 @@ export default {
 @import 'eve-ui/src/assets/style/base.scss';
 @import './header.scss';
 </style>
-
  

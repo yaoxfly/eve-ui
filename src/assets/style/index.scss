@@ -1,4 +1,6 @@
-//element-ui的自定义颜色
+//element-ui的自定义颜色(更换主题)--组件内部修改-不开放出去
 @import './element-variables.scss';
+//element-ui的样式
+@import './element-ui.scss';
 //公共样式
 @import './public.scss';

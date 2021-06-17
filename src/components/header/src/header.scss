@@ -3,8 +3,8 @@
   background: $--color-primary;
   border-bottom: 0;
   display: flex;
-  padding: 0 20px;
-  color: white;
+  padding: 0 32px 0 13px;
+  color: #fff;
   font-size: 14px;
   &__flex-start {
     display: flex;
@@ -28,13 +28,13 @@
   }
 
   &__logo {
-    width: 40px;
+    width: 45px;
     height: auto;
   }
 
   &__right {
     margin-left: auto;
-    position: relative;
+    // position: relative;
   }
 
   &__center {
@@ -53,14 +53,24 @@
   &__icon-img {
     width: 20px;
     height: auto;
+    &:hover {
+      filter: brightness(200%);
+    }
   }
 
   &__icon-item {
     cursor: pointer;
     user-select: none;
+    color: $--border-color-light;
+    span:hover {
+      color: #fff;
+      font-weight: bold;
+    }
+
     &:not(:last-child) {
       margin-right: 14px;
     }
+
     &:nth-last-child(2) {
       margin-right: 8px;
     }
@@ -109,17 +119,18 @@
   }
 
   &__triangle {
-    position: relative;
-    &::before {
-      position: absolute;
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 5px solid white;
-      right: 10px;
-    }
+    //小三角
+    // position: relative;
+    // &::before {
+    //   position: absolute;
+    //   content: '';
+    //   width: 0;
+    //   height: 0;
+    //   border-left: 4px solid transparent;
+    //   border-right: 4px solid transparent;
+    //   border-bottom: 5px solid white;
+    //   right: 10px;
+    // }
   }
 
   &__dialog-title {
@@ -128,23 +139,35 @@
   }
 
   &__dialog-border {
-    border-bottom: 1px solid #333;
+    // border-bottom: 1px solid #333;
     opacity: 0.1;
   }
   &__dialog-footer {
     display: block;
-    color: #333;
+    color: $--color-text-regular;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px 0;
-    opacity: 0.6;
-    font-weight: bold;
+    padding: 0;
+    font-weight: 600;
     font-size: 12px;
+    height: 35px;
+    background: $--border-color-extra-light;
   }
   &__dialog-footer-button {
     user-select: none;
     cursor: pointer;
+    &:first-child {
+      &:hover {
+        color: $--color-primary;
+      }
+    }
+    &:last-child {
+      color: $--color-danger;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
   //隐藏菜单底下的线
   // ::v-deep .el-menu.el-menu--horizontal {
@@ -153,10 +176,21 @@
   .el-menu.el-menu--horizontal {
     border-bottom: solid 1px transparent;
   }
+
   .el-menu-item.is-active {
     // color:$--color-deep-primary;
   }
+
+  .el-icon-caret-bottom::before {
+    color: $--border-color-light;
+  }
+
+  .el-icon-caret-bottom:hover::before {
+    color: #fff;
+    font-weight: bold;
+  }
 }
+
 // ::v-deep .eve-header__dialog {
 .eve-header__dialog {
   position: absolute;
@@ -171,7 +205,7 @@
     width: 100%;
     height: auto;
     font-size: 14px;
-    box-shadow: 2px 2px 5px #e9e6e6;
+    box-shadow: 0 0 6px $--border-color-lighter;
   }
   .el-dialog__header {
     position: relative;
@@ -183,5 +217,11 @@
   }
   .el-dialog__footer {
     padding: 0;
+    line-height: 35px;
+    height: 35px;
   }
+}
+
+.eve-header__title {
+  font-size: 16px;
 }

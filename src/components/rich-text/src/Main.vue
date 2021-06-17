@@ -363,4 +363,9 @@ export default {
   }
 }
 </script>
-<style lang='scss' scoped></style>
+<style lang='scss'>
+//dialog问题解决
+.tox-tinymce-aux {
+  z-index: 5000 !important;
+}
+</style>

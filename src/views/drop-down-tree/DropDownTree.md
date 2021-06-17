@@ -401,7 +401,7 @@ export default {
 | check-strictly|   在显示复选框的情况下，是否严格的遵循父子不互相关联的做法| boolean | — |  false |
 | collapse-tags|   多选时是否将选中值按文字的形式展示(是否添加+number)--注意：这个属性设置true会覆盖columnCollapseTags属性| boolean | — |  false |
 | column-collapse-tags |(推荐)多选时是否将选中值按文字的形式自适应展示(是否自适应添加+number),可展示多个页签,collapseTag非自适应展示,只展示一个页签后面就跟着一个number。| boolean | — |   false |
-| width |select宽度| string/number | — |  300 |
+| width |select宽度| string/number,字符串类型必须加上单位%、px等，数字类型不需要添加单位默认px | — |  100% |
 | height |option高度| string/number | — |   200 |
 | accordion |是否每次只打开一个同级树节点| boolean | — |   false |
 | auto-expand-parent |展开子节点的时候是否自动展开父节点| boolean | — |   true |

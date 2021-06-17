@@ -1,24 +1,50 @@
 .eve-drop-down-tree {
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   &__content {
-    padding: 0 20px;
+    padding: 0 5px;
   }
   &__option {
     background-color: #fff !important; //当前颜色外部引用时会变动就用important覆盖
   }
+  .el-select {
+    width: 100%;
+  }
 }
 
+.eve-drop-down-tree__option {
+  &.el-select-dropdown__item.is-disabled {
+    cursor: default;
+    padding: 0;
+  }
+
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+  .el-scrollbar__bar.is-vertical > div {
+    width: 120%;
+  }
+  .el-scrollbar__bar.is-horizontal > div {
+    height: 120%;
+  }
+}
+
+.el-tree-node__label {
+  font-weight: normal;
+}
 .eve-drop-down-tree__item {
   user-select: none;
-  .el-tree-node:focus > .el-tree-node__content {
-    background: transparent;
+  .el-tree-node__content {
+    :focus {
+      background: transparent;
+    }
+    //hover背景色
+    &:hover {
+      background-color: $--color-primary-light-9;
+    }
   }
-  // // 去掉hover背景色
-  // .el-tree-node:hover > .el-tree-node__content {
-  //   background-color: transparent;
-  // }
 }
 
 //全部

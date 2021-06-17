@@ -70,7 +70,7 @@
             <!-- 操作 -->
             <el-table-column
               :label="item.label"
-              :width="item.width"
+              :width="item.width ? item.width : 186"
               :key="`eve-table-pagination${index}`"
               :fixed="item.fixed"
               :type="item.type"
@@ -93,6 +93,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
+                          curRowIndex: scope.$index,
                         })
                       "
                     >
@@ -112,6 +113,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
+                          curRowIndex: scope.$index,
                         })
                       "
                     >
@@ -145,7 +147,9 @@
               :filters="item.filters"
               :filter-method="item.filterMethod"
               :show-overflow-tooltip="
-                item.showOverflowTooltip ? item.showOverflowTooltip : true
+                item.showOverflowTooltip !== undefined
+                  ? item.showOverflowTooltip
+                  : true
               "
               v-else
             >
@@ -310,7 +314,6 @@ export default {
         //   address: 'Ottawa No. 2 Lake Park',
         //   date: '2016-10-04'
         // },
-
       ]
     },
 
@@ -413,16 +416,10 @@ export default {
       default: () => ({ children: 'children', hasChildren: 'hasChildren' })
     },
 
-    //是否懒加载子节点数据
+    // 是否懒加载子节点数据
     lazy: {
       type: Boolean,
       default: () => false
-    },
-
-    // 加载子节点数据的函数,lazy为true时生效,函数第二个参数包含了节点的层级信息--树懒加载用
-    load: {
-      type: Function,
-      default: () => { }
     },
 
     // 分页-布局属性
@@ -602,6 +599,7 @@ export default {
       default: false
     },
 
+
     // 分页-是否显示分页
     isShowPagination: {
       type: Boolean,
@@ -611,7 +609,7 @@ export default {
     // 分页-分页距离表格的距离
     top: {
       type: Number,
-      default: 24
+      default: 10
     },
 
     // 分页-分页的位置，center/居中、left/居左、right/居右
@@ -619,13 +617,21 @@ export default {
       type: String,
       default: 'right'
     },
+
+    // 分页-前往的文本
+    jumpText: {
+      type: String,
+      default: '前往'
+    }
   },
 
   data () {
     return {}
   },
 
-  mounted () { },
+  mounted () {
+    this.setJump()
+  },
 
   components: {
     render: render
@@ -699,6 +705,7 @@ export default {
 
 
 
+
     /* ---------自定义的函数----------- */
 
     /** @description 获取id数组
@@ -721,6 +728,7 @@ export default {
      * @param  {Object}  param 参数
      */
     btnOperate (param) {
+      console.log(param)
       let { value, data } = param || {}
       param.data = this.isOnlyGetId ? this.getIdArr(data) : param.data
       const {
@@ -800,7 +808,6 @@ export default {
       this.isShowOperate && operateFlag && arr.push({
         label: '操作',
         type: 'operate',
-        width: 270
       })
       //下拉树箭头位置不能在操作，序号，全选前
       treeFlag && arr.forEach(item => {
@@ -834,6 +841,10 @@ export default {
         }
       })
       return data
+    },
+
+    setJump () {
+      document.querySelectorAll('.el-pagination__jump')[0].childNodes[0].nodeValue = this.jumpText
     }
   },
 
@@ -861,7 +872,7 @@ export default {
   // display: flex;
   // align-items: center;
 }
-//  ::v-deep .warning-row {
+// ::v-deep .warning-row {
 //   background: oldlace;
 // }
 //  ::v-deep .success-row {

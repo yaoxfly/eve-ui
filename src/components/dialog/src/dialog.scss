@@ -1,0 +1,40 @@
+.eve-dialog {
+  &__footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__loading {
+    .el-loading-spinner .circular {
+      display: none;
+    }
+  }
+
+  &__border-top {
+    .el-dialog__body {
+      border-top: 1px solid $--border-color-base;
+    }
+  }
+
+  &__border-bottom {
+    .el-dialog__body {
+      border-bottom: 1px solid $--border-color-base;
+    }
+  }
+
+  &__box-shadow {
+    .el-dialog {
+      border: 1px solid $--border-color-lighter;
+      box-shadow: $--border-color-base 0px 0px 6px; //将h-shadow,v-shadow设为0px,实现四周阴影
+    }
+  }
+
+  .el-loading-spinner {
+    margin-top: -8px;
+  }
+  .el-dialog__wrapper {
+    user-select: none;
+  }
+}

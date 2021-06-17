@@ -159,3 +159,55 @@ $--calendar-selected-background-color: #f2f8fe !default;
 $--avatar-font-color: #fff !default;
 /// color||Color|0
 $--avatar-background-color: #c0c4cc !default;
+
+/*自定义的变量*/
+
+/*---字体---*/
+
+// 标题
+$--font-size-title: 14px !default;
+// 内容
+$--font-size-content: 13px !default;
+// 内容(小)
+$--font-size-content-small: 12px !default;
+
+/*---菜单---*/
+
+//宽度
+$--eve-menu-width: 256px !default;
+/*---header组件---*/
+
+//背景色
+$--eve-header-background: #3379cc !default;
+
+//自定义的高度、对话框的高度、footer的高度等
+$--height: 40px !default;
+
+/*---Form---*/
+
+//表格类表单[边框]颜色-d9ecff
+$tableBorderColor: $--color-primary-light-8 !default;
+
+//form-item__label背景色-ecf5ff
+$LabelbgColor: $--color-primary-light-9 !default;
+
+//form-item__label文字颜色（常规文字）
+$LabelColor: $--color-text-regular !default;
+
+//form-item__label文字大小 (正文小)-13px
+$LabelFontSize: $--font-size-small !default;
+
+//form-item__label边距设置
+$LabelPadding: 8px 12px 8px 4px !default;
+
+//form-item__content边距设置
+$ContentPadding: 3px 30px 3px 4px !default;
+
+//eve-common-input高度
+$eveCommonInputHeight: 26px !default; //mini为28px,目前设置比mini还小
+
+//eve-common-input内部边距
+$eveCommonInputPadding: 0 4px !default;
+
+//eve-common-input prefix、suffix图标距离文字间距
+$eveCommonInputPrefixSuffix: 30px !default;

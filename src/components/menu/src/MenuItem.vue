@@ -3,11 +3,11 @@
 * @Description: 左侧菜单栏的子组件
 * @Date: 2020-10-13
 -->
-
 <template>
   <div :class="className">
     <!--子菜单-可能有孩子的菜单-->
     <el-submenu
+      :padding-left="paddingLeft"
       v-if="menuData.type == 'submenu'"
       :index="menuData[config.path] ? menuData[config.path] : getMathFloor()"
     >
@@ -23,30 +23,42 @@
           v-for="(item, index) in menuData[config.children]"
           :key="`menu-item${index}`"
           :menuData="item"
+          :padding-left="paddingLeft"
         ></menu-item>
       </template>
     </el-submenu>
     <!--最底层的菜单-->
 
-    <el-menu-item-group v-else-if="menuData.type == 'item'">
+    <el-menu-item-group
+      v-else-if="menuData.type == 'item'"
+      :padding-left="paddingLeft"
+    >
       <span
         slot="title"
         class="eve-menu__item-group"
         v-if="menuData[config.title]"
         >{{ menuData[config.title] }}</span
       >
-      <el-menu-item :index="menuData[config.path]">
+      <el-menu-item :index="menuData[config.path]" :padding-left="paddingLeft">
         <i :class="menuData.icon"></i>
         <span slot="title">{{ menuData[config.text] }}</span>
       </el-menu-item>
     </el-menu-item-group>
   </div>
 </template>
-
 <script>
+
+import ElMenuItem from './el-menu/src/menu-item.vue'
+import ElSubmenu from './el-menu/src/submenu.vue'
+import ElMenuItemGroup from './el-menu/src/menu-item-group.vue'
 export default {
   name: 'MenuItem',
   //接收依赖注入的类名
+  components: {
+    ElMenuItem,
+    ElSubmenu,
+    ElMenuItemGroup
+  },
   inject: {
     className: {
       default: 'eve-menu__menu-item'
@@ -60,6 +72,11 @@ export default {
     menuData: {
       type: Object,
       default: () => { }
+    },
+    // 菜单距离左边距离
+    paddingLeft: {
+      type: [String, Number],
+      default: 20
     },
   },
 

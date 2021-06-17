@@ -108,6 +108,10 @@ export default {
 | left-button-data (自定义)  | Dialog 左边按钮的数据 | array  | —| [] |
 | right-button-data (自定义) | Dialog 右边按钮的数据 | array  | — | [{ value: '取 消'},{ type: 'primary', value:'确 定'} ] |
 | is-sure-close (自定义) | 点击确定是否关闭 Dialog| boolean | — | true|
+| border-top (自定义) | 在内容的顶部加条线| boolean | — | true|
+| border-bottom (自定义) | 在内容的底部加条线| boolean | — | false|
+| box-shadow (自定义) |对话框外部添加阴影| boolean | — | false|
+| min-width (自定义) |对话框的最小宽度 | string,number | — |  —  |
 
 > `visible` 一定要加上 `sync`,起到同步修改的作用，以上方法和属性中除了`visible.sync` 一定要在父组件设置外，其他都有默认值，如无特殊需求可不设置。
 

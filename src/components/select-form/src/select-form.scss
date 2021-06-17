@@ -1,0 +1,80 @@
+.eve-select-form {
+  color: #606266;
+  font-size: 14px;
+  &__flex-start {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex: auto;
+  }
+
+  &__flex-row-center {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &__pack-up {
+    margin-left: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__form {
+    flex: none;
+  }
+
+  &__from-lable {
+    word-break: break-all;
+    word-wrap: break-word;
+    text-align: right;
+    margin-right: 4px;
+    margin-top: 5px;
+  }
+  .el-form-item {
+    margin-bottom: 0;
+  }
+  &__display-none {
+    display: none;
+  }
+
+  &__display-block {
+    display: block;
+  }
+
+  &__flex {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__asterisk {
+    color: red;
+  }
+
+  .el-checkbox-group {
+    height: auto;
+    line-height: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .el-radio-group {
+    line-height: 8px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .el-form-item__content {
+    line-height: 0px;
+    margin-top: 10px;
+  }
+}

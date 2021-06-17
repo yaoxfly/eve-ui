@@ -4,7 +4,14 @@
 * @Date: 2020-09-27
 -->
 <template>
-  <div class="eve-dialog">
+  <div
+    class="eve-dialog"
+    :class="{
+      'eve-dialog__border-top': borderTop,
+      'eve-dialog__border-bottom': borderBottom,
+      'eve-dialog__box-shadow': boxShadow,
+    }"
+  >
     <el-dialog
       v-el-drag-dialog="isDrag"
       class="eve-dialog__scroll"
@@ -207,7 +214,32 @@ export default {
     isSureClose: {
       type: Boolean,
       default: () => true
+    },
+
+    // 在内容的顶部加条线
+    borderTop: {
+      type: Boolean,
+      default: () => true
+    },
+
+    // 在内容的底部加条线
+    borderBottom: {
+      type: Boolean,
+      default: () => false
+    },
+
+    // 对话框外部添加阴影
+    boxShadow: {
+      type: Boolean,
+      default: () => false
+    },
+
+    //对话框最小宽度(自定义)
+    minWidth: {
+      type: [Number, String],
+      default: () => ''
     }
+
   },
 
   data () {
@@ -228,7 +260,7 @@ export default {
   created () { },
   mounted () {
     // console.log(this.$refs.dialog)
-
+    document.querySelectorAll('.el-dialog')[0].style.minWidth = this.minWidth + 'px'
   },
   methods: {
     /** @description  左边按钮事件
@@ -272,26 +304,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.eve-dialog {
-  &__footer {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__loading {
-    ::v-deep .el-loading-spinner .circular {
-      display: none;
-    }
-  }
-
-  ::v-deep .el-loading-spinner {
-    margin-top: -8px;
-  }
-  .el-dialog__wrapper {
-    user-select: none;
-  }
-}
+<style lang="scss">
+@import 'eve-ui/src/assets/style/base.scss';
+@import './dialog.scss';
 </style>
