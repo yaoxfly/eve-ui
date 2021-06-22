@@ -844,6 +844,7 @@ export default {
     },
 
     setJump () {
+      if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump')[0].childNodes[0].nodeValue = this.jumpText
     }
   },

@@ -14,7 +14,7 @@
 
 /*-----卡片------*/
 .el-card__header {
-  padding: 10px 20px; //调整高度40
+  padding: 10px 16px; //调整高度40
   font-size: $--font-size-title;
   font-weight: bold;
   color: $--color-text-primary;
@@ -27,6 +27,10 @@
 
 .el-card.is-always-shadow {
   box-shadow: 0 0 6px $--border-color-lighter;
+}
+
+.el-card__body {
+  padding: 10px 16px;
 }
 
 /*-----消息框------*/
@@ -88,7 +92,7 @@
 }
 
 .el-dialog__body {
-  padding: 30px 10px;
+  padding: 15px 10px;
   font-size: $--font-size-content;
 }
 
