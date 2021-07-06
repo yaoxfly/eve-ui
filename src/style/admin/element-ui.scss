@@ -741,7 +741,7 @@ $--eve-tree-height: 24px;
   .el-form-item__content {
     margin-top: 3px;
   }
-
+  
   .eve-select-form__form {
     .el-form-item__content {
       margin-top: 5px;
@@ -756,7 +756,7 @@ $--eve-tree-height: 24px;
   .el-range-editor.el-input__inner {
     height: 24px ;
     line-height: 24px;
-    font-size: $--font-size-content-small;
+   
   }
   .el-date-editor .el-range__icon{
     line-height: 17px
@@ -766,6 +766,9 @@ $--eve-tree-height: 24px;
   }
   .eve-select-form__pack-up{
     font-size: $--font-size-content;
+  }
+  .el-range-editor .el-range-input {
+    font-size: $--font-size-content-small;
   }
 }
 
