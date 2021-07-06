@@ -377,6 +377,20 @@ $--pagination-width-height: 22px;
   border-bottom: 1px solid $--color-primary-light-9;
 }
 
+.el-table th>.cell {
+  height: 32px;
+  line-height: 32px;
+}
+
+.el-table td, .el-table th {
+  padding: 0;
+ }
+
+ .el-table--mini td, .el-table--mini th {
+  padding: 0px 0;
+ }
+
+
 /*-----面包屑------*/
 
 .eve-breadcrumb .el-breadcrumb {
