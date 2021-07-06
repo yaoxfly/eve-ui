@@ -756,6 +756,7 @@ $--eve-tree-height: 24px;
   .el-range-editor.el-input__inner {
     height: 24px ;
     line-height: 24px;
+    font-size: $--font-size-content-small;
   }
   .el-date-editor .el-range__icon{
     line-height: 17px
@@ -787,7 +788,7 @@ $--eve-tree-height: 24px;
 
 .eve-drop-down-tree {
   .el-input {
-    font-size: $--font-size-content;
+    font-size: $--font-size-content-small;
   }
 }
 
