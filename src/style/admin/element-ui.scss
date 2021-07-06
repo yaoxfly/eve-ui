@@ -650,7 +650,7 @@ $--eve-tree-height: 24px;
   }
 
   .el-input--suffix .el-input__inner {
-    font-size: $--font-size-content;
+    font-size: $--font-size-content-small;
     //input高度
     height: 24px;
     line-height: 24px;
@@ -763,18 +763,21 @@ $--eve-tree-height: 24px;
   .el-date-editor .el-range-separator{
     line-height: 17px
   }
+  .eve-select-form__pack-up{
+    font-size: $--font-size-content;
+  }
 }
 
 
 /*-----输入框、select框的placeholder修改------*/
 .el-input input::-webkit-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: $--font-size-content-small !important;
 }
 .el-input input::-moz-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: $--font-size-content-small !important;
 }
 .el-input input::-ms-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: $--font-size-content-small !important;
 }
 
 /*-----下拉树------*/
