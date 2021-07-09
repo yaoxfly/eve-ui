@@ -4,12 +4,17 @@
 * @Date: 2020-10-13
 -->
 <template>
-  <div class="eve-menu__main">
-    <el-scrollbar style="height: 100%">
+  <div
+    class="eve-menu__main"
+    :class="{
+      'eve-menu__border-right-none': !borderRight,
+    }"
+    :style="{ height: `calc(100vh - ${top}px)` }"
+  >
+    <el-scrollbar style="height: 122.6%">
       <el-menu
         class="eve-menu"
         :class="{
-          'eve-menu__border-right-none': !borderRight,
           'eve-menu__item-border-right-none': !itemBorderRight,
         }"
         :router="router"
@@ -22,7 +27,7 @@
         :active-text-color="activeTextColor"
         :key="key"
         @select="(index, indexPath) => select(index, indexPath, data)"
-        :style="{ height: `calc(100vh - ${top}px)`, width: `${tempWidth}px` }"
+        :style="{ width: `${tempWidth}px` }"
       >
         <menu-item
           v-for="(item, index) in data"
@@ -132,7 +137,7 @@ export default {
     */
     top: {
       type: Number,
-      default: 42
+      default: 65
     },
     // 配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认
     config: {
@@ -340,7 +345,7 @@ export default {
   height: 120%;
 }
 //黑色的线条
-::v-deep .eve-menu__border-right-none.el-menu {
+::v-deep .el-menu {
   border-right: solid 1px transparent !important;
 }
 </style>

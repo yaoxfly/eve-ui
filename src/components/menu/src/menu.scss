@@ -92,3 +92,11 @@
     line-height: 40px;
   }
 }
+
+.eve-menu__main{
+  border-right: solid 1px #e6e6e6 ;
+  &.eve-menu__border-right-none{
+    border-right: solid 1px transparent ;
+  }
+}
+
