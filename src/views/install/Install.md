@@ -9,7 +9,12 @@
 ```js
 npm i nrm -g
 ```
-### 2.添加镜像地址命名为 enpm
+
+### 2.添加/设置镜像地址
+>鉴于`nrm`安装受限于`node版本`,计算机权限,等各种各样的问题，导致安装或使用的失败，所以特别的添加其他方式来设置镜像地址，实在无法解决nrm问题时，可尝试其他方式解决
+
+
+#### 2.1 nrm方式添加镜像
 
  http://192.168.66.40:22081/repository/npm-public/   这个地址已废弃
  
@@ -22,11 +27,61 @@ nrm add enpm  http://192.168.180.106:8081/repository/npm-public/
 >  查看是否已经添加，可以使用`nrm ls`查看,也可查看其它已经拥有的镜像，如果遇到使用`nrm ls`或其他`nrm`命令失败，可能原因是你的`node`版本过低或过高，支持不了最新版本的`nrm`,需要对`nrm`降级,详细解决方案，看最后面的`Q问题`。
 如果要删除旧镜像地址地址,可用以下命令 `nrm del [镜像名]` 例子 `nrm del enpm`
 
+
+#### 2.2 npm原生方式设置镜像
+
+在终端中输入如下命令
+
+临时使用
+```js
+npm --registry http://192.168.180.106:8081/repository/npm-public/ install express
+```
+
+永久使用
+```js
+npm config set registry http://192.168.180.106:8081/repository/npm-public/
+```
+
+查看是否配置成功
+```js
+npm config get registry 
+```
+查看npm当前配置
+
+```js
+npm config list 
+```
+
+如果有其他特殊需求，比如切换到其他镜像，看以下操作
+
+切换到npm原生镜像
+
+```js
+npm config set registry https://registry.npmjs.org/
+```
+
+切换到淘宝镜像
+
+```js
+npm config set registry https://registry.npm.taobao.org/
+```
+
+#### 2.3 .npmrc方式设置镜像
+
+在项目的根目录下(与src文件同级) 创建`.npmrc`写入下面内容
+
+```js
+registry= http://192.168.180.106:8081/repository/npm-public/
+```
+>  如果`nrm`添加成功，不需要再执行`2.2`，`2.3`操作,
+
 ###  3.切换到 enpm 镜像
 
 ```js
 nrm use enpm
 ```
+> `2.2`或`2.3`方式设置镜像后,不需要再执行 `nrm use enpm` 
+
 ###  4.安装 eve-ui
 
 ```js

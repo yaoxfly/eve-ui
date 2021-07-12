@@ -18,7 +18,7 @@
             :data="data"
             :padding-left="20"
             :width="200"
-            :top="140"
+            :top="160"
             class="layout__menu"
             :border-right="false"
             @select="select"
