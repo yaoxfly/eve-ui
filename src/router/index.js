@@ -123,6 +123,11 @@ const routes = [
         name: 'Iframe 内联框架',
         component: () => import('../views/iframe/Iframe.vue'),
       },
+      {
+        path: '/utils',
+        name: 'utils工具类',
+        component: () => import('../views/utils/utils.vue')
+      },
     ]
   },
   {
@@ -130,6 +135,7 @@ const routes = [
     name: 'FormDesign',
     component: () => import('../views/form-design/FormDesign.vue')
   },
+ 
   {
     path: '/test_page',
     name: 'coder',
