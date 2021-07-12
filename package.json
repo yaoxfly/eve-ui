@@ -1,15 +1,16 @@
 {
   "name": "eve-ui",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "description": "eve-ui",
   "private": false,
   "license": "MIT",
   "author": "yaoxfly",
-  "main": "src/index.js",
+  "main": "lib/eve-ui.umd.min.js",
   "files": [
     "src",
     "lib",
-    "style"
+    "style",
+    "tools"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
