@@ -11,7 +11,7 @@
     }"
     :style="{ height: `calc(100vh - ${top}px)` }"
   >
-    <el-scrollbar style="height: 122.6%">
+    <el-scrollbar style="height: 100%">
       <el-menu
         class="eve-menu"
         :class="{
@@ -329,7 +329,6 @@ export default {
 <style lang='scss' scoped >
 .eve-menu {
   user-select: none;
-  padding-bottom: 200px;
   &__main {
     background: #fff;
   }
