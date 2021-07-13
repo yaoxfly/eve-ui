@@ -146,7 +146,7 @@ export default {
 </script>
 <style lang='scss' scoped >
 .eve-container {
-  min-width: 1020px;
+  // min-width: 1020px;
   width: 100%;
   &__main {
     width: 100%;

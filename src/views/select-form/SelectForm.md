@@ -422,6 +422,9 @@ export default {
 | formWidth  | 表单的宽度  | number | — |   没写默认是跟着全局属性formWidth  | 
 | labelWidth  | 表单左边的文本的宽度  | number | — | 没写默认是跟着全局属性labelWidth| 
 | maxlength  | input类型的表单的原生属性，最大输入长度  | number | — | 32 | 
+| rangeSeparator  | 选择范围时的分隔符  | string | — | '-' |
+| startPlaceholder  | 范围选择时开始日期的占位内容  | string | — | — |
+| endPlaceholder  | 范围选择时结束日期的占位内容  | string | — | — |
 
 ### right-button-data
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

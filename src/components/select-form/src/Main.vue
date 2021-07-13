@@ -124,6 +124,9 @@
                     :format="
                       pickerFormat(item.format, item.pickerType, item.type)
                     "
+                    :range-separator="item.rangeSeparator"
+                    :start-placeholder="item.startPlaceholder"
+                    :end-placeholder="item.endPlaceholder"
                   ></el-date-picker>
                 </slot>
               </el-form-item>
