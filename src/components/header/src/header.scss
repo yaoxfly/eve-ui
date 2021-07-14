@@ -1,11 +1,24 @@
 .eve-header {
   // width: 100%;
+  position: relative;
   background: $--color-primary;
   border-bottom: 0;
   display: flex;
   padding: 0 32px 0 13px;
   color: #fff;
   font-size: 14px;
+  //清除dialog本身的position:absolute 设置外部的  position: absolute;位置才能放置在最右边
+  .el-dialog__wrapper {
+    position: static !important;
+  }
+
+  &__dialog-section {
+    position: absolute;
+    z-index: 2000;
+    right: 26px;
+    top: 45px;
+  }
+
   &__flex-start {
     display: flex;
     flex-flow: row nowrap;
@@ -53,8 +66,9 @@
   &__icon-img {
     width: 20px;
     height: auto;
+    opacity: 0.7;
     &:hover {
-      filter: brightness(200%);
+      opacity: 1;
     }
   }
 
@@ -62,9 +76,13 @@
     cursor: pointer;
     user-select: none;
     color: $--border-color-light;
-    span:hover {
+    &--special:hover {
       color: #fff;
-      font-weight: bold;
+      // font-weight: bold;
+      .el-icon-caret-bottom::before {
+        color: #fff;
+        // font-weight: bold;
+      }
     }
 
     &:not(:last-child) {
@@ -78,44 +96,6 @@
       margin-right: 28px;
     }
     white-space: nowrap;
-  }
-
-  &__circle {
-    position: relative;
-    &::before {
-      position: absolute;
-      top: -1px;
-      left: 86%;
-      transform: translate(-50%, -50%);
-      content: attr(number);
-      z-index: 2;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    &::after {
-      position: absolute;
-      background: red;
-      height: 18px;
-      font-size: 12px;
-      left: 8px;
-      top: -10px;
-      border-radius: 10px;
-      display: block;
-      content: '';
-      width: 18px;
-    }
-  }
-
-  &__circle-plus {
-    &-add {
-      position: absolute;
-      top: -5px;
-      left: 23px;
-      z-index: 1;
-    }
-    &::after {
-      padding: 0 2px;
-    }
   }
 
   &__triangle {
@@ -169,6 +149,11 @@
       }
     }
   }
+
+  .el-badge__content {
+    line-height: 15px;
+    border: 1px solid transparent;
+  }
   //隐藏菜单底下的线
   // ::v-deep .el-menu.el-menu--horizontal {
   //   border-bottom: solid 1px transparent;
@@ -185,19 +170,14 @@
     color: $--border-color-light;
   }
 
-  .el-icon-caret-bottom:hover::before {
-    color: #fff;
-    font-weight: bold;
-  }
+  // .el-icon-caret-bottom:hover::before {
+  //   color: #fff;
+  //   font-weight: bold;
+  // }
 }
 
 // ::v-deep .eve-header__dialog {
 .eve-header__dialog {
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  left: 0;
   &.el-dialog__wrapper {
     overflow: visible;
   }

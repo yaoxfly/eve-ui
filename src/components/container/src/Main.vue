@@ -91,7 +91,7 @@ export default {
     //高度差 顶部导航+面包屑+两个spacing的高度之和
     heightDiffer: {
       type: Number,
-      default: 125
+      default: 105
     },
     //内部各个块的间距
     spacing: {

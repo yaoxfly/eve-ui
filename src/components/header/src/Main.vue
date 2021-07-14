@@ -56,23 +56,20 @@
                 v-if="item.type === 'icon'"
                 :key="`${item.value}icon`"
                 class="eve-header__icon-item"
-                :class="[
-                  item.number ? 'eve-header__circle' : '',
-                  parseInt(item.number) > 99 && 'eve-header__circle-plus',
-                ]"
-                :number="parseInt(item.number) < 99 ? item.number : 99"
               >
                 <img
+                  v-if="!item.number"
                   :src="item.value"
                   class="eve-header__icon-img"
                   @click="rightContentButton({ index: index, data: item })"
                 />
-                <div
-                  v-if="parseInt(item.number) > 99"
-                  class="eve-header__circle-plus-add"
-                >
-                  +
-                </div>
+                <el-badge v-else :value="item.number" :max="99" class="item">
+                  <img
+                    :src="item.value"
+                    class="eve-header__icon-img"
+                    @click="rightContentButton({ index: index, data: item })"
+                  />
+                </el-badge>
               </section>
 
               <section
@@ -81,67 +78,67 @@
                 @click="rightContentButton({ index: index, data: item })"
                 class="eve-header__icon-item"
               >
-                <span>{{ item.value }} </span>
-                <i class="el-icon-caret-bottom" v-if="item.dialog"></i>
+                <div class="eve-header__icon-item--special">
+                  <span>{{ item.value }} </span>
+                  <i class="el-icon-caret-bottom" v-if="item.dialog"></i>
+                </div>
               </section>
             </template>
           </div>
         </slot>
-
-        <div v-if="visible">
-          <el-dialog
-            class="eve-header__dialog"
-            :visible.sync="visible"
-            :modal="false"
-            :top="'0'"
-            :lock-scroll="false"
-            :close-on-click-modal="false"
-            :close-on-press-escape="false"
-            :show-close="false"
-            :style="{
-              left: `${dialogLeft}%`,
-              width: `${dialogWidth}px`,
-              top: `${dialogTop}px`,
-            }"
-            :append-to-body="dialogAppendToBody"
-          >
-            <template #title>
-              <span class="eve-header__dialog-title">
-                <slot name="dialog-title">
-                  {{ dialogTitle }}
-                </slot>
-              </span>
-              <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
-            </template>
-
-            <slot name="dialog-content">
-              <span>这里是内容，可以用slot覆盖 ，slot名：dialog-content </span>
-            </slot>
-            <span slot="footer">
-              <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
-              <div class="eve-header__dialog-footer">
-                <slot name="dialog-footer">
-                  <template v-for="(item, index) in dialogButton">
-                    <span
-                      :key="`dialogButton${index}`"
-                      class="eve-header__dialog-footer-button"
-                      @click="dialogOperate({ index: index, data: item.text })"
-                    >
-                      {{ item.text }}
-                    </span>
-                  </template>
-                </slot>
-              </div>
+      </section>
+      <!-- 对话框 -->
+      <section
+        v-if="visible"
+        class="eve-header__dialog-section"
+        :style="{
+          top: `${dialogTop}px`,
+          right: `${dialogRight}px`,
+        }"
+      >
+        <el-dialog
+          class="eve-header__dialog"
+          :visible.sync="visible"
+          :modal="false"
+          top="0"
+          :lock-scroll="false"
+          :close-on-click-modal="false"
+          :close-on-press-escape="false"
+          :show-close="false"
+          :style="{
+            width: `${dialogWidth}px`,
+          }"
+          :append-to-body="dialogAppendToBody"
+        >
+          <template #title>
+            <span class="eve-header__dialog-title">
+              <slot name="dialog-title">
+                {{ dialogTitle }}
+              </slot>
             </span>
-          </el-dialog>
-          <div
-            class="eve-header__triangle"
-            :style="{
-              top: `${triangleTop}px`,
-              right: `${triangleRight}px`,
-            }"
-          ></div>
-        </div>
+            <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
+          </template>
+
+          <slot name="dialog-content">
+            <span>这里是内容，可以用slot覆盖 ，slot名：dialog-content </span>
+          </slot>
+          <span slot="footer">
+            <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
+            <div class="eve-header__dialog-footer">
+              <slot name="dialog-footer">
+                <template v-for="(item, index) in dialogButton">
+                  <span
+                    :key="`dialogButton${index}`"
+                    class="eve-header__dialog-footer-button"
+                    @click="dialogOperate({ index: index, data: item.text })"
+                  >
+                    {{ item.text }}
+                  </span>
+                </template>
+              </slot>
+            </div>
+          </span>
+        </el-dialog>
       </section>
     </header>
   </div>
@@ -316,10 +313,11 @@ export default {
         // }
       ]
     },
-    //对话框的距离左边距离的百分比
-    dialogLeft: {
-      type: Number,
-      default: () => 84
+
+    //对话框的距离右边的距离
+    dialogRight: {
+      type: [Number, String],
+      default: () => ''
     },
 
     //对话框的标题
@@ -355,8 +353,8 @@ export default {
 
     //对话框距离顶部的距离
     dialogTop: {
-      type: Number,
-      default: () => 44
+      type: [Number, String],
+      default: () => ''
     },
 
     // Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true
@@ -370,6 +368,7 @@ export default {
       type: Array,
       default: () => []
     },
+
     // 配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认
     config: {
       text: 'text', //文本
@@ -443,14 +442,6 @@ export default {
     },
   },
 
-  computed: {
-    triangleTop () {
-      return this.dialogTop - 42
-    },
-    triangleRight () {
-      return this.dialogRight - 10
-    }
-  },
 
   watch: {
     config: {
