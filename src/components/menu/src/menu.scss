@@ -93,10 +93,14 @@
   }
 }
 
-.eve-menu__main{
-  border-right: solid 1px #e6e6e6 ;
-  &.eve-menu__border-right-none{
-    border-right: solid 1px transparent ;
+.eve-menu__main {
+  border-right: solid 1px #e6e6e6;
+  &.eve-menu__border-right-none {
+    border-right: solid 1px transparent;
   }
 }
 
+//让弹出框的距离更靠近些
+.el-menu--popup-bottom-start {
+  margin-top: -13px !important;
+}

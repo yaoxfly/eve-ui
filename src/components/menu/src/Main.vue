@@ -12,6 +12,7 @@
     :style="{ height: `calc(100vh - ${top}px)` }"
   >
     <el-scrollbar style="height: 100%">
+      <slot></slot>
       <el-menu
         class="eve-menu"
         :class="{
