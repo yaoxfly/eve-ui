@@ -9,7 +9,6 @@
         <template #level>
           <eve-drop-down-tree
             :data="treeData"
-            :width="288"
             v-model="model.level"
             @node-click="nodeClick"
           ></eve-drop-down-tree>

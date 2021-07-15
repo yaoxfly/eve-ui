@@ -12,6 +12,12 @@
     position: static !important;
   }
 
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__dialog-section {
     position: absolute;
     z-index: 2000;
@@ -47,12 +53,19 @@
 
   &__right {
     margin-left: auto;
-    // position: relative;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
   }
 
   &__center {
     margin-left: 50px;
     white-space: nowrap;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
   }
 
   &__button {
@@ -65,7 +78,7 @@
 
   &__icon-img {
     width: 20px;
-    height: auto;
+    height: 20px;
     opacity: 0.7;
     &:hover {
       opacity: 1;

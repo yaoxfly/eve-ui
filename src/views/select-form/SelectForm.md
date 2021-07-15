@@ -177,7 +177,6 @@ export default {
         <template #level>
           <eve-drop-down-tree
             :data="treeData"
-            :width="288"
             v-model="model.level"
             @node-click="nodeClick"
           ></eve-drop-down-tree>
@@ -402,11 +401,11 @@ export default {
 | filter-param |  当参数为空时是否过滤参数 |  boolean | — | true |
 | adaptive-expand |  是否开启自适应收缩展开 |  boolean | — | true |
 | left-form-width |  左边表单的宽度,一般减去左边菜单栏的宽度，布局组件的间距 |  number | — | — |
-| right-button-width | 右边查询、重置等按钮的宽度；有用right-button-data属性、插槽、样式等方式覆盖了右边查询等按钮，这个宽度就需要手动设置,且需加上按钮离最右边body的偏移量 |  number | — | 230 |
+| right-button-width | 右边查询、重置等按钮的宽度；有用right-button-data属性、插槽、样式等方式覆盖了右边查询等按钮，这个宽度就需要手动设置,且需加上按钮离最右边body的偏移量, 当无法满足自适应收缩功能时,可减少当前值|  number | — | 230 |
 | right-button-data | 右边按钮的数组--当前数组会覆盖默认的按钮,个性化需求用，详细配置见下表| array | — | [] |
 | margin-top |右边查询等按钮距离顶部的距离，用于当checkbox和radio有换行的情况下使用| number, string | — | — |
 
-> `SelectForm`组件的`adaptiveExpand`(自适应收缩)会因为 `left-form-width`、`right-button-width`、`right-button-data`、`form-width` 、`label-width` 5个属性值以及插槽所影响，其中`left-form-width`、`right-button-width`属性影响较大，这两个值还会受到插槽和`right-button-data`属性影响，如果默认值无法满足自适应收缩功能，请手动设置这两个值，且务必设置精确。
+> `SelectForm`组件的`adaptiveExpand`(自适应收缩)会因为 `left-form-width`、`right-button-width`、`right-button-data`、`form-width` 、`label-width` 5个属性值以及插槽所影响，其中`left-form-width`、`right-button-width`属性影响较大，这两个值还会受到插槽和`right-button-data`属性影响，如果默认值无法满足自适应收缩功能，请手动设置这两个值。
 
 ### Data Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

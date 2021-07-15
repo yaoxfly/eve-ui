@@ -36,7 +36,10 @@
               >
               <el-form-item
                 :prop="item.prop"
-                class="eve-select-form__formItem"
+                class="
+                  eve-select-form__formItem eve-select-form__custom-formItem
+                "
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
                 <slot :name="item.prop" :row="item" :data="data">

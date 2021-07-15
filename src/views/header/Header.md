@@ -163,12 +163,19 @@ export default {
 | findlowestMenu | 查找最底层的菜单，当要实现联动页签、左边菜单组件，配置后切换顶部菜单，页面默认跳转左侧菜单的第一个，如果存在二级，则跳转到二级菜单的第一个的功能时使用 | function(menu) 传入菜单数组 |  
 
 ### Slot
-| name                 | 说明        |
-| -------------------- | ----------  |
-| left                 |  左边内容    |
+| name                 | 说明       |
+| -------------------- | ---------- |
+| left                 | 左边内容    |
+| left-before          | 左边内容前  |
+| left-after           | 左边内容后  |
 | center               | 中间的内容   |
+| center-before        | 中间的内容前  |
+| center-after         | 中间的内容后  |
 | right                | 右边的内容   |
-| dialog-title         | 对话框的标题 |
-| dialog-content       | 对话框的内容 |
-| dialog-footer        | 对话框的尾部 |
+| right-before         | 右边的内容前  |
+| right-after          | 右边的内容后  |
+| dialog-title         | 对话框的标题  |
+| dialog-content       | 对话框的内容  |
+| dialog-footer        | 对话框的尾部  | 
+| dialog               | 替换整个dialog,当前slot下，dialog-title、dialog-content、dialog-footer的插槽不可用|
 

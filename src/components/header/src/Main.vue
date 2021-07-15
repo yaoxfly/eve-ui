@@ -12,24 +12,29 @@
     >
       <!-- 左边的内容 -->
       <section class="eve-header__flex-column">
-        <slot name="left">
-          <div
-            class="eve-header__flex-start eve-header__logo-title"
-            :style="{ width: `${leftWidth}px` }"
-          >
-            <img :src="logo" class="eve-header__logo" />
-            <div class="eve-header__flex-column eve-header__title">
-              <span>{{ title }}</span>
-              <span>{{ subTitle }}</span>
+        <div class="eve-header__left">
+          <slot name="left-before"></slot>
+          <slot name="left">
+            <div
+              class="eve-header__flex-start eve-header__logo-title"
+              :style="{ width: `${leftWidth}px` }"
+            >
+              <img :src="logo" class="eve-header__logo" />
+              <div class="eve-header__flex-column eve-header__title">
+                <span>{{ title }}</span>
+                <span>{{ subTitle }}</span>
+              </div>
             </div>
-          </div>
-        </slot>
+          </slot>
+          <slot name="left-after"></slot>
+        </div>
       </section>
 
       <!-- 中间的内容 -->
       <section class="eve-header__flex-column eve-header__center">
+        <slot name="center-before"></slot>
         <slot name="center">
-          <div class="eve-header__flex-start">
+          <div class="eve-header__flex-start eve-header__center-content">
             <eve-scroll
               :width="navigationWidth"
               :scroll="scroll"
@@ -45,10 +50,12 @@
             ></eve-scroll>
           </div>
         </slot>
+        <slot name="center-after"></slot>
       </section>
 
       <!-- 右边的内容 -->
       <section class="eve-header__flex-column eve-header__right">
+        <slot name="right-before"></slot>
         <slot name="right">
           <div class="eve-header__flex-end">
             <template v-for="(item, index) in rightContent">
@@ -86,7 +93,9 @@
             </template>
           </div>
         </slot>
+        <slot name="right-after"></slot>
       </section>
+
       <!-- 对话框 -->
       <section
         v-if="visible"
@@ -96,49 +105,51 @@
           right: `${dialogRight}px`,
         }"
       >
-        <el-dialog
-          class="eve-header__dialog"
-          :visible.sync="visible"
-          :modal="false"
-          top="0"
-          :lock-scroll="false"
-          :close-on-click-modal="false"
-          :close-on-press-escape="false"
-          :show-close="false"
-          :style="{
-            width: `${dialogWidth}px`,
-          }"
-          :append-to-body="dialogAppendToBody"
-        >
-          <template #title>
-            <span class="eve-header__dialog-title">
-              <slot name="dialog-title">
-                {{ dialogTitle }}
-              </slot>
-            </span>
-            <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
-          </template>
+        <slot name="dialog">
+          <el-dialog
+            class="eve-header__dialog"
+            :visible.sync="visible"
+            :modal="false"
+            top="0"
+            :lock-scroll="false"
+            :close-on-click-modal="false"
+            :close-on-press-escape="false"
+            :show-close="false"
+            :style="{
+              width: `${dialogWidth}px`,
+            }"
+            :append-to-body="dialogAppendToBody"
+          >
+            <template #title>
+              <span class="eve-header__dialog-title">
+                <slot name="dialog-title">
+                  {{ dialogTitle }}
+                </slot>
+              </span>
+              <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
+            </template>
 
-          <slot name="dialog-content">
-            <span>这里是内容，可以用slot覆盖 ，slot名：dialog-content </span>
-          </slot>
-          <span slot="footer">
-            <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
-            <div class="eve-header__dialog-footer">
-              <slot name="dialog-footer">
-                <template v-for="(item, index) in dialogButton">
-                  <span
-                    :key="`dialogButton${index}`"
-                    class="eve-header__dialog-footer-button"
-                    @click="dialogOperate({ index: index, data: item.text })"
-                  >
-                    {{ item.text }}
-                  </span>
-                </template>
-              </slot>
-            </div>
-          </span>
-        </el-dialog>
+            <slot name="dialog-content">
+              <span>这里是内容，可以用slot覆盖 ，slot名：dialog-content </span>
+            </slot>
+            <span slot="footer">
+              <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
+              <div class="eve-header__dialog-footer">
+                <slot name="dialog-footer">
+                  <template v-for="(item, index) in dialogButton">
+                    <span
+                      :key="`dialogButton${index}`"
+                      class="eve-header__dialog-footer-button"
+                      @click="dialogOperate({ index: index, data: item.text })"
+                    >
+                      {{ item.text }}
+                    </span>
+                  </template>
+                </slot>
+              </div>
+            </span>
+          </el-dialog>
+        </slot>
       </section>
     </header>
   </div>

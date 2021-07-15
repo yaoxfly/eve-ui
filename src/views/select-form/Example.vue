@@ -5,6 +5,7 @@
         :model="model"
         :data="data"
         @handle-submit="handleSubmit"
+        :right-button-width="200"
       >
       </eve-select-form>
     </div>

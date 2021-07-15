@@ -89,6 +89,11 @@ $--eve-scroll-color: $--border-color-light;
   .el-menu-item.is-active {
     color: $--color-primary;
   }
+  .el-menu-item,
+  .el-submenu__title {
+    height: 56px;
+    line-height: 51px;
+  }
 }
 
 /****hdader-scroll-menu****/

@@ -176,12 +176,6 @@ export default {
   font-weight: bold;
 }
 
-::v-deep .el-menu-item,
-::v-deep .el-submenu__title {
-  height: 40px;
-  line-height: 40px;
-}
-
 ::-webkit-scrollbar-track-piece {
   //滚动条凹槽的颜色，还可以设置边框属性
   background-color: #f8f8f8;
