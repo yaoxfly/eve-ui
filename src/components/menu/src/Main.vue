@@ -60,10 +60,10 @@ export default {
       default: 'vertical'
     },
 
-    // 当前激活菜单的标识--可不在外面设置已经根据路由变化而变化了
+    // 当前激活菜单的标识
     defaultActive: {
       type: String,
-      default: 'use'
+      default: ''
     },
 
     // 是否只保持一个子菜单的展开
@@ -288,7 +288,8 @@ export default {
     $route: {
       handler (val) {
         this.route = val.path
-        this.setActive(this.route, this.data) //高亮
+        //当从外部传入值时不需要根据路由设置
+        !this.defaultActive && this.setActive(this.route, this.data) //高亮
       },
       immediate: true,
     },
@@ -297,7 +298,7 @@ export default {
       handler (val) {
         console.log(val, this.route, '菜单')
         // this.route = val.path
-        val.length > 0 && this.setActive(this.route, val)
+        val.length > 0 && !this.defaultActive && this.setActive(this.route, val)
       },
       immediate: true,
     },
