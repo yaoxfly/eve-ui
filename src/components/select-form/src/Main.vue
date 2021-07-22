@@ -23,7 +23,10 @@
             >
               <label
                 class="eve-select-form__from-lable"
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 :class="[checkHidden(index)]"
               >
                 <span
@@ -32,8 +35,9 @@
                 >
                   *
                 </span>
-                {{ item.label }}</label
-              >
+                {{ item.label }}
+                <span>{{ labelSuffix }}</span>
+              </label>
               <el-form-item
                 :prop="item.prop"
                 class="
@@ -45,6 +49,15 @@
                 <slot :name="item.prop" :row="item" :data="data">
                   请放置各种表单
                 </slot>
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
             </section>
             <!-- input-->
@@ -55,7 +68,10 @@
             >
               <label
                 class="eve-select-form__from-lable"
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 :class="[checkHidden(index)]"
               >
                 <span
@@ -64,22 +80,34 @@
                 >
                   *
                 </span>
-                {{ item.label }}</label
-              >
+                {{ item.label }}
+                <span>{{ labelSuffix }}</span>
+              </label>
               <el-form-item
                 :prop="item.prop"
                 class="eve-select-form__formItem"
                 :class="[checkHidden(index)]"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
               >
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-input
+                    style="width: 100%"
                     v-model.trim="model[item.prop]"
                     :placeholder="item.placeholder || '请输入'"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                     :maxlength="item.maxlength || 32"
                     clearable
                   ></el-input>
                 </slot>
+
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -99,7 +127,10 @@
             >
               <label
                 class="eve-select-form__from-lable"
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 :class="[checkHidden(index)]"
               >
                 <span
@@ -108,11 +139,13 @@
                 >
                   *
                 </span>
-                {{ item.label }}</label
-              >
+                {{ item.label }}
+                <span>{{ labelSuffix }}</span>
+              </label>
               <el-form-item
                 :prop="item.prop"
                 class="eve-select-form__formItem"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
                 <slot :name="item.prop" :row="item" :data="data">
@@ -120,7 +153,7 @@
                     :type="item.pickerType || 'date'"
                     v-model="model[item.prop]"
                     :placeholder="item.placeholder || '选择日期'"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
+                    style="width: 100%"
                     :value-format="
                       pickerFormat(item.valueFormat, item.pickerType, item.type)
                     "
@@ -132,6 +165,16 @@
                     :end-placeholder="item.endPlaceholder"
                   ></el-date-picker>
                 </slot>
+
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -151,7 +194,10 @@
             >
               <label
                 class="eve-select-form__from-lable"
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 :class="[checkHidden(index)]"
               >
                 <span
@@ -161,18 +207,20 @@
                   *
                 </span>
                 {{ item.label }}
+                <span>{{ labelSuffix }}</span>
               </label>
 
               <el-form-item
                 :prop="item.prop"
                 class="eve-select-form__formItem"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-time-picker
+                    style="width: 100%"
                     v-model="model[item.prop]"
                     :picker-options="item.pickerOptions"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                     :placeholder="item.placeholder || '选择时间'"
                     :value-format="
                       pickerFormat(item.valueFormat, item.pickerType, item.type)
@@ -183,6 +231,15 @@
                   >
                   </el-time-picker>
                 </slot>
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -202,7 +259,10 @@
             >
               <label
                 class="eve-select-form__from-lable"
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 :class="[checkHidden(index)]"
               >
                 <span
@@ -212,19 +272,24 @@
                   *
                 </span>
                 {{ item.label }}
+                <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
                 class="eve-select-form__formItem"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
                 <!-- 核心代码 -->
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-select
+                    style="width: 100%"
                     v-model="model[item.prop]"
                     :placeholder="item.placeholder || '请选择'"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                     clearable
+                    :multiple="item.multiple"
+                    :collapse-tags="item.collapseTags"
+                    :multiple-limit="item.multipleLimit || 0"
                   >
                     <template v-for="(itemOption, index) in item.option">
                       <el-option
@@ -235,6 +300,15 @@
                     </template>
                   </el-select>
                 </slot>
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -252,7 +326,10 @@
               v-if="item.type === 'radio'"
             >
               <label
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
               >
@@ -263,16 +340,18 @@
                   *
                 </span>
                 {{ item.label }}
+                <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 class="eve-select-form__formItem"
                 :class="[checkHidden(index)]"
               >
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-radio-group
                     v-model="model[item.prop]"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
+                    style="width: 100%"
                   >
                     <template v-for="(itemOption, index) in item.option">
                       <el-radio :key="index" :label="itemOption.value">{{
@@ -281,6 +360,16 @@
                     </template>
                   </el-radio-group>
                 </slot>
+
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -299,7 +388,10 @@
               v-if="item.type === 'checkbox'"
             >
               <label
-                :style="{ width: `${getLabelWidth(item.labelWidth)}px` }"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
               >
@@ -310,16 +402,18 @@
                   *
                 </span>
                 {{ item.label }}
+                <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
                 class="eve-select-form__formItem"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-checkbox-group
                     v-model="model[item.prop]"
-                    :style="{ width: `${getFormWidth(item.formWidth)}px` }"
+                    style="width: 100%"
                   >
                     <template v-for="(itemOption, index) in item.option">
                       <el-checkbox
@@ -331,6 +425,16 @@
                     </template>
                   </el-checkbox-group>
                 </slot>
+
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
               </el-form-item>
 
               <section :class="[checkHidden(index)]">
@@ -348,6 +452,15 @@
             class="eve-select-form__flex-row-center"
           >
             <slot> </slot>
+            <!-- 自定义表单错误提示 -->
+            <template #error="scope">
+              <el-tooltip
+                :content="scope.error"
+                class="eve-select-form__error-tip"
+              >
+                <i class="el-icon-warning-outline"></i>
+              </el-tooltip>
+            </template>
           </el-form-item>
         </div>
 
@@ -543,13 +656,13 @@ export default {
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
       type: Number,
-      default: 232 // 1093 
+      default: 220 // 1093 
     },
 
     // 所有左边label的宽度
     labelWidth: {
       type: Number,
-      default: 126 // 1093 
+      default: 128 // 1093 
     },
 
     // 当参数为空时是否过滤参数
@@ -586,6 +699,18 @@ export default {
     marginTop: {
       type: [Number, String],
       default: () => ''
+    },
+
+    //表单域标签的后缀
+    labelSuffix: {
+      type: String,
+      default: () => ''
+    },
+
+    //表单域标签距离左边的距离
+    labelPaddingLeft: {
+      type: [Number, String],
+      default: () => ''
     }
   },
 
@@ -620,7 +745,7 @@ export default {
      *  @author yx
      */
     getNum (param) {
-      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 250 //自动计算的左边的间距
+      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 265 //自动计算的左边的间距
       const {
         winWidth, formWidth, labelWidth,
         leftWidth = this.leftFormWidth !== 0 ? this.leftFormWidth : left,

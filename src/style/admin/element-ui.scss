@@ -377,19 +377,20 @@ $--pagination-width-height: 22px;
   border-bottom: 1px solid $--color-primary-light-9;
 }
 
-.el-table th>.cell {
+.el-table th > .cell {
   height: 32px;
   line-height: 32px;
 }
 
-.el-table td, .el-table th {
+.el-table td,
+ .el-table th  {
   padding: 0;
- }
+}
 
- .el-table--mini td, .el-table--mini th {
+.el-table--mini td,
+ .el-table--mini th  {
   padding: 0px 0;
- }
-
+}
 
 /*-----面包屑------*/
 
@@ -644,17 +645,23 @@ $--eve-tree-height: 24px;
   }
 
   .eve-select-form__from-lable {
-    padding-top: 6.5px;
-    padding-bottom: 8.5px;
+    padding-top: 6.6px;
+    padding-bottom: 8.6px;
     margin-top: 0;
+    line-height: 1;
   }
 
   .el-input--suffix .el-input__inner {
     font-size: $--font-size-content-small;
     //input高度
-    height: 24px;
+    height: 24px !important;
     line-height: 24px;
     padding: 0 4px;
+  }
+
+  .el-tag.el-tag--info {
+    height: 18px;
+    line-height: 16px;
   }
 
   .el-input__icon.el-icon-date,
@@ -741,7 +748,7 @@ $--eve-tree-height: 24px;
   .el-form-item__content {
     margin-top: 3px;
   }
-  
+
   .eve-select-form__form {
     .el-form-item__content {
       margin-top: 5px;
@@ -749,24 +756,24 @@ $--eve-tree-height: 24px;
   }
 
   .el-checkbox-group {
-    margin-bottom: 1px;
+    margin-bottom: 4px;
     min-height: 24px;
   }
 
   .el-range-editor.el-input__inner {
-    height: 24px ;
+    height: 24px;
     line-height: 24px;
   }
 
-  .el-date-editor .el-range__icon{
-    line-height: 17px
+  .el-date-editor .el-range__icon {
+    line-height: 17px;
   }
 
-  .el-date-editor .el-range-separator{
-    line-height: 15px
+  .el-date-editor .el-range-separator {
+    line-height: 15px;
   }
 
-  .eve-select-form__pack-up{
+  .eve-select-form__pack-up {
     font-size: $--font-size-content;
   }
 

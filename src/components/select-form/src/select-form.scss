@@ -27,22 +27,27 @@
     flex: none;
   }
 
+  &__display-block {
+    display: block;
+  }
+
   &__from-lable {
     word-break: break-all;
     word-wrap: break-word;
     text-align: right;
     margin-right: 4px;
     margin-top: 5px;
+    display: flex; //有顺序，要放在display-block之下,且display-none之下,不然会被display-block覆盖，隐藏时又会覆盖display-none,导致不隐藏
+    justify-content: flex-end;
+    align-items: center;
   }
-  .el-form-item {
-    margin-bottom: 0;
-  }
+
   &__display-none {
     display: none;
   }
 
-  &__display-block {
-    display: block;
+  .el-form-item {
+    margin-bottom: 0;
   }
 
   &__flex {
@@ -76,5 +81,17 @@
   .el-form-item__content {
     line-height: 0px;
     margin-top: 10px;
+  }
+
+  &__formItem {
+    position: relative;
+  }
+
+  &__error-tip {
+    color: $--color-danger;
+    position: absolute;
+    top: 20%;
+    z-index: 1;
+    right: -18px;
   }
 }
