@@ -452,6 +452,10 @@ $--eve-tree-height: 24px;
   }
 }
 
+.el-tree__empty-text {
+  font-size: 13px;
+}
+
 /*-----时间线(时间轴)------*/
 
 .el-steps--vertical {
@@ -827,4 +831,30 @@ $--eve-tree-height: 24px;
   .el-tree-node__content > .el-tree-node__expand-icon {
     padding: 2px;
   }
+}
+
+/*********checkbox复选框[start]*********/
+.el-checkbox {
+  padding: 4px 0;
+  display: block;
+}
+.el-checkbox__label {
+  font-size: $--font-size-small;
+  padding-left: 4px;
+}
+
+//checkbox由[白色勾]改为[蓝色勾]效果
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #fff;
+  //三级边框-#ebeef5
+  border-color: 1px solid $--border-color-lighter;
+}
+.el-checkbox__inner::after {
+  border-color: $--color-primary;
+}
+//checkbox选中字体不跟随变化
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  //常规文字-#606266
+  color: $--color-text-regular;
 }

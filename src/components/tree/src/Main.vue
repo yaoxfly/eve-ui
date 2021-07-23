@@ -6,7 +6,7 @@
 <template>
   <div class="eve-tree" :style="{ width: checkString(width) }">
     <div class="eve-tree__filter" v-if="isShowFilter">
-      <el-input placeholder="输入关键字进行过滤" v-model="filterText" clearable>
+      <el-input :placeholder="placeholder" v-model="filterText" clearable>
       </el-input>
     </div>
     <el-tree
@@ -176,12 +176,12 @@ export default {
     //默认展开的节点的key的数组--要设置nodeKey
     defaultExpandedKeys: {
       type: Array,
-      default: () => [1, 2]
+      default: () => []
     },
     //默认勾选的节点的key的数组--要设置nodeKey
     defaultCheckedKeys: {
       type: Array,
-      default: () => [1, 2, 3, 4]
+      default: () => []
     },
 
     //是否默认展开所有节点
@@ -190,7 +190,7 @@ export default {
       default: false
     },
 
-    //是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。
+    //是否在点击节点的时候展开或者收缩节点， 默认值为 false，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。
     expandOnClickNode: {
       type: Boolean,
       default: false
@@ -278,7 +278,14 @@ export default {
     convertSetting: {
       type: Object,
       default: () => { }
+    },
+
+    //搜索输入框占位文本
+    placeholder: {
+      type: String,
+      default: () => '输入关键字进行过滤'
     }
+
   },
   mounted () { },
   data () {
