@@ -3,13 +3,13 @@
 //超小型按钮 size=mini
 .el-button--mini {
   padding: 5.5px 12px;
-  font-size: 13px;
+  font-size: $--font-size-content;
 }
 
 //小型按钮  size=small
 .el-button--small {
   padding: 8px 16px;
-  font-size: 13px;
+  font-size: $--font-size-content;
 }
 
 /*-----卡片------*/
@@ -392,6 +392,10 @@ $--pagination-width-height: 22px;
   padding: 0px 0;
 }
 
+.el-table__empty-text {
+  font-size: $--font-size-content;
+}
+
 /*-----面包屑------*/
 
 .eve-breadcrumb .el-breadcrumb {
@@ -453,7 +457,7 @@ $--eve-tree-height: 24px;
 }
 
 .el-tree__empty-text {
-  font-size: 13px;
+  font-size: $--font-size-content;
 }
 
 /*-----时间线(时间轴)------*/
@@ -813,7 +817,7 @@ $--eve-tree-height: 24px;
 }
 
 .el-tree-node__label {
-  font-size: 13px;
+  font-size: $--font-size-content;
   color: $--color-text-primary;
 }
 
