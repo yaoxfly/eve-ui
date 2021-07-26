@@ -131,6 +131,11 @@ body {
       background-color: $LabelbgColor;
       font-weight: bolder;
     }
+    //带详情css
+    .eve-common-detail-field {
+      font-size: $--font-size-small;
+      line-height: 18px;
+    }
     //带单位描述css
     .eve-common-info-tip {
       font-size: $--font-size-extra-small;
@@ -244,8 +249,18 @@ body {
     .el-input--suffix .el-input__inner {
       padding-left: $eveCommonInputPrefixSuffix;
     }
+    &.el-date-editor .el-range-separator {
+      width: 6%;
+      line-height: 25px;
+    }
     .el-input__icon {
       line-height: $eveCommonInputHeight;
+    }
+    &.el-range-editor.el-input__inner {
+      padding: 0 4px;
+    }
+    &.el-date-editor .el-range__icon {
+      font-size: $--font-size-small;
     }
   }
 
@@ -264,8 +279,18 @@ body {
     .el-input--suffix .el-input__inner {
       padding-left: $eveCommonInputPrefixSuffix;
     }
+    &.el-date-editor .el-range-separator {
+      width: 6%;
+      line-height: 25px;
+    }
     .el-input__icon {
       line-height: $eveCommonInputHeight;
+    }
+    &.el-range-editor.el-input__inner {
+      padding: 0 4px;
+    }
+    &.el-date-editor .el-range__icon {
+      font-size: $--font-size-small;
     }
   }
 
