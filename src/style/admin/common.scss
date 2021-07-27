@@ -295,16 +295,26 @@ body {
   }
 
   /*********Radio 单选框[start]*********/
+  //横向属性
+  &-horizontal {
+    padding: 5px 0;
+    .el-checkbox {
+      display: initial;
+    }
+  }
+
+  //纵向属性-设置为块级元素，并设置上下间距
+  &-vertical .el-radio {
+    padding: 4px 0;
+    display: block;
+  }
+  //纵向属性
+  &-vertical .el-checkbox {
+    padding: 4px 0;
+    display: block;
+  }
+
   &-radio-group {
-    //横向属性
-    &.horizontal {
-      padding: 5px 0;
-    }
-    //纵向属性-设置为块级元素，并设置上下间距
-    &.vertical .el-radio {
-      padding: 4px 0;
-      display: block;
-    }
     //radio选中字体不跟随变化（常规文字）-#606266
     .el-radio__input.is-checked + .el-radio__label {
       color: $--color-text-regular;
@@ -327,11 +337,6 @@ body {
 
   /*********checkbox复选框[start]*********/
   &-checkbox-group {
-    //纵向属性
-    &.vertical .el-checkbox {
-      padding: 4px 0;
-      display: block;
-    }
     .el-checkbox__label {
       font-size: $--font-size-small;
       padding-left: 4px;
