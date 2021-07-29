@@ -5,6 +5,8 @@
 . 基于axios/flyio封装的的request请求类库 
 . 顶部导航，左边菜单，中间布局，面包屑，页签等基础布局，做好了基础建设，无需再搭建框架，可直接快速开发业务。
 . 分模块路由
+. 动态路由和动态面包屑
+. keepAlive
 . 多环境配置
 . gzip 压缩
 . 正式环境打包清除console.log
@@ -44,6 +46,33 @@ eve create eve-admin  //指定模板，可使用自定义模板
 eve add
 ```
 
+##### 添加的模板地址的格式
+
+###### 自定义的类型(支持私域的GitLab)
+
+```js
+// [类型]-[ip/域名]-[端口]:用户名/工程名
+gitlab-192.168.204.241-9080:Frye/eve-simple-pc-frame //范例
+```
+
+###### GitHub 
+```js
+github:owner/name 或者 owner/name
+```
+
+###### GitLab 
+
+```js
+gitlab:owner/name
+```
+
+
+###### Bitbuckets 
+```
+bitbucket:owner/name
+```
+
+> 默认是 master 分支, 但你可以指定分支，使用的是# ，如 gitlab-192.168.204.241-9080:Frye/eve-simple-pc-frame#xzsp. 
 #### 删除模板
 
 ``` js
