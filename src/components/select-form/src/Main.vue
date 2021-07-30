@@ -96,6 +96,7 @@
                     :placeholder="item.placeholder || '请输入'"
                     :maxlength="item.maxlength || 32"
                     clearable
+                    @clear="clear"
                   ></el-input>
                 </slot>
 
@@ -163,6 +164,7 @@
                     :range-separator="item.rangeSeparator"
                     :start-placeholder="item.startPlaceholder"
                     :end-placeholder="item.endPlaceholder"
+                    @change="change(model[item.prop])"
                   ></el-date-picker>
                 </slot>
 
@@ -228,6 +230,7 @@
                     :format="
                       pickerFormat(item.format, item.pickerType, item.type)
                     "
+                    @change="change(model[item.prop])"
                   >
                   </el-time-picker>
                 </slot>
@@ -290,6 +293,7 @@
                     :multiple="item.multiple"
                     :collapse-tags="item.collapseTags"
                     :multiple-limit="item.multipleLimit || 0"
+                    @clear="clear"
                   >
                     <template v-for="(itemOption, index) in item.option">
                       <el-option
@@ -712,6 +716,7 @@ export default {
       type: [Number, String],
       default: () => ''
     }
+
   },
 
   data () {
@@ -775,6 +780,7 @@ export default {
     handleReset (name) {
       // console.log(this.$refs[name])
       this.$refs[name].resetFields()
+      this.clear()
     },
 
     /** @description  展开或收起
@@ -857,6 +863,17 @@ export default {
       }
       keyMap[type] ? keyMap[type]() : keyMap.default()
       this.$emit('right-button-event', emitParam)
+    },
+
+    change (value) {
+      if (!value) {
+        this.clear()
+      }
+    },
+
+    //清空值
+    clear () {
+      this.$emit('clear', this.model)
     }
   },
 

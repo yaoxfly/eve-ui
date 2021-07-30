@@ -472,7 +472,9 @@ export default {
 | --------------------- | -------------------------  | -------- |
 | handle-submit | 查询按钮的回调函数 | 双向绑定{} |
 | pack-up      |  展开或收起  |    isHidden |
-| right-button-event | 右边按钮事件 | 当前点击按钮的值，如{index:1,value:'重置'} |
+| clear | 当点击输入框、select、等删除图标，以及重置按钮时，清空数据时回调的事件 |  — |
+| right-button-event | 右边按钮事件，不是用默认的按钮，而是用数组来赋值生成的自定义按钮才能触发的事件 | 当前点击按钮的值，如{index:1,value:'重置'} |
+
 
 ### Slot
 | name                 | 说明                          |

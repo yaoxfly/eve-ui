@@ -6,6 +6,7 @@
         :data="data"
         @handle-submit="handleSubmit"
         :right-button-width="200"
+        @clear="clear"
       >
       </eve-select-form>
     </div>
@@ -116,6 +117,10 @@ export default {
     handleSubmit (emit) {
       console.log(emit)
     },
+
+    clear (emit) {
+      console.log(emit)
+    }
   }
 }
 </script>
