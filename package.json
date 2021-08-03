@@ -1,6 +1,6 @@
 {
   "name": "eve-ui",
-  "version": "1.0.51",
+  "version": "1.0.52",
   "description": "eve-ui",
   "private": false,
   "license": "MIT",
@@ -26,7 +26,7 @@
     "node:edp": "node ./build/node.edit.package.js",
     "node:pa": "node ./build/node.publish.after.js",
     "prepublishOnly": "npm run lib",
-    "publish": "npm version patch -f & npm run node:pa"
+    "publish": "npm run node:pa & npm version patch -f"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.3",
