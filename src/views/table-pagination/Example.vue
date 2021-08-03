@@ -3,7 +3,6 @@
     <eve-table-pagination
       class="home-table-pagination"
       @btn-operate="btnOperate"
-      :delete-message-box="deleteMessageBox"
       @current-change="currentChange"
       :page-size="pageSize"
       :columns="columns"
@@ -21,12 +20,6 @@
 export default {
   data () {
     return {
-      //删除提示
-      deleteMessageBox: {
-        center: false, //是否居中
-        message: '代码是写给人看的，顺便在程序里运行', //消息
-        text: '删除' //删除提示框的标识，当与表格的删除按钮的文本一致时,会弹出提示框
-      },
       pageSize: 20, //一页显示几条
       //表格数据
       data: [

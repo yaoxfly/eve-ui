@@ -545,28 +545,7 @@ export default {
     // 删除弹出框设置
     deleteMessageBox: {
       type: Object,
-      default: () => ({
-        // 删除的内容文本
-        message: '此操作将永久删除该条记录, 是否继续?',
-        // 删除的标题文本
-        title: '提示',
-        // 删除提示框的确定
-        confirmButtonText: '确定',
-        // 删除提示框的取消
-        cancelButtonText: '取消',
-        // 删除弹出框的条件
-        text: '删除',
-        // 是否显示删除取消的提示
-        isCanclePrompt: true,
-        //  是否显示右上角关闭按钮
-        showClose: true,
-        //  是否可通过点击遮罩关闭 MessageBox
-        closeOnClickModal: false,
-        // 是否可通过按下 ESC 键关闭 MessageBox
-        closeOnPressEscape: false,
-        // 是否居中
-        center: false
-      })
+      default: () => { }
     },
 
     // 是否显示默认的序号
@@ -626,7 +605,31 @@ export default {
   },
 
   data () {
-    return {}
+    return {
+      tempDeleteMessageBox: {
+        show: false,
+        // 删除的内容文本
+        message: '此操作将永久删除该条记录, 是否继续?',
+        // 删除的标题文本
+        title: '提示',
+        // 删除提示框的确定
+        confirmButtonText: '确定',
+        // 删除提示框的取消
+        cancelButtonText: '取消',
+        // 删除弹出框的条件
+        text: '删除',
+        // 是否显示删除取消的提示
+        isCanclePrompt: true,
+        //  是否显示右上角关闭按钮
+        showClose: true,
+        //  是否可通过点击遮罩关闭 MessageBox
+        closeOnClickModal: false,
+        // 是否可通过按下 ESC 键关闭 MessageBox
+        closeOnPressEscape: false,
+        // 是否居中
+        center: false
+      }
+    }
   },
 
   mounted () {
@@ -723,6 +726,8 @@ export default {
       return arr
     },
 
+
+
     /** @description  按钮的操作
      * @author yx
      * @param  {Object}  param 参数
@@ -732,21 +737,22 @@ export default {
       let { value, data } = param || {}
       param.data = this.isOnlyGetId ? this.getIdArr(data) : param.data
       const {
-        message = '此操作将永久删除该条记录, 是否继续?',
-        title = '提示',
-        confirmButtonText = '确定',
-        cancelButtonText = '取消',
-        text = '删除',
-        isCanclePrompt = true,
-        showClose = true,
-        closeOnClickModal = false,
-        closeOnPressEscape = false,
-        center = false
+        message,
+        title,
+        confirmButtonText,
+        cancelButtonText,
+        text,
+        isCanclePrompt,
+        showClose,
+        closeOnClickModal,
+        closeOnPressEscape,
+        center,
+        show
+      } = this.tempDeleteMessageBox || {}
 
-      } = this.deleteMessageBox || {}
       const keyMap = {
         [text]: () => {
-          this.$confirm(message, title, {
+          show && this.$confirm(message, title, {
             confirmButtonText: confirmButtonText,
             cancelButtonText: cancelButtonText,
             type: 'warning',
@@ -755,11 +761,6 @@ export default {
             closeOnPressEscape: closeOnPressEscape,
             center: center
           }).then(() => {
-            // this.$message({
-            //   type: 'success',
-            //   message: '删除成功!'
-            // })
-            // console.log(param)
             this.$emit('btn-operate', param)
           }).catch(() => {
             isCanclePrompt && this.$message({
@@ -775,6 +776,7 @@ export default {
       value = keyMap[value] && text === value ? value : 'default'
       keyMap[value]()
     },
+
 
     /**@description  用来重新格式化传进来的columns字段
      * @author yx
@@ -846,6 +848,17 @@ export default {
     setJump () {
       if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump')[0].childNodes[0].nodeValue = this.jumpText
+    }
+  },
+
+
+  watch: {
+    deleteMessageBox: {
+      handler (newValue) {
+        Object.assign(this.tempDeleteMessageBox, newValue)
+        console.log(newValue, 1)
+      },
+      immediate: true
     }
   },
 

@@ -3,7 +3,12 @@
     <div class="layout__header-container">
       <div class="layout__header">
         <div class="layout__header-main">
-          <span class="layout__header-title">eve-ui</span>
+          <span class="layout__header-title"
+            >eve-ui
+            <label class="layout__header-vision"
+              >最新版本{{ version }}</label
+            ></span
+          >
         </div>
         <div class="layout__header-introduce">
           基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增新的属性、事件、方法、slot等；
@@ -42,14 +47,17 @@
 </template>
 
 <script>
+
 // @ is an alias to /src
+import versionJson from '../../version.json'
 import { routes } from '../router/index'
 export default {
   name: 'Layout',
   data () {
     return {
       data: [],
-      scrollTop: ''
+      scrollTop: '',
+      version: versionJson.version
     }
   },
   mounted () {
@@ -103,6 +111,10 @@ export default {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+    }
+    &-vision {
+      font-size: 14px;
+      color: #969696;
     }
   }
   &__header-main {
