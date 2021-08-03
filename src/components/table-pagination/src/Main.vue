@@ -752,22 +752,26 @@ export default {
 
       const keyMap = {
         [text]: () => {
-          show && this.$confirm(message, title, {
-            confirmButtonText: confirmButtonText,
-            cancelButtonText: cancelButtonText,
-            type: 'warning',
-            showClose: showClose,
-            closeOnClickModal: closeOnClickModal,
-            closeOnPressEscape: closeOnPressEscape,
-            center: center
-          }).then(() => {
-            this.$emit('btn-operate', param)
-          }).catch(() => {
-            isCanclePrompt && this.$message({
-              type: 'info',
-              message: '已取消删除'
+          if (show) {
+            this.$confirm(message, title, {
+              confirmButtonText: confirmButtonText,
+              cancelButtonText: cancelButtonText,
+              type: 'warning',
+              showClose: showClose,
+              closeOnClickModal: closeOnClickModal,
+              closeOnPressEscape: closeOnPressEscape,
+              center: center
+            }).then(() => {
+              this.$emit('btn-operate', param)
+            }).catch(() => {
+              isCanclePrompt && this.$message({
+                type: 'info',
+                message: '已取消删除'
+              })
             })
-          })
+          } else {
+            this.$emit('btn-operate', param)
+          }
         },
         default: () => {
           this.$emit('btn-operate', param)
