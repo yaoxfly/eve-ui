@@ -733,7 +733,6 @@ export default {
      * @param  {Object}  param 参数
      */
     btnOperate (param) {
-      console.log(param)
       let { value, data } = param || {}
       param.data = this.isOnlyGetId ? this.getIdArr(data) : param.data
       const {
