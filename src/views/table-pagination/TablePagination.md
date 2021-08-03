@@ -335,10 +335,11 @@ export default {
 
 >  操作列的按钮配置, `type`属性中,除了`text`是文本类型的按钮，其他都是普通按钮类型,不同参数分别代表不同颜色。
 
-###  Delete-Message-Box Attributes
+###  delete-message-box
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
+| show  | 是否显示删除提示 |boolean| — | false|
 | message  | 提示内容 |string| —| 此操作将永久删除该条记录, 是否继续?|
 | title |提示 | string  | —   | 提示 |
 | confirmButtonText   | 确认的文字  | string  | —  | 确定  |
@@ -349,7 +350,6 @@ export default {
 | closeOnClickModal  | 点击模态框隐藏对话框   | boolean  | —   | false   |
 | closeOnPressEscape   | 点击Esc隐藏对话框 |   boolean | —  | false |
 | center  | 居中 | boolean | —  |false |
-
 
 ###  Table Event
 | 事件名称 | 说明 | 回调参数 | 
