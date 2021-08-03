@@ -457,8 +457,12 @@ $--pagination-width-height: 22px;
 $--eve-tree-height: 24px;
 .eve-tree__custom-tree-label {
   font-size: $--font-size-content;
-  color: $--color-text-primary;
 }
+
+.el-tree {
+  color: $--color-text-primary !important;
+}
+
 .eve-tree__filter {
   margin-bottom: 2px;
   .el-input--suffix .el-input__inner {
