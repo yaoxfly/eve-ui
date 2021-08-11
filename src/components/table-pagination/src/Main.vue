@@ -6,6 +6,7 @@
 <template>
   <div class="eve-table-pagination">
     <el-table
+      ref="eveTable"
       :data="tableData"
       :stripe="stripe"
       :border="border"
@@ -442,7 +443,7 @@ export default {
     // 分页-每页显示个数选择器的选项设置
     pageSizes: {
       type: Array,
-      default: () => [10, 20, 30, 40, 50, 100]
+      default: () => [10, 15, 20, 25, 30, 40, 50, 100]
     },
 
     // 分页-每页显示条目个数，支持 .sync 修饰符
@@ -851,7 +852,13 @@ export default {
     setJump () {
       if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump')[0].childNodes[0].nodeValue = this.jumpText
+    },
+
+    //获取element-ui table的ref
+    getElTableRef () {
+      return this.$refs.eveTable
     }
+
   },
 
 

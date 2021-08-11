@@ -18,4 +18,13 @@
       padding-left: 16px;
     }
   }
+
+  /*解决ie下的100 */
+  .el-table__header {
+    width: 100% !important;
+  }
+
+  .el-table__body {
+    width: 100% !important;
+  }
 }

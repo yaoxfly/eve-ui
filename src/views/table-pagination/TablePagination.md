@@ -369,6 +369,13 @@ export default {
 | size-change | 每页显示的条数切换  | 页面切换的条数 |
 
 
+### Table Methods
+| 事件名称 | 说明 | 回调参数 | 
+| ----| ----| --- | 
+| getElTableRef  |当前方法可获取element-ui的Table组件的ref,可使用table组件的所有方法 | — |
+
+
+
 ###  Slot
 | name                 | 说明                       |
 | -------------------- | ---------------------------|
