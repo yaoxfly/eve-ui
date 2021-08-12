@@ -367,7 +367,7 @@ body {
         //input内边距
         padding: $eveCommonInputPadding;
         //input高度
-        height: $eveCommonInputHeight;
+        height: $eveCommonInputHeight !important;
         line-height: 1;
       }
     }
