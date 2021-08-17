@@ -164,16 +164,10 @@ export default {
 
           render: (h, data) => {
             const { row: { address } = {} } = data
-            return h('span', {
-              //和`v-bind:style`一样的 API
-              style: {
-                fontSize: '14px'
-              },
-              // DOM 属性
-              domProps: {
-                innerHTML: address + '我是被转换的数据1'
-              },
-            })
+            return (
+              <div>
+                <span style="fontSize: '14px'">{address}我是被转换的数据1</span>
+              </div >)
           },
           // formatData: (data) => {
           //   console.log(data, 11)
@@ -210,6 +204,8 @@ export default {
       ]
     }
   },
+
+
 
   methods: {
     // rowClassName ({ row, rowIndex }) {

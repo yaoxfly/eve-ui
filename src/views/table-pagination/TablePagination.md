@@ -293,7 +293,7 @@ export default {
 | width  | 当前列的宽度   | number | — | —  |
 | fixed  | 列是否固定在左侧或者右侧，true 表示固定在左侧   | string, boolean | true, left, right | — |
 | type   | 列的类型 | string |  selection(选择框)、index(序号)、operate(操作)、tree(下拉树)  | 普通内容 |
-| show-overflow-tooltip  | 当内容过长被隐藏时显示 tooltip   | boolean |  — | true  |
+| showOverflowTooltip  | 当内容过长被隐藏时显示 tooltip   | boolean |  — | true  |
 | formatData | 简单改变当前列的文本值,复杂用render或者插槽    | Function(data) |  — | —  |
 | render  |  使用render函数自定义内容 |  Function(h,data)  | — | —  |
 | sortable  |  对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件 |  boolean, string  | true, false, 'custom' | false  |
