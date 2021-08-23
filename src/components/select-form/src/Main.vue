@@ -290,6 +290,7 @@
                     v-model="model[item.prop]"
                     :placeholder="item.placeholder || '请选择'"
                     clearable
+                    filterable
                     :multiple="item.multiple"
                     :collapse-tags="item.collapseTags"
                     :multiple-limit="item.multipleLimit || 0"

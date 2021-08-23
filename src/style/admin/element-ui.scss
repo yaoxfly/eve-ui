@@ -845,6 +845,12 @@ $--eve-tree-height: 24px;
   font-size: $--font-size-content-small !important;
 }
 
+/*-----select框------*/
+
+.el-select-dropdown__empty {
+  font-size: $--font-size-content !important;
+}
+
 /*-----下拉树------*/
 .eve-drop-down-tree__content {
   padding: 0;
