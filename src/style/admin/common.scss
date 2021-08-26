@@ -387,6 +387,20 @@ body {
     }
   }
 
+  /*********autocomplete下拉复选框[start]*********/
+  &-autocomplete {
+    &.el-autocomplete {
+      width: 100%;
+      .el-input__inner {
+        //input内边距
+        padding: $eveCommonInputPadding !important;
+        //input高度
+        height: $eveCommonInputHeight !important;
+        line-height: 1 !important;
+      }
+    }
+  }
+
   /*********slider滑块[start]*********/
   &-slider {
     &.el-slider {
