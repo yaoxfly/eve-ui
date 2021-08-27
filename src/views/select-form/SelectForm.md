@@ -425,8 +425,8 @@ export default {
 | labelWidth  | 表单左边的文本的宽度  | number | — | 没写默认是跟着全局属性labelWidth| 
 | maxlength  | input类型的表单的原生属性，最大输入长度  | number | — | 32 | 
 | rangeSeparator  | 选择范围时的分隔符  | string | — | '-' |
-| startPlaceholder  | 范围选择时开始日期的占位内容  | string | — | 开始日期  |
-| endPlaceholder  | 范围选择时结束日期的占位内容  | string | — | 结束日期  |
+| startPlaceholder  | 范围选择时开始日期的占位内容  | string | — | 开始日期 |
+| endPlaceholder  | 范围选择时结束日期的占位内容  | string | — | 结束日期 |
 | label-padding-left  | 表单域标签距离左边的距离,当前面的表单有表单验证时，标签名可能会被遮住,可用当前属性设置为20| string、number | — | — |
 | multiple | 当表单类型为select时,可设置select为多选,同时model双向绑定值要改为[] | boolean | — | false |
 | collapseTags | 当表单类型为select时,多选时是否将选中值按文字的形式展示 | boolean | — | false |
