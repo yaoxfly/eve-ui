@@ -162,8 +162,12 @@
                       pickerFormat(item.format, item.pickerType, item.type)
                     "
                     :range-separator="item.rangeSeparator"
-                    :start-placeholder="item.startPlaceholder"
-                    :end-placeholder="item.endPlaceholder"
+                    :start-placeholder="
+                      item.startPlaceholder ? item.startPlaceholder : '开始日期'
+                    "
+                    :end-placeholder="
+                      item.endPlaceholder ? item.endPlaceholder : '结束日期'
+                    "
                     @change="change(model[item.prop])"
                   ></el-date-picker>
                 </slot>
