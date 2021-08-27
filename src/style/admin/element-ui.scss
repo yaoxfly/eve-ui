@@ -668,6 +668,18 @@ $--eve-tree-height: 24px;
   font-size: $--font-size-small;
   padding: $eveCommonInputPadding;
 }
+//超小版本下拉建议搜索弹出框样式-高度和边距取input输入框的高度和边距变量
+.el-autocomplete-suggestion {
+  .el-autocomplete-suggestion__wrap {
+    padding: 6px 0;
+  }
+  li {
+    height: $eveCommonInputHeight;
+    line-height: $eveCommonInputHeight;
+    font-size: $--font-size-small;
+    padding: $eveCommonInputPadding;
+  }
+}
 //超小版本下拉多选弹出框样式-高度和边距取input输入框的高度和边距变量
 .el-cascader-node {
   height: $eveCommonInputHeight;
