@@ -27,10 +27,8 @@
       :destroy-on-close="destroyOnClose"
       :fullscreen="fullscreen"
       :append-to-body="appendToBody"
-      @closed="closed"
-      @close="close"
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="new$listeners"
     >
       <template #title>
         <slot name="title">
@@ -248,7 +246,20 @@ export default {
     }
   },
 
-  computed: {},
+
+  computed: {
+    new$listeners () {
+      return Object.assign(
+        {},
+        this.$listeners,
+        {
+          close: this.close,
+          closed: this.closed
+        }
+      )
+    }
+  },
+
   watch: {
     visible: {
       handler (newValue) {
@@ -300,7 +311,7 @@ export default {
       this.$emit('update:visible', false)
       this.$emit('close')
     }
-  }
+  },
 }
 </script>
 

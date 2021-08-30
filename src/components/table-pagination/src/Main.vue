@@ -23,14 +23,9 @@
       :row-key="rowKey"
       :tree-props="treeProps"
       :lazy="lazy"
-      @current-change="currentRowChange"
-      @select="select"
-      @select-all="selectAll"
-      @sort-change="sortChange"
-      @filter-change="filterChange"
       v-bind="$attrs"
+      v-on="new$listeners"
     >
-      <!-- v-on="$listeners" -->
       <!--暂无数据 -->
       <template #empty>
         <slot name="empty">暂无数据</slot>
@@ -635,6 +630,7 @@ export default {
 
   mounted () {
     this.setJump()
+    // this.toggleRowSelection()
   },
 
   components: {
@@ -662,21 +658,6 @@ export default {
       this.$emit('select-all', emit)
     },
 
-    /** @description 当表格的排序条件发生变化的时候会触发该事件
-      * @author yx
-      * @param  {Number}  val 
-   */
-    sortChange (val) {
-      this.$emit('sort-change', val)
-    },
-
-    /** @description 当表格的筛选条件发生变化的时候会触发该事件，参数的值是一个对象，对象的 key 是 column 的 columnKey，对应的 value 为用户选择的筛选条件的数组。
-         * @author yx
-         * @param  {Number}  val 
-      */
-    filterChange (filters) {
-      this.$emit('filter-change', filters)
-    },
 
 
     /** @description 自定义序号
@@ -708,8 +689,6 @@ export default {
 
 
 
-
-
     /* ---------自定义的函数----------- */
 
     /** @description 获取id数组
@@ -726,8 +705,6 @@ export default {
       }
       return arr
     },
-
-
 
     /** @description  按钮的操作
      * @author yx
@@ -835,7 +812,6 @@ export default {
        */
     formatData (data, flag = false, num = 1) {
       const { children } = this.treeProps || {}
-
       this.isFormatData && data.forEach(item => {
         item[this.zIndex] = num
         if (flag) {
@@ -857,10 +833,8 @@ export default {
     //获取element-ui table的ref
     getElTableRef () {
       return this.$refs.eveTable
-    }
-
+    },
   },
-
 
   watch: {
     deleteMessageBox: {
@@ -879,9 +853,23 @@ export default {
     },
     //新的表格数据，用来重新格式化传进来的Data字段，
     tableData () {
-      const arr = Array.from(JSON.parse(JSON.stringify(this.data)))
+      //用了jSON.parse 会导致toggleRowSelection失效
+      // const arr = Array.from(JSON.parse(JSON.stringify(this.data)))
+      const arr = this.data
       return this.formatData(arr)
-    }
+    },
+
+    new$listeners () {
+      return Object.assign(
+        {},
+        this.$listeners,
+        {
+          'current-change': this.currentRowChange,
+          select: this.select,
+          'select-all': this.selectAll
+        }
+      )
+    },
   }
 }
 </script>

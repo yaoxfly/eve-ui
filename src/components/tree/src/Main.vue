@@ -29,16 +29,8 @@
       :allow-drag="allowDrag"
       :draggable="draggable"
       :highlight-current="highlightCurrent"
-      @node-drag-start="nodeDragStart"
-      @node-drag-enter="nodeDragEnter"
-      @node-drag-leave="nodeDragLeave"
-      @node-drag-over="nodeDragOver"
-      @node-drag-end="nodeDragEnd"
-      @node-drop="nodeDrop"
-      @check-change="checkChange"
-      @node-click="nodeClick"
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="new$listeners"
     >
       <div
         class="eve-tree__custom-tree-node"
@@ -304,16 +296,7 @@ export default {
   },
 
   methods: {
-    /**@description  节点选中状态发生变化时的回调
-     * @author yx
-     * @param  {Object}  data  传递给data属性的数组中该节点所对应的对象
-     * @param  {Boolean}  checked 节点本身是否被选中
-     * @param  {Boolean}  isChecked 节点的子树中是否有被选中的节点
-     */
-    checkChange (data, checked, isChecked) {
-      // console.log(data, checked, isChecked)
-      this.$emit('check-change', data, checked, isChecked)
-    },
+
 
     /**@description  节点被点击时的回调
      * @author yx
@@ -329,7 +312,6 @@ export default {
       this.label = data[this.props.label]
       this.tempValue = data[this.nodeKey]
       this.setCurrentKey(this.id)
-      // console.log(data, node, indeterminate, 111111)
       this.$emit('node-click', data, node, indeterminate)
     },
 
@@ -343,6 +325,7 @@ export default {
     /**@description  通过key获取节点
      * @param  {Boolean}  leafOnly 是否仅返回被选中的叶子节点的 keys
      * @author yx
+     * 
      */
     getCheckedKeys (leafOnly = false) {
       return this.$refs.tree.getCheckedKeys(leafOnly)
@@ -384,72 +367,6 @@ export default {
       return this.filterNodeMethod(value, data, node, this.props)
     },
 
-    /**@description 节点开始拖拽时触发的事件
-     * @author yx
-     * @param  {Object}  node 被拖拽节点对应的 Node
-     * @param  {Object}  ev event
-     */
-    nodeDragStart (node, ev) {
-      // console.log('drag start', node)
-      this.$emit('node-drag-start', node, ev)
-    },
-
-    /**@description  拖拽进入其他节点时触发的事件
-     * @author yx
-     * @param  {Object}  draggingNode 被拖拽节点对应的 Node
-     * @param  {Object}  dropNode 所进入节点对应的 Node
-     * @param  {Object}  ev event
-     */
-    nodeDragEnter (draggingNode, dropNode, ev) {
-      // console.log('tree drag enter: ', dropNode.label)
-      this.$emit('node-drag-enter', draggingNode, dropNode, ev)
-    },
-
-    /**@description  拖拽离开某个节点时触发的事件
-      * @author yx
-      * @param  {Object}  draggingNode 被拖拽节点对应的 Node
-      * @param  {Object}  dropNode 所进入节点对应的 Node
-      * @param  {Object}  ev event
-    */
-    nodeDragLeave (draggingNode, dropNode, ev) {
-      // console.log('tree drag leave: ', dropNode.label)
-      this.$emit('node-drag-leave', draggingNode, dropNode, ev)
-    },
-
-    /**@description  在拖拽节点时触发的事件（类似浏览器的 mouseover 事件）
-      * @author yx
-      * @param  {Object}  draggingNode 被拖拽节点对应的 Node
-      * @param  {Object}  dropNode 所进入节点对应的 Node
-      * @param  {Object}  ev event
-    */
-    nodeDragOver (draggingNode, dropNode, ev) {
-      // console.log('tree drag over: ', dropNode.label)
-      this.$emit('node-drag-over', draggingNode, dropNode, ev)
-    },
-
-    /**@description  拖拽结束时（可能未成功）触发的事件
-      * @author yx
-      * @param  {Object}  draggingNode 被拖拽节点对应的 Node
-      * @param  {Object}  dropNode 结束拖拽时最后进入的节点（可能为空）
-      * @param  {String}  dropType 被拖拽节点的放置位置
-      * @param  {Object}  ev event
-    */
-    nodeDragEnd (draggingNode, dropNode, dropType, ev) {
-      // console.log('tree drag end: ', dropNode && dropNode.label, dropType)
-      this.$emit('node-drag-end', draggingNode, dropNode, dropType, ev)
-    },
-
-    /**@description 拖拽成功完成时触发的事件
-      * @author yx
-      * @param  {Object}  draggingNode 被拖拽节点对应的 Node
-      * @param  {Object}  dropNode 结束拖拽时最后进入的节点（可能为空）
-      * @param  {String}  dropType 被拖拽节点的放置位置
-      * @param  {Object}  ev event
-    */
-    nodeDrop (draggingNode, dropNode, dropType, ev) {
-      console.log('tree drop: ', dropNode.label, dropType)
-      this.$emit('node-drop', draggingNode, dropNode, dropType, ev)
-    },
 
     /**@description  设置当前选中(高亮)的节点
      * @author yx
@@ -584,7 +501,18 @@ export default {
       },
       immediate: true
     },
+  },
 
+  computed: {
+    new$listeners () {
+      return Object.assign(
+        {},
+        this.$listeners,
+        {
+          'node-click': this.nodeClick
+        }
+      )
+    }
   }
 }
 </script>

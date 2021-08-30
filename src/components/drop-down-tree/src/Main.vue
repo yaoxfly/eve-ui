@@ -50,11 +50,9 @@
               :default-expanded-keys="defaultExpandedKeys"
               :accordion="accordion"
               :auto-expand-parent="autoExpandParent"
-              @check="check"
-              @node-click="nodeClick"
               ref="tree"
               v-bind="$attrs"
-              v-on="$listeners"
+              v-on="new$listeners"
             ></el-tree>
           </section>
         </el-scrollbar>
@@ -501,7 +499,20 @@ export default {
       },
       immediate: true
     },
-  }
+  },
+
+  computed: {
+    new$listeners () {
+      return Object.assign(
+        {},
+        this.$listeners,
+        {
+          check: this.check,
+          'node-click': this.nodeClick
+        }
+      )
+    }
+  },
 }
 </script>
 
