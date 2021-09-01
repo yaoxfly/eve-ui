@@ -1,0 +1,213 @@
+/*
+* @Author: yx
+* @Description: 颜色主题变量
+*/
+
+/*element-ui*/
+
+/* -----基础颜色----- */
+
+// 白色
+$--color-white: #ffffff !default;
+
+/*主色*/
+// 主题色(front)
+$--color-primary: #1658a0 !default;
+// d9ecff
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
+// ecf5ff-- 按钮填充样式2
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
+// 66b1ff-- 鼠标悬停
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
+// 3A8EE6-- 鼠标按下
+
+// A0CFFF-- 禁用
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
+
+/*辅助色*/
+// 黑色
+$--color-black: #000000 !default;
+
+// 成功
+$--color-success: #67c23a !default;
+//E1F3D8
+$--color-success-light: mix($--color-white, $--color-success, 80%) !default;
+//F0F9EB
+$--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
+
+// 警告
+$--color-warning: #e6a23c !default;
+//FAECD8
+$--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
+//FDF6EC
+$--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
+
+// 危险
+$--color-danger: #f56c6c !default;
+//FDE2E2
+$--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
+//FEF0F0
+$--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
+
+// 信息
+$--color-info: #909399 !default;
+//E9E9EB
+$--color-info-light: mix($--color-white, $--color-info, 80%) !default;
+//F4F4F5
+$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+
+/*-----文本颜色-----*/
+//主要文字
+$--color-text-primary: #303133 !default;
+//常规文字
+$--color-text-regular: #606266 !default;
+//次要文字
+$--color-text-secondary: #909399 !default;
+//占位文字
+$--color-text-placeholder: #c0c4cc !default;
+
+/*-----边框颜色-----*/
+//一级边框
+$--border-color-base: #dcdfe6 !default;
+//二级边框
+$--border-color-light: #e4e7ed !default;
+//三级边框
+$--border-color-lighter: #ebeef5 !default;
+//四级边框
+$--border-color-extra-light: #f2f6fc !default;
+
+/*-----字体大小-----*/
+//主标题
+$--font-size-extra-large: 20px !default;
+//标题
+$--font-size-large: 18px !default;
+//小标题
+$--font-size-medium: 16px !default;
+//正文
+$--font-size-base: 14px !default;
+//正文（小）
+$--font-size-small: 13px !default;
+//辅助文字
+$--font-size-extra-small: 12px !default;
+
+// Background--背景
+/// color|1|Background Color|4
+$--background-color-base: #f5f7fa !default;
+
+// Box-shadow --阴影
+/// boxShadow|1|Shadow|1
+$--box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04) !default;
+// boxShadow|1|Shadow|1
+$--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.12) !default;
+/// boxShadow|1|Shadow|1
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
+
+/* Typography--字体
+-------------------------- */
+$--font-color-disabled-base: #bbb !default;
+
+/* Size--形状
+-------------------------- */
+$--size-base: 14px !default;
+
+/* z-index--层级
+-------------------------- */
+$--index-normal: 1 !default;
+$--index-top: 1000 !default;
+$--index-popper: 2000 !default;
+
+/* Icon--字体图标
+-------------------------- */
+$--icon-color: #666 !default;
+
+/* Checkbox
+-------------------------- */
+$--checkbox-disabled-input-fill: #edf2fc !default;
+
+/* Select
+-------------------------- */
+$--select-multiple-input-color: #666 !default;
+$--select-dropdown-empty-color: #999 !default;
+
+/* Message --消息
+-------------------------- */
+$--message-background-color: #edf2fc !default;
+
+/* Cascader
+-------------------------- */
+$--cascader-tag-background: #f0f2f5;
+
+/* Tab
+-------------------------- */
+$--tab-border-line: 1px solid #e4e4e4 !default;
+
+/* Dialog
+-------------------------- */
+$--dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !default;
+
+/* DatePicker
+--------------------------*/
+$--datepicker-inner-border-color: #e4e4e4 !default;
+$--datepicker-cell-hover-color: #fff !default;
+/* Calendar
+--------------------------*/
+$--calendar-selected-background-color: #f2f8fe !default;
+
+/* Avatar
+--------------------------*/
+/// color||Color|0
+$--avatar-font-color: #fff !default;
+/// color||Color|0
+$--avatar-background-color: #c0c4cc !default;
+
+/*自定义的变量*/
+
+/*---字体---*/
+
+// 标题
+$--font-size-title: 14px !default;
+// 内容
+$--font-size-content: 13px !default;
+// 内容(小)
+$--font-size-content-small: 12px !default;
+
+/*---菜单---*/
+
+//宽度
+$--eve-menu-width: 256px !default;
+/*---header组件---*/
+
+//背景色
+$--eve-header-background: #3379cc !default;
+
+//自定义的高度、对话框的高度、footer的高度等
+$--height: 40px !default;
+
+/*---Form---*/
+
+//表格类表单[边框]颜色-d9ecff
+$tableBorderColor: $--color-primary-light-8 !default;
+
+//form-item__label背景色-ecf5ff
+$LabelbgColor: $--color-primary-light-9 !default;
+
+//form-item__label文字颜色（常规文字）
+$LabelColor: $--color-text-regular !default;
+
+//form-item__label文字大小 (正文小)-13px
+$LabelFontSize: $--font-size-small !default;
+
+//form-item__label边距设置
+$LabelPadding: 8px 12px 8px 4px !default;
+
+//form-item__content边距设置
+$ContentPadding: 3px 30px 3px 4px !default;
+
+//eve-common-input高度
+$eveCommonInputHeight: 26px !default; //mini为28px,目前设置比mini还小
+
+//eve-common-input内部边距
+$eveCommonInputPadding: 0 4px !default;
+
+//eve-common-input prefix、suffix图标距离文字间距
+$eveCommonInputPrefixSuffix: 30px !default;

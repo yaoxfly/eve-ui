@@ -203,7 +203,7 @@ body {
         padding-left: $eveCommonInputPrefixSuffix;
       }
       .el-input__icon {
-        line-height: $eveCommonInputHeight;
+        line-height: 1;
       }
     }
     //多行文本框
