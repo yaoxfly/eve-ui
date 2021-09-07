@@ -1,20 +1,56 @@
 /*-----按钮------*/
 
 //超小型按钮 size=mini
+
+.el-button {
+  font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
+  min-width: 120px;
+}
+
 .el-button--mini {
-  padding: 5.5px 12px;
+  // padding: 10px 27px;
+  height: 40px;
   font-size: $--font-size-content;
 }
 
 //小型按钮  size=small
 .el-button--small {
-  padding: 8px 16px;
-  font-size: $--font-size-content;
+  // padding: 11px 27px;
+  height: 44px;
+  font-size: $--font-size-extra-large;
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus,
+.el-button--primary:active {
+  background: $--color-primary--assist !important;
+  border-color: $--color-primary--assist !important;
+}
+
+.el-button--default {
+  border: 1px solid $--border-color-button;
+}
+
+.el-button.is-disabled,
+.el-button.is-disabled:hover,
+.el-button.is-disabled:focus {
+  border-color: $--border-color-button--disabled;
+}
+
+.el-button--text {
+  height: 40px;
+}
+
+.el-button--text:hover,
+.el-button--text:focus,
+.el-button--text:active {
+  color: $--color-primary--assist !important;
 }
 
 /*-----卡片------*/
 .el-card__header {
-  padding: 10px 16px; //调整高度40
+  padding: 7px 16px; //调整高度40
+  height: 40px;
   font-size: $--font-size-title;
   font-weight: bold;
   color: $--color-text-primary;
@@ -317,7 +353,7 @@
 }
 
 /*-----分页------*/
-$--pagination-width-height: 22px;
+$--pagination-width-height: 30px;
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .btn-next {
   height: $--pagination-width-height;
@@ -337,7 +373,7 @@ $--pagination-width-height: 22px;
 .el-pagination.is-background .el-pager li {
   min-width: $--pagination-width-height;
   height: $--pagination-width-height;
-  line-height: 22px;
+  line-height: $--pagination-width-height;
 }
 
 .el-pagination__sizes .el-input .el-input__inner {
@@ -366,7 +402,43 @@ $--pagination-width-height: 22px;
 
 .el-pagination__sizes {
   .el-input--mini .el-input__icon {
-    line-height: 22px;
+    line-height: $--pagination-width-height;
+  }
+}
+
+.el-pagination.is-background .el-pager li {
+  color: $--color-text-secondary;
+  font-weight: normal;
+}
+
+.el-pagination {
+  .el-select .el-input .el-input__inner {
+    color: $--color-text-secondary;
+    font-weight: normal;
+  }
+}
+
+.el-pagination__jump {
+  .el-input__inner {
+    color: $--color-text-secondary;
+    font-weight: normal;
+  }
+}
+
+.el-pagination {
+  user-select: none;
+  &::after {
+    display: inline-block;
+    content: 'GO';
+    height: $--pagination-width-height;
+    color: $--color-text-secondary;
+    font-weight: normal;
+    line-height: $--pagination-width-height;
+    margin-left: 4px;
+    background: $--color-info-lighter;
+    font-size: $--font-size-content-small;
+    padding: 0 4px;
+    cursor: pointer;
   }
 }
 

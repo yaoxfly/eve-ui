@@ -13,15 +13,9 @@ $--color-white: #ffffff !default;
 /*主色*/
 // 主题色(front)
 $--color-primary: #1658a0 !default;
-// d9ecff
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
-// ecf5ff-- 按钮填充样式2
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
-// 66b1ff-- 鼠标悬停
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
-// 3A8EE6-- 鼠标按下
-
-// A0CFFF-- 禁用
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
 
 /*辅助色*/
@@ -43,7 +37,7 @@ $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
 $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
 
 // 危险
-$--color-danger: #f56c6c !default;
+$--color-danger: #b82d2e !default;
 //FDE2E2
 $--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
 //FEF0F0
@@ -58,13 +52,13 @@ $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
 
 /*-----文本颜色-----*/
 //主要文字
-$--color-text-primary: #303133 !default;
+$--color-text-primary: #000000 !default;
 //常规文字
-$--color-text-regular: #606266 !default;
+$--color-text-regular: #333333 !default;
 //次要文字
-$--color-text-secondary: #909399 !default;
+$--color-text-secondary: #666666 !default;
 //占位文字
-$--color-text-placeholder: #c0c4cc !default;
+$--color-text-placeholder: #999999 !default;
 
 /*-----边框颜色-----*/
 //一级边框
@@ -82,11 +76,11 @@ $--font-size-extra-large: 20px !default;
 //标题
 $--font-size-large: 18px !default;
 //小标题
-$--font-size-medium: 16px !default;
+$--font-size-medium: 18px !default;
 //正文
-$--font-size-base: 14px !default;
+$--font-size-base: 16px !default;
 //正文（小）
-$--font-size-small: 13px !default;
+$--font-size-small: 14px !default;
 //辅助文字
 $--font-size-extra-small: 12px !default;
 
@@ -163,13 +157,14 @@ $--avatar-background-color: #c0c4cc !default;
 /*自定义的变量*/
 
 /*---字体---*/
-
 // 标题
-$--font-size-title: 14px !default;
+$--font-size-title-big: 20px !default;
+// 小标题
+$--font-size-title: 18px !default;
 // 内容
-$--font-size-content: 13px !default;
+$--font-size-content: 16px !default;
 // 内容(小)
-$--font-size-content-small: 12px !default;
+$--font-size-content-small: 14px !default;
 
 /*---菜单---*/
 
@@ -211,3 +206,18 @@ $eveCommonInputPadding: 0 4px !default;
 
 //eve-common-input prefix、suffix图标距离文字间距
 $eveCommonInputPrefixSuffix: 30px !default;
+
+/*--按钮边框颜色--*/
+$--border-color-button: #303133 !default;
+$--border-color-button--disabled: #999999 !default;
+
+/*主题辅助色*/
+//鼠标悬停
+$--color-primary--assist: #105cb0 !default;
+//主按钮颜色
+$--color-primary--main: #fe6e4c !default;
+$--color-primary--main-light-2: mix(
+  $--color-white,
+  $--color-primary--main,
+  20%
+) !default;

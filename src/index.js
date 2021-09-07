@@ -13,6 +13,7 @@ import main from './components/main'
 import tagViews from './components/tag-views'
 import dropDownTree from './components/drop-down-tree'
 import iframe from './components/iframe'
+import { setEveTablePagination } from './config/index.js'
 const components = [
     tablePagination, dialog, selectForm, menu, header, richText, tree,
     scroll, breadcrumb, upload, container, main,
@@ -21,12 +22,14 @@ const components = [
     iframe
 ]
 // 定义 install 方法
-const install = function (Vue) {
+const install = function (Vue, option = {}) {
     if (install.installed) return
     install.installed = true
     // 遍历并注册全局组件
     components.forEach(component => Vue.component(component.name, component))
+    setEveTablePagination(Vue, option)
 }
+
 //  全局引用可自动安装
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)

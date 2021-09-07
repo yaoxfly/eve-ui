@@ -54,7 +54,7 @@
             <el-table-column
               :label="item.label"
               :width="item.width"
-              :key="`eve-table-pagination${index}`"
+              :key="`eve-table-pagination-check${index}`"
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
@@ -67,7 +67,7 @@
             <el-table-column
               :label="item.label"
               :width="item.width ? item.width : 186"
-              :key="`eve-table-pagination${index}`"
+              :key="`eve-table-pagination-operate${index}`"
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
@@ -99,7 +99,7 @@
                     <!-- 按钮 -->
                     <el-button
                       v-else
-                      :key="`eve-table-pagination-button${index}`"
+                      :key="`eve-table-pagination-buttons${index}`"
                       :type="element.type ? element.type : 'primary'"
                       :plain="element.plain ? element.plain : false"
                       :round="element.round ? element.round : false"
@@ -136,7 +136,7 @@
               :prop="item.prop"
               :label="item.label"
               :width="item.width"
-              :key="`eve-table-pagination${index}`"
+              :key="`eve-table-pagination-content${index}`"
               :fixed="item.fixed"
               :type="item.type"
               :sortable="item.sortable"
@@ -173,7 +173,7 @@
     </el-table>
     <el-pagination
       background
-      :layout="layout"
+      :layout="tempLayout"
       :total="total"
       :small="small"
       :page-size="pageSize"
@@ -190,6 +190,7 @@
   </div>
 </template>
 <script>
+
 import render from './render.js'
 export default {
   name: 'EveTablePagination',
@@ -421,7 +422,7 @@ export default {
     // 分页-布局属性
     layout: {
       type: String,
-      default: () => 'total,prev,pager,next,sizes,jumper'
+      default: () => ''
     },
     // 分页-总数
     total: {
@@ -596,7 +597,7 @@ export default {
     // 分页-前往的文本
     jumpText: {
       type: String,
-      default: '前往'
+      default: ''
     }
   },
 
@@ -624,7 +625,10 @@ export default {
         closeOnPressEscape: false,
         // 是否居中
         center: false
-      }
+      },
+
+      tempLayout: 'total,prev,pager,next,sizes,jumper',
+      tempJumpText: '前往'
     }
   },
 
@@ -827,20 +831,40 @@ export default {
 
     setJump () {
       if (!this.isShowPagination) return
-      document.querySelectorAll('.el-pagination__jump')[0].childNodes[0].nodeValue = this.jumpText
+      document.querySelectorAll('.el-pagination__jump').forEach(item => {
+        item.childNodes[0].nodeValue = this.tempJumpText
+      })
     },
 
     //获取element-ui table的ref
     getElTableRef () {
       return this.$refs.eveTable
     },
+
+    //获取总页数
+    getPageCount () {
+      return Math.ceil(this.total / this.pageSize)
+    }
   },
 
   watch: {
     deleteMessageBox: {
       handler (newValue) {
         Object.assign(this.tempDeleteMessageBox, newValue)
-        console.log(newValue, 1)
+      },
+      immediate: true
+    },
+
+    layout: {
+      handler (newValue) {
+        this.tempLayout = newValue || this.$eveTablePagination.layout || this.tempLayout
+      },
+      immediate: true
+    },
+
+    jumpText: {
+      handler (newValue) {
+        this.tempJumpText = newValue || this.$eveTablePagination.jumpText || this.tempJumpText
       },
       immediate: true
     }

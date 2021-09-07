@@ -4,6 +4,49 @@ body {
 }
 
 .eve-common {
+  /*-----按钮-----*/
+
+  //主按钮颜色
+  &-main-button {
+    &.el-button--primary {
+      background: $--color-primary--main !important;
+      border-color: $--color-primary--main !important;
+      &:hover,
+      &:focus,
+      &:active {
+        background: $--color-primary--main-light-2 !important;
+        border-color: $--color-primary--main-light-2 !important;
+      }
+    }
+  }
+
+  //表格按钮
+  &-form-button {
+    min-width: 88px;
+  }
+
+  //状态按钮
+
+  //正在进行
+  &-status-button--underway {
+    border-color: $--color-primary !important;
+    color: $--color-primary !important;
+    background-color: #fff !important;
+  }
+  //草稿
+  &-status-button--draft {
+    border-color: $--color-danger !important;
+    color: $--color-danger !important;
+    background-color: #fff !important;
+  }
+
+  //结束
+  &-status-button--end {
+    border-color: $--border-color-button--disabled !important;
+    color: $--color-text-placeholder !important;
+    background-color: #fff !important;
+  }
+
   /*-----表单提交底部按钮-----*/
   &-footer-button {
     position: fixed;
@@ -17,8 +60,10 @@ body {
     align-items: center;
     background: #ffffff;
     .el-button {
-      padding: 8px 16px;
-      font-size: $--font-size-content;
+      font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
+      // padding: 11px 27px;
+      height: 44px;
+      font-size: $--font-size-extra-large;
     }
   }
 
@@ -308,6 +353,7 @@ body {
     padding: 4px 0;
     display: block;
   }
+
   //纵向属性
   &-vertical .el-checkbox {
     padding: 4px 0;
@@ -464,5 +510,6 @@ body {
   &-card__button {
     float: right;
     padding: 3px 0;
+    height: auto;
   }
 }
