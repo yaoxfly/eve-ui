@@ -20,10 +20,10 @@ body {
     }
   }
 
-  //表格按钮
-  &-form-button {
-    min-width: 88px;
-  }
+  // //表格按钮
+  // &-form-button {
+  //   min-width: 88px;
+  // }
 
   //状态按钮
 
@@ -63,7 +63,7 @@ body {
       font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
       // padding: 11px 27px;
       height: 44px;
-      font-size: $--font-size-extra-large;
+      font-size: $--font-size-title;
     }
   }
 
@@ -125,8 +125,8 @@ body {
     .el-tabs__item {
       border: 1px solid $--border-color-lighter;
     }
-    .el-tabs__item:not(:first-child) {
-      margin-left: 2px;
+    .el-tabs__item {
+      margin-left: 10px;
     }
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
       border-top: 1px solid transparent;
@@ -494,16 +494,16 @@ body {
 
   /*********模板页面的间距*********/
   &-formwork__select-form {
-    padding: 3px 5px;
+    padding: 8px 10px;
   }
   &-formwork__button-table {
-    padding: 0 5px;
+    padding: 0 10px;
   }
   &-formwork__table {
-    margin-top: 5px;
+    margin-top: 10px;
   }
   &-formwork__tree {
-    padding: 5px;
+    padding: 10px;
   }
 
   /*********卡片*********/
@@ -511,5 +511,36 @@ body {
     float: right;
     padding: 3px 0;
     height: auto;
+  }
+
+  /*********切换*********/
+  &-change--gray {
+    width: 40px;
+    height: 40px;
+    background: $--color-text-placeholder;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-size: $--font-size-content;
+    font-weight: bold;
+  }
+
+  &-change--blue {
+    width: 40px;
+    height: 40px;
+    background: $--color-primary;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    font-size: $--font-size-content;
+    font-weight: bold;
   }
 }

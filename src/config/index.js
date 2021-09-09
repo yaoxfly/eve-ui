@@ -5,12 +5,14 @@
 export const setEveTablePagination = (Vue, option) => {
   const {
     eveTablePagination: {
-      layout = 'total,prev,pager,next,sizes,jumper',
-      jumpText = '跳转到第'
+      layout,
+      jumpText,
+      isShowPageCount,
     } = {}
   } = option || {}
   Vue.prototype.$eveTablePagination = {
     layout: layout, //布局
-    jumpText: jumpText
+    jumpText: jumpText, //前往的文本修改
+    isShowPageCount: isShowPageCount, //是否显示总页数
   }
 }

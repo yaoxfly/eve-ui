@@ -704,6 +704,10 @@ $--eve-tree-height: 24px;
     @extend .el-button--mini;
   }
 
+  &__error-tip {
+    top: 20%;
+  }
+
   .eve-select-form__from-lable {
     padding-top: 6.6px;
     padding-bottom: 8.6px;

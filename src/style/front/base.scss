@@ -14,7 +14,7 @@ $--color-white: #ffffff !default;
 // 主题色(front)
 $--color-primary: #1658a0 !default;
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
-$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
+$--color-primary-light-9: #f5faff;
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
 
@@ -221,3 +221,11 @@ $--color-primary--main-light-2: mix(
   $--color-primary--main,
   20%
 ) !default;
+
+/*自定义边框颜色*/
+$--border-color: #e9e9e9 !default;
+
+/*自定义背景颜色*/
+
+//步骤条背景
+$--background-color: #e9e9e9 !default;

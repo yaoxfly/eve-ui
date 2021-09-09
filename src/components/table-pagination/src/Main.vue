@@ -575,7 +575,6 @@ export default {
       default: false
     },
 
-
     // 分页-是否显示分页
     isShowPagination: {
       type: Boolean,
@@ -598,7 +597,14 @@ export default {
     jumpText: {
       type: String,
       default: ''
+    },
+
+    //是否显示总页数
+    isShowPageCount: {
+      type: Boolean,
+      default: false
     }
+
   },
 
   data () {
@@ -628,7 +634,8 @@ export default {
       },
 
       tempLayout: 'total,prev,pager,next,sizes,jumper',
-      tempJumpText: '前往'
+      tempJumpText: '前往',
+      tempIsShowPageCount: false,
     }
   },
 
@@ -832,7 +839,7 @@ export default {
     setJump () {
       if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump').forEach(item => {
-        item.childNodes[0].nodeValue = this.tempJumpText
+        item.childNodes[0].nodeValue = this.tempIsShowPageCount ? `共${this.getPageCount()}页， ${this.tempJumpText}` : this.tempJumpText
       })
     },
 
@@ -867,7 +874,16 @@ export default {
         this.tempJumpText = newValue || this.$eveTablePagination.jumpText || this.tempJumpText
       },
       immediate: true
+    },
+
+    isShowPageCount: {
+      handler (newValue) {
+        this.tempIsShowPageCount = newValue || this.$eveTablePagination.isShowPageCount || this.tempIsShowPageCount
+      },
+      immediate: true
     }
+
+
   },
 
   computed: {
