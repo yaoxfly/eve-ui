@@ -27,4 +27,9 @@
   .el-table__body {
     width: 100% !important;
   }
+
+  /**---解决在tap页中表格fixed-right属性显示不全的问题------**/
+  .el-table__fixed-right {
+    height: 100% !important;
+  }
 }
