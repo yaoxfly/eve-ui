@@ -406,6 +406,7 @@ $--pagination-width-height: 30px;
 .el-input--mini .el-input__inner {
   height: $--pagination-width-height;
   line-height: $--pagination-width-height;
+  font-size: $--font-size-base;
 }
 
 .el-pagination__editor.el-input .el-input__inner {
@@ -921,4 +922,13 @@ $--pagination-width-height: 30px;
 .el-checkbox__input.is-checked + .el-checkbox__label {
   //常规文字-#606266
   color: $--color-text-regular;
+}
+
+
+// 下拉多选的值
+.el-tag--mini {
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+  font-size:$--font-size-base;
 }

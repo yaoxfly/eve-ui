@@ -181,16 +181,16 @@ $--height: 40px !default;
 /*---Form---*/
 
 //表格类表单[边框]颜色-d9ecff
-$tableBorderColor: $--color-primary-light-8 !default;
+$tableBorderColor: ''; //$--color-primary-light-8 !default;
 
 //form-item__label背景色-ecf5ff
-$LabelbgColor: $--color-primary-light-9 !default;
+$LabelbgColor: '';//$--color-primary-light-9 !default;
 
 //form-item__label文字颜色（常规文字）
-$LabelColor: $--color-text-regular !default;
+$LabelColor: $--color-text-secondary !default;
 
 //form-item__label文字大小 (正文小)-13px
-$LabelFontSize: $--font-size-small !default;
+$LabelFontSize: $--font-size-base !default;
 
 //form-item__label边距设置
 $LabelPadding: 8px 12px 8px 4px !default;
@@ -199,10 +199,10 @@ $LabelPadding: 8px 12px 8px 4px !default;
 $ContentPadding: 3px 30px 3px 4px !default;
 
 //eve-common-input高度
-$eveCommonInputHeight: 26px !default; //mini为28px,目前设置比mini还小
+$eveCommonInputHeight: 40px !default; //互联网高度较大
 
 //eve-common-input内部边距
-$eveCommonInputPadding: 0 4px !default;
+$eveCommonInputPadding: 0 10px !default;
 
 //eve-common-input prefix、suffix图标距离文字间距
 $eveCommonInputPrefixSuffix: 30px !default;

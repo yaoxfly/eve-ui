@@ -169,21 +169,21 @@ body {
     }
     //表单的标题属性
     .eve-common-form-title {
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       padding-left: 16px;
       font-size: $--font-size-title;
       background-color: $LabelbgColor;
-      font-weight: bolder;
+      color:$--color-primary;
     }
     //带详情css
     .eve-common-detail-field {
-      font-size: $--font-size-small;
-      line-height: 18px;
+      font-size: $--font-size-base;
+      line-height: 24px;
     }
     //带单位描述css
     .eve-common-info-tip {
-      font-size: $--font-size-extra-small;
+      font-size: $--font-size-small;
       color: $--color-info;
       margin-left: 20px;
     }
@@ -197,7 +197,7 @@ body {
         font-size: $LabelFontSize;
         padding: $LabelPadding;
         height: 100%;
-        line-height: 1; //元素本身的字体大小 设置行高
+        line-height: 1.5; //元素本身的字体大小 设置行高
         //label属性右对齐垂直居中显示
         display: flex;
         justify-content: flex-end;
@@ -240,7 +240,7 @@ body {
         padding: $eveCommonInputPadding;
         //input高度
         height: $eveCommonInputHeight;
-        line-height: 1;
+        line-height: $eveCommonInputHeight;
       }
       //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
       .el-input--prefix .el-input__inner,
@@ -256,6 +256,7 @@ body {
       //多行文本框内边距
       .el-textarea__inner {
         padding: $eveCommonInputPadding;
+        font-size:$--font-size-base;
       }
       //多行文本框的【计数属性】绝对定位-根据实际情况微调
       .el-input__count {
@@ -267,13 +268,13 @@ body {
   /*********InputNumber 计数器[start]*********/
   &-input-number {
     &.el-input-number {
-      line-height: 2; //左右按钮根据行高设置
+      line-height: 38px; //左右按钮根据行高设置
       .el-input__inner {
         //input内边距
         padding: $eveCommonInputPadding;
         //input高度
         height: $eveCommonInputHeight;
-        line-height: 1;
+        // line-height: 1;
       }
     }
   }
@@ -281,12 +282,9 @@ body {
   /*********DatePicker 日期选择器[start]*********/
   &-date-picker {
     overflow: hidden;
-    .el-input__inner {
-      //input内边距
-      padding: $eveCommonInputPadding;
-      //input高度
+    .el-input__inner,.el-range-input{
       height: $eveCommonInputHeight;
-      line-height: 1;
+      font-size:$--font-size-small;
     }
 
     //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
@@ -296,17 +294,26 @@ body {
     }
     &.el-date-editor .el-range-separator {
       width: 6%;
-      line-height: 25px;
+      line-height: 38px;
+      font-size:$--font-size-small;
     }
     .el-input__icon {
-      line-height: $eveCommonInputHeight;
+      line-height: 38px;
     }
-    &.el-range-editor.el-input__inner {
-      padding: 0 4px;
+    &.el-range-editor.el-input__inner,&.el-data-editor.el-input__inner {
+       //input高度
+      height: $eveCommonInputHeight;
+      padding: $eveCommonInputPadding;
     }
-    &.el-date-editor .el-range__icon {
-      font-size: $--font-size-small;
+    .el-input__prefix{
+      font-size: $--font-size-base;
     }
+    // &.el-date-editor .el-range__icon {
+      
+    // }
+    // &.el-date-editor .el-icon-date {
+    //   font-size: $--font-size-small;
+    // }
   }
 
   /*********timePicker 时间选择器[start]*********/
@@ -331,11 +338,8 @@ body {
     .el-input__icon {
       line-height: $eveCommonInputHeight;
     }
-    &.el-range-editor.el-input__inner {
-      padding: 0 4px;
-    }
-    &.el-date-editor .el-range__icon {
-      font-size: $--font-size-small;
+    .el-input__prefix{
+      font-size: $--font-size-base;
     }
   }
 
@@ -366,7 +370,7 @@ body {
       color: $--color-text-regular;
     }
     .el-radio__label {
-      font-size: $--font-size-small;
+      font-size: $--font-size-base;
       padding-left: 4px;
     }
 
@@ -384,7 +388,7 @@ body {
   /*********checkbox复选框[start]*********/
   &-checkbox-group {
     .el-checkbox__label {
-      font-size: $--font-size-small;
+      font-size: $--font-size-base;
       padding-left: 4px;
     }
 
@@ -474,7 +478,7 @@ body {
 
   /*********icon[start]*********/
   &-icon {
-    font-size: $--font-size-small;
+    font-size: $--font-size-base;
     color: $--color-info; //#909399
     &:hover {
       cursor: pointer;
