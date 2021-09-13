@@ -493,10 +493,10 @@ $--pagination-width-height: 30px;
     font-size: $--font-size-content;
     color: $--color-text-regular;
   }
-  // // 配置fixed:'right'时的颜色
-  // .el-table__fixed-right th.is-leaf {
-  //   background: #fff !important;
-  // }
+
+  .el-table__fixed-right {
+    height: 100% !important;
+  }
 }
 
 //表格最底部的线

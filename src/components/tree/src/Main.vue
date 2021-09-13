@@ -305,7 +305,7 @@ export default {
      * @param  {Object}  indeterminate 节点组件本身
      */
     nodeClick (data, node, indeterminate) {
-      if (this.showCheckbox) return
+      // if (this.showCheckbox) return
       this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点
       if (this.onlyLeaf && data[this.props.children]) return
       this.id = data[this.nodeKey]
