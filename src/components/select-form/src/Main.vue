@@ -482,6 +482,7 @@
             <div v-if="rightButtonData.length > 0">
               <template v-for="(item, index) in rightButtonData">
                 <el-button
+                  :type="item.buttonType"
                   v-if="
                     !item.type ||
                     item.type !== 'pack-up' ||
