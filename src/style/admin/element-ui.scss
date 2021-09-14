@@ -397,19 +397,19 @@ $--pagination-width-height: 22px;
 .el-table--group::after,
 .el-table--border::after,
 .el-table::before {
-  background-color: $--color-primary-light-9;
+  background-color: $--color-primary-light-8;
 }
 
 //表格右边的线
 .el-table--border th,
 .el-table--border td {
-  border-right: 1px solid $--color-primary-light-9;
+  border-right: 1px solid $--color-primary-light-8;
 }
 
 //表格底部的线
 .el-table th.is-leaf,
 .el-table td {
-  border-bottom: 1px solid $--color-primary-light-9;
+  border-bottom: 1px solid $--color-primary-light-8;
 }
 
 .el-table th,
