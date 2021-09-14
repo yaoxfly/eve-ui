@@ -441,6 +441,8 @@ export default {
 | iconClassName |按钮的icon名称| string | — | —|  
 | valueClassName |按钮文本的样式| string | — | —| 
 | type |按钮的类型| string| search(查询)、 reset(重置)、pack-up(展开或收起)， 不添加当前属性，默认就是普通的按钮 | — | 
+| buttonType |按钮的样式类型| string| primary、success、info、warning、danger、text | — | 
+
 
 ###  日期格式
 > 使用format指定输入框的格式；使用value-format指定绑定值的格式。
