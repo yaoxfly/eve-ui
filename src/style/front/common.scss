@@ -160,10 +160,25 @@ body {
 
   /*----表单----*/
   &-form-container {
-    /*********表单[start]*********/
-    .eve-common-form-content {
-      border: 1px solid $tableBorderColor;
+    //需要展示背景色和线条颜色
+    &.show-hue{
+      .eve-common-form-content {
+        border: 1px solid $tableBorderColor;
+      }
+      .el-form-item .el-form-item__label{
+         //展示线条颜色
+         border-right: 1px solid $tableBorderColor;
+         border-left: 1px solid $tableBorderColor;
+         background-color: $LabelbgColor;
+      }
+      .eve-common-form-title {
+        background-color: $LabelbgColor;
+      }
     }
+
+
+    /*********表单[start]*********/
+   
     .eve-common-form-content:not(:last-child) {
       margin: 0 0 -1px 0;
     }
@@ -173,8 +188,7 @@ body {
       line-height: 40px;
       padding-left: 16px;
       font-size: $--font-size-title;
-      background-color: $LabelbgColor;
-      color:$--color-primary;
+      color: $--color-primary;
     }
     //带详情css
     .eve-common-detail-field {
@@ -192,7 +206,6 @@ body {
       margin-bottom: 0; //去掉form-item默认的底边距
       height: 100%; //很重要，不能去掉，否则form-label无法随form-content的高度变化而变化
       .el-form-item__label {
-        background-color: $LabelbgColor;
         color: $LabelColor;
         font-size: $LabelFontSize;
         padding: $LabelPadding;
@@ -202,9 +215,8 @@ body {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        border-right: 1px solid $tableBorderColor;
-        border-left: 1px solid $tableBorderColor;
         margin-left: -1px;
+       
       }
       .el-form-item__content {
         position: relative;
@@ -256,7 +268,7 @@ body {
       //多行文本框内边距
       .el-textarea__inner {
         padding: $eveCommonInputPadding;
-        font-size:$--font-size-base;
+        font-size: $--font-size-base;
       }
       //多行文本框的【计数属性】绝对定位-根据实际情况微调
       .el-input__count {
@@ -282,9 +294,10 @@ body {
   /*********DatePicker 日期选择器[start]*********/
   &-date-picker {
     overflow: hidden;
-    .el-input__inner,.el-range-input{
+    .el-input__inner,
+    .el-range-input {
       height: $eveCommonInputHeight;
-      font-size:$--font-size-small;
+      font-size: $--font-size-small;
     }
 
     //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
@@ -295,21 +308,22 @@ body {
     &.el-date-editor .el-range-separator {
       width: 6%;
       line-height: 38px;
-      font-size:$--font-size-small;
+      font-size: $--font-size-small;
     }
     .el-input__icon {
       line-height: 38px;
     }
-    &.el-range-editor.el-input__inner,&.el-data-editor.el-input__inner {
-       //input高度
+    &.el-range-editor.el-input__inner,
+    &.el-data-editor.el-input__inner {
+      //input高度
       height: $eveCommonInputHeight;
       padding: $eveCommonInputPadding;
     }
-    .el-input__prefix{
+    .el-input__prefix {
       font-size: $--font-size-base;
     }
     // &.el-date-editor .el-range__icon {
-      
+
     // }
     // &.el-date-editor .el-icon-date {
     //   font-size: $--font-size-small;
@@ -338,7 +352,7 @@ body {
     .el-input__icon {
       line-height: $eveCommonInputHeight;
     }
-    .el-input__prefix{
+    .el-input__prefix {
       font-size: $--font-size-base;
     }
   }
@@ -420,6 +434,16 @@ body {
         height: $eveCommonInputHeight;
         line-height: 1;
       }
+      // 下拉多选
+      .el-tag--mini {
+        height: 30px;
+        padding: 0 10px;
+        line-height: 30px;
+        font-size: $--font-size-base;
+        .el-icon-close {
+          background-color: #c0c4cc;
+        }
+      }
     }
   }
 
@@ -494,6 +518,11 @@ body {
       //三级边框-#ebeef5
       border: 1px solid $--border-color-lighter;
     }
+    .common-upload__tip {
+      font-size: $--font-size-small;
+      color: $--color-text-placeholder;
+      margin-top: 8px;
+    }
   }
 
   /*********模板页面的间距*********/
@@ -547,4 +576,15 @@ body {
     font-size: $--font-size-content;
     font-weight: bold;
   }
+}
+
+// 提示消息框
+.eve-reminder {
+  text-align: center;
+  height: $eveCommonInputHeight;
+  line-height: $eveCommonInputHeight;
+  border: 1px solid $--border-color-light-web;
+  font-size: $--font-size-base;
+  background-color: $--color-primary-light-9;
+  color: $--color-primary;
 }

@@ -518,8 +518,8 @@ $--pagination-width-height: 30px;
   border-bottom: 1px solid $--color-primary-light-9;
 }
 
-.el-table th,
-.el-table td > .cell {
+//.el-table td > .cell
+.el-table th {
   height: 40px;
   line-height: 40px;
 }
@@ -555,7 +555,7 @@ $--pagination-width-height: 30px;
 
 .eve-main {
   margin: 5px !important;
-  width: calc(100vw - #{$--eve-menu-width} - 10px) !important;
+  width: calc(100vw - #{$--eve-menu-width} - 11px) !important;//body overflow特殊处理
   height: calc(100vh - 65px - 30px - 10px) !important;
 }
 
@@ -925,10 +925,4 @@ $--pagination-width-height: 30px;
 }
 
 
-// 下拉多选的值
-.el-tag--mini {
-  height: 30px;
-  padding: 0 10px;
-  line-height: 30px;
-  font-size:$--font-size-base;
-}
+
