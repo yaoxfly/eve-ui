@@ -47,6 +47,13 @@
   color: $--color-primary--assist !important;
 }
 
+// .el-button--warning.is-plain:focus,
+// .el-button--warning.is-plain:hover {
+//   color: #e6a23c;
+//   background: #fdf6ec;
+//   border-color: #f5dab1;
+// }
+
 /*-----卡片------*/
 .el-card__header {
   padding: 7px 16px; //调整高度40
@@ -555,7 +562,9 @@ $--pagination-width-height: 30px;
 
 .eve-main {
   margin: 5px !important;
-  width: calc(100vw - #{$--eve-menu-width} - 11px) !important;//body overflow特殊处理
+  width: calc(
+    100vw - #{$--eve-menu-width} - 11px
+  ) !important; //body overflow特殊处理
   height: calc(100vh - 65px - 30px - 10px) !important;
 }
 
@@ -923,6 +932,3 @@ $--pagination-width-height: 30px;
   //常规文字-#606266
   color: $--color-text-regular;
 }
-
-
-
