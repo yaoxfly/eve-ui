@@ -211,7 +211,7 @@ body {
       //多行文本框内边距
       .el-textarea__inner {
         padding: $eveCommonInputPadding;
-        font-family: Arial;//字体设置
+        font-family: Arial; //字体设置
       }
       //多行文本框的【计数属性】绝对定位-根据实际情况微调
       .el-input__count {
@@ -466,4 +466,9 @@ body {
     float: right;
     padding: 3px 0;
   }
+}
+
+/*********进度条插件颜色*********/
+#nprogress .bar {
+  background: $--color-primary;
 }

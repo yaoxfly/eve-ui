@@ -510,19 +510,30 @@ $--pagination-width-height: 30px;
 .el-table--group::after,
 .el-table--border::after,
 .el-table::before {
-  background-color: #e9e9e9;
+  background-color: $--border-color;
 }
 
 //表格右边的线
 .el-table--border th,
 .el-table--border td {
-  border-right: 1px solid #e9e9e9;
+  border-right: 1px solid $--border-color;
 }
 
 //表格底部的线
 .el-table th.is-leaf,
 .el-table td {
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 1px solid $--border-color;
+}
+
+//表格上面的线、左边的线
+.el-table {
+  border-top: 0px solid transparent;
+  border-left: 1px solid $--border-color;
+}
+
+//表头上面的线
+.el-table th {
+  border-top: 1px solid $--border-color;
 }
 
 //.el-table td > .cell
