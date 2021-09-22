@@ -113,6 +113,7 @@ export default {
       default: () => ({
         children: 'children', //指定子树为节点对象的某个属性值
         label: 'label', //指定节点标签为节点对象的某个属性值(下拉菜单显示值的key)
+        isLeaf: 'leaf' //指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效，叶子节点不能再有子节点了
       })
     },
 
@@ -469,8 +470,8 @@ export default {
             this.option = []//防止重复的key
             this.getCheckedNodes().forEach(element => {
               this.option.push({
-                label: element[this.props.label],
-                id: element[this.nodeKey]
+                [this.props.label]: element[this.props.label],
+                [this.nodeKey]: element[this.nodeKey]
               })
             })
           })
