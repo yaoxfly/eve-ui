@@ -457,6 +457,7 @@ export default {
           this.id = newValue
           this.setCurrentKey(newValue)
           this.$nextTick(() => {
+            this.setCurrentKey(newValue)
             this.label = this.getCurrentNode() ? this.getCurrentNode()[this.props.label] : newValue
           })
         }
@@ -467,6 +468,7 @@ export default {
           this.defaultExpandedKeys = newValue
           this.setCheckedKeys(newValue)
           this.$nextTick(() => {
+            this.setCheckedKeys(newValue) //懒加载时回填无效，必须在nextTick再赋值一次
             this.option = []//防止重复的key
             this.getCheckedNodes().forEach(element => {
               this.option.push({
