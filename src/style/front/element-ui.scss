@@ -23,8 +23,8 @@
 .el-button--primary:hover,
 .el-button--primary:focus,
 .el-button--primary:active {
-  background: $--color-primary--assist !important;
-  border-color: $--color-primary--assist !important;
+  background: $--color-primary-light-2 !important;
+  border-color: $--color-primary-light-2 !important;
 }
 
 .el-button--default {
@@ -503,23 +503,23 @@ $--pagination-width-height: 30px;
 .el-table--group::after,
 .el-table--border::after,
 .el-table::before {
-  background-color: #e9e9e9;
+  background-color: $--color-primary-light-9;
 }
 
 //表格右边的线
 .el-table--border th,
 .el-table--border td {
-  border-right: 1px solid #e9e9e9;
+  border-right: 1px solid $--color-primary-light-9;
 }
 
 //表格底部的线
 .el-table th.is-leaf,
 .el-table td {
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 1px solid $--color-primary-light-9;
 }
 
-//.el-table td > .cell
-.el-table th {
+.el-table th,
+.el-table td > .cell {
   height: 40px;
   line-height: 40px;
 }
@@ -925,4 +925,24 @@ $--pagination-width-height: 30px;
 }
 
 
+// 下拉多选的值
+.el-tag--mini {
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+  font-size:$--font-size-base;
+  .el-icon-close{
+    background-color: #c0c4cc;
+  }
+}
 
+//修改表单默认的线条颜色和鼠标悬浮颜色
+.el-input__inner,.el-textarea__inner,.el-checkbox__inner{
+  border-color:$--border-color-light-web;
+  &:hover{
+    border-color:$--color-primary;
+  }
+}
+.el-select:hover .el-input__inner{
+  border-color:$--color-primary;
+}

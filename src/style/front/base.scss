@@ -12,7 +12,7 @@ $--color-white: #ffffff !default;
 
 /*主色*/
 // 主题色(front)
-$--color-primary: #1658a0 !default;
+$--color-primary: #105CB0 !default;
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
 $--color-primary-light-9: #f5faff;
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
@@ -210,7 +210,7 @@ $eveCommonInputPadding: 0 10px !default;
 $eveCommonInputPrefixSuffix: 30px !default;
 
 /*--按钮边框颜色--*/
-$--border-color-button: #303133 !default;
+$--border-color-button: #666 !default;
 $--border-color-button--disabled: #999999 !default;
 
 /*主题辅助色*/
