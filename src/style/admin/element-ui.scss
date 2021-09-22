@@ -371,8 +371,13 @@ $--pagination-width-height: 22px;
 }
 
 /*-----表格------*/
+
 .el-table--medium th,
 .el-table--medium td {
+  padding: 0 0;
+}
+
+.el-table--medium .el-table__cell {
   padding: 0 0;
 }
 
@@ -430,6 +435,15 @@ $--pagination-width-height: 22px;
 
 .el-table__empty-text {
   font-size: $--font-size-content;
+}
+
+.el-table {
+  border-top: 0px solid transparent;
+  border-left: 1px solid $--color-primary-light-8;
+}
+
+.el-table th {
+  border-top: 1px solid $--color-primary-light-8;
 }
 
 /*-----面包屑------*/
@@ -923,4 +937,10 @@ $--eve-tree-height: 24px;
 .el-checkbox__input.is-checked + .el-checkbox__label {
   //常规文字-#606266
   color: $--color-text-regular;
+}
+
+/*********Tooltip 文字提示*********/
+.el-tooltip__popper {
+  //最大宽度设置
+  max-width: 50%;
 }

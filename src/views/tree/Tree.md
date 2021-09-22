@@ -300,6 +300,7 @@ export default {
 | filter-node-method | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(value, data, node,prop) | — | — |
 | placeholder | 输入框占位文本 | string | — | — |
 
+
 >   1.当同时有data和lazy的情况下，lazy优先级更高，会覆盖data的配置; 2.node-key属性，设置默认展开和默认选中的节点时必须设置
 
 

@@ -113,6 +113,7 @@ export default {
       default: () => ({
         children: 'children', //指定子树为节点对象的某个属性值
         label: 'label', //指定节点标签为节点对象的某个属性值(下拉菜单显示值的key)
+        isLeaf: 'leaf' //指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效，叶子节点不能再有子节点了
       })
     },
 
@@ -433,6 +434,13 @@ export default {
       //清除左边两边的空格
       val = val.replace(/(^\s*)|(\s*$)/g, '')
       this.$refs.tree.filter(val)
+    },
+
+    /**@description 获取树组件ref来调用element-ui的tree组件的所有方法
+     * @author yx
+     */
+    getElTreeRef () {
+      return this.$refs.tree
     }
 
   },
@@ -449,6 +457,7 @@ export default {
           this.id = newValue
           this.setCurrentKey(newValue)
           this.$nextTick(() => {
+            this.setCurrentKey(newValue)
             this.label = this.getCurrentNode() ? this.getCurrentNode()[this.props.label] : newValue
           })
         }
@@ -459,11 +468,12 @@ export default {
           this.defaultExpandedKeys = newValue
           this.setCheckedKeys(newValue)
           this.$nextTick(() => {
+            this.setCheckedKeys(newValue) //懒加载时回填无效，必须在nextTick再赋值一次
             this.option = []//防止重复的key
             this.getCheckedNodes().forEach(element => {
               this.option.push({
-                label: element[this.props.label],
-                id: element[this.nodeKey]
+                [this.props.label]: element[this.props.label],
+                [this.nodeKey]: element[this.nodeKey]
               })
             })
           })

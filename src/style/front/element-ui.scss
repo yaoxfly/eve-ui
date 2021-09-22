@@ -47,6 +47,13 @@
   color: $--color-primary--assist !important;
 }
 
+// .el-button--warning.is-plain:focus,
+// .el-button--warning.is-plain:hover {
+//   color: #e6a23c;
+//   background: #fdf6ec;
+//   border-color: #f5dab1;
+// }
+
 /*-----卡片------*/
 .el-card__header {
   padding: 7px 16px; //调整高度40
@@ -503,23 +510,34 @@ $--pagination-width-height: 30px;
 .el-table--group::after,
 .el-table--border::after,
 .el-table::before {
-  background-color: $--color-primary-light-9;
+  background-color: $--border-color;
 }
 
 //表格右边的线
 .el-table--border th,
 .el-table--border td {
-  border-right: 1px solid $--color-primary-light-9;
+  border-right: 1px solid $--border-color;
 }
 
 //表格底部的线
 .el-table th.is-leaf,
 .el-table td {
-  border-bottom: 1px solid $--color-primary-light-9;
+  border-bottom: 1px solid $--border-color;
 }
 
-.el-table th,
-.el-table td > .cell {
+//表格上面的线、左边的线
+.el-table {
+  border-top: 0px solid transparent;
+  border-left: 1px solid $--border-color;
+}
+
+//表头上面的线
+.el-table th {
+  border-top: 1px solid $--border-color;
+}
+
+//.el-table td > .cell
+.el-table th {
   height: 40px;
   line-height: 40px;
 }
@@ -555,7 +573,9 @@ $--pagination-width-height: 30px;
 
 .eve-main {
   margin: 5px !important;
-  width: calc(100vw - #{$--eve-menu-width} - 11px) !important;//body overflow特殊处理
+  width: calc(
+    100vw - #{$--eve-menu-width} - 11px
+  ) !important; //body overflow特殊处理
   height: calc(100vh - 65px - 30px - 10px) !important;
 }
 
@@ -922,6 +942,11 @@ $--pagination-width-height: 30px;
 .el-checkbox__input.is-checked + .el-checkbox__label {
   //常规文字-#606266
   color: $--color-text-regular;
+}
+
+/*********Tooltip 文字提示*********/
+.el-tooltip__popper {
+  max-width: 50%;
 }
 
 
