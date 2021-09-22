@@ -408,6 +408,7 @@ export default {
 | convert-setting |树形结构数据转换设置,详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
 
 
+
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
@@ -439,6 +440,7 @@ export default {
 `DropDownTree` 内部使用了 `Node` 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 `DropDownTree` 拥有如下方法：
 | 方法名 | 说明 | 参数  |
 | ----| ----| --- | 
+|getElTreeRef|获取树组件ref,用来调用element-ui的tree组件的所有方法 | — |
 | setCurrentKey| 设置当前选中(高亮)的节点，使用此方法必须设置 node-key 属性，若没有节点被选中则返回 null | 节点的key一般是id |
 | setCheckedKeys| 通过 keys 设置目前勾选的节点，使用此方法必须设置 node-key 属性  |(keys, leafOnly) 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，若为 true 则仅设置叶子节点的选中状态，默认值为 false |
 | getCheckedNodes|若节点可被选择，则返回目前被选中的节点所组成的数组, 通过node获取节点。| (leafOnly, includeHalfChecked) 接收两个 boolean 类型的参数，1. 是否只是叶子节点，默认值为 false 2. 是否包含半选节点，默认值为 false|
