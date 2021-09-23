@@ -322,6 +322,8 @@ export default {
 | top  | 分页距离表格的距离   | number | — | 24  |
 | align  | 分页的位置   | string | center、left、right | center  |
 | jump-text |  分页前往的文本 | string| — | 跳至 |
+| is-show-page-count|  是否显示总页数 | string| — | 共xxx页 |
+
 
 
 ###  Button  Attributes
