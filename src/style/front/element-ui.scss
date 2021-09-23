@@ -23,8 +23,8 @@
 .el-button--primary:hover,
 .el-button--primary:focus,
 .el-button--primary:active {
-  background: $--color-primary--assist !important;
-  border-color: $--color-primary--assist !important;
+  background: $--color-primary-light-2 !important;
+  border-color: $--color-primary-light-2 !important;
 }
 
 .el-button--default {
@@ -947,4 +947,27 @@ $--pagination-width-height: 30px;
 /*********Tooltip 文字提示*********/
 .el-tooltip__popper {
   max-width: 50%;
+}
+
+
+// 下拉多选的值
+.el-tag--mini {
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+  font-size:$--font-size-base;
+  .el-icon-close{
+    background-color: #c0c4cc;
+  }
+}
+
+//修改表单默认的线条颜色和鼠标悬浮颜色
+.el-input__inner,.el-textarea__inner,.el-checkbox__inner{
+  border-color:$--border-color-light-web;
+  &:hover{
+    border-color:$--color-primary;
+  }
+}
+.el-select:hover .el-input__inner{
+  border-color:$--color-primary;
 }
