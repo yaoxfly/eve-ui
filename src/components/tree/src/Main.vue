@@ -474,6 +474,13 @@ export default {
         }
       }
       return itemArr
+    },
+
+    /**@description 获取树组件ref来调用element-ui的tree组件的所有方法
+   * @author yx
+   */
+    getElTreeRef () {
+      return this.$refs.tree
     }
   },
 
