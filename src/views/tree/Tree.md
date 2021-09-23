@@ -356,6 +356,7 @@ export default {
 Tree 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。 Tree 拥有如下方法：
 | 方法名 | 说明 | 参数  |
 | ----| ----| --- | 
+|getElTreeRef|获取树组件ref,用来调用element-ui的tree组件的所有方法 | — |
 | getCheckedNodes|若节点可被选择（即 show-checkbox 为 true），则返回目前被选中的节点所组成的数组, 通过node获取节点。| (leafOnly, includeHalfChecked) 接收两个 boolean 类型的参数，1. 是否只是叶子节点，默认值为 false 2. 是否包含半选节点，默认值为 false|
 | getCheckedKeys|若节点可被选择（即 show-checkbox 为 true），则返回目前被选中的节点的 key 所组成的数组,通过key获取节点| (leafOnly) 接收一个 boolean 类型的参数，若为 true 则仅返回被选中的叶子节点的 keys，默认值为 false|
 | setCheckedNodes|设置目前勾选的节点，使用此方法必须设置 node-key 属性|(nodes) 接收勾选节点数据的数组 |
