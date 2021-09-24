@@ -174,7 +174,7 @@ body {
       .eve-common-form-title {
         background-color: $LabelbgColor;
       }
-      .eve-common-form-content:not(:last-child) {
+      .eve-common-form-content {
         margin: 0 0 -1px 0;
       }
     }
@@ -182,7 +182,7 @@ body {
 
     /*********表单[start]*********/
    
-    .eve-common-form-content:not(:last-child) {
+    .eve-common-form-content {
       margin: 8px 0 -1px 0;
     }
     //表单的标题属性
