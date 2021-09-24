@@ -839,7 +839,7 @@ export default {
     setJump () {
       if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump').forEach(item => {
-        item.childNodes[0].nodeValue = this.tempIsShowPageCount ? `共${this.getPageCount()}页， ${this.tempJumpText}` : this.tempJumpText
+        item.childNodes[0].nodeValue = this.tempIsShowPageCount ? `共${this.getPageCount}页， ${this.tempJumpText}` : this.tempJumpText
       })
     },
 
@@ -848,11 +848,11 @@ export default {
       return this.$refs.eveTable
     },
 
-    //获取总页数
-    getPageCount () {
-      return Math.ceil(this.total / this.pageSize)
-    }
+
   },
+
+
+
 
   watch: {
     deleteMessageBox: {
@@ -881,8 +881,14 @@ export default {
         this.tempIsShowPageCount = newValue || this.$eveTablePagination.isShowPageCount || this.tempIsShowPageCount
       },
       immediate: true
-    }
+    },
 
+    total: {
+      handler () {
+        this.setJump()
+      },
+      immediate: true
+    }
 
   },
 
@@ -910,6 +916,10 @@ export default {
         }
       )
     },
+    //获取总页数
+    getPageCount () {
+      return Math.ceil(this.total / this.pageSize)
+    }
   }
 }
 </script>
