@@ -3,8 +3,48 @@ body {
   color: $--color-text-regular;
 }
 
+.mt-form-title {
+  margin-top: 8px;
+}
+// 成功办结
+.success-status {
+  color: $--color-success;
+}
+// 退回
+.warning-status {
+  color: $--color-warning;
+}
+
+// 不成功办结
+.danger-status {
+  color: $--color-danger;
+}
+
+//材料表格特殊处理
+.doc-list-table {
+  .el-checkbox {
+    padding: 0;
+  }
+  .el-input__inner {
+    height: 30px !important;
+  }
+  .el-input__suffix{
+    height: 30px;
+    top: -3px;
+  }
+}
+
+//互联网端表单边框没有圆角处理
+.el-input__inner {
+  border-radius: 0 !important;
+}
+
 .eve-common {
-  /*-----按钮-----*/
+  /*---- 弹窗样式 -----*/
+  &-dialog {
+    height: 69vh;
+    overflow-y: auto;
+  }
 
   //主按钮颜色
   &-main-button {
@@ -161,15 +201,15 @@ body {
   /*----表单----*/
   &-form-container {
     //需要展示背景色和线条颜色
-    &.show-hue{
+    &.show-hue {
       .eve-common-form-content {
         border: 1px solid $tableBorderColor;
       }
-      .el-form-item .el-form-item__label{
-         //展示线条颜色
-         border-right: 1px solid $tableBorderColor;
-         border-left: 1px solid $tableBorderColor;
-         background-color: $LabelbgColor;
+      .el-form-item .el-form-item__label {
+        //展示线条颜色
+        border-right: 1px solid $tableBorderColor;
+        border-left: 1px solid $tableBorderColor;
+        background-color: $LabelbgColor;
       }
       .eve-common-form-title {
         background-color: $LabelbgColor;
@@ -179,9 +219,8 @@ body {
       }
     }
 
-
     /*********表单[start]*********/
-   
+
     .eve-common-form-content {
       margin: 8px 0 -1px 0;
     }
@@ -219,7 +258,6 @@ body {
         justify-content: flex-end;
         align-items: center;
         margin-left: -1px;
-       
       }
       .el-form-item__content {
         position: relative;
@@ -590,4 +628,23 @@ body {
   font-size: $--font-size-base;
   background-color: $--color-primary-light-9;
   color: $--color-primary;
+}
+
+
+/* 设置全局 去除type="number"输入框聚焦时的上下箭头 */
+.clear-number-input.el-input::-webkit-outer-spin-button,
+.clear-number-input.el-input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none !important;
+} 
+.clear-number-input.el-input input[type="number"]::-webkit-outer-spin-button,
+.clear-number-input.el-input input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none !important;
+}
+.clear-number-input.el-input {
+  -moz-appearance: textfield;
+} 
+.clear-number-input.el-input input[type="number"] {
+  -moz-appearance: textfield;
 }

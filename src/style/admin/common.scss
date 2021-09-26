@@ -5,7 +5,6 @@ body {
 .mt-form-title{
   margin-top:8px
 }
-
 // 成功办结
 .success-status{
   color:$--color-success;
@@ -21,7 +20,7 @@ body {
 }
 
 .eve-common {
-  /*-----表单提交底部按钮-----*/
+  /*---- 弹窗样式 -----*/
   &-dialog{
     height: 69vh;
     overflow-y: auto;
