@@ -226,9 +226,9 @@ body {
     }
     //表单的标题属性
     .eve-common-form-title {
-      height: 40px;
+      height: 50px;
       line-height: 40px;
-      padding-left: 16px;
+      // padding-left: 16px;
       font-size: $--font-size-title;
       color: $--color-primary;
     }
@@ -647,4 +647,10 @@ body {
 } 
 .clear-number-input.el-input input[type="number"] {
   -moz-appearance: textfield;
+}
+
+
+//输入框字体设置
+input,textarea{
+  font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif !important;
 }

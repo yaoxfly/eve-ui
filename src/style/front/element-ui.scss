@@ -27,9 +27,9 @@
   border-color: $--color-primary-light-2 !important;
 }
 
-.el-button--default {
-  border: 1px solid $--border-color-button;
-}
+// .el-button--default {
+//   border: 1px solid $--border-color-button;
+// }
 
 .el-button.is-disabled,
 .el-button.is-disabled:hover,
@@ -784,7 +784,7 @@ $--pagination-width-height: 30px;
   font-size: $--font-size-small;
   padding: $eveCommonInputPadding;
   .el-cascader-node__label {
-    padding: $eveCommonInputPadding;
+    padding: 0 20px;
   }
 }
 
