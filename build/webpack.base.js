@@ -14,7 +14,16 @@ module.exports = {
                 use: {
                     loader: 'vue-loader'
                 }
-            }
+            },
+            {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8 * 1024,
+                    esModule: false,
+                    name: '[hash:8].[ext]'
+                }
+            },
         ]
     },
     plugins: [new VueLoaderPlugin()],

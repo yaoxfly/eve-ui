@@ -669,9 +669,9 @@ $--eve-tree-height: 24px;
 /*-----header组件------*/
 .eve-header {
   background: $--eve-header-background;
-}
-.eve-header__dialog .el-dialog__header {
-  height: 0;
+  .el-dialog__body {
+    padding: 4px 20px 4px 20px;
+  }
 }
 
 /*-----动态表格------*/

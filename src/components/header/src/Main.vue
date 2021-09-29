@@ -63,18 +63,23 @@
                 v-if="item.type === 'icon'"
                 :key="`${item.value}icon`"
                 class="eve-header__icon-item"
+                @mouseover="mouseover({ index: index, data: item })"
+                @mouseleave="mouseleave({ index: index, data: item })"
+                @click="rightContentButton({ index: index, data: item })"
               >
                 <img
                   v-if="!item.number"
                   :src="item.value"
                   class="eve-header__icon-img"
-                  @click="rightContentButton({ index: index, data: item })"
+                  :style="item.style"
+                  :class="item.class"
                 />
                 <el-badge v-else :value="item.number" :max="99" class="item">
                   <img
+                    :style="item.style"
+                    :class="item.class"
                     :src="item.value"
                     class="eve-header__icon-img"
-                    @click="rightContentButton({ index: index, data: item })"
                   />
                 </el-badge>
               </section>
@@ -83,11 +88,26 @@
                 v-else
                 :key="`${item.content}icon`"
                 @click="rightContentButton({ index: index, data: item })"
+                @mouseover="mouseover({ index: index, data: item })"
+                @mouseleave="mouseleave({ index: index, data: item })"
                 class="eve-header__icon-item"
               >
-                <div class="eve-header__icon-item--special">
+                <div
+                  class="
+                    eve-header__icon-item--special eve-header__icon-item-flex
+                  "
+                  :style="item.style"
+                  :class="item.class"
+                >
+                  <img
+                    :src="item.icon"
+                    class="eve-header__icon-img eve-header__icon-img--special"
+                  />
                   <span>{{ item.value }} </span>
-                  <i class="el-icon-caret-bottom" v-if="item.dialog"></i>
+                  <i
+                    class="el-icon-caret-bottom eve-header__icon-img--special"
+                    v-if="item.dialog"
+                  ></i>
                 </div>
               </section>
             </template>
@@ -98,17 +118,21 @@
 
       <!-- 对话框 -->
       <section
-        v-if="visible"
+        v-show="visible"
         class="eve-header__dialog-section"
         :style="{
           top: `${dialogTop}px`,
           right: `${dialogRight}px`,
         }"
+        @mouseover="dialogMouseover"
+        @mouseleave="dialogmouseleave"
       >
         <slot name="dialog">
           <el-dialog
+            @mouseover="dialogMouseover"
+            @mouseleave="dialogmouseleave"
             class="eve-header__dialog"
-            :visible.sync="visible"
+            :visible="true"
             :modal="false"
             top="0"
             :lock-scroll="false"
@@ -128,23 +152,52 @@
               </span>
               <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
             </template>
-
             <slot name="dialog-content">
-              <span>这里是内容，可以用slot覆盖 ，slot名：dialog-content </span>
+              <slot name="dialog-content-before"></slot>
+              <div>
+                <p class="eve-header__dialog-content-flex">
+                  <span class="eve-header__dialog-content-left">所属机构</span>
+                  <span class="eve-header__dialog-content-right">
+                    福州市鼓楼区市场监督管理局</span
+                  >
+                </p>
+                <p class="eve-header__dialog-content-flex">
+                  <span class="eve-header__dialog-content-left">所属部门</span>
+                  <span class="eve-header__dialog-content-right"
+                    >注册登记科</span
+                  >
+                </p>
+                <div class="eve-header__dialog-content-flex">
+                  <span class="eve-header__dialog-content-left">快速入口</span>
+                  <div
+                    class="eve-header__dialog-content-right"
+                    style="margin-top: 2px"
+                  >
+                    <span
+                      @click="
+                        dialogPromptAccessBtn({ index: index, date: item })
+                      "
+                      v-for="(item, index) in dialogPromptAccess"
+                      :key="item.text"
+                      >{{ item.text }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <slot name="dialog-content-after"></slot>
             </slot>
             <span slot="footer">
               <div class="eve-header__dialog-border" v-if="dialogBorder"></div>
               <div class="eve-header__dialog-footer">
                 <slot name="dialog-footer">
-                  <template v-for="(item, index) in dialogButton">
-                    <span
-                      :key="`dialogButton${index}`"
-                      class="eve-header__dialog-footer-button"
-                      @click="dialogOperate({ index: index, data: item.text })"
-                    >
-                      {{ item.text }}
-                    </span>
-                  </template>
+                  <span
+                    v-for="(item, index) in dialogButton"
+                    :key="`dialogButton${index}`"
+                    class="eve-header__dialog-footer-button"
+                    @click="dialogOperate({ index: index, data: item.text })"
+                  >
+                    {{ item.text }}
+                  </span>
                 </slot>
               </div>
             </span>
@@ -155,7 +208,6 @@
   </div>
 </template>
 <script>
-
 import mixins from 'eve-ui/src/components/scroll/src/mixins.js'
 export default {
   name: 'EveHeader',
@@ -307,12 +359,11 @@ export default {
       default: () => [
         // {
         //   type: 'icon',
-        //   value: require('../../../assets/image/header/help.png'),
+        //   value: require('../../../assets/image/header/theme.svg'),
         // },
         // {
         //   type: 'icon',
-        //   value: require('../../../assets/image/header/info.png'),
-        //   number: 8, //在图标右上方添加number
+        //   value: require('../../../assets/image/header/zoom.svg'),
         // },
         // {
         //   type: 'icon',
@@ -348,7 +399,7 @@ export default {
       type: Array,
       default: () => [
         {
-          text: '修改密码'
+          text: '用户信息'
         },
         {
           text: '安全退出'
@@ -372,6 +423,25 @@ export default {
     dialogAppendToBody: {
       type: Boolean,
       default: () => false
+    },
+
+    //鼠标移入开启对话框
+    dialogIsMouseover: {
+      type: Boolean,
+      default: () => true
+    },
+
+    //对话框快速入口的按钮
+    dialogPromptAccess: {
+      type: Array,
+      default: () => [
+        {
+          text: '更改密码'
+        },
+        {
+          text: '重新绑定手机'
+        },
+      ]
     },
 
     //左边菜单数据：联动页签、左边菜单组件，配置后切换顶部菜单，页面默认跳转左侧菜单的第一个，如果存在二级，则跳转到二级菜单的第一个
@@ -416,20 +486,22 @@ export default {
     rightContentButton (param) {
       const { data: { dialog = false } = {} } = param || {}
       //如果有配置dialog:true则可以弹出或隐藏框，否则只能隐藏框
-      if (dialog) {
-        this.visible = !this.visible
-      } else {
-        this.visible = false
+      if (!this.dialogIsMouseover) {
+        if (dialog) {
+          this.visible = !this.visible
+        } else {
+          this.visible = false
+        }
       }
       this.$emit('right-content-button', param)
     },
+
 
     /**@description  右边dialog的按钮的点击事件
     * @author yx
     * @param  {Object}  param 包含dialog按钮的index和数据
     */
     dialogOperate (param) {
-      // console.log(param)
       this.visible = false
       this.$emit('dialog-operate', param)
     },
@@ -451,8 +523,60 @@ export default {
       })
       return obj
     },
-  },
 
+    /**@description  右边部分icon和用户信息等按钮的鼠标移过
+     * @author yx
+    */
+    mouseover (param) {
+      if (this.dialogIsMouseover) {
+        const { data: { dialog = false } = {} } = param || {}
+        if (dialog) {
+          this.visible = true
+        }
+      }
+      this.$emit('mouseover', param)
+    },
+
+    /**@description  右边部分icon和用户信息等按钮的鼠标离开
+     * @author yx
+    */
+    mouseleave (param) {
+      if (this.dialogIsMouseover) {
+        const { data: { dialog = false } = {} } = param || {}
+        if (dialog) {
+          this.visible = false
+        }
+      }
+      this.$emit('mouseleave', param)
+    },
+
+
+    /**@description  对话框鼠标移入
+      * @author yx
+    */
+
+    dialogMouseover () {
+      if (this.dialogIsMouseover) {
+        this.visible = true
+      }
+    },
+
+    /**@description  对话框鼠标离开
+      * @author yx
+    */
+    dialogmouseleave () {
+      if (this.dialogIsMouseover) {
+        this.visible = false
+      }
+    },
+
+    /**@description 对话框快速入口按钮的事件
+         * @author yx
+       */
+    dialogPromptAccessBtn (param) {
+      this.$emit('dialog-prompt-access-btn', param)
+    }
+  },
 
   watch: {
     config: {

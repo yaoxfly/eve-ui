@@ -103,7 +103,6 @@ export default {
 }
 </script>
 ```
-
 ### Attributes
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
 | ----- | ------ | ----- | ----- | - |
@@ -132,6 +131,9 @@ export default {
 | config |配置菜单的text、path、children等key值--支持只修改某个key值,其他配置默认,详细参数见下表 | object | — |   — |
 | slides-per-view |滚动显示的个数 | number | — |   5 |
 | background-color |滚动内容背景颜色 | string | — |   transparent |
+| dialog-is-mouseover |鼠标移入开启对话框 |  boolean | — |   true |
+| dialog-prompt-access |对话框快速入口的按钮数据 |  Array | — | [ {text: '更改密码'},{text: '重新绑定手机'}]|
+
 
 ### right-content
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
@@ -155,7 +157,12 @@ export default {
 | ----| ----| --- | 
 | nav-button |中间部分导航按钮点击事件| function(param)  包含导航按钮的路径| 
 | right-content-button |右边部分icon和用户信息等按钮的点击事件| function(param)  包含导航按钮的index(下标)和数据| 
-| dialog-operate |右边dialog的按钮的点击事件| function(param)  包含dialog按钮的index(下标)和数据| 
+| mouseover |右边部分icon和用户信息等按钮的鼠标移过| function(param)  包含图标、文本等的index(下标)和数据| 
+| mouseleave |右边部分icon和用户信息等按钮的鼠标离开| function(param)  包含图标、文本等的index(下标)和数据| 
+| dialog-operate |右边dialog的按钮的点击事件| function(param)  包含dialog底部按钮的index(下标)和数据| 
+| dialog-prompt-access-btn |对话框快速入口按钮的事件| function(param)  包含dialog快速按钮的index(下标)和数据| 
+
+
 
 ### Function
 | 方法名 | 说明 | 参数  |
@@ -175,7 +182,12 @@ export default {
 | right-before         | 右边的内容前  |
 | right-after          | 右边的内容后  |
 | dialog-title         | 对话框的标题  |
+| dialog-content-before  | 对话框的内容的前面  |
 | dialog-content       | 对话框的内容  |
+| dialog-content-after  | 对话框的内容的后面  |
 | dialog-footer        | 对话框的尾部  | 
 | dialog               | 替换整个dialog,当前slot下，dialog-title、dialog-content、dialog-footer的插槽不可用|
+| dialog-footer        | 对话框的尾部  | 
+| dialog               | 替换整个dialog,当前slot下，dialog-title、dialog-content、dialog-footer的插槽不可用|
+
 

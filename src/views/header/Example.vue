@@ -8,9 +8,6 @@
       :navigation-button="navigationButton"
       :right-content="rightContent"
     >
-      <template #dialog-content
-        >这里是内容，可以用slot覆盖 ，slot名：dialog-content
-      </template>
     </eve-header>
   </div>
 </template>
@@ -61,19 +58,15 @@ export default {
       rightContent: [
         {
           type: 'icon',
-          value: require('../../assets/image/header/help.png'),
+          value: require('../../assets/image/header/theme.svg'),
         },
         {
           type: 'icon',
-          value: require('../../assets/image/header/info.png'),
-          number: 8, //在图标右上方添加number
-        },
-        {
-          type: 'icon',
-          value: require('../../assets/image/header/head_sculpture.png'),
+          value: require('../../assets/image/header/zoom.svg'),
         },
         {
           value: '李四',
+          icon: require('../../assets/image/header/head_sculpture.svg'),
           dialog: true //设置这个属性后,点击这个按钮会弹出对话框,默认是false
         }
       ],
