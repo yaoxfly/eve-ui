@@ -1,7 +1,10 @@
 .eve-header {
   // width: 100%;
   position: relative;
-  background: $--color-primary;
+  background-size: cover;
+  background-color: $--color-primary;
+  background-repeat: no-repeat;
+  background-position: center top;
   border-bottom: 0;
   display: flex;
   padding: 0 32px 0 13px;
@@ -40,15 +43,18 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    line-height: 1.5;
+    line-height: 1.44;
   }
   &__title {
     padding-left: 16px;
+    font-family: Semibold Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold;
   }
 
   &__logo {
     width: 45px;
     height: auto;
+    filter: drop-shadow(0 0 1px #fff);
   }
 
   &__right {
@@ -77,36 +83,49 @@
   }
 
   &__icon-img {
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
+    width: 17px;
+    height: 17px;
+    opacity: 0.8;
     &:hover {
       opacity: 1;
     }
   }
 
   &__icon-item {
+    position: relative;
     cursor: pointer;
     user-select: none;
     color: $--border-color-light;
-    &--special:hover {
-      color: #fff;
-      // font-weight: bold;
-      .el-icon-caret-bottom::before {
+    &--special {
+      // font-weight: 600;
+      &:hover {
         color: #fff;
-        // font-weight: bold;
+        .el-icon-caret-bottom::before {
+          color: #fff;
+        }
       }
     }
 
-    &:not(:last-child) {
-      margin-right: 14px;
+    //扩大点击范围
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      opacity: 0;
+      z-index: 1;
     }
 
-    &:nth-last-child(2) {
-      margin-right: 8px;
+    &:not(:last-child) {
+      margin-right: 20px;
     }
-    &:nth-last-child(3) {
-      margin-right: 28px;
+
+    // &:nth-last-child(2) {
+    //   margin-right: 8px;
+    // }
+    &:nth-last-child(2) {
+      margin-right: 35px;
     }
     white-space: nowrap;
   }
@@ -142,25 +161,33 @@
     justify-content: space-around;
     align-items: center;
     padding: 0;
-    font-weight: 600;
-    font-size: 12px;
+    font-size: $--font-size-base;
     height: 35px;
     background: $--border-color-extra-light;
+    border-top: 1px solid $--border-color-lighter;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
   }
   &__dialog-footer-button {
     user-select: none;
     cursor: pointer;
+    color: $--color-text-regular;
     &:first-child {
       &:hover {
         color: $--color-primary;
       }
     }
     &:last-child {
-      color: $--color-danger;
       &:hover {
-        opacity: 0.8;
+        color: $--color-danger;
       }
     }
+  }
+
+  &__icon-item-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .el-badge__content {
@@ -182,6 +209,41 @@
   .el-icon-caret-bottom::before {
     color: $--border-color-light;
   }
+
+  &__icon-img--special {
+    margin: 0 8px;
+  }
+
+  &__dialog-content-flex {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 2.4;
+  }
+
+  &__dialog-content-left {
+    width: 58px;
+    color: $--color-text-secondary;
+    font-size: $--font-size-small;
+  }
+
+  &__dialog-content-right {
+    padding-left: 4px;
+    line-height: 1.2;
+    color: $--color-text-regular;
+    font-size: $--font-size-extra-small;
+    width: 160px;
+    span {
+      font-size: $--font-size-base;
+      color: $--color-primary;
+      cursor: pointer;
+      user-select: none;
+      &:last-child {
+        margin-left: 15px;
+      }
+    }
+  }
 }
 
 // ::v-deep .eve-header__dialog {
@@ -194,15 +256,21 @@
     height: auto;
     font-size: 14px;
     box-shadow: 0 0 6px $--border-color-lighter;
+    margin: 0 auto !important;
   }
+
+  //去除头部
   .el-dialog__header {
     position: relative;
-    padding: 5px 0;
     color: black;
+    height: 0;
+    padding: 0;
   }
+
   .el-dialog__body {
-    padding: 5px 20px 10px 20px;
+    padding: 0 20px 10px 20px;
   }
+
   .el-dialog__footer {
     padding: 0;
     line-height: 35px;
