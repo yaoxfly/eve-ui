@@ -19,6 +19,14 @@ body {
   color: $--color-danger;
 }
 
+//材料表格特殊处理
+.doc-list-table {
+ .el-form-item__label{
+  background:none !important;
+  border:none !important;
+  padding: 8px 0px 8px 4px !important;
+ }
+}
 .eve-common {
   /*---- 弹窗样式 -----*/
   &-dialog {
@@ -28,10 +36,13 @@ body {
 
   /*-----表单提交底部按钮-----*/
   &-footer-button {
+    padding:5px;
+    line-height: 40px;
+    text-align: center;
     position: fixed;
     bottom: 0;
     display: flex;
-    height: 48px;
+    // height: 48px;
     box-shadow: 0 -4px 6px -2px $--color-primary-light-8; //顶部
     width: calc(100vw - #{$--eve-menu-width} - 10px); //菜单宽度+间距
     z-index: 1000;
@@ -493,4 +504,28 @@ body {
 /*********进度条插件颜色*********/
 #nprogress .bar {
   background: $--color-primary;
+}
+
+
+/* 设置全局 去除type="number"输入框聚焦时的上下箭头 */
+.clear-number-input.el-input::-webkit-outer-spin-button,
+.clear-number-input.el-input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none !important;
+} 
+.clear-number-input.el-input input[type="number"]::-webkit-outer-spin-button,
+.clear-number-input.el-input input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none !important;
+}
+.clear-number-input.el-input {
+  -moz-appearance: textfield;
+} 
+.clear-number-input.el-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+//输入框字体设置
+input,textarea{
+  font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif !important;
 }
