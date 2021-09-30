@@ -2,30 +2,29 @@ body {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
   color: $--color-text-regular;
 }
-.mt-form-title{
-  margin-top:8px
+.mt-form-title {
+  margin-top: 8px;
 }
 // 成功办结
-.success-status{
-  color:$--color-success;
+.success-status {
+  color: $--color-success;
 }
 // 退回
-.warning-status{
-  color:$--color-warning;
+.warning-status {
+  color: $--color-warning;
 }
 
 // 不成功办结
-.danger-status{
-  color:$--color-danger;
+.danger-status {
+  color: $--color-danger;
 }
 
 .eve-common {
   /*---- 弹窗样式 -----*/
-  &-dialog{
+  &-dialog {
     height: 69vh;
     overflow-y: auto;
   }
-
 
   /*-----表单提交底部按钮-----*/
   &-footer-button {

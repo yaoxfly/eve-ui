@@ -944,3 +944,35 @@ $--eve-tree-height: 24px;
   //最大宽度设置
   max-width: 50%;
 }
+
+/*********菜单*********/
+.eve-menu {
+  .el-submenu__title[style^='padding-left: 20px'] {
+    padding: 0 !important;
+    // background: $--color-primary !important;
+    // color: #fff !important;
+  }
+
+  .el-submenu__title[style^='padding-left: 40px'],
+  .el-menu-item[style^='padding-left: 40px'] {
+    padding: 0 20px !important;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .el-menu-item[style^='padding-left: 60px'] {
+    padding: 0 40px !important;
+  }
+  .el-menu-item {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .eve-menu__menu-item .el-menu-item.is-active {
+    background: $--color-primary-light-9 !important;
+  }
+  .eve-menu__menu-item .el-menu-item:focus,
+  .eve-menu__menu-item .el-menu-item:hover {
+    background: $--color-primary-light-9 !important;
+  }
+}

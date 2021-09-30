@@ -7,7 +7,6 @@
   <div :class="className">
     <!--子菜单-可能有孩子的菜单-->
     <el-submenu
-      :padding-left="paddingLeft"
       v-if="menuData.type == 'submenu'"
       :index="menuData[config.path] ? menuData[config.path] : getMathFloor()"
     >
@@ -23,16 +22,13 @@
           v-for="(item, index) in menuData[config.children]"
           :key="`menu-item${index}`"
           :menuData="item"
-          :padding-left="paddingLeft"
         ></menu-item>
       </template>
     </el-submenu>
+
     <!--最底层的菜单-->
 
-    <el-menu-item-group
-      v-else-if="menuData.type == 'item'"
-      :padding-left="paddingLeft"
-    >
+    <el-menu-item-group v-else-if="menuData.type == 'item'">
       <span
         slot="title"
         class="eve-menu__item-group"
@@ -48,17 +44,9 @@
 </template>
 <script>
 
-import ElMenuItem from './el-menu/src/menu-item.vue'
-import ElSubmenu from './el-menu/src/submenu.vue'
-import ElMenuItemGroup from './el-menu/src/menu-item-group.vue'
 export default {
   name: 'MenuItem',
   //接收依赖注入的类名
-  components: {
-    ElMenuItem,
-    ElSubmenu,
-    ElMenuItemGroup
-  },
   inject: {
     className: {
       default: 'eve-menu__menu-item'
