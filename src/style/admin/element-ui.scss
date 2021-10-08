@@ -668,7 +668,7 @@ $--eve-tree-height: 24px;
 
 /*-----header组件------*/
 .eve-header {
-  background: $--eve-header-background;
+  // background: $--eve-header-background;
   .el-dialog__body {
     padding: 4px 20px 4px 20px;
   }
@@ -973,7 +973,7 @@ $--eve-tree-height: 24px;
   .el-menu-item[style^='padding-left: 40px'] {
     padding: 0 24px !important;
     height: 24px;
-    line-height: 24px;
+    line-height: 20px;
   }
 
   .el-submenu__title[style^='padding-left: 40px'] {

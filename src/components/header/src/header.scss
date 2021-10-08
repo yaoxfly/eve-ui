@@ -51,7 +51,7 @@
   }
 
   &__logo {
-    width: 45px;
+    width: 40px;
     height: auto;
     filter: drop-shadow(0 0 1px #fff);
   }
@@ -84,17 +84,17 @@
   &__icon-img {
     width: 17px;
     height: 17px;
+  }
+
+  &__icon-item {
     opacity: 0.8;
     &:hover {
       opacity: 1;
     }
-  }
-
-  &__icon-item {
     position: relative;
     cursor: pointer;
     user-select: none;
-    color: $--border-color-light;
+    color: #fff;
     &--special {
       // font-weight: 600;
       &:hover {
