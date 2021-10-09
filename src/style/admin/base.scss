@@ -1,14 +1,114 @@
 /*
 * @Author: yx
-* @Description: 颜色主题变量
+* @Description: 当前项目颜色主题变量
 */
+// 白色
+$--color-white: #ffffff !default;
+/***自定义mixin*****/
+
+// 默认主题
+$default-theme: (
+  color-primary: #409eff,
+  color-primary-light-8: mix($--color-white, #409eff, 80%),
+  color-primary-light-9: mix($--color-white, #409eff, 90%),
+  color-primary-light-2: mix($--color-white, #409eff, 20%),
+  color-primary-light-5: mix($--color-white, #409eff, 50%),
+);
+
+//桔黄色主题
+$orange-theme: (
+  color-primary: #c7993f,
+  color-primary-light-8: mix($--color-white, #c7993f, 80%),
+  color-primary-light-9: mix($--color-white, #c7993f, 90%),
+  color-primary-light-2: mix($--color-white, #c7993f, 20%),
+  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+);
+
+//红色主题
+$red-theme: (
+  color-primary: #fa541c,
+  color-primary-light-8: mix($--color-white, #c7993f, 80%),
+  color-primary-light-9: mix($--color-white, #c7993f, 90%),
+  color-primary-light-2: mix($--color-white, #c7993f, 20%),
+  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+);
+
+
+$cyan-theme: (
+  color-primary: #13c2c2,
+  color-primary-light-8: mix($--color-white, #c7993f, 80%),
+  color-primary-light-9: mix($--color-white, #c7993f, 90%),
+  color-primary-light-2: mix($--color-white, #c7993f, 20%),
+  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+);
+
+$green-theme: (
+  color-primary: #52c41a,
+  color-primary-light-8: mix($--color-white, #c7993f, 80%),
+  color-primary-light-9: mix($--color-white, #c7993f, 90%),
+  color-primary-light-2: mix($--color-white, #c7993f, 20%),
+  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+);
+
+
+$purple-theme: (
+  color-primary: #712dce,
+  color-primary-light-8: mix($--color-white, #c7993f, 80%),
+  color-primary-light-9: mix($--color-white, #c7993f, 90%),
+  color-primary-light-2: mix($--color-white, #c7993f, 20%),
+  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+);
+
+
+//定义映射集合
+$themes: (
+  default-theme: $default-theme,
+  orange-theme: $orange-theme,
+  red-theme:$red-theme,
+  cyan-theme: $cyan-theme,
+  green-theme: $green-theme,
+  purple-theme:$purple-theme
+);
+
+//文本颜色
+@mixin themes-text-color() {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      color: map-get($map: $theme, $key: color-primary);
+    }
+  }
+}
+
+//边框颜色
+@mixin themes-border-color() {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      border-color: 1px solid map-get($map: $theme, $key: color-primary);
+    }
+  }
+}
+
+//背景颜色
+@mixin themes-background-color($value...) {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      background: map-get($map: $theme, $key: color-primary);
+    }
+  }
+}
+
+//自定义属性 1.属性值 例如border 2.主题色 例如 color-primary  3.写除了主题色的任意值 例如 1px solid 没有顺序
+@mixin themes-column-attribute($attribute, $color, $value...) {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      #{$attribute}: map-get($map: $theme, $key: $color) $value;
+    }
+  }
+}
 
 /*element-ui*/
 
 /* -----基础颜色----- */
-
-// 白色
-$--color-white: #ffffff !default;
 
 /*主色*/
 // 主题色

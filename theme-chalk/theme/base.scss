@@ -1,8 +1,13 @@
-/* 改变主题色变量 */ 
-@import './base.scss';
+/*
+* @Author: yx
+* @Description: 修改第三方的颜色主题、字体等变量
+*
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 /* element-ui样式 */
 @import '~element-ui/packages/theme-chalk/src/index';
 /* eve-ui样式 */
 @import '~eve-ui/src/assets/style/theme-chalk/index';
+/* eve-common样式 */
+@import '~eve-ui/src/style/admin/common';
+@import '~eve-ui/src/style/admin/element-ui';

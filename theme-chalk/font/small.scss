@@ -1,0 +1,23 @@
+/*-----字体大小-----*/
+//主标题
+$--font-size-extra-large: 20px !important;
+//标题
+$--font-size-large: 18px !important;
+//小标题
+$--font-size-medium: 16px !important;
+//正文
+$--font-size-base: 14px !important;
+//正文（小）
+$--font-size-small: 13px !important;
+//辅助文字
+$--font-size-extra-small: 12px !important;
+
+/*---字体---*/
+
+// 标题
+$--font-size-title: 14px !important;
+// 内容
+$--font-size-content: 13px !important;
+// 内容(小)
+$--font-size-content-small: 12px !important;
+@import '../theme/base.scss';
