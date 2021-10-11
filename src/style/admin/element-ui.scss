@@ -124,7 +124,7 @@
 //选型卡版本的线
 .el-tabs--card > .el-tabs__header {
   border-bottom: 1px solid $--border-color-base;
-  margin:0 0 10px;
+  margin: 0 0 10px;
 }
 
 .el-tabs__content,
@@ -668,7 +668,7 @@ $--eve-tree-height: 24px;
 
 /*-----header组件------*/
 .eve-header {
-  background: $--eve-header-background;
+  // background: $--eve-header-background;
   .el-dialog__body {
     padding: 4px 20px 4px 20px;
   }
@@ -944,4 +944,80 @@ $--eve-tree-height: 24px;
 .el-tooltip__popper {
   //最大宽度设置
   max-width: 50%;
+}
+
+/*********菜单*********/
+.eve-menu {
+  margin-top: 3px;
+  .el-submenu__title[style^='padding-left: 20px'] {
+    padding: 0 !important;
+    padding-left: 10px !important;
+    background: $--color-primary !important;
+    color: #fff !important;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 32px;
+    color: #fff;
+    line-height:29px;
+    margin-top: 2px;
+  }
+
+  .el-submenu [class^='el-icon-'] {
+    color: #fff !important;
+    font-size: 14px;
+    width: 14px;
+  }
+
+  .el-submenu__icon-arrow {
+    color: #fff !important;
+    margin-top: -6px;
+  }
+
+  .el-submenu__title[style^='padding-left: 40px'],
+  .el-menu-item[style^='padding-left: 40px'] {
+    padding: 0 24px !important;
+    height: 24px;
+    line-height: 20px;
+  }
+
+  .el-submenu__title[style^='padding-left: 40px'] {
+    position: relative;
+    .el-icon-arrow-down:before {
+      display: none;
+    }
+    &::before {
+      position: absolute;
+      font-family: element-icons;
+      content: '\e791';
+      color: $--color-text-secondary;
+      font-size: $--font-size-medium;
+      left: 4px;
+    }
+  }
+
+  .el-submenu .is-opened {
+    .el-submenu__title[style^='padding-left: 40px'] {
+      &::before {
+        content: '\e790';
+      }
+    }
+  }
+
+  .el-menu-item[style^='padding-left: 60px'] {
+    padding: 0 40px !important;
+  }
+
+  .el-menu-item {
+    height: 24px;
+    line-height: 24px;
+  }
+
+  .eve-menu__menu-item .el-menu-item.is-active {
+    background: $--color-primary-light-9 !important;
+    border-radius: 12px;
+  }
+  .eve-menu__menu-item .el-menu-item:focus,
+  .eve-menu__menu-item .el-menu-item:hover {
+    background: $--color-primary-light-9 !important;
+  }
 }

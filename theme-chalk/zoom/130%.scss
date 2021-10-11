@@ -1,0 +1,21 @@
+body {
+  zoom: 130%;
+  .eve-header {
+    .el-menu-item {
+      padding: 0 5px;
+    }
+  }
+  .eve-container__right {
+    min-width: auto !important;
+  }
+  .eve-main {
+    width: calc(74.6vw - 230px) !important;
+    height: calc(76.9vh - 105px) !important;
+  }
+  .eve-common-footer-button {
+    width: calc(74.6vw - 230px) !important;
+  }
+  .eve-container {
+    height: calc(76.9vh - 105px) !important;
+  }
+}

@@ -1,13 +1,12 @@
 .eve-header {
   // width: 100%;
   position: relative;
-  background-size: cover;
   background-color: $--color-primary;
   background-repeat: no-repeat;
   background-position: center top;
   border-bottom: 0;
   display: flex;
-  padding: 0 32px 0 13px;
+  padding: 0 12px;
   color: #fff;
   font-size: 14px;
   //清除dialog本身的position:absolute 设置外部的  position: absolute;位置才能放置在最右边
@@ -24,7 +23,7 @@
   &__dialog-section {
     position: absolute;
     z-index: 2000;
-    right: 26px;
+    right: 14px;
     top: 45px;
   }
 
@@ -52,7 +51,7 @@
   }
 
   &__logo {
-    width: 45px;
+    width: 40px;
     height: auto;
     filter: drop-shadow(0 0 1px #fff);
   }
@@ -85,17 +84,17 @@
   &__icon-img {
     width: 17px;
     height: 17px;
+  }
+
+  &__icon-item {
     opacity: 0.8;
     &:hover {
       opacity: 1;
     }
-  }
-
-  &__icon-item {
     position: relative;
     cursor: pointer;
     user-select: none;
-    color: $--border-color-light;
+    color: #fff;
     &--special {
       // font-weight: 600;
       &:hover {
@@ -257,6 +256,7 @@
     font-size: 14px;
     box-shadow: 0 0 6px $--border-color-lighter;
     margin: 0 auto !important;
+    min-width: auto !important;
   }
 
   //去除头部

@@ -11,6 +11,7 @@
       :model="model"
       :rules="rules"
       :label-width="'0px'"
+      @submit.native.prevent
     >
       <section class="eve-select-form__flex">
         <div class="eve-select-form__flex-start">

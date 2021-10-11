@@ -2,8 +2,8 @@ body {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
   color: $--color-text-regular;
 }
-.mt-form-title{
-  margin-top:8px
+.mt-form-title {
+  margin-top: 8px;
 }
 .eve-color-info-tip {
   font-size: $--font-size-extra-small;
@@ -15,30 +15,30 @@ body {
   color:$--color-info;
 }
 // 成功办结
-.success-status{
-  color:$--color-success;
+.success-status {
+  color: $--color-success;
 }
 // 退回
-.warning-status{
-  color:$--color-warning;
+.warning-status {
+  color: $--color-warning;
 }
 
 // 不成功办结
-.danger-status{
-  color:$--color-danger;
+.danger-status {
+  color: $--color-danger;
 }
 
 //材料表格特殊处理
 .doc-list-table {
- .el-form-item__label{
-  background:none !important;
-  border:none !important;
-  padding: 8px 0px 8px 4px !important;
- }
+  .el-form-item__label {
+    background: none !important;
+    border: none !important;
+    padding: 8px 0px 8px 4px !important;
+  }
 }
 .eve-common {
   /*---- 弹窗样式 -----*/
-  &-dialog{
+  &-dialog {
     height: 69vh;
     overflow-y: auto;
   }
@@ -57,7 +57,7 @@ body {
 
   /*-----表单提交底部按钮-----*/
   &-footer-button {
-    padding:5px;
+    padding: 5px;
     line-height: 40px;
     text-align: center;
     position: fixed;
@@ -520,6 +520,82 @@ body {
     float: right;
     padding: 3px 0;
   }
+
+  /*********表头header组件slot*********/
+
+  &-eve-header__center-before {
+    font-family: 'PingFang SC Semibold', 'PingFang SC', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    color: #fff;
+    padding-right: 40px;
+  }
+
+  &-eve-header__border {
+    width: 2px;
+    height: 21px;
+    background: #fff;
+    margin-right: 14px;
+  }
+
+  /*********菜单menu组件slot*********/
+  &-eve-menu__left-button {
+    width: 100%;
+    width: 24px;
+    height: 64px;
+    box-shadow: $--avatar-background-color 0px 0px 4px;
+    border: 1px solid $--border-color-lighter;
+    border-radius: 0px 4px 4px 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    &:hover {
+      color: $--color-primary;
+    }
+  }
+
+  &-eve-menu__right-button {
+    width: 216px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    span {
+      user-select: none;
+      font-size: 14px;
+      display: block;
+      margin-left: 6px;
+      padding: 0 4px;
+      border-radius: 4px;
+      &:hover {
+        color: $--color-primary;
+      }
+    }
+  }
+  &-eve-menu__right-button--line-feed {
+    line-height: 2.6;
+  }
+
+  &-eve-menu__flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+  &-eve-menu__active {
+    background: $--color-primary;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+    &:hover {
+      color: #fff !important;
+    }
+  }
 }
 
 /*********进度条插件颜色*********/
@@ -527,26 +603,26 @@ body {
   background: $--color-primary;
 }
 
-
 /* 设置全局 去除type="number"输入框聚焦时的上下箭头 */
 .clear-number-input.el-input::-webkit-outer-spin-button,
 .clear-number-input.el-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none !important;
-} 
-.clear-number-input.el-input input[type="number"]::-webkit-outer-spin-button,
-.clear-number-input.el-input input[type="number"]::-webkit-inner-spin-button {
+}
+.clear-number-input.el-input input[type='number']::-webkit-outer-spin-button,
+.clear-number-input.el-input input[type='number']::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none !important;
 }
 .clear-number-input.el-input {
   -moz-appearance: textfield;
-} 
-.clear-number-input.el-input input[type="number"] {
+}
+.clear-number-input.el-input input[type='number'] {
   -moz-appearance: textfield;
 }
 
 //输入框字体设置
-input,textarea{
+input,
+textarea {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif !important;
 }

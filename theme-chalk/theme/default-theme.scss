@@ -1,0 +1,14 @@
+/* 改变主题色变量 */
+$--color-primary: #409eff;
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%);
+// ecf5ff-- 按钮填充样式2
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%);
+// 66b1ff-- 鼠标悬停
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%);
+// 3A8EE6-- 鼠标按下
+// A0CFFF-- 禁用
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
+$tableBorderColor: $--color-primary-light-8;
+$LabelbgColor: $--color-primary-light-9;
+$--eve-header-background: $--color-primary;
+@import './base.scss';

@@ -29,12 +29,12 @@
         :key="key"
         @select="(index, indexPath) => select(index, indexPath, data)"
         :style="{ width: `${tempWidth}px` }"
+        :default-openeds="defaultOpeneds"
       >
         <menu-item
           v-for="(item, index) in data"
           :menu-data="item"
           :key="`eve-menu${index}`"
-          :padding-left="paddingLeft"
         ></menu-item>
       </el-menu>
     </el-scrollbar>
@@ -169,11 +169,10 @@ export default {
       default: () => false
     },
 
-    //菜单距离左边距离
-    paddingLeft: {
-      type: [String, Number],
-      default: 20
-    },
+    defaultOpeneds: {
+      type: Array,
+      default: () => []
+    }
 
   },
   data () {

@@ -100,6 +100,7 @@
                   :class="item.class"
                 >
                   <img
+                    v-if="item.icon"
                     :src="item.icon"
                     class="eve-header__icon-img eve-header__icon-img--special"
                   />

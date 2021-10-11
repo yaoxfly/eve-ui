@@ -1,7 +1,8 @@
 //hdader-scroll-menu的border-bottom
 $--eve-scroll-border-bottom: 2px solid transparent;
 $--eve-scroll-color-active: #fff;
-$--eve-scroll-color: $--border-color-light;
+// $--eve-scroll-color: $--border-color-light;
+$--eve-scroll-color: #fff;
 .eve-scroll {
   width: 100%;
   &__content {
@@ -139,7 +140,7 @@ $--eve-scroll-color: $--border-color-light;
   .el-menu-item.is-active {
     span {
       // border-bottom: $--eve-scroll-border-bottom;
-      padding: 2px 10px 10px 10px !important;
+      padding: 0px 10px 10px 10px !important;
       position: relative;
       &:after {
         display: block;
