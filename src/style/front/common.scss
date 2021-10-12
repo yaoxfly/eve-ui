@@ -6,6 +6,10 @@ body {
 .mt-form-title {
   margin-top: 8px;
 }
+//草稿状态
+.draft-status{
+  color:$--color-info;
+}
 // 成功办结
 .success-status {
   color: $--color-success;
