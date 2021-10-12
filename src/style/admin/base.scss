@@ -5,14 +5,14 @@
 // 白色
 $--color-white: #ffffff !default;
 /***自定义mixin*****/
-
+  
 // 默认主题
 $default-theme: (
-  color-primary: #409eff,
-  color-primary-light-8: mix($--color-white, #409eff, 80%),
-  color-primary-light-9: mix($--color-white, #409eff, 90%),
-  color-primary-light-2: mix($--color-white, #409eff, 20%),
-  color-primary-light-5: mix($--color-white, #409eff, 50%),
+  color-primary: #2ca7d4,
+  color-primary-light-8: mix($--color-white, #2ca7d4, 80%),
+  color-primary-light-9: mix($--color-white, #2ca7d4, 90%),
+  color-primary-light-2: mix($--color-white, #2ca7d4, 20%),
+  color-primary-light-5: mix($--color-white, #2ca7d4, 50%),
 );
 
 //桔黄色主题
@@ -112,7 +112,7 @@ $themes: (
 
 /*主色*/
 // 主题色
-$--color-primary: #409eff !default;
+$--color-primary: #2ca7d4 !default;
 // d9ecff
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
 // ecf5ff-- 按钮填充样式2
@@ -278,7 +278,12 @@ $--eve-menu-width: 256px !default;
 /*---header组件---*/
 
 //背景色
-$--eve-header-background: #3379cc !default;
+$--eve-header-background: #0a2a87 !default;
+
+//菜单一级目录的透明度，取主色的raga
+// $--eve-menu-background: rgba(236,245,255,.2) !default;
+
+$--eve-menu-background: rgba(44,167,212,.2) !default;
 
 //自定义的高度、对话框的高度、footer的高度等
 $--height: 40px !default;

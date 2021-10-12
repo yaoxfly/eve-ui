@@ -10,5 +10,6 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%);
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
 $tableBorderColor: $--color-primary-light-8;
 $LabelbgColor: $--color-primary-light-9;
-$--eve-header-background: $--color-primary;
+$--eve-header-background: #39205b ;
+$--eve-menu-background: rgba(113,45,206,.2) ;
 @import './base.scss';

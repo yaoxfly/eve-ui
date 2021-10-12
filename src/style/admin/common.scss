@@ -1,7 +1,15 @@
 body {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
   color: $--color-text-regular;
+  background: #fff;
+  // background: linear-gradient($--eve-header-background, $--color-primary) !important;
 }
+
+body {
+  transition-delay: 0.12s;
+  background: $--eve-header-background;
+}
+
 .mt-form-title {
   margin-top: 8px;
 }
@@ -530,6 +538,8 @@ body {
     display: flex;
     align-items: center;
     font-size: 14px;
+    background: $--eve-menu-background;
+    margin: 5px;
     &:hover {
       color: $--color-primary;
     }
@@ -562,6 +572,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    color: #fff;
     &:not(:first-child) {
       margin-top: 10px;
     }
