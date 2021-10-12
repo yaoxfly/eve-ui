@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  transition-delay: 0.12s;
+  transition-delay: 0.2s;
   background: $--eve-header-background;
 }
 
@@ -19,8 +19,8 @@ body {
   font-weight: normal;
 }
 //草稿状态
-.draft-status{
-  color:$--color-info;
+.draft-status {
+  color: $--color-info;
 }
 // 成功办结
 .success-status {
