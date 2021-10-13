@@ -551,16 +551,14 @@ body {
   &-eve-menu__left-button {
     width: 100%;
     width: 24px;
-    height: 64px;
-    box-shadow: $--avatar-background-color 0px 0px 4px;
-    border: 1px solid $--border-color-lighter;
+    height: 50px;
     border-radius: 0px 4px 4px 0px;
     text-align: center;
     display: flex;
     align-items: center;
     font-size: 14px;
     background: $--eve-menu-background;
-    margin: 5px;
+    margin: 8px 0;
     &:hover {
       color: $--color-primary;
     }
@@ -586,7 +584,7 @@ body {
     }
   }
   &-eve-menu__right-button--line-feed {
-    line-height: 2.6;
+    line-height: 1.7;
   }
 
   &-eve-menu__flex {
@@ -595,7 +593,7 @@ body {
     align-items: center;
     color: #fff;
     &:not(:first-child) {
-      margin-top: 10px;
+      margin-top: -8px;
     }
   }
   &-eve-menu__active {
