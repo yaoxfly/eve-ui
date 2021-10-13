@@ -1,6 +1,6 @@
 {
   "name": "eve-ui",
-  "version": "1.0.72",
+  "version": "1.0.71",
   "description": "eve-ui",
   "private": false,
   "license": "MIT",
@@ -28,6 +28,7 @@
     "node": "node ./build/node.base.js",
     "node:edp": "node ./build/node.edit.package.js",
     "node:pa": "node ./build/node.publish.after.js",
+    "prepublishOnly": "npm run lib",
     "publish": "npm run node:pa & npm version patch -f"
   },
   "dependencies": {
