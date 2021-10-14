@@ -457,7 +457,34 @@ $--pagination-width-height: 22px;
   font-size: 20px !important;
 }
 .eve-breadcrumb {
-  height: 30px !important;
+  width: 99.4% !important;
+  height: 24px !important;
+  margin: 0 5px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.el-breadcrumb__inner {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.el-breadcrumb__inner.is-link {
+  opacity: 0.6;
+  color: #fff;
+  &:hover {
+    opacity: 1;
+    color: #fff;
+  }
 }
 
 /*-----main主体布局组件------*/
@@ -465,7 +492,7 @@ $--pagination-width-height: 22px;
 .eve-main {
   margin: 5px !important;
   width: calc(100vw - #{$--eve-menu-width} - 10px) !important;
-  height: calc(100vh - 65px - 30px - 10px) !important;
+  height: calc(100vh - 65px - 24px - 10px) !important;
 }
 
 /*-----树------*/
@@ -668,9 +695,15 @@ $--eve-tree-height: 24px;
 
 /*-----header组件------*/
 .eve-header {
-  // background: $--eve-header-background;
+  background-color: $--eve-header-background;
   .el-dialog__body {
     padding: 4px 20px 4px 20px;
+  }
+}
+
+.eve-header__title {
+  span:first-child {
+    letter-spacing: 5.3px;
   }
 }
 
@@ -725,7 +758,8 @@ $--eve-tree-height: 24px;
 
   .eve-select-form__from-lable {
     padding-top: 6.6px;
-    padding-bottom: 8.6px;
+    // padding-bottom: 8.6px;
+    padding-bottom: 6.5px;
     margin-top: 0;
     line-height: 1;
   }
@@ -947,19 +981,38 @@ $--eve-tree-height: 24px;
 }
 
 /*********菜单*********/
+.eve-menu__main {
+  // background: linear-gradient($--eve-header-background  , $--color-primary ) !important;
+  border-right: solid 1px transparent;
+  background-color: $--eve-header-background !important;
+  background-position-y: 66vh !important;
+  background-repeat: no-repeat !important;
+  .el-scrollbar {
+    height: 100% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px;
+  }
+}
+
 .eve-menu {
-  margin-top: 3px;
-  .el-submenu__title[style^='padding-left: 20px'] {
+  background-color: transparent !important;
+  .el-menu {
+    background-color: transparent !important;
+  }
+  // margin-top: 3px;
+
+  .el-submenu__title[style*='padding-left: 20px'] {
     padding: 0 !important;
     padding-left: 10px !important;
-    background: $--color-primary !important;
+    background: $--eve-menu-background !important;
     color: #fff !important;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     height: 32px;
     color: #fff;
-    line-height:29px;
+    line-height: 29px;
     margin-top: 2px;
+    // margin-top: 2px;
   }
 
   .el-submenu [class^='el-icon-'] {
@@ -973,15 +1026,23 @@ $--eve-tree-height: 24px;
     margin-top: -6px;
   }
 
-  .el-submenu__title[style^='padding-left: 40px'],
-  .el-menu-item[style^='padding-left: 40px'] {
+  .el-submenu__title[style*='padding-left: 40px'] {
     padding: 0 24px !important;
     height: 24px;
     line-height: 20px;
   }
 
-  .el-submenu__title[style^='padding-left: 40px'] {
+  .el-menu-item[style*='padding-left: 40px'] {
+    padding: 0 24px !important;
+    height: 24px;
+    line-height: 20px;
+  }
+
+  .el-submenu__title[style*='padding-left: 40px'] {
     position: relative;
+    background-color: transparent !important;
+    color: #fff !important;
+    margin-top: 2px;
     .el-icon-arrow-down:before {
       display: none;
     }
@@ -989,35 +1050,49 @@ $--eve-tree-height: 24px;
       position: absolute;
       font-family: element-icons;
       content: '\e791';
-      color: $--color-text-secondary;
+      color: #fff;
       font-size: $--font-size-medium;
       left: 4px;
     }
   }
 
   .el-submenu .is-opened {
-    .el-submenu__title[style^='padding-left: 40px'] {
+    .el-submenu__title[style*='padding-left: 40px'] {
       &::before {
         content: '\e790';
       }
     }
   }
 
-  .el-menu-item[style^='padding-left: 60px'] {
+  .el-menu-item[style*='padding-left: 60px'] {
     padding: 0 40px !important;
   }
 
   .el-menu-item {
     height: 24px;
-    line-height: 24px;
+    line-height: 21px !important;
+    background-color: transparent !important;
+    // background: $--eve-header-background !important;
+    color: #fff !important;
+    margin-top: 2px;
   }
 
   .eve-menu__menu-item .el-menu-item.is-active {
-    background: $--color-primary-light-9 !important;
-    border-radius: 12px;
+    background: $--color-primary !important;
+    border-radius: 4px;
   }
   .eve-menu__menu-item .el-menu-item:focus,
   .eve-menu__menu-item .el-menu-item:hover {
-    background: $--color-primary-light-9 !important;
+    background: $--color-primary !important;
+    border-radius: 4px;
   }
+}
+
+/*ie兼容--菜单*/
+@media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+}
+
+/*布局组件*/
+.eve-main__content {
+  border-radius: 5px !important ;
 }

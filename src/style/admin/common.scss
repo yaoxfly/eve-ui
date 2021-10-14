@@ -1,7 +1,15 @@
 body {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
   color: $--color-text-regular;
+  background: #fff;
+  // background: linear-gradient($--eve-header-background, $--color-primary) !important;
 }
+
+body {
+  transition-delay: 0.2s;
+  background: $--eve-header-background;
+}
+
 .mt-form-title {
   margin-top: 8px;
 }
@@ -11,8 +19,8 @@ body {
   font-weight: normal;
 }
 //草稿状态
-.draft-status{
-  color:$--color-info;
+.draft-status {
+  color: $--color-info;
 }
 // 成功办结
 .success-status {
@@ -543,14 +551,14 @@ body {
   &-eve-menu__left-button {
     width: 100%;
     width: 24px;
-    height: 64px;
-    box-shadow: $--avatar-background-color 0px 0px 4px;
-    border: 1px solid $--border-color-lighter;
+    height: 50px;
     border-radius: 0px 4px 4px 0px;
     text-align: center;
     display: flex;
     align-items: center;
     font-size: 14px;
+    background: $--eve-menu-background;
+    margin: 8px 0;
     &:hover {
       color: $--color-primary;
     }
@@ -576,15 +584,16 @@ body {
     }
   }
   &-eve-menu__right-button--line-feed {
-    line-height: 2.6;
+    line-height: 1.7;
   }
 
   &-eve-menu__flex {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    color: #fff;
     &:not(:first-child) {
-      margin-top: 10px;
+      margin-top: -8px;
     }
   }
   &-eve-menu__active {

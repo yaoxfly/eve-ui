@@ -1,5 +1,25 @@
 body {
   zoom: 110%;
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 33%;
+    }
+
+    .header-tips:first-child {
+      margin-right: 114px;
+    }
+
+    .header-tips {
+      margin-right: 128px;
+    }
+
+    .eve-header__dialog-section {
+      right: 164px;
+    }
+    /*ie兼容*/
+  }
+
   .eve-main {
     width: calc(88.8vw - 230px) !important;
     height: calc(90.4vh - 105px) !important;

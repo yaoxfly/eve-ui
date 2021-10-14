@@ -1,5 +1,5 @@
 /* 改变主题色变量 */
-$--color-primary: #409eff;
+$--color-primary: #2ca7d4;
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%);
 // ecf5ff-- 按钮填充样式2
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%);
@@ -10,5 +10,6 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%);
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
 $tableBorderColor: $--color-primary-light-8;
 $LabelbgColor: $--color-primary-light-9;
-$--eve-header-background: $--color-primary;
+$--eve-header-background: #0a2a87;
+$--eve-menu-background: rgba(44,167,212,.2) ;
 @import './base.scss';

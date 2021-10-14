@@ -1,3 +1,4 @@
+/*会有样式兼容问题*/
 body {
   zoom: 130%;
   .eve-header {
@@ -5,6 +6,25 @@ body {
       padding: 0 5px;
     }
   }
+
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 100%;
+    }
+    .header-tips:first-child {
+      margin-right: 326px;
+    }
+    .header-tips {
+      margin-right: 340px;
+    }
+    .eve-header__dialog-section {
+      right: 367px;
+    }
+
+    /*ie兼容*/
+  }
+
   .eve-container__right {
     min-width: auto !important;
   }

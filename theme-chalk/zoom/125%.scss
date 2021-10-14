@@ -2,9 +2,28 @@ body {
   zoom: 125%;
   .eve-header {
     .el-menu-item {
-      padding: 0 10px;
+      padding: 0 9px;
     }
   }
+
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 82%;
+    }
+    .header-tips:first-child {
+      margin-right: 282px;
+    }
+    .header-tips {
+      margin-right: 300px;
+    }
+    .eve-header__dialog-section {
+      right: 320px;
+    }
+
+    /*ie兼容*/
+  }
+
   .eve-container__right {
     min-width: auto !important;
   }

@@ -5,6 +5,27 @@ body {
       padding: 0 10px;
     }
   }
+
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 59%;
+    }
+    .header-tips:first-child {
+      margin-right: 231px;
+    }
+
+    .header-tips {
+      margin-right: 247px;
+    }
+
+    .eve-header__dialog-section {
+      right: 275px;
+    }
+
+    /*ie兼容*/
+  }
+
   .eve-container__right {
     min-width: auto !important;
   }
