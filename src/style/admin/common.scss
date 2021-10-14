@@ -301,18 +301,18 @@ body {
     overflow: hidden;
     .el-input__inner {
       //input内边距
-      padding: $eveCommonInputPadding;
+      padding: $eveCommonInputPadding !important;
       //input高度
-      height: $eveCommonInputHeight;
+      height: $eveCommonInputHeight !important;
       line-height: 1;
     }
 
     //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
     &.el-input--prefix .el-input__inner,
     .el-input--suffix .el-input__inner {
-      padding-left: $eveCommonInputPrefixSuffix;
+      padding-left: $eveCommonInputPrefixSuffix !important;
     }
-    &.el-date-editor .el-range-separator {
+    &.el-date-editor .el-range-separator { 
       width: 6%;
       line-height: 25px;
     }
@@ -332,15 +332,15 @@ body {
     overflow: hidden;
     .el-input__inner {
       //input内边距
-      padding: $eveCommonInputPadding;
+      padding: $eveCommonInputPadding !important;
       //input高度
-      height: $eveCommonInputHeight;
+      height: $eveCommonInputHeight !important;
       line-height: 1;
     }
     //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
     &.el-input--prefix .el-input__inner,
     .el-input--suffix .el-input__inner {
-      padding-left: $eveCommonInputPrefixSuffix;
+      padding-left: $eveCommonInputPrefixSuffix !important;
     }
     &.el-date-editor .el-range-separator {
       width: 6%;
@@ -385,6 +385,7 @@ body {
     .el-radio__label {
       font-size: $--font-size-small;
       padding-left: 4px;
+      color: $--color-text-regular !important;
     }
 
     //radio由[实心白]改为[实心蓝]效果
@@ -403,6 +404,7 @@ body {
     .el-checkbox__label {
       font-size: $--font-size-small;
       padding-left: 4px;
+      color: $--color-text-regular !important;
     }
 
     //checkbox由[白色勾]改为[蓝色勾]效果
