@@ -34,7 +34,7 @@
 .el-button.is-disabled,
 .el-button.is-disabled:hover,
 .el-button.is-disabled:focus {
-  border-color: $--border-color-button--disabled;
+  // border-color: $--border-color-button--disabled;//影响食品许可el-text样式
 }
 
 .el-button--text {
