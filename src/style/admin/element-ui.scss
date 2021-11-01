@@ -842,11 +842,10 @@ $--eve-tree-height: 24px;
     }
 
     //checkbox由[白色勾]改为[蓝色勾]效果
-    .el-checkbox__input.is-checked .el-checkbox__inner,
-    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    .el-checkbox__input.is-checked .el-checkbox__inner {
       background-color: #fff;
       //三级边框-#ebeef5
-      border-color: 1px solid $--border-color-lighter;
+      border-color: $--border-color-lighter;
     }
     .el-checkbox__inner::after {
       border-color: $--color-primary;
@@ -964,6 +963,9 @@ $--eve-tree-height: 24px;
   background-color: #fff;
   //三级边框-#ebeef5
   border-color: 1px solid $--border-color-lighter;
+}
+.el-checkbox__input.is-indeterminate .el-checkbox__inner::before{
+  background-color: $--color-primary;
 }
 .el-checkbox__inner::after {
   border-color: $--color-primary;
