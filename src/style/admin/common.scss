@@ -312,7 +312,7 @@ body {
     .el-input--suffix .el-input__inner {
       padding-left: $eveCommonInputPrefixSuffix !important;
     }
-    &.el-date-editor .el-range-separator { 
+    &.el-date-editor .el-range-separator {
       width: 6%;
       line-height: 25px;
     }
@@ -409,12 +409,12 @@ body {
 
     //checkbox由[白色勾]改为[蓝色勾]效果
     .el-checkbox__input.is-checked .el-checkbox__inner,
-    .el-checkbox__input.is-indeterminate .el-checkbox__inner  {
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
       background-color: #fff;
       //三级边框-#ebeef5
-      border-color:$--border-color-lighter;
+      border-color: $--border-color-lighter;
     }
-    .el-checkbox__input.is-indeterminate .el-checkbox__inner::before{
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
       background-color: $--color-primary;
     }
     .el-checkbox__inner::after {
@@ -540,70 +540,20 @@ body {
   &-formwork__select-form {
     padding: 3px 5px;
   }
+
   &-formwork__button-table {
     padding: 0 5px;
   }
+
   &-formwork__table {
     margin-top: 5px;
   }
+
   &-formwork__tree {
     padding: 5px;
-    // .eve-tree {
-    //   width: 100%;
-    //   position: relative;
-    // }
-    // .el-tree-node {
-    //   // width: 400px;
-    // }
-    // .el-tree {
-    //   position: absolute;
-    //   z-index: 1;
-    //   left: 0;
-    //   bottom: 0;
-    //   right: 0;
-    //   top: 30px;
-    //   height: calc(100vh - 145px);
-    //   overflow: auto;
-    //   scrollbar-width: none; /* firefox */
-    //   -ms-overflow-style: none; /* IE 10+ */
-    //   &::-webkit-scrollbar {
-    //     display: none; /* Chrome Safari */
-    //   }
-    //   &:hover {
-    //     scrollbar-width: auto; /* firefox */
-    //     -ms-overflow-style: auto; /* IE 10+ */
-    //     &::-webkit-scrollbar {
-    //       display: block; /* Chrome Safari */
-    //     }
-    //   }
-    // }
-
-    // /*滚动条样式*/
-    // .el-tree::-webkit-scrollbar-track-piece {
-    //   //滚动条凹槽的颜色，还可以设置边框属性
-    //   background-color: #f8f8f8;
-    // }
-
-    // .el-tree::-webkit-scrollbar {
-    //   //滚动条的宽度 --宽高分别设置滚动条的宽度
-    //   width: 8px;
-    //   height: 8px;
-    // }
-
-    // .el-tree::-webkit-scrollbar-thumb {
-    //   //滚动条的设置
-    //   background-clip: padding-box;
-    //   min-height: 50px;
-    //   max-height: 100px;
-    //   border-radius: 3px;
-    //   background-color: rgba(144, 147, 153, 0.3);
-    //   transition: background-color 0.3s;
-    // }
-
-    // .el-tree::-webkit-scrollbar-thumb:hover {
-    //   background-color: rgba(144, 147, 153, 0.3);
-    //   transition: background-color 0.3s;
-    // }
+    .el-scrollbar {
+      height: calc(100vh - 142px) !important;
+    }
   }
 
   /*********卡片*********/
