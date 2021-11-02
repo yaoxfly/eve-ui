@@ -301,13 +301,12 @@
                     :multiple-limit="item.multipleLimit || 0"
                     @clear="clear"
                   >
-                    <template v-for="(itemOption, index) in item.option">
-                      <el-option
-                        :value="itemOption.value"
-                        :key="index"
-                        :label="itemOption.label"
-                      ></el-option>
-                    </template>
+                    <el-option
+                      v-for="(itemOption, index) in item.option"
+                      :value="itemOption.value"
+                      :key="index"
+                      :label="itemOption.label"
+                    ></el-option>
                   </el-select>
                 </slot>
                 <!-- 自定义表单错误提示 -->
@@ -363,11 +362,12 @@
                     v-model="model[item.prop]"
                     style="width: 100%"
                   >
-                    <template v-for="(itemOption, index) in item.option">
-                      <el-radio :key="index" :label="itemOption.value">{{
-                        itemOption.label
-                      }}</el-radio>
-                    </template>
+                    <el-radio
+                      :key="index"
+                      :label="itemOption.value"
+                      v-for="(itemOption, index) in item.option"
+                      >{{ itemOption.label }}</el-radio
+                    >
                   </el-radio-group>
                 </slot>
 
@@ -425,14 +425,13 @@
                     v-model="model[item.prop]"
                     style="width: 100%"
                   >
-                    <template v-for="(itemOption, index) in item.option">
-                      <el-checkbox
-                        :key="`checkbox-option${index}`"
-                        :label="itemOption.value"
-                        :name="item.prop"
-                        >{{ itemOption.label }}</el-checkbox
-                      >
-                    </template>
+                    <el-checkbox
+                      v-for="(itemOption, index) in item.option"
+                      :key="`checkbox-option${index}`"
+                      :label="itemOption.value"
+                      :name="item.prop"
+                      >{{ itemOption.label }}</el-checkbox
+                    >
                   </el-checkbox-group>
                 </slot>
 
@@ -788,6 +787,7 @@ export default {
       // console.log(this.$refs[name])
       this.$refs[name].resetFields()
       this.clear()
+      this.$emit('reset')
     },
 
     /** @description  展开或收起

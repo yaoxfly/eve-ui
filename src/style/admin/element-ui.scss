@@ -447,6 +447,13 @@ $--pagination-width-height: 22px;
   border-top: 1px solid $--color-primary-light-8;
 }
 
+.el-table__row {
+  .el-checkbox {
+    font-size: $--font-size-content;
+    padding: 0;
+  }
+}
+
 /*-----面包屑------*/
 
 .eve-breadcrumb .el-breadcrumb {
@@ -1032,12 +1039,6 @@ $--eve-tree-height: 24px;
     line-height: 20px;
   }
 
-  .el-menu-item[style*='padding-left: 40px'] {
-    padding: 0 24px !important;
-    height: 24px;
-    line-height: 20px;
-  }
-
   .el-submenu__title[style*='padding-left: 40px'] {
     position: relative;
     background-color: transparent !important;
@@ -1057,15 +1058,55 @@ $--eve-tree-height: 24px;
   }
 
   .el-submenu .is-opened {
-    .el-submenu__title[style*='padding-left: 40px'] {
+    & > .el-submenu__title[style*='padding-left: 40px'] {
+      &::before {
+        content: '\e790';
+      }
+    }
+    & > .el-submenu__title[style*='padding-left: 60px'] {
       &::before {
         content: '\e790';
       }
     }
   }
 
+  .el-submenu__title[style*='padding-left: 60px'] {
+    padding: 0 40px !important;
+    height: 24px;
+    line-height: 20px;
+  }
+
+  .el-submenu__title[style*='padding-left: 60px'] {
+    position: relative;
+    background-color: transparent !important;
+    color: #fff !important;
+    margin-top: 2px;
+    .el-icon-arrow-down:before {
+      display: none;
+    }
+    &::before {
+      position: absolute;
+      font-family: element-icons;
+      content: '\e791';
+      color: #fff;
+      font-size: $--font-size-medium;
+      left: 20px;
+    }
+  }
+
+  /****底层菜单的***/
+  .el-menu-item[style*='padding-left: 40px'] {
+    padding: 0 24px !important;
+    height: 24px;
+    line-height: 20px;
+  }
+
   .el-menu-item[style*='padding-left: 60px'] {
     padding: 0 40px !important;
+  }
+
+  .el-menu-item[style*='padding-left: 80px'] {
+    padding: 0 60px !important;
   }
 
   .el-menu-item {
@@ -1088,11 +1129,10 @@ $--eve-tree-height: 24px;
   }
 }
 
-/*ie兼容--菜单*/
-@media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
-}
-
 /*布局组件*/
 .eve-main__content {
   border-radius: 5px !important ;
+}
+
+.eve-common-formwork__tree {
 }

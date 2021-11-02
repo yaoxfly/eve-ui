@@ -9,7 +9,92 @@
       <el-input :placeholder="placeholder" v-model="filterText" clearable>
       </el-input>
     </div>
+
+    <el-scrollbar :style="{ height: scrollHeight + 'px' }" v-if="scroll">
+      <el-tree
+        ref="tree"
+        class="eve-tree eve-tree__scroll"
+        :style="{ width: scrollWidth + 'px' }"
+        :class="[!onlyLeaf && 'eve-tree__is-active']"
+        :props="props"
+        :data="tempData"
+        :load="load"
+        :lazy="lazy"
+        :node-key="nodeKey"
+        :show-checkbox="showCheckbox"
+        :default-expanded-keys="defaultExpandedKeys"
+        :default-checked-keys="defaultCheckedKeys"
+        :default-expand-all="defaultExpandAll"
+        :expand-on-click-node="expandOnClickNode"
+        :filter-node-method="filterNodeMethods"
+        :accordion="accordion"
+        :allow-drop="allowDrop"
+        :allow-drag="allowDrag"
+        :draggable="draggable"
+        :highlight-current="highlightCurrent"
+        v-bind="$attrs"
+        v-on="new$listeners"
+      >
+        <div
+          class="eve-tree__custom-tree-node"
+          :class="[
+            onlyLeaf ? 'eve-tree__custom-leaf-tree' : 'eve-tree__custom-tree',
+          ]"
+          slot-scope="{ node, data }"
+        >
+          <slot :node="node" :data="data">
+            <section>
+              <div class="eve-tree__custom-tree-node">
+                <span
+                  :class="[!showCheckbox && 'eve-tree__custom-tree-label']"
+                  >{{ node.label }}</span
+                >
+
+                <div class="eve-tree__custom-tree-button" v-show="operate">
+                  <span>
+                    <el-button
+                      type="text"
+                      size="mini"
+                      @click.stop="append(node, data)"
+                    >
+                      <el-icon
+                        class="el-icon-circle-plus-outline"
+                        :style="{ color: operateColor }"
+                      ></el-icon>
+                    </el-button>
+
+                    <el-button
+                      type="text"
+                      size="mini"
+                      @click.stop="edit(node, data)"
+                    >
+                      <el-icon
+                        class="el-icon-edit"
+                        :style="{ color: operateColor }"
+                      ></el-icon>
+                    </el-button>
+
+                    <el-button
+                      type="text"
+                      size="mini"
+                      @click.stop="remove(node, data)"
+                    >
+                      <el-icon
+                        class="el-icon-remove-outline"
+                        :style="{ color: operateColor }"
+                      ></el-icon>
+                    </el-button>
+                  </span>
+                </div>
+              </div>
+            </section>
+          </slot>
+        </div>
+      </el-tree>
+    </el-scrollbar>
+
     <el-tree
+      v-else
       ref="tree"
       class="eve-tree"
       :class="[!onlyLeaf && 'eve-tree__is-active']"
@@ -40,41 +125,50 @@
         slot-scope="{ node, data }"
       >
         <slot :node="node" :data="data">
-          <span :class="[!showCheckbox && 'eve-tree__custom-tree-label']">{{
-            node.label
-          }}</span>
-          <div class="eve-tree__custom-tree-button" v-show="operate">
-            <span>
-              <el-button
-                type="text"
-                size="mini"
-                @click.stop="append(node, data)"
-              >
-                <el-icon
-                  class="el-icon-circle-plus-outline"
-                  :style="{ color: operateColor }"
-                ></el-icon>
-              </el-button>
+          <section>
+            <div class="eve-tree__custom-tree-node">
+              <span :class="[!showCheckbox && 'eve-tree__custom-tree-label']">{{
+                node.label
+              }}</span>
 
-              <el-button type="text" size="mini" @click.stop="edit(node, data)">
-                <el-icon
-                  class="el-icon-edit"
-                  :style="{ color: operateColor }"
-                ></el-icon>
-              </el-button>
+              <div class="eve-tree__custom-tree-button" v-show="operate">
+                <span>
+                  <el-button
+                    type="text"
+                    size="mini"
+                    @click.stop="append(node, data)"
+                  >
+                    <el-icon
+                      class="el-icon-circle-plus-outline"
+                      :style="{ color: operateColor }"
+                    ></el-icon>
+                  </el-button>
 
-              <el-button
-                type="text"
-                size="mini"
-                @click.stop="remove(node, data)"
-              >
-                <el-icon
-                  class="el-icon-remove-outline"
-                  :style="{ color: operateColor }"
-                ></el-icon>
-              </el-button>
-            </span>
-          </div>
+                  <el-button
+                    type="text"
+                    size="mini"
+                    @click.stop="edit(node, data)"
+                  >
+                    <el-icon
+                      class="el-icon-edit"
+                      :style="{ color: operateColor }"
+                    ></el-icon>
+                  </el-button>
+
+                  <el-button
+                    type="text"
+                    size="mini"
+                    @click.stop="remove(node, data)"
+                  >
+                    <el-icon
+                      class="el-icon-remove-outline"
+                      :style="{ color: operateColor }"
+                    ></el-icon>
+                  </el-button>
+                </span>
+              </div>
+            </div>
+          </section>
         </slot>
       </div>
     </el-tree>
@@ -238,7 +332,7 @@ export default {
     },
 
     /*自定义属性 */
-    //整颗树的宽度，固定宽度有横向滚动条，100%可向外自动扩伸(不出现横向滚动条)
+    //整体的宽度(包括搜索框的)，固定宽度有横向滚动条，100%可向外自动扩伸(不出现横向滚动条)
     width: {
       type: [String, Number],
       default: '100%'
@@ -276,9 +370,27 @@ export default {
     placeholder: {
       type: String,
       default: () => '输入关键字进行过滤'
-    }
+    },
 
+    //是否开启滚动
+    scroll: {
+      type: Boolean,
+      default: false
+    },
+
+    //开启滚动后树的默认的高度(不包含搜索框的)
+    scrollHeight: {
+      type: [String, Number],
+      default: 200
+    },
+
+    //开启滚动后树的默认的宽度(不包含搜索框的)
+    scrollWidth: {
+      type: [String, Number],
+      default: ''
+    }
   },
+
   mounted () { },
   data () {
     return {

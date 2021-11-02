@@ -300,9 +300,7 @@ export default {
 | filter-node-method | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(value, data, node,prop) | — | — |
 | placeholder | 输入框占位文本 | string | — | — |
 
-
 >   1.当同时有data和lazy的情况下，lazy优先级更高，会覆盖data的配置; 2.node-key属性，设置默认展开和默认选中的节点时必须设置
-
 
 ### props
 | 参数 | 说明 | 类型  | 可选值 | 默认值|
@@ -315,12 +313,17 @@ export default {
 ###  Attributes(自定义)
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
-| width |整颗树的宽度，固定宽度有横向滚动条，100%可向外自动扩伸(不出现横向滚动条)| string, number | — | 100% |
+| width |整体的宽度(包含搜索框))| string, number | — | 100% |
+| scroll | 是否开启滚动| boolean | — | false |
+| scroll-height | 开启滚动后树的高度(不包含搜索框的)| string, number | — | 200 |
+| scroll-width |开启滚动后树的默认的宽度(不包含搜索框的)| string, number | — | — |
 | only-leaf |是否只选中、高亮、编辑叶子节点(最底层的节点)| boolean | — | false |
 | operate |是否显示 添加、删除、编辑等按钮| boolean | — | true |
 | operate-color |设置添加、删除、编辑等按钮的颜色| string | — |  — |
 | is-show-filter |是否开启节点过滤| boolean | — |  true |
 | convert-setting |树形结构数据转换设置；普通数据转树结构数据必须设置的属性；详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
+
+> 开启滚动后`scroll-height`、`scroll-width`请根据页面布局情况自行调整到合适的值
 
 ### convert-setting
 `普通数据转树结构数据`必须设置的属性，当前值可以不用全部设置，内部有默认值，可只设置其中一个(要看数据格式是否和当前设置的默认值是否相匹配)。

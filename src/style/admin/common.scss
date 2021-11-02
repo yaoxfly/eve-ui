@@ -436,6 +436,28 @@ body {
     }
   }
 
+  //多选 select超出
+  &-select-ellipsis {
+    .el-select__tags {
+      flex-wrap: nowrap;
+    }
+    .el-tag:first-child {
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  //单选 select超出
+  &-select-single-ellipsis {
+    &.el-select .el-input__inner {
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+  }
+
   /*********select下拉复选框[start]*********/
   &-cascader {
     &.el-cascader {
@@ -521,6 +543,62 @@ body {
   }
   &-formwork__tree {
     padding: 5px;
+    // .eve-tree {
+    //   width: 100%;
+    //   position: relative;
+    // }
+    // .el-tree-node {
+    //   // width: 400px;
+    // }
+    // .el-tree {
+    //   position: absolute;
+    //   z-index: 1;
+    //   left: 0;
+    //   bottom: 0;
+    //   right: 0;
+    //   top: 30px;
+    //   height: calc(100vh - 145px);
+    //   overflow: auto;
+    //   scrollbar-width: none; /* firefox */
+    //   -ms-overflow-style: none; /* IE 10+ */
+    //   &::-webkit-scrollbar {
+    //     display: none; /* Chrome Safari */
+    //   }
+    //   &:hover {
+    //     scrollbar-width: auto; /* firefox */
+    //     -ms-overflow-style: auto; /* IE 10+ */
+    //     &::-webkit-scrollbar {
+    //       display: block; /* Chrome Safari */
+    //     }
+    //   }
+    // }
+
+    // /*滚动条样式*/
+    // .el-tree::-webkit-scrollbar-track-piece {
+    //   //滚动条凹槽的颜色，还可以设置边框属性
+    //   background-color: #f8f8f8;
+    // }
+
+    // .el-tree::-webkit-scrollbar {
+    //   //滚动条的宽度 --宽高分别设置滚动条的宽度
+    //   width: 8px;
+    //   height: 8px;
+    // }
+
+    // .el-tree::-webkit-scrollbar-thumb {
+    //   //滚动条的设置
+    //   background-clip: padding-box;
+    //   min-height: 50px;
+    //   max-height: 100px;
+    //   border-radius: 3px;
+    //   background-color: rgba(144, 147, 153, 0.3);
+    //   transition: background-color 0.3s;
+    // }
+
+    // .el-tree::-webkit-scrollbar-thumb:hover {
+    //   background-color: rgba(144, 147, 153, 0.3);
+    //   transition: background-color 0.3s;
+    // }
   }
 
   /*********卡片*********/

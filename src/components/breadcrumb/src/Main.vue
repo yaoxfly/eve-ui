@@ -13,9 +13,13 @@
     }"
   >
     <div :style="{ paddingLeft: checkString(iconLeft) }" v-if="icon">
-      <slot name="left">
+      <slot name="left-icon">
         <BreadcrumbIcon @icon-click="iconClick" :icon-class="iconClass" />
       </slot>
+    </div>
+
+    <div class="eve-breadcrumb__left-content">
+      <slot name="left-content"> </slot>
     </div>
 
     <section :style="{ paddingLeft: checkString(Left) }">
@@ -29,7 +33,7 @@
           >
             <span> {{ item[tempConfig.text] }}</span></el-breadcrumb-item
           >
-          <el-breadcrumb-item v-else :key="`eve-breadcrumb${index}`">
+          <el-breadcrumb-item v-else :key="`eve-breadcrumb2${index}`">
             <span class=""> {{ item[tempConfig.text] }}</span>
           </el-breadcrumb-item>
         </template>

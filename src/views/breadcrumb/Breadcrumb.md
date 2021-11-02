@@ -91,4 +91,5 @@ export default {
 ### Slot
 | 方法名 | 说明 
 | ----| ----| 
-| left | 左边收缩展开小图标 |  
+| left-icon | 左边收缩展开小图标 |  
+| left-content | 左边内容 |  
