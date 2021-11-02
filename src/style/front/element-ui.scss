@@ -34,7 +34,7 @@
 .el-button.is-disabled,
 .el-button.is-disabled:hover,
 .el-button.is-disabled:focus {
-  border-color: $--border-color-button--disabled;
+  // border-color: $--border-color-button--disabled;//影响食品许可el-text样式
 }
 
 .el-button--text {
@@ -975,4 +975,9 @@ $--pagination-width-height: 30px;
 }
 .el-select:hover .el-input__inner {
   border-color: $--color-primary;
+}
+
+/*表单去除disabled字体置灰*/
+.el-input.is-disabled .el-input__inner,.el-textarea.is-disabled .el-textarea__inner,.el-range-editor.is-disabled input{
+  color: $--color-text-regular !important;
 }
