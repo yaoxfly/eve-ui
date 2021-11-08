@@ -12,6 +12,7 @@
       :rules="rules"
       :label-width="'0px'"
       @submit.native.prevent
+      @keyup.enter.native="handleSubmit('formValidate')"
     >
       <section class="eve-select-form__flex">
         <div class="eve-select-form__flex-start">
