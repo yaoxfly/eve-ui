@@ -177,7 +177,7 @@
       :total="total"
       :small="small"
       :page-size="pageSize"
-      :current-page="currentPage"
+      :current-page="tempCurrentPage"
       :page-sizes="pageSizes"
       :hide-on-single-page="hideOnSinglePage"
       @size-change="sizeChange"
@@ -636,6 +636,7 @@ export default {
       tempLayout: 'total,prev,pager,next,sizes,jumper',
       tempJumpText: '前往',
       tempIsShowPageCount: false,
+      tempCurrentPage: 1
     }
   },
 
@@ -676,7 +677,7 @@ export default {
      * @param  {Number} index //数组下标
      */
     indexMethod (index) {
-      return index + (this.currentPage - 1) * this.pageSize + 1
+      return index + (this.tempCurrentPage - 1) * this.pageSize + 1
     },
 
     /** @description 分页-每页显示的条数切换
@@ -751,6 +752,7 @@ export default {
               center: center
             }).then(() => {
               this.$emit('btn-operate', param)
+              this.backPreviousPage()
             }).catch(() => {
               isCanclePrompt && this.$message({
                 type: 'info',
@@ -759,6 +761,7 @@ export default {
             })
           } else {
             this.$emit('btn-operate', param)
+            this.backPreviousPage()
           }
         },
         default: () => {
@@ -848,11 +851,13 @@ export default {
       return this.$refs.eveTable
     },
 
-
+    // 删除最后一条数据并跳到上一个页面，防止空数据
+    backPreviousPage () {
+      this.tempCurrentPage = this.tempCurrentPage > this.getPageCount ? this.getPageCount : this.tempCurrentPage
+      this.tempCurrentPage = this.tempCurrentPage < 1 ? 1 : this.tempCurrentPage
+      this.$emit('update:currentPage', this.tempCurrentPage)
+    },
   },
-
-
-
 
   watch: {
     deleteMessageBox: {
@@ -888,6 +893,13 @@ export default {
         this.setJump()
       },
       immediate: true
+    },
+
+    currentPage: {
+      handler (val) {
+        this.tempCurrentPage = val
+      },
+      immediate: true
     }
 
   },
@@ -918,7 +930,7 @@ export default {
     },
     //获取总页数
     getPageCount () {
-      return Math.ceil(this.total / this.pageSize)
+      return Math.ceil((this.total - 1) / this.pageSize)
     }
   }
 }

@@ -314,6 +314,7 @@ export default {
 | small  | 在空间有限的情况下，可以使用简单的小型分页  | boolean  | —   | false   |
 | hide-on-single-page   | 只有一页时是否隐藏   | boolean | — | true  |
 
+> 表格内置删除按钮，解决了删除最后一页最后一条数据展示空数据问题，`current-page`上需添加`.sync`修饰符，如果使用`render`或者`slot`修改了内置的删除按钮，可以使用`backPreviousPage`方法,同时`current-page`上需要添加`.sync`修饰符。
 
 ###  Pagination Attributes(自定义)
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -369,12 +370,13 @@ export default {
 | ----| ----| --- | 
 | current-change  |当前页切换 | 当前页 |
 | size-change | 每页显示的条数切换  | 页面切换的条数 |
-
+  
 
 ### Table Methods
 | 事件名称 | 说明 | 回调参数 | 
 | ----| ----| --- | 
-| getElTableRef  |当前方法可获取element-ui的Table组件的ref,可使用table组件的所有方法 | — |
+| getElTableRef  | 当前方法可获取element-ui的Table组件的ref,可使用table组件的所有方法 | — |
+| backPreviousPage | 删除最后一条数据并跳到上一个页面，防止删除后显示空数据 | — |
 
 
 
