@@ -108,15 +108,11 @@ body {
     .el-tabs__nav-wrap {
       margin-bottom: 0;
     }
-    // .el-tabs__item.is-active {
-    //   background: $--color-primary;
-    //   color: #fff;
-    //   border: 1px solid $--color-primary;
-    // }
 
     .el-tabs__item:first-child {
       border-radius: 4px 0 0 4px;
     }
+
     .el-tabs__item:last-child {
       border-radius: 0 4px 4px 0;
     }
@@ -132,8 +128,15 @@ body {
     }
 
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
-      border-bottom: 1px solid $--border-color-lighter;
       border-radius: 4px;
+      border: 1px solid transparent;
+    }
+
+    .el-tabs--card > .el-tabs__header .el-tabs__item {
+      border: 1px solid $--border-color-light;
+      &:not(:last-child) {
+        border-right: none;
+      }
     }
   }
 
