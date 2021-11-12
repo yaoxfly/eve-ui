@@ -667,13 +667,13 @@ export default {
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
       type: Number,
-      default: 220 // 1093 
+      default: 194 // 1093 
     },
 
     // 所有左边label的宽度
     labelWidth: {
       type: Number,
-      default: 128 // 1093 
+      default: 134 // 1093 
     },
 
     // 当参数为空时是否过滤参数
@@ -697,7 +697,7 @@ export default {
     // 右边查询、重置等按钮的宽度,有用插槽、样式等方式改变了右边这个宽度需要手动设置且需加上按钮离最右边body的偏移量--自适应收缩展开时用
     rightButtonWidth: {
       type: Number,
-      default: 230
+      default: 180
     },
 
     //右边按钮的数组--当前数组会覆盖默认的按钮，符合个性化的需求
@@ -711,6 +711,7 @@ export default {
       type: [Number, String],
       default: () => ''
     },
+
 
     //表单域标签的后缀
     labelSuffix: {
@@ -757,7 +758,7 @@ export default {
      *  @author yx
      */
     getNum (param) {
-      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 265 //自动计算的左边的间距
+      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 275 //自动计算的左边的间距
       const {
         winWidth, formWidth, labelWidth,
         leftWidth = this.leftFormWidth !== 0 ? this.leftFormWidth : left,

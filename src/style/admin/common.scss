@@ -1,13 +1,14 @@
 body {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
   color: $--color-text-regular;
-  background: #fff;
-  // background: linear-gradient($--eve-header-background, $--color-primary) !important;
 }
 
 body {
-  transition-delay: 0.2s;
-  background: $--eve-header-background;
+  transition-delay: 0.4s;
+  background-image: linear-gradient(
+    $--eve-header-background,
+    $--eve-menu-background-gradient
+  );
 }
 
 .mt-form-title {
@@ -66,20 +67,20 @@ body {
   /*-----表单提交底部按钮-----*/
   &-footer-button {
     padding: 5px;
-    line-height: 40px;
+    line-height: 44px;
     text-align: center;
     position: fixed;
     bottom: 0;
     display: flex;
     // height: 48px;
     box-shadow: 0 -4px 6px -2px $--color-primary-light-8; //顶部
-    width: calc(100vw - #{$--eve-menu-width} - 10px); //菜单宽度+间距
+    width: calc(100vw - #{$--eve-menu-width} - 30px); //菜单宽度+间距
     z-index: 1000;
     justify-content: center;
     align-items: center;
     background: #ffffff;
     .el-button {
-      padding: 8px 16px;
+      padding: 10px 16px;
       font-size: $--font-size-content;
     }
   }
@@ -110,11 +111,11 @@ body {
     }
 
     .el-tabs__item:first-child {
-      border-radius: 4px 0 0 4px;
+      border-radius: $--eve-border-radius-small 0 0 $--eve-border-radius-small;
     }
 
     .el-tabs__item:last-child {
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 $--eve-border-radius-small $--eve-border-radius-small 0;
     }
 
     .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
@@ -128,7 +129,7 @@ body {
     }
 
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
-      border-radius: 4px;
+      border-radius: $--eve-border-radius-small;
       border: 1px solid transparent;
     }
 
@@ -146,14 +147,14 @@ body {
       border: 1px solid $--border-color-lighter;
     }
     .el-tabs__item:not(:first-child) {
-      margin-left: 2px;
+      margin-left: 5px;
     }
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
       border-top: 1px solid transparent;
       border-right: 1px solid transparent;
     }
     .el-tabs__item {
-      border-radius: 4px 4px 0 0;
+      border-radius: $--eve-border-radius-small $--eve-border-radius-small 0 0;
     }
   }
 
@@ -541,21 +542,21 @@ body {
 
   /*********模板页面的间距*********/
   &-formwork__select-form {
-    padding: 3px 5px;
+    padding: 15px 20px 20px 20px;
   }
 
   &-formwork__button-table {
-    padding: 0 5px;
+    padding: 0 20px;
   }
 
   &-formwork__table {
-    margin-top: 5px;
+    margin-top: 20px;
   }
 
   &-formwork__tree {
     padding: 5px;
     .el-scrollbar {
-      height: calc(100vh - 142px) !important;
+      height: calc(100vh - 181px) !important;
     }
   }
 
@@ -588,7 +589,7 @@ body {
     width: 100%;
     width: 24px;
     height: 50px;
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0px $--eve-border-radius-small $--eve-border-radius-small 0px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -613,7 +614,7 @@ body {
       display: block;
       margin-left: 6px;
       padding: 0 4px;
-      border-radius: 4px;
+      border-radius: $--eve-border-radius-small;
       &:hover {
         color: $--color-primary;
       }
