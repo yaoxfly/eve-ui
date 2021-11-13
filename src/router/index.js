@@ -135,7 +135,7 @@ const routes = [
     name: 'FormDesign',
     component: () => import('../views/form-design/FormDesign.vue')
   },
- 
+
   {
     path: '/test_page',
     name: 'coder',

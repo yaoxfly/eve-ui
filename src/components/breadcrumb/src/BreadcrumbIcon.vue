@@ -45,7 +45,7 @@ export default {
     iconClick () {
       this.collapse = !this.collapse
       this.$store.commit('SET_COLLAPSE', this.collapse)
-      this.$emit('icon-click')
+      this.$emit('icon-click', this.collapse)
     },
 
     /**@description 判断是否是字符串

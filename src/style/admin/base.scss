@@ -121,14 +121,6 @@ $themes: (
   }
 }
 
-@mixin themes-column-attribute($attribute, $color, $value...) {
-  @each $themeName, $theme in $themes {
-    [data-theme='#{$themeName}'] & {
-      background-image: map-get($map: $theme, $key: $color) $value;
-    }
-  }
-}
-
 /*element-ui*/
 
 /* -----基础颜色----- */
@@ -146,7 +138,7 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
 
 // A0CFFF-- 禁用
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
-//自定义表格的头部
+//f4fbfd--自定义表格的头部
 $--color-primary-light-95: mix($--color-white, $--color-primary, 95%) !default;
 
 /*辅助色*/

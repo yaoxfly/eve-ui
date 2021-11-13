@@ -197,8 +197,8 @@ export default {
     /** @description 左边图标的点击事件，主要用来做左边菜单收缩功能的
          * @author yx
       */
-    iconClick () {
-      this.$emit('icon-click')
+    iconClick (param) {
+      this.$emit('icon-click', param)
     },
 
     /**@description  根据菜单数据查找面包屑数据

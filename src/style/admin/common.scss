@@ -554,16 +554,20 @@ body {
   }
 
   &-formwork__tree {
-    padding: 5px;
+    padding: 20px;
     .el-scrollbar {
-      height: calc(100vh - 181px) !important;
+      height: calc(100vh - 212px) !important;
+    }
+
+    .el-tree {
+      padding-top: 10px;
     }
   }
 
   /*********卡片*********/
   &-card__button {
     float: right;
-    padding: 3px 0;
+    line-height: 1.5;
   }
 
   /*********表头header组件slot*********/
