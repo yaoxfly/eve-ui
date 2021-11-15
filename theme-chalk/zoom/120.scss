@@ -2,42 +2,98 @@ body {
   zoom: 120%;
   .eve-header {
     .el-menu-item {
-      padding: 0 10px;
+      padding: 0 12px;
     }
-  }
-
-  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
-    /*ie兼容*/
-    .eve-header__right {
-      width: 59%;
-    }
-    .header-tips:first-child {
-      margin-right: 231px;
-    }
-
-    .header-tips {
-      margin-right: 247px;
-    }
-
-    .eve-header__dialog-section {
-      right: 275px;
-    }
-
-    /*ie兼容*/
   }
 
   .eve-container__right {
     min-width: auto !important;
   }
 
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 42%;
+    }
+
+    .header-tips {
+      margin-right: 301px;
+    }
+
+    .eve-header__dialog-section {
+      right: 328px;
+    }
+    /*ie兼容*/
+  }
+}
+
+//width：542  height：260  1920分辨率放大 125的比例下
+$--zoom-width: calc(100vw - 606px) !important;
+$--zoom-height: calc(100vh - 296px) !important;
+
+.eve-main {
+  width: $--zoom-width;
+  height: $--zoom-height;
+}
+
+.eve-breadcrumb {
+  width: $--zoom-width;
+}
+
+.eve-common-footer-button {
+  width: $--zoom-width;
+}
+
+.eve-container {
+  height: $--zoom-height;
+}
+
+.eve-menu__main {
+  height: calc(100vh - 250px) !important;
+}
+
+//系统设置放大了1.25的情况下
+@media all and (-webkit-device-pixel-ratio: 1.25),
+  (-moz-device-pixel-ratio: 1.25),
+  (-o-device-pixel-ratio: 1.25),
+  (resolution: 120dpi) {
+  $--zoom-width: calc(100vw - 542px) !important;
+  $--zoom-height: calc(100vh - 260px) !important;
   .eve-main {
-    width: calc(81vw - 230px) !important;
-    height: calc(83.2vh - 105px) !important;
+    width: $--zoom-width;
+    height: $--zoom-height;
   }
+
+  .eve-breadcrumb {
+    width: $--zoom-width;
+  }
+
   .eve-common-footer-button {
-    width: calc(81vw - 230px) !important;
+    width: $--zoom-width;
   }
+
   .eve-container {
-    height: calc(83.2vh - 105px) !important;
+    height: $--zoom-height;
+  }
+
+  .eve-menu__main {
+    height: calc(100vh - 214px) !important;
+  }
+
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 60% !important;
+    }
+
+    .header-tips {
+      margin-right: 237px !important;
+    }
+
+    .eve-header__dialog-section {
+      right: 264px !important;
+    }
+
+    /*ie兼容*/
   }
 }

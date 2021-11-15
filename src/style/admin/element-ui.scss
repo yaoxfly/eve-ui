@@ -585,6 +585,7 @@ $--eve-tree-height: $--eve-height--small;
     font-size: $--font-size-content;
   }
 }
+
 .el-input__icon {
   line-height: $--eve-tree-height;
 }
@@ -744,6 +745,12 @@ $--eve-tree-height: $--eve-height--small;
   height: 80px !important;
   .el-dialog__body {
     padding: 4px 20px 4px 20px;
+  }
+  @media screen and (max-width: 1366px) {
+    //菜单的间距
+    .el-menu-item {
+      padding: 0 12px !important;
+    }
   }
 }
 
@@ -1205,7 +1212,6 @@ $--eve-tree-height: $--eve-height--small;
 }
 
 /*header的菜单*/
-
 ul[role='menu'] .eve-header__menu-item .el-submenu__title:focus,
 ul[role='menu'] .eve-header__menu-item .el-submenu__title:hover {
   background-color: $--color-primary-light-9 !important;
