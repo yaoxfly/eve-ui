@@ -13,9 +13,13 @@
     }"
   >
     <div :style="{ paddingLeft: checkString(iconLeft) }" v-if="icon">
-      <slot name="left">
+      <slot name="left-icon">
         <BreadcrumbIcon @icon-click="iconClick" :icon-class="iconClass" />
       </slot>
+    </div>
+
+    <div class="eve-breadcrumb__left-content">
+      <slot name="left-content"> </slot>
     </div>
 
     <section :style="{ paddingLeft: checkString(Left) }">
@@ -29,7 +33,7 @@
           >
             <span> {{ item[tempConfig.text] }}</span></el-breadcrumb-item
           >
-          <el-breadcrumb-item v-else :key="`eve-breadcrumb${index}`">
+          <el-breadcrumb-item v-else :key="`eve-breadcrumb2${index}`">
             <span class=""> {{ item[tempConfig.text] }}</span>
           </el-breadcrumb-item>
         </template>
@@ -193,8 +197,8 @@ export default {
     /** @description 左边图标的点击事件，主要用来做左边菜单收缩功能的
          * @author yx
       */
-    iconClick () {
-      this.$emit('icon-click')
+    iconClick (param) {
+      this.$emit('icon-click', param)
     },
 
     /**@description  根据菜单数据查找面包屑数据

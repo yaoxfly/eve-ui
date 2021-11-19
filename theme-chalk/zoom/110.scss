@@ -1,0 +1,86 @@
+body {
+  zoom: 110%;
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 27%;
+    }
+
+    .header-tips:first-child {
+      margin-right: 166px;
+    }
+
+    .eve-header__dialog-section {
+      right: 188px;
+    }
+    /*ie兼容*/
+  }
+}
+
+$--zoom-width: calc(100vw - 460px) !important;
+$--zoom-height: calc(100vh - 224px) !important;
+.eve-main {
+  width: $--zoom-width;
+  height: $--zoom-height;
+}
+
+.eve-breadcrumb {
+  width: $--zoom-width;
+}
+
+.eve-common-footer-button {
+  width: $--zoom-width;
+}
+
+.eve-container {
+  height: $--zoom-height;
+}
+
+.eve-menu__main {
+  height: calc(100vh - 178px) !important;
+}
+
+//系统设置放大了1.25的情况下
+@media screen and (-webkit-device-pixel-ratio: 1.25),
+  (-moz-device-pixel-ratio: 1.25),
+  (-o-device-pixel-ratio: 1.25),
+  (resolution: 120dpi) {
+  $--zoom-width: calc(100vw - 426px) !important;
+  $--zoom-height: calc(100vh - 204px) !important;
+  .eve-main {
+    width: $--zoom-width;
+    height: $--zoom-height;
+  }
+
+  .eve-breadcrumb {
+    width: $--zoom-width;
+  }
+
+  .eve-common-footer-button {
+    width: $--zoom-width;
+  }
+
+  .eve-container {
+    height: $--zoom-height;
+  }
+
+  .eve-menu__main {
+    height: calc(100vh - 156px) !important;
+  }
+
+  @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
+    /*ie兼容*/
+    .eve-header__right {
+      width: 33% !important;
+    }
+
+    .header-tips {
+      margin-right: 126px !important;
+    }
+
+    .eve-header__dialog-section {
+      right: 150px !important;
+    }
+    /*ie兼容*/
+  }
+}

@@ -7,8 +7,8 @@ body {
   margin-top: 8px;
 }
 //草稿状态
-.draft-status{
-  color:$--color-info;
+.draft-status {
+  color: $--color-info;
 }
 // 成功办结
 .success-status {
@@ -32,7 +32,7 @@ body {
   .el-input__inner {
     height: 30px !important;
   }
-  .el-input__suffix{
+  .el-input__suffix {
     height: 30px;
     top: -3px;
   }
@@ -135,15 +135,11 @@ body {
     .el-tabs__nav-wrap {
       margin-bottom: 0;
     }
-    // .el-tabs__item.is-active {
-    //   background: $--color-primary;
-    //   color: #fff;
-    //   border: 1px solid $--color-primary;
-    // }
 
     .el-tabs__item:first-child {
       border-radius: 4px 0 0 4px;
     }
+
     .el-tabs__item:last-child {
       border-radius: 0 4px 4px 0;
     }
@@ -159,8 +155,15 @@ body {
     }
 
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
-      border-bottom: 1px solid $--border-color-lighter;
       border-radius: 4px;
+      border: 1px solid transparent;
+    }
+
+    .el-tabs--card > .el-tabs__header .el-tabs__item {
+      border: 1px solid $--border-color-light;
+      &:not(:last-child) {
+        border-right: none;
+      }
     }
   }
 
@@ -634,27 +637,26 @@ body {
   color: $--color-primary;
 }
 
-
 /* 设置全局 去除type="number"输入框聚焦时的上下箭头 */
 .clear-number-input.el-input::-webkit-outer-spin-button,
 .clear-number-input.el-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none !important;
-} 
-.clear-number-input.el-input input[type="number"]::-webkit-outer-spin-button,
-.clear-number-input.el-input input[type="number"]::-webkit-inner-spin-button {
+}
+.clear-number-input.el-input input[type='number']::-webkit-outer-spin-button,
+.clear-number-input.el-input input[type='number']::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none !important;
 }
 .clear-number-input.el-input {
   -moz-appearance: textfield;
-} 
-.clear-number-input.el-input input[type="number"] {
+}
+.clear-number-input.el-input input[type='number'] {
   -moz-appearance: textfield;
 }
 
-
 //输入框字体设置
-input,textarea{
+input,
+textarea {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif !important;
 }

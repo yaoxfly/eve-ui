@@ -17,8 +17,9 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 > 注意使用`scss`变量改变主题，需要安装`node-sass`和`sass-loader` 
 
-
 ### 自定义样式主题颜色设置(非组件以及公共样式)
+
+> 在自定义样式中设置主题颜色时，不要在`scoped`下修改,要包一层父亲或者兄弟`class`，否则样式可能无法生效
 
 文字
 

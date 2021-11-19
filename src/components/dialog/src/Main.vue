@@ -18,6 +18,7 @@
       :visible.sync="isShow"
       :modal="modal"
       :top="top"
+      ref="eve-dialog"
       :show-close="showClose"
       :close-on-press-escape="closeOnPressEscape"
       :close-on-click-modal="closeOnClickModal"
@@ -48,29 +49,27 @@
             <div class="eve-dialog__footer" v-loading="loading">
               <div>
                 <slot name="leftFooter">
-                  <template v-for="(item, index) in leftButtonData">
-                    <el-button
-                      :key="index"
-                      :type="item.type"
-                      @click="leftButton({ index: index, value: item.value })"
-                    >
-                      {{ item.value }}
-                    </el-button>
-                  </template>
+                  <el-button
+                    v-for="(item, index) in leftButtonData"
+                    :key="leftFooter + index"
+                    :type="item.type"
+                    @click="leftButton({ index: index, value: item.value })"
+                  >
+                    {{ item.value }}
+                  </el-button>
                 </slot>
               </div>
 
               <div>
                 <slot name="rightFooter">
-                  <template v-for="(item, index) in rightButtonData">
-                    <el-button
-                      :key="index"
-                      :type="item.type"
-                      @click="rightButton({ index: index, value: item.value })"
-                    >
-                      {{ item.value }}
-                    </el-button>
-                  </template>
+                  <el-button
+                    v-for="(item, index) in rightButtonData"
+                    :key="index"
+                    :type="item.type"
+                    @click="rightButton({ index: index, value: item.value })"
+                  >
+                    {{ item.value }}
+                  </el-button>
                 </slot>
               </div>
             </div>
@@ -270,10 +269,18 @@ export default {
   },
   created () { },
   mounted () {
-    // console.log(this.$refs.dialog)
-    document.querySelectorAll('.el-dialog')[0].style.minWidth = this.minWidth + 'px'
+    this.changeWidth()
   },
   methods: {
+
+    /** @description  改变宽度
+        * @author yx
+        */
+    changeWidth () {
+      const element = document.querySelector('.eve-dialog__scroll>.el-dialog')
+      element.style.minWidth = this.minWidth + 'px'
+    },
+
     /** @description  左边按钮事件
      * @author yx
      * @param  {Object}  param 按钮里参数值 包括 index 按钮下标  value按钮值

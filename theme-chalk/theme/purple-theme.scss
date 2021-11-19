@@ -1,5 +1,5 @@
 /* 改变主题色变量 */
-$--color-primary: #712dce;
+$--color-primary: #9d5ef3;
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%);
 // ecf5ff-- 按钮填充样式2
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%);
@@ -8,8 +8,11 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%);
 // 3A8EE6-- 鼠标按下
 // A0CFFF-- 禁用
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
+
+//当前表头的背景色--自定义样式
+$--color-primary-light-95: mix($--color-white, $--color-primary, 95%);
 $tableBorderColor: $--color-primary-light-8;
 $LabelbgColor: $--color-primary-light-9;
-$--eve-header-background: #39205b ;
-$--eve-menu-background: rgba(113,45,206,.2) ;
+$--eve-header-background: #39205b;
+$--eve-menu-background: rgba(157, 94, 243, 0.2);
 @import './base.scss';
