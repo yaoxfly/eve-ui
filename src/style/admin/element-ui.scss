@@ -950,15 +950,15 @@ $--eve-tree-height: $--eve-height--small;
   }
 }
 
-/*-----输入框、select框的placeholder修改------*/
+/*-----输入框、select框的placeholder修改-----$--font-size-content-small-*/
 .el-input input::-webkit-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: 12px !important;
 }
 .el-input input::-moz-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: 12px !important;
 }
 .el-input input::-ms-input-placeholder {
-  font-size: $--font-size-content !important;
+  font-size: 12px !important;
 }
 
 /*-----select框------*/

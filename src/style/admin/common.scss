@@ -190,16 +190,17 @@ body {
     }
     //表单的标题属性
     .eve-common-form-title {
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       padding-left: 20px;
-      font-size: $--font-size-title;
+      font-size: $--font-size-content;
+      color:$--color-text-primary;
       background-color:$LabelbgColor;
       font-weight: bolder;
     }
     //带详情css
     .eve-common-detail-field {
-      font-size: $--font-size-title;
+      font-size: $--font-size-content;
       line-height: 18px;
     }
     //带单位描述css
@@ -215,7 +216,7 @@ body {
       .el-form-item__label {
         background-color: $LabelbgColor;
         color: $LabelColor;
-        font-size: $--font-size-title;
+        font-size:$--font-size-content;
         padding: $LabelPadding;
         height: 100%;
         line-height: 1; //元素本身的字体大小 设置行高
