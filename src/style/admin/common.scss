@@ -70,7 +70,7 @@ body {
     line-height: 44px;
     text-align: center;
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     display: flex;
     // height: 48px;
     box-shadow: 0 -4px 6px -2px $--color-primary-light-8; //顶部
@@ -83,6 +83,8 @@ body {
       padding: 10px 16px;
       font-size: $--font-size-content;
     }
+    border-bottom-left-radius: $--eve-border-radius;
+    border-bottom-right-radius: $--eve-border-radius;
   }
 
   /*----边框----*/
@@ -194,8 +196,8 @@ body {
       line-height: 40px;
       padding-left: 20px;
       font-size: $--font-size-content;
-      color:$--color-text-primary;
-      background-color:$LabelbgColor;
+      color: $--color-text-primary;
+      background-color: $LabelbgColor;
       font-weight: bolder;
     }
     //带详情css
@@ -216,7 +218,7 @@ body {
       .el-form-item__label {
         background-color: $LabelbgColor;
         color: $LabelColor;
-        font-size:$--font-size-content;
+        font-size: $--font-size-content;
         padding: $LabelPadding;
         height: 100%;
         line-height: 1; //元素本身的字体大小 设置行高
@@ -542,18 +544,88 @@ body {
   }
 
   /*********模板页面的间距*********/
+  $--table-max-height: calc(100vh - 340px);
+  $--table-body-wrapper-max-height: calc(100vh - 395px);
+  $--table-fixed-body-wrapper-max-height: calc(100vh - 410px);
+
+  //查询表单
   &-formwork__select-form {
     padding: 15px 20px 20px 20px;
   }
 
+  //按钮
   &-formwork__button-table {
     padding: 0 20px;
   }
 
+  //表格
   &-formwork__table {
-    margin-top: 20px;
+    margin: 20px 0;
+    .el-table {
+      max-height: $--table-max-height;
+    }
+
+    .el-table__fixed {
+      max-height: $--table-body-wrapper-max-height;
+    }
+
+    .el-table__fixed-right {
+      right: 10px;
+    }
+
+    .el-table__fixed-body-wrapper {
+      max-height: $--table-body-wrapper-max-height;
+    }
+
+    .el-table__body-wrapper {
+      position: relative;
+      max-height: $--table-body-wrapper-max-height;
+      width: 100.1%;
+      overflow: auto;
+      overflow: overlay;
+      &::-webkit-scrollbar {
+        width: 12px; /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
+        height: 10px;
+        &:hover {
+          transition: height width 0.3s;
+          height: 12px;
+        }
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(144, 147, 153, 0.3);
+        border-radius: 3px;
+        position: fixed;
+        transition: background-color 0.3s;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        &:hover {
+          background-color: rgba(144, 147, 153, 0.5);
+        }
+      }
+
+      /*定义滚动条的轨道颜色、内阴影及圆角*/
+      &::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 3px;
+      }
+    }
+
+    .el-table__fixed-right-patch {
+      width: 10px !important;
+      height: 48px !important;
+      top: 0;
+      border-top: 1px solid $--color-primary-light-8;
+      background-color: $--color-primary-light-95;
+    }
+
+    .el-table th.el-table__cell.is-leaf:last-child {
+      border-right: 0;
+    }
   }
 
+  //树
   &-formwork__tree {
     padding: 20px;
     .el-scrollbar {
@@ -625,6 +697,7 @@ body {
       }
     }
   }
+
   &-eve-menu__right-button--line-feed {
     line-height: 1.7;
   }
@@ -638,6 +711,7 @@ body {
       margin-top: -8px;
     }
   }
+
   &-eve-menu__active {
     background: $--color-primary;
     color: #fff;

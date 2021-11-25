@@ -213,21 +213,24 @@ $--eve-el-step--small: 10px;
 
   .el-step__icon.is-text {
     border: 1px solid transparent;
-    box-shadow: $--color-text-placeholder 0px 0px 4px;
+    // box-shadow: $--color-text-placeholder 0px 0px 4px;
     &::after {
       content: '';
       width: $--eve-el-step--small;
       height: $--eve-el-step--small;
       border-radius: 50%;
-      background: $--border-color-base;
+      background: $--color-text-regular;
     }
   }
 
   .el-step__head.is-finish {
+    .el-step__line {
+      background: $--color-primary !important;
+    }
+
     .el-step__icon.is-text {
       border: 1px solid transparent;
       background: $--color-primary-light-8;
-      // box-shadow: $--color-text-placeholder 0px 0px 4px;
       &::after {
         content: '';
         width: $--eve-el-step--small;
@@ -237,21 +240,22 @@ $--eve-el-step--small: 10px;
       }
     }
   }
+
   .el-step__head.is-wait {
     .el-step__icon.is-text {
       border: 1px solid transparent;
-      box-shadow: $--color-text-placeholder 0px 0px 4px;
+      background: rgba(96, 98, 102, 0.2);
     }
   }
 
   .el-step__title {
     font-size: $--font-size-content;
-    color: $--color-text-regular;
+    color: $--color-primary;
   }
 
   .el-step__title.is-finish {
     font-size: $--font-size-content;
-    color: $--color-text-regular;
+    color: $--color-primary;
   }
 
   .el-step__title.is-process {
@@ -270,7 +274,7 @@ $--eve-el-step--small: 10px;
   .el-step__head.is-process .el-step__icon.is-text {
     border: 1px solid transparent;
     background: $--color-primary-light-8;
-    box-shadow: $--color-primary 0px 0px 6px;
+    box-shadow: $--color-primary 0px 0px 10px;
     &::after {
       content: '';
       width: $--eve-el-step--small;
@@ -280,13 +284,10 @@ $--eve-el-step--small: 10px;
     }
   }
 
-  .el-step.is-horizontal .el-step__line {
-    top: 12px;
-  }
-
-  .el-step__head.is-finish .el-step__line-inner {
-    border-width: 1px !important;
-    width: 100% !important;
+  .el-step__line {
+    top: 11px;
+    height: 3px;
+    background-color: $--border-color-light;
   }
 
   .el-steps--horizontal
@@ -448,7 +449,7 @@ $--pagination-width-height: 30px;
 }
 
 .el-table .cell {
-  line-height: 46px;
+  line-height: $--eve-height;
 }
 
 //表格最底部的线
@@ -472,8 +473,8 @@ $--pagination-width-height: 30px;
 
 .el-table th,
 .el-table td > .cell {
-  height: 46px;
-  line-height: 46px;
+  height: $--eve-height;
+  line-height: $--eve-height;
 }
 
 .el-table td,
@@ -655,17 +656,20 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-step__icon.is-text {
     border: 1px solid transparent;
-    box-shadow: $--color-text-placeholder 0px 0px 4px;
+    // box-shadow: $--color-text-placeholder 0px 0px 4px;
     &::after {
       content: '';
       width: $--eve-el-step--small;
       height: $--eve-el-step--small;
       border-radius: 50%;
-      background: $--border-color-base;
+      background: $--color-text-regular;
     }
   }
 
   .el-step__head.is-finish {
+    .el-step__line {
+      background: $--color-primary !important;
+    }
     .el-step__icon.is-text {
       border: 1px solid transparent;
       background: $--color-primary-light-8;
@@ -683,7 +687,8 @@ $--eve-tree-height: $--eve-height--small;
   .el-step__head.is-wait {
     .el-step__icon.is-text {
       border: 1px solid transparent;
-      box-shadow: $--color-text-placeholder 0px 0px 4px;
+      background: rgba(96, 98, 102, 0.2);
+      // box-shadow: $--color-text-placeholder 0px 0px 4px;
     }
   }
 
@@ -705,6 +710,7 @@ $--eve-tree-height: $--eve-height--small;
   .el-step__title.is-wait {
     color: $--color-text-secondary;
   }
+
   .el-step__description.is-wait {
     color: $--color-text-secondary;
   }
@@ -722,12 +728,9 @@ $--eve-tree-height: $--eve-height--small;
     }
   }
 
-  .el-step.is-horizontal .el-step__line {
-    top: 14px;
-  }
-  .el-step__head.is-finish .el-step__line-inner {
-    border-width: 1px !important;
-    height: 100% !important;
+  .el-step__line {
+    width: 3px !important  ;
+    background-color: $--border-color-light;
   }
 
   .el-step__description.is-finish {
@@ -818,7 +821,7 @@ $--eve-tree-height: $--eve-height--small;
     // padding-bottom: 8.6px;
     padding-bottom: 6.5px;
     margin-top: 0;
-    line-height: 1;
+    line-height: 2;
   }
 
   .el-input--suffix .el-input__inner {
