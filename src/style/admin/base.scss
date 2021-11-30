@@ -335,10 +335,11 @@ $LabelFontSize: $--font-size-small !default;
 $LabelPadding: 8px 10px 8px 10px !default;
 
 //form-item__content边距设置
-$ContentPadding: 3px 30px 3px 4px !default;
+$ContentPadding: 3px 30px 3px 3px !default;
 
 //eve-common-input高度
-$eveCommonInputHeight: 26px !default; //mini为28px,目前设置比mini还小
+$eveCommonInputHeight: 26px !default; // 小表单输入框高度26px
+$eveCommonInputHeightBig: 34px !default; //大表单输入框高度34px
 
 //eve-common-input内部边距
 $eveCommonInputPadding: 0 4px !default;
