@@ -18,7 +18,7 @@ $default-theme: (
   eve-menu-background-gradient: '#2fb1d8',
 );
 
-//桔黄色主题
+//日暮主题
 $orange-theme: (
   color-primary: #c7993f,
   color-primary-light-8: mix($--color-white, #c7993f, 80%),
@@ -30,7 +30,7 @@ $orange-theme: (
   eve-menu-background-gradient: '#2fb1d8',
 );
 
-//红色主题
+//火山主题
 $red-theme: (
   color-primary: #fa541c,
   color-primary-light-8: mix($--color-white, #fa541c, 80%),
@@ -42,6 +42,7 @@ $red-theme: (
   eve-menu-background-gradient: '#2fb1d8',
 );
 
+//明青
 $cyan-theme: (
   color-primary: #13c2c2,
   color-primary-light-8: mix($--color-white, #13c2c2, 80%),
@@ -53,6 +54,7 @@ $cyan-theme: (
   eve-menu-background-gradient: '#2fb1d8',
 );
 
+// 极关绿
 $green-theme: (
   color-primary: #52c41a,
   color-primary-light-8: mix($--color-white, #52c41a, 80%),
@@ -64,6 +66,7 @@ $green-theme: (
   eve-menu-background-gradient: '#2fb1d8',
 );
 
+//酱紫
 $purple-theme: (
   color-primary: #712dce,
   color-primary-light-8: mix($--color-white, #712dce, 80%),
