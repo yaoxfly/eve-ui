@@ -378,7 +378,7 @@ $LabelPadding: 8px 12px 8px 4px !default;
 $ContentPadding: 3px 30px 3px 4px !default;
 
 //eve-common-input高度
-$eveCommonInputHeight: 26px !default; //mini为28px,目前设置比mini还小
+$eveCommonInputHeight: 26px !default; //min26px,目前设置比mini还小
 
 //eve-common-input内部边距
 $eveCommonInputPadding: 0 4px !default;
