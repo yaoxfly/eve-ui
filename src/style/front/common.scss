@@ -76,12 +76,14 @@ body {
     border-color: $--color-primary !important;
     color: $--color-primary !important;
     background-color: #fff !important;
+    cursor: inherit;
   }
   //草稿
   &-status-button--draft {
     border-color: $--color-danger !important;
     color: $--color-danger !important;
     background-color: #fff !important;
+    cursor: inherit;
   }
 
   //结束
@@ -89,6 +91,7 @@ body {
     border-color: $--border-color-button--disabled !important;
     color: $--color-text-placeholder !important;
     background-color: #fff !important;
+    cursor: inherit;
   }
 
   /*-----表单提交底部按钮-----*/
