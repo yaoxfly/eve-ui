@@ -40,6 +40,15 @@ $--zoom-height: calc(100vh - 224px) !important;
   height: calc(100vh - 178px) !important;
 }
 
+/*---字体缩放后的样式--- */
+.font.layout__collapse.eve-breadcrumb {
+  width: calc(100vw - 95px - 173px) !important;
+}
+
+.font.layout__collapse.eve-main {
+  width: calc(100vw - 65px - 30px - 173px) !important;
+}
+
 //系统设置放大了1.25的情况下
 @media screen and (-webkit-device-pixel-ratio: 1.25),
   (-moz-device-pixel-ratio: 1.25),
@@ -82,5 +91,14 @@ $--zoom-height: calc(100vh - 224px) !important;
       right: 150px !important;
     }
     /*ie兼容*/
+  }
+
+  /*---字体缩放后的样式--- */
+  .font.layout__collapse.eve-breadcrumb {
+    width: calc(100vw - 95px - 139px) !important;
+  }
+
+  .font.layout__collapse.eve-main {
+    width: calc(100vw - 65px - 30px - 139px) !important;
   }
 }

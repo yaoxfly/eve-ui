@@ -14,8 +14,8 @@ $default-theme: (
   color-primary-light-2: mix($--color-white, #2ca7d4, 20%),
   color-primary-light-5: mix($--color-white, #2ca7d4, 50%),
   color-primary-light-95: mix($--color-white, #2ca7d4, 95%),
-  eve-header-background: '#0a2a87',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #0a2a87,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 //日暮主题
@@ -26,8 +26,8 @@ $orange-theme: (
   color-primary-light-2: mix($--color-white, #c7993f, 20%),
   color-primary-light-5: mix($--color-white, #c7993f, 50%),
   color-primary-light-95: mix($--color-white, #c7993f, 95%),
-  eve-header-background: '#593110',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #593110,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 //火山主题
@@ -38,8 +38,8 @@ $red-theme: (
   color-primary-light-2: mix($--color-white, #fa541c, 20%),
   color-primary-light-5: mix($--color-white, #fa541c, 50%),
   color-primary-light-95: mix($--color-white, #fa541c, 95%),
-  eve-header-background: '#601c17',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #601c17,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 //明青
@@ -50,8 +50,8 @@ $cyan-theme: (
   color-primary-light-2: mix($--color-white, #13c2c2, 20%),
   color-primary-light-5: mix($--color-white, #13c2c2, 50%),
   color-primary-light-95: mix($--color-white, #13c2c2, 95%),
-  eve-header-background: '#00424e',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #00424e,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 // 极关绿
@@ -62,8 +62,8 @@ $green-theme: (
   color-primary-light-2: mix($--color-white, #52c41a, 20%),
   color-primary-light-5: mix($--color-white, #52c41a, 50%),
   color-primary-light-95: mix($--color-white, #52c41a, 95%),
-  eve-header-background: '#00503a',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #00503a,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 //酱紫
@@ -74,8 +74,8 @@ $purple-theme: (
   color-primary-light-2: mix($--color-white, #712dce, 20%),
   color-primary-light-5: mix($--color-white, #712dce, 50%),
   color-primary-light-95: mix($--color-white, #712dce, 95%),
-  eve-header-background: '#39205b',
-  eve-menu-background-gradient: '#2fb1d8',
+  eve-header-background: #39205b,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
 //定义映射集合
