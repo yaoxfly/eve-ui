@@ -517,6 +517,35 @@ $--pagination-width-height: 30px;
   border-bottom: 1px solid $--color-primary-light-8;
 }
 
+.el-table__body-wrapper {
+  &::-webkit-scrollbar {
+    width: 12px; /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
+    height: 10px;
+    &:hover {
+      transition: height width 0.3s;
+      height: 12px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.3);
+    border-radius: 3px;
+    position: fixed;
+    transition: background-color 0.3s;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    &:hover {
+      background-color: rgba(144, 147, 153, 0.5);
+    }
+  }
+
+  /*定义滚动条的轨道颜色、内阴影及圆角*/
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 3px;
+  }
+}
+
 /*-----面包屑------*/
 
 .eve-breadcrumb .el-breadcrumb {
