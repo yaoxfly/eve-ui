@@ -37,7 +37,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -82,7 +82,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -142,7 +142,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -214,7 +214,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
 
@@ -280,7 +280,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -349,7 +349,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -412,7 +412,7 @@
                 >
                   *
                 </span>
-                {{ item.label }}
+                <span class="eve-select-form__label">{{ item.label }}</span>
                 <span>{{ labelSuffix }}</span>
               </label>
               <el-form-item
@@ -667,13 +667,13 @@ export default {
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
       type: Number,
-      default: 194 // 1093 
+      default: 200 // 1093 
     },
 
     // 所有左边label的宽度
     labelWidth: {
       type: Number,
-      default: 134 // 1093 
+      default: 128 // 1093 
     },
 
     // 当参数为空时是否过滤参数
@@ -950,7 +950,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 <style lang="scss" >
