@@ -469,7 +469,7 @@ body {
         //input内边距
         padding: $eveCommonInputPadding;
         //input高度
-        height: $eveCommonInputHeight !important;
+        height: $eveCommonInputHeight;
         line-height: 1;
       }
     }
@@ -505,7 +505,7 @@ body {
         //input内边距
         padding: $eveCommonInputPadding;
         //input高度
-        height: $eveCommonInputHeight !important;
+        height: $eveCommonInputHeight;
         line-height: 1;
       }
     }
@@ -529,7 +529,7 @@ body {
   &-slider {
     &.el-slider {
       width: 100% !important;
-      //减小滑块的边距
+      //减小滑块的边距  
       .el-slider__runway {
         margin: 11px 0;
       }
