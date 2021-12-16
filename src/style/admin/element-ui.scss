@@ -507,6 +507,45 @@ $--pagination-width-height: 30px;
   }
 }
 
+.el-table--border .el-table__cell,
+.el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+  border-right: 1px solid $--color-primary-light-8;
+}
+
+.el-table td.el-table__cell,
+.el-table th.el-table__cell.is-leaf {
+  border-bottom: 1px solid $--color-primary-light-8;
+}
+
+.el-table__body-wrapper {
+  &::-webkit-scrollbar {
+    width: 12px; /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
+    height: 10px;
+    &:hover {
+      transition: height width 0.3s;
+      height: 12px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.3);
+    border-radius: 3px;
+    position: fixed;
+    transition: background-color 0.3s;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    &:hover {
+      background-color: rgba(144, 147, 153, 0.5);
+    }
+  }
+
+  /*定义滚动条的轨道颜色、内阴影及圆角*/
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 3px;
+  }
+}
+
 /*-----面包屑------*/
 
 .eve-breadcrumb .el-breadcrumb {
@@ -1253,6 +1292,29 @@ ul[role='menu'] .eve-header__menu-item .el-menu-item:hover {
 ul[role='menu'] .eve-header__menu-item .el-menu-item span {
   color: $--color-text-regular !important;
   font-weight: normal;
+}
+
+.eve-menu.el-menu--collapse {
+  .el-submenu__title {
+    text-align: center;
+    background: transparent !important;
+    margin: 0 6px;
+    height: 51px;
+    line-height: 51px;
+  }
+  .el-submenu [class^='el-icon-'] {
+    margin: 0 0 2px -8px;
+  }
+  .el-icon-location:before {
+    font-size: 24px;
+  }
+  .el-submenu.is-active {
+    margin-top: 10px;
+    .el-submenu__title {
+      border-radius: $--eve-border-radius-small;
+      background: $--color-primary !important;
+    }
+  }
 }
 
 /*表单*/

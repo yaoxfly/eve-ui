@@ -30,7 +30,7 @@ npm i @eve/cli -g
 由于当前脚手架包含私域的包`eve-ui`,外部的镜像如`npm`、`taobao`、`cnpm`等镜像下载不了，所以当前所有步骤最好在`enpm`的镜像下，`enpm`可以下载私域域的包，同时也可以下载外域的包，特别是下载完脚手架后使用`npm i`来初始化脚手架，这个步骤要在`enpm`的镜像下执行，否则`eve-ui`会初始化失败，如果在`enpm`镜像下执行初始化操作，还是发生了错误，可把脚手架项目中的`package.json`文件中把`eve-ui`删除或者注释掉，切换到`npm`、`taobao`等其他镜像先下载外域的包，再切换到私域的镜像下载`eve-ui`。
 
 ``` js
-eve create [自定义的工程名] 
+eve create [自定义的工程名]  //如果创建失败，出现chalk、ora 、Es Module 错误等页面拉到最后《Q问题》有解决方案
 # or
 eve create [模板名]  
 //示例
@@ -100,3 +100,6 @@ eve -V
 eve -help
 ```
 
+# Q 问题
+
+ `node`版本和第三方包版本升级都可能影响到当前工具的使用，在使用过程中如果出现`chalk`、`ora` 、`Es Module` 等错误，可以在安装`node`的目录中（一般是这个目录）找到`node_modules`，在`node_modules`中找到`@eve`目录 接着点击进去 找到`cli`目录  进入`cli`目录下的`node_modules`， 哪个依赖包出现问题 就在这个目录下重新下那个依赖包 比如`chalk`出问题 就  `npm i chalk`,直至问题解决。

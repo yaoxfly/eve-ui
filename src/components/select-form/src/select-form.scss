@@ -59,6 +59,11 @@
     color: red;
   }
 
+  &__label {
+    line-height: 1;
+    text-align: left;
+  }
+
   .el-checkbox-group {
     height: auto;
     line-height: 0;

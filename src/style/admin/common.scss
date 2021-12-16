@@ -861,6 +861,7 @@ body {
   &-formwork__table {
     margin: 20px 0;
     .el-table {
+      height: calc(100vh - 345px);
       max-height: $--table-max-height;
     }
 
@@ -878,6 +879,7 @@ body {
 
     .el-table__body-wrapper {
       position: relative;
+      height: calc(100vh - 395px);
       max-height: $--table-body-wrapper-max-height;
       width: 100.1%;
       overflow: auto;
@@ -890,7 +892,6 @@ body {
           height: 12px;
         }
       }
-
       &::-webkit-scrollbar-thumb {
         background-color: rgba(144, 147, 153, 0.3);
         border-radius: 3px;
@@ -909,6 +910,10 @@ body {
         background-color: #fff;
         border-radius: 3px;
       }
+    }
+
+    .el-table__body-wrapper.is-scrolling-left {
+      overflow: scroll;
     }
 
     .el-table__fixed-right-patch {

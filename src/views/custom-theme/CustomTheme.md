@@ -82,66 +82,84 @@ $--color-white: #ffffff !default;
 
 // 默认主题
 $default-theme: (
-  color-primary: #409eff,
-  color-primary-light-8: mix($--color-white, #409eff, 80%),
-  color-primary-light-9: mix($--color-white, #409eff, 90%),
-  color-primary-light-2: mix($--color-white, #409eff, 20%),
-  color-primary-light-5: mix($--color-white, #409eff, 50%),
+  color-primary: #2ca7d4,
+  color-primary-light-8: mix($--color-white, #2ca7d4, 80%),
+  color-primary-light-9: mix($--color-white, #2ca7d4, 90%),
+  color-primary-light-2: mix($--color-white, #2ca7d4, 20%),
+  color-primary-light-5: mix($--color-white, #2ca7d4, 50%),
+  color-primary-light-95: mix($--color-white, #2ca7d4, 95%),
+  eve-header-background: #0a2a87,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
-//桔黄色主题
+//日暮主题
 $orange-theme: (
   color-primary: #c7993f,
   color-primary-light-8: mix($--color-white, #c7993f, 80%),
   color-primary-light-9: mix($--color-white, #c7993f, 90%),
   color-primary-light-2: mix($--color-white, #c7993f, 20%),
   color-primary-light-5: mix($--color-white, #c7993f, 50%),
+  color-primary-light-95: mix($--color-white, #c7993f, 95%),
+  eve-header-background: #593110,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
-//红色主题
+//火山主题
 $red-theme: (
   color-primary: #fa541c,
-  color-primary-light-8: mix($--color-white, #c7993f, 80%),
-  color-primary-light-9: mix($--color-white, #c7993f, 90%),
-  color-primary-light-2: mix($--color-white, #c7993f, 20%),
-  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+  color-primary-light-8: mix($--color-white, #fa541c, 80%),
+  color-primary-light-9: mix($--color-white, #fa541c, 90%),
+  color-primary-light-2: mix($--color-white, #fa541c, 20%),
+  color-primary-light-5: mix($--color-white, #fa541c, 50%),
+  color-primary-light-95: mix($--color-white, #fa541c, 95%),
+  eve-header-background: #601c17,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
-
+//明青
 $cyan-theme: (
   color-primary: #13c2c2,
-  color-primary-light-8: mix($--color-white, #c7993f, 80%),
-  color-primary-light-9: mix($--color-white, #c7993f, 90%),
-  color-primary-light-2: mix($--color-white, #c7993f, 20%),
-  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+  color-primary-light-8: mix($--color-white, #13c2c2, 80%),
+  color-primary-light-9: mix($--color-white, #13c2c2, 90%),
+  color-primary-light-2: mix($--color-white, #13c2c2, 20%),
+  color-primary-light-5: mix($--color-white, #13c2c2, 50%),
+  color-primary-light-95: mix($--color-white, #13c2c2, 95%),
+  eve-header-background: #00424e,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
+// 极关绿
 $green-theme: (
   color-primary: #52c41a,
-  color-primary-light-8: mix($--color-white, #c7993f, 80%),
-  color-primary-light-9: mix($--color-white, #c7993f, 90%),
-  color-primary-light-2: mix($--color-white, #c7993f, 20%),
-  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+  color-primary-light-8: mix($--color-white, #52c41a, 80%),
+  color-primary-light-9: mix($--color-white, #52c41a, 90%),
+  color-primary-light-2: mix($--color-white, #52c41a, 20%),
+  color-primary-light-5: mix($--color-white, #52c41a, 50%),
+  color-primary-light-95: mix($--color-white, #52c41a, 95%),
+  eve-header-background: #00503a,
+  eve-menu-background-gradient: #2fb1d8,
 );
 
-
+//酱紫
 $purple-theme: (
   color-primary: #712dce,
-  color-primary-light-8: mix($--color-white, #c7993f, 80%),
-  color-primary-light-9: mix($--color-white, #c7993f, 90%),
-  color-primary-light-2: mix($--color-white, #c7993f, 20%),
-  color-primary-light-5: mix($--color-white, #c7993f, 50%),
+  color-primary-light-8: mix($--color-white, #712dce, 80%),
+  color-primary-light-9: mix($--color-white, #712dce, 90%),
+  color-primary-light-2: mix($--color-white, #712dce, 20%),
+  color-primary-light-5: mix($--color-white, #712dce, 50%),
+  color-primary-light-95: mix($--color-white, #712dce, 95%),
+  eve-header-background: #39205b,
+  eve-menu-background-gradient: #2fb1d8,
 );
-
 
 //定义映射集合
 $themes: (
   default-theme: $default-theme,
   orange-theme: $orange-theme,
-  red-theme:$red-theme,
+  red-theme: $red-theme,
   cyan-theme: $cyan-theme,
   green-theme: $green-theme,
-  purple-theme:$purple-theme
+  purple-theme: $purple-theme,
 );
 
 //文本颜色
@@ -179,14 +197,14 @@ $themes: (
     }
   }
 }
-/*element-ui*/
 
+/*element-ui*/
 
 /* -----基础颜色----- */
 
 /*主色*/
 // 主题色
-$--color-primary: #409eff !default;
+$--color-primary: #2ca7d4 !default;
 // d9ecff
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
 // ecf5ff-- 按钮填充样式2
@@ -197,6 +215,8 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
 
 // A0CFFF-- 禁用
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
+//f4fbfd--自定义表格的头部
+$--color-primary-light-95: mix($--color-white, $--color-primary, 95%) !default;
 
 /*辅助色*/
 // 黑色
@@ -339,11 +359,11 @@ $--avatar-background-color: #c0c4cc !default;
 /*---字体---*/
 
 // 标题
-$--font-size-title: 14px !default;
+$--font-size-title: 16px !default;
 // 内容
-$--font-size-content: 13px !default;
+$--font-size-content: 14px !default;
 // 内容(小)
-$--font-size-content-small: 12px !default;
+$--font-size-content-small: 13px !default;
 
 /*---菜单---*/
 
@@ -352,10 +372,27 @@ $--eve-menu-width: 256px !default;
 /*---header组件---*/
 
 //背景色
-$--eve-header-background: #3379cc !default;
+$--eve-header-background: #0a2a87 !default;
+
+//菜单一级目录的透明度，取主色的raga
+// $--eve-menu-background: rgba(236,245,255,.2) !default;
+
+$--eve-menu-background: rgba(44, 167, 212, 0.2) !default;
+
+/*---各种标准高度----*/
 
 //自定义的高度、对话框的高度、footer的高度等
-$--height: 40px !default;
+$--eve-height: 46px !default;
+
+// 按钮、表单的高度
+$--eve-height--small: 34px !default;
+
+//渐变色
+$--eve-menu-background-gradient: #2fb1d8 !default;
+
+/*---圆角----*/
+$--eve-border-radius: 10px;
+$--eve-border-radius-small: 8px;
 
 /*---Form---*/
 
@@ -363,7 +400,7 @@ $--height: 40px !default;
 $tableBorderColor: $--color-primary-light-8 !default;
 
 //form-item__label背景色-ecf5ff
-$LabelbgColor: $--color-primary-light-9 !default;
+$LabelbgColor: $--color-primary-light-95 !default;
 
 //form-item__label文字颜色（常规文字）
 $LabelColor: $--color-text-regular !default;
@@ -372,18 +409,18 @@ $LabelColor: $--color-text-regular !default;
 $LabelFontSize: $--font-size-small !default;
 
 //form-item__label边距设置
-$LabelPadding: 8px 12px 8px 4px !default;
+$LabelPadding: 8px 10px 8px 10px !default;
 
 //form-item__content边距设置
-$ContentPadding: 3px 30px 3px 4px !default;
+$ContentPadding: 3px 30px 3px 3px !default;
 
 //eve-common-input高度
-$eveCommonInputHeight: 26px !default; //min26px,目前设置比mini还小
+$eveCommonInputHeight: 26px !default; // 小表单输入框高度26px
+$eveCommonInputHeightBig: 34px !default; //大表单输入框高度34px
 
 //eve-common-input内部边距
 $eveCommonInputPadding: 0 4px !default;
 
 //eve-common-input prefix、suffix图标距离文字间距
 $eveCommonInputPrefixSuffix: 30px !default;
-
 ```
