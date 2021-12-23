@@ -207,7 +207,7 @@ body {
     }
     //带详情css
     .eve-common-detail-field {
-      font-size: $--font-size-content;
+      font-size: 13px;
       line-height: 18px;
     }
     //带单位描述css
@@ -258,6 +258,24 @@ body {
           transform: translate(-50%, -50%);
         }
       }
+      input {
+        font-size: 13px;
+      }
+      input:-ms-input-placeholder {
+        font-size: 13px;
+      } /* Internet Explorer 10+ */
+
+      input::-webkit-input-placeholder {
+        font-size: 13px;
+      } /* WebKit browsers */
+
+      input::-moz-placeholder {
+        font-size: 13px;
+      } /* Mozilla Firefox 4 to 18 */
+
+      input:-moz-placeholder {
+        font-size: 13px;
+      } /* Mozilla Firefox 19+ */
     }
   }
   &-form-container-big {
@@ -282,6 +300,31 @@ body {
       color: $--color-text-primary;
       background-color: $LabelbgColor;
       font-weight: bolder;
+    }
+    .el-form-item {
+      //带详情css
+      .eve-common-detail-field {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      input {
+        font-size: 14px;
+      }
+      input:-ms-input-placeholder {
+        font-size: 14px;
+      } /* Internet Explorer 10+ */
+
+      input::-webkit-input-placeholder {
+        font-size: 14px;
+      } /* WebKit browsers */
+
+      input::-moz-placeholder {
+        font-size: 14px;
+      } /* Mozilla Firefox 4 to 18 */
+
+      input:-moz-placeholder {
+        font-size: 14px;
+      } /* Mozilla Firefox 19+ */
     }
   }
   /*********自定义表单样式开始*小********/
@@ -350,7 +393,7 @@ body {
       padding-left: $eveCommonInputPrefixSuffix !important;
     }
     &.el-date-editor .el-range-separator {
-      width: 6%;
+      width: 8%;
       line-height: 25px;
     }
     .el-input__icon {
@@ -377,7 +420,7 @@ body {
       padding-left: $eveCommonInputPrefixSuffix !important;
     }
     &.el-date-editor .el-range-separator {
-      width: 6%;
+      width: 8%;
       line-height: 25px;
     }
     .el-input__icon {
@@ -529,7 +572,7 @@ body {
   &-slider {
     &.el-slider {
       width: 100% !important;
-      //减小滑块的边距  
+      //减小滑块的边距
       .el-slider__runway {
         margin: 11px 0;
       }
@@ -642,7 +685,7 @@ body {
         padding-left: $eveCommonInputPrefixSuffix !important;
       }
       &.el-date-editor .el-range-separator {
-        width: 6%;
+        width: 8%;
         line-height: $eveCommonInputHeightBig;
       }
       .el-input__icon {
@@ -667,7 +710,7 @@ body {
         padding-left: $eveCommonInputPrefixSuffix !important;
       }
       &.el-date-editor .el-range-separator {
-        width: 6%;
+        width: 8%;
         line-height: 25px;
       }
       .el-input__icon {
