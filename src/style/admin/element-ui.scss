@@ -879,7 +879,7 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-input__icon.el-icon-date,
   .el-input__icon.el-icon-time {
-    margin-top: 0;
+    margin-top: 1px;
   }
 
   .el-date-editor,
@@ -972,11 +972,11 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   .el-date-editor .el-range__icon {
-    line-height: 17px;
+    line-height: 27px;
   }
 
   .el-date-editor .el-range-separator {
-    line-height: 15px;
+    line-height: 24px;
   }
 
   .eve-select-form__pack-up {
@@ -994,13 +994,13 @@ $--eve-tree-height: $--eve-height--small;
 
 /*-----输入框、select框的placeholder修改-----$--font-size-content-small-*/
 .el-input input::-webkit-input-placeholder {
-  font-size: 12px !important;
+  font-size: $--font-size-content !important;
 }
 .el-input input::-moz-input-placeholder {
-  font-size: 12px !important;
+  font-size: $--font-size-content !important;
 }
 .el-input input::-ms-input-placeholder {
-  font-size: 12px !important;
+  font-size: $--font-size-content !important;
 }
 
 /*-----select框------*/
@@ -1111,7 +1111,9 @@ $--eve-tree-height: $--eve-height--small;
     margin-top: 1px;
     font-size: $--font-size-title !important;
   }
-  .el-submenu [class^='el-icon-'] {
+
+  .el-submenu [class^='el-icon-'],
+  .el-menu-item [class^='el-icon-'] {
     color: #fff !important;
     font-size: $--font-size-title;
     width: 14px;
@@ -1185,20 +1187,6 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   /****底层菜单的***/
-  .el-menu-item[style*='padding-left: 40px'] {
-    padding: 0 24px !important;
-    height: $--eve-height--small;
-    line-height: 32px;
-  }
-
-  .el-menu-item[style*='padding-left: 60px'] {
-    padding: 0 40px !important;
-  }
-
-  .el-menu-item[style*='padding-left: 80px'] {
-    padding: 0 60px !important;
-  }
-
   .el-menu-item {
     width: 100%;
     height: $--eve-height--small;
@@ -1208,6 +1196,22 @@ $--eve-tree-height: $--eve-height--small;
     color: #fff !important;
     margin-top: 2px;
     width: 256px;
+  }
+
+  .el-menu-item[style*='padding-left: 20px'] {
+    padding: 0 !important;
+  }
+
+  .el-menu-item[style*='padding-left: 40px'] {
+    padding: 0 24px !important;
+  }
+
+  .el-menu-item[style*='padding-left: 60px'] {
+    padding: 0 40px !important;
+  }
+
+  .el-menu-item[style*='padding-left: 80px'] {
+    padding: 0 60px !important;
   }
 
   .eve-menu__menu-item .el-menu-item.is-active {
@@ -1226,7 +1230,7 @@ $--eve-tree-height: $--eve-height--small;
   border-radius: 1.5px !important;
 }
 
-//竖着的菜单--收缩后的菜单
+//竖着的菜单
 .el-menu--vertical {
   .el-menu-item,
   .el-submenu__title {
@@ -1250,6 +1254,53 @@ $--eve-tree-height: $--eve-height--small;
   .eve-menu__menu-item .el-submenu__title:focus,
   .eve-menu__menu-item .el-submenu__title:hover {
     border-right: 0px solid transparent !important;
+  }
+}
+
+//收缩后的菜单
+.eve-menu.el-menu--collapse {
+  .el-submenu {
+    margin-top: 10px;
+  }
+  .el-submenu__title {
+    text-align: center;
+    background: transparent !important;
+    margin: 0 6px;
+    height: 51px;
+    line-height: 51px;
+  }
+
+  .el-menu-item {
+    width: 51px;
+    height: 51px;
+    margin: 0 6px;
+    text-align: center;
+    background: transparent !important;
+    line-height: 51px;
+    margin-top: 10px;
+    border-radius: $--eve-border-radius-small;
+  }
+
+  .el-submenu [class^='el-icon-'] {
+    margin: 0 0 2px -8px;
+  }
+
+  .el-menu-item [class^='el-icon-'] {
+    margin: 0 0 2px -11px;
+  }
+
+  [class^='el-icon-']:before {
+    font-size: 24px;
+  }
+  .el-submenu.is-active {
+    .el-submenu__title {
+      border-radius: $--eve-border-radius-small;
+      background: $--color-primary !important;
+    }
+  }
+  .el-menu-item.is-active {
+    border-radius: $--eve-border-radius-small;
+    background: $--color-primary !important;
   }
 }
 
@@ -1292,29 +1343,6 @@ ul[role='menu'] .eve-header__menu-item .el-menu-item:hover {
 ul[role='menu'] .eve-header__menu-item .el-menu-item span {
   color: $--color-text-regular !important;
   font-weight: normal;
-}
-
-.eve-menu.el-menu--collapse {
-  .el-submenu__title {
-    text-align: center;
-    background: transparent !important;
-    margin: 0 6px;
-    height: 51px;
-    line-height: 51px;
-  }
-  .el-submenu [class^='el-icon-'] {
-    margin: 0 0 2px -8px;
-  }
-  .el-icon-location:before {
-    font-size: 24px;
-  }
-  .el-submenu.is-active {
-    margin-top: 10px;
-    .el-submenu__title {
-      border-radius: $--eve-border-radius-small;
-      background: $--color-primary !important;
-    }
-  }
 }
 
 /*表单*/

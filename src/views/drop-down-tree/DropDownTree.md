@@ -16,13 +16,15 @@ import Example from './Example'
 import MultipleExample from './MultipleExample'
 import LeftExample from './LeftExample'
 import ConverExample from './ConverExample'
+import LazyTree from './LazyTree'
 
 export default {
   components: {
     Example,
     MultipleExample,
     LeftExample,
-    ConverExample
+    ConverExample,
+    LazyTree
   }
 }
 </script>
@@ -314,6 +316,20 @@ export default {
 </script>
 ```
 
+
+# 懒加载
+
+<template>
+  <div>
+    <LazyTree/>
+  </div>
+</template>
+
+# 演示代码
+```html
+
+```
+
 # 普通数据转树
 
 <template>
@@ -406,14 +422,16 @@ export default {
 | accordion |是否每次只打开一个同级树节点| boolean | — |   false |
 | auto-expand-parent |展开子节点的时候是否自动展开父节点| boolean | — |   true |
 | convert-setting |树形结构数据转换设置,详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
-
-
+| load | 加载子树数据的方法，仅当 lazy 属性为true 时生效| function(node, resolve) | — | — |
+| lazy | 是否懒加载子节点，需与 load 方法结合使用 | boolean | — | false |
+| option | 懒加载select回显数据，针对懒加载回显困难加强的属性 | array | — | [{id:id:label:label}]  当前值会依据props和nodeKey变化而变化  |
 
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
-| label | 指定节点标签为节点对象的某个属性值 | string | — | label |
+| label | 指定节点标签为节点对象的某个属性值 | string ,function(data, node) | — | label |
 | children | 指定子树为节点对象的某个属性值 | string | — | children |
+| isLeaf | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效 | boolean, function(data, node) | — | leaf | 
 
 
 ### convert-setting

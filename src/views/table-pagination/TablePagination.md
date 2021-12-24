@@ -300,7 +300,6 @@ export default {
 | filters  |  数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 |  Array[{ text, value }] | — | — |
 | filter-method  |  数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 |  Function(value, row, column) | — | — |
 
-
 >  表头配置属性, 其中 `formatData` 方法只对`type`是普通内容列有效 ,`render`只对普通内容和操作列有效
 
 ###  Pagination Attributes
@@ -324,7 +323,6 @@ export default {
 | align  | 分页的位置   | string | center、left、right | center  |
 | jump-text |  分页前往的文本 | string| — | 跳至 |
 | is-show-page-count|  是否显示总页数 | string| — | 共xxx页 |
-
 
 
 ###  Button  Attributes

@@ -529,7 +529,7 @@ body {
   &-slider {
     &.el-slider {
       width: 100% !important;
-      //减小滑块的边距  
+      //减小滑块的边距
       .el-slider__runway {
         margin: 11px 0;
       }
@@ -839,7 +839,6 @@ body {
       }
     }
   }
-
   /*********自定义表单样式结束*********/
 
   /*********模板页面的间距*********/
@@ -871,10 +870,13 @@ body {
 
     .el-table__fixed-right {
       right: 10px;
+      bottom: 11px;
     }
 
     .el-table__fixed-body-wrapper {
       max-height: $--table-body-wrapper-max-height;
+      bottom: 11px;
+      top: 49.1px !important;
     }
 
     .el-table__body-wrapper {
@@ -910,10 +912,6 @@ body {
       }
     }
 
-    .el-table__body-wrapper.is-scrolling-left {
-      overflow: scroll;
-    }
-
     .el-table__fixed-right-patch {
       width: 10px !important;
       height: 48px !important;
@@ -924,6 +922,11 @@ body {
 
     .el-table th.el-table__cell.is-leaf:last-child {
       border-right: 0;
+    }
+
+    //移动横向滚动条到最右边到时候表格和内容的线不对齐修改
+    .el-table__header {
+      margin-right: 12px;
     }
   }
 

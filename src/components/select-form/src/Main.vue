@@ -666,13 +666,13 @@ export default {
 
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
-      type: Number,
+      type: [Number, String],
       default: 200 // 1093 
     },
 
     // 所有左边label的宽度
     labelWidth: {
-      type: Number,
+      type: [Number, String],
       default: 128 // 1093 
     },
 
@@ -690,13 +690,13 @@ export default {
 
     //当前组件的左偏移量,一般是指减去左边菜单栏的宽度和布局组件间距的距离--自适应收缩展开时用
     leftFormWidth: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
 
     // 右边查询、重置等按钮的宽度,有用插槽、样式等方式改变了右边这个宽度需要手动设置且需加上按钮离最右边body的偏移量--自适应收缩展开时用
     rightButtonWidth: {
-      type: Number,
+      type: [Number, String],
       default: 180
     },
 

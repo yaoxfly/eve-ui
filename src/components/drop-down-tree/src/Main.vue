@@ -24,8 +24,7 @@
       :filter-method="filterMethod"
     >
       <el-option
-        :label="label"
-        :value="tempValue"
+        value="必须写的属性不然报错"
         disabled
         class="eve-drop-down-tree__option"
         :style="{ width: checkString(width), height: checkString(height) }"
@@ -34,7 +33,7 @@
           <section class="eve-drop-down-tree__content">
             <el-tree
               :data="tempData"
-              :props="props"
+              :props="tempProps"
               class="eve-drop-down-tree__item"
               :class="[
                 !onlyLeaf && 'eve-drop-down-tree__is-active',
@@ -47,8 +46,8 @@
               :filter-node-method="filterNodeMethod"
               :show-checkbox="showCheckbox"
               :check-strictly="checkStrictly"
-              :default-expanded-keys="defaultExpandedKeys"
               :accordion="accordion"
+              :current-node-key="currentNodeKey"
               :auto-expand-parent="autoExpandParent"
               ref="tree"
               v-bind="$attrs"
@@ -59,15 +58,14 @@
       </el-option>
       <!-- 隐藏域 让多选显示名称-->
       <div v-show="false">
-        <template v-for="item in option">
-          <el-option
-            :key="item[nodeKey]"
-            :value="item[nodeKey]"
-            :label="item[props.label]"
-          >
-            {{ item[props.label] }}
-          </el-option>
-        </template>
+        <el-option
+          v-for="(item, index) in option"
+          :key="index"
+          :value="item[nodeKey]"
+          :label="item[tempProps.label]"
+        >
+          {{ item[tempProps.label] }}
+        </el-option>
       </div>
     </el-select>
     <div
@@ -110,11 +108,7 @@ export default {
     //配置选项
     props: {
       type: Object,
-      default: () => ({
-        children: 'children', //指定子树为节点对象的某个属性值
-        label: 'label', //指定节点标签为节点对象的某个属性值(下拉菜单显示值的key)
-        isLeaf: 'leaf' //指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效，叶子节点不能再有子节点了
-      })
+      default: () => { }
     },
 
     //每个树节点用来作为唯一标识的属性，整棵树应该是唯一的(下拉菜单真实值的key)
@@ -187,6 +181,12 @@ export default {
     convertSetting: {
       type: Object,
       default: () => { }
+    },
+
+    //选中的lable和key组合的数组,用来回填用，懒加载必写
+    option: {
+      type: Array,
+      default: () => []
     }
   },
 
@@ -194,10 +194,7 @@ export default {
     return {
       id: '', //被选中节点的id或者唯一值
       tempValue: this.multiple ? [] : '', //组件内部v-model绑定的值
-      label: '', //被选中节点的label值
-      option: [], //多选时选中的lable和key组合的数组
       showCheckbox: this.multiple, //节点是否可被选择--多选默认可选择
-      defaultExpandedKeys: [], //默认展开的节点的 key 的数组
       tagsHeight: '', // 页签列表的高度
       tagsWidth: '', //页签列表的宽度--只修改一次
       number: '', //未在select中显示的tags转换成个数
@@ -211,6 +208,12 @@ export default {
         pid: 'pid', //节点的父id键值
         topmostPid: -1, //最顶层数据的pid,当前值必须设置正确，否则可能转换不成功。
         convert: false //是否开启普通数据转换为树结构数据
+      },
+      currentNodeKey: '', //当前选中节点
+      tempProps: {
+        children: 'children', // 指定子树为节点对象的某个属性值
+        label: 'label', // 指定节点标签为节点对象的某个属性值(下拉菜单显示值的key)
+        isLeaf: 'leaf' // 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效，叶子节点不能再有子节点了
       }
     }
   },
@@ -225,12 +228,19 @@ export default {
     nodeClick (data, node, indeterminate) {
       if (this.multiple) return
       this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点
-      if (this.onlyLeaf && data[this.props.children]) return
+      if (this.onlyLeaf && data[this.tempProps.children]) return
       this.id = data[this.nodeKey]
-      this.label = data[this.props.label]
       this.tempValue = data[this.nodeKey]
       this.setCurrentKey(this.id)
       this.$refs.eveDropDownTreeSelect.blur() //自动收缩
+      //回填
+      this.option.forEach((item, index) => {
+        this.option.splice(index, 1)
+      })
+      this.option.push({
+        [this.tempProps.label]: data[this.tempProps.label],
+        [this.nodeKey]: data[this.nodeKey]
+      })
       this.$emit('node-click', data, node, indeterminate)
     },
 
@@ -260,11 +270,10 @@ export default {
       */
     clear () {
       this.tempValue = '' //清空真实值
-      this.label = '' //清空select框里的label值
       this.id = null
+      this.option.splice(0, this.option.length)
       this.setCurrentKey(null)
       this.setCheckedKeys([])
-      this.defaultExpandedKeys = []
       this.$emit('clear')
     },
 
@@ -273,6 +282,7 @@ export default {
       * @author yx
       */
     visibleChange (flag) {
+      this.filterMethod('')
       this.$emit('visible-change', flag)
     },
 
@@ -282,6 +292,11 @@ export default {
     removeTag (key) {
       this.tempValue.slice(key, 1)
       this.setCheckedKeys(this.tempValue)
+      this.option.forEach((item, index) => {
+        if (item[this.nodeKey] === key) {
+          this.option.splice(index, 1)
+        }
+      })
       this.$emit('remove-tag', key)
     },
 
@@ -292,7 +307,7 @@ export default {
     */
     filterNodeMethod (value, data) {
       if (!value) return true
-      return data[this.props.label].indexOf(value) !== -1
+      return data[this.tempProps.label].indexOf(value) !== -1
     },
 
     /**@description 当复选框被点击的时候触发
@@ -301,10 +316,50 @@ export default {
       * @author yx
      */
     check (data, checked) {
-      this.tempValue = checked.checkedKeys
-      this.option = checked.checkedNodes
+      // this.tempValue = checked.checkedKeys
+      this.setOption(this.getCheckedNodes(this.onlyLeaf), data)
+      // this.option.push(checked.checkedNodes)
+      this.tempValue = []
+      this.option.forEach(item => {
+        this.tempValue.push(item[this.nodeKey])
+      })
       this.$emit('check', data, checked)
     },
+
+    // 设置option
+    setOption (checkedNodes = [], current = '') {
+      // 点击复选框是否勾选了节点，未勾选删除
+      if (current !== '') {
+        let notCheck = true
+        checkedNodes.forEach(element => {
+          if (element[this.nodeKey] === current[this.nodeKey]) {
+            notCheck = false
+          }
+        })
+        notCheck && this.option.forEach((itme, index) => {
+          if (itme[this.nodeKey] === current[this.nodeKey]) {
+            this.option.splice(index, 1)
+          }
+        })
+      }
+
+      const obj = {}
+      this.option.forEach(item => {
+        obj[item[this.nodeKey]] = item[this.nodeKey]
+      })
+
+
+      checkedNodes.forEach(element => {
+        if (!obj[element[this.nodeKey]]) {
+          this.option.push({
+            [this.tempProps.label]: element[this.tempProps.label],
+            [this.nodeKey]: element[this.nodeKey]
+          })
+        }
+      })
+    },
+
+
 
     /**@description 多选--若节点可被选择（即 show-checkbox 为 true），则返回目前被选中的节点所组成的数组
       * @author yx
@@ -411,7 +466,7 @@ export default {
     convertToTree (data, parentId = this.tempConvertSetting.topmostPid) {
       const itemArr = []
       const length = data.length
-      const { children } = this.props
+      const { children } = this.tempProps
       const { pid, id } = this.tempConvertSetting
       for (let i = 0; i < length; i++) {
         const node = data[i]
@@ -436,12 +491,13 @@ export default {
       this.$refs.tree.filter(val)
     },
 
+
     /**@description 获取树组件ref来调用element-ui的tree组件的所有方法
      * @author yx
      */
     getElTreeRef () {
       return this.$refs.tree
-    }
+    },
 
   },
   watch: {
@@ -452,37 +508,40 @@ export default {
         const radio = () => {
           newValue = newValue || null
           this.tempValue = newValue
-          this.defaultExpandedKeys = []
-          newValue && this.defaultExpandedKeys.push(newValue)
           this.id = newValue
           this.setCurrentKey(newValue)
           this.$nextTick(() => {
+            //非懒加载的时候
+            if (this.option.length <= 0) {
+              this.option.push(this.getCurrentNode())
+            }
             this.setCurrentKey(newValue)
-            this.label = this.getCurrentNode() ? this.getCurrentNode()[this.props.label] : newValue
           })
+          this.currentNodeKey = newValue //懒加载必须
         }
         //多选
         const checkbox = () => {
           newValue = newValue || []
           this.tempValue = newValue
-          this.defaultExpandedKeys = newValue
-          this.setCheckedKeys(newValue)
+          this.setCheckedKeys(this.tempValue)
           this.$nextTick(() => {
-            this.setCheckedKeys(newValue) //懒加载时回填无效，必须在nextTick再赋值一次
-            this.option = []//防止重复的key
-            this.getCheckedNodes().forEach(element => {
-              this.option.push({
-                [this.props.label]: element[this.props.label],
-                [this.nodeKey]: element[this.nodeKey]
-              })
-            })
+            this.setOption(this.getCheckedNodes(this.onlyLeaf))
+            this.setCheckedKeys(this.tempValue)
           })
+          setTimeout(() => { this.columnCollapseTags && this.selfAdaption() }, 200)
         }
         this.multiple ? checkbox() : radio()
-        setTimeout(() => { this.columnCollapseTags && this.selfAdaption() }, 200)
       },
       immediate: true
     },
+
+    props: {
+      handler (newValue) {
+        Object.assign(this.tempProps, newValue)
+      },
+      immediate: true
+    },
+
     // v-model绑定的值(内部用)--子修改-父接收
     tempValue (newValue) {
       //获取值
