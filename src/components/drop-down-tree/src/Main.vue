@@ -61,10 +61,10 @@
         <el-option
           v-for="(item, index) in option"
           :key="index"
-          :value="item[nodeKey]"
-          :label="item[tempProps.label]"
+          :value="item ? item[nodeKey] : ''"
+          :label="item ? item[tempProps.label] : ''"
         >
-          {{ item[tempProps.label] }}
+          {{ item ? [tempProps.label] : '' }}
         </el-option>
       </div>
     </el-select>
@@ -227,7 +227,7 @@ export default {
      */
     nodeClick (data, node, indeterminate) {
       if (this.multiple) return
-      this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点
+      this.id && this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点
       if (this.onlyLeaf && data[this.tempProps.children]) return
       this.id = data[this.nodeKey]
       this.tempValue = data[this.nodeKey]

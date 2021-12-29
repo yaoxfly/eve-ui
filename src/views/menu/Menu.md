@@ -83,6 +83,7 @@ export default {
 
 > 设置了`box-sizing: border-box`后会影响`top`属性,如果出现菜单纵向没铺满的`bug`,可自由调节当前值到铺满的为止，或者设置`top`值为`0`并在`app.vue`中添加样式 `body{overflow: hidden;}`
 
+
 ### data 
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |
 | ----- | ------ | ----- | ----- | - |
@@ -91,8 +92,8 @@ export default {
 | path | 菜单路径 ，可根据下表的config自定义修改参数名| string |  — | — |
 | children | 树结构数据的孩子节点，可根据下表的config自定义修改参数名 | string |  — | — |
 | title | 菜单分组的title ，可根据下表的config自定义修改参数名  | string |  — | — |
-| icon | 菜单的图标  | string |  — | — |
-
+| icon  | 菜单的图标  | string |  — | — |
+| tooltip | 菜单过长，出现三个点，设置当前属性可提示全部值 | — | — |
 
 >  `path`是唯一的，不能配置一样的`path`，如果父菜单没有跳转的功能，就不需要配置`path`
 

@@ -26,8 +26,8 @@ $orange-theme: (
   color-primary-light-2: mix($--color-white, #c7993f, 20%),
   color-primary-light-5: mix($--color-white, #c7993f, 50%),
   color-primary-light-95: mix($--color-white, #c7993f, 95%),
-  eve-header-background: #593110,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-header-background: #8c4d00,
+  eve-menu-background-gradient: #dfaf41,
 );
 
 //火山主题
@@ -39,7 +39,7 @@ $red-theme: (
   color-primary-light-5: mix($--color-white, #fa541c, 50%),
   color-primary-light-95: mix($--color-white, #fa541c, 95%),
   eve-header-background: #601c17,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-menu-background-gradient: #c72316,
 );
 
 //明青

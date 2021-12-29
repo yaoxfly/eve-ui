@@ -35,6 +35,18 @@
     border-right: 3px solid $--color-primary;
     color: $--color-primary;
   }
+
+  .el-submenu__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .el-menu-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 /*加快收缩的动画 */

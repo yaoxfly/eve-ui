@@ -992,6 +992,18 @@ $--eve-tree-height: $--eve-height--small;
   }
 }
 
+.eve-select-form__form {
+  margin-top: 2px;
+}
+
+// .eve-common-formwork__select-form {
+//   padding: 10px 20px 20px 20px !important;
+// }
+
+// .eve-select-form__flex-row-center {
+//   margin-top: 10px;
+// }
+
 /*-----输入框、select框的placeholder修改-----$--font-size-content-small-*/
 .el-input input::-webkit-input-placeholder {
   font-size: $--font-size-content !important;
@@ -1126,7 +1138,7 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   .el-submenu__title[style*='padding-left: 40px'] {
-    padding: 0 24px !important;
+    padding: 0 0 0 24px !important;
     height: $--eve-height--small;
     line-height: $--eve-height--small;
   }
@@ -1146,6 +1158,7 @@ $--eve-tree-height: $--eve-height--small;
       color: #fff;
       font-size: $--font-size-medium;
       left: 4px;
+      top: 2px;
     }
   }
 
@@ -1163,7 +1176,7 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   .el-submenu__title[style*='padding-left: 60px'] {
-    padding: 0 40px !important;
+    padding: 0 0 0 40px !important;
     height: $--eve-height--small;
     line-height: 32px;
   }
@@ -1183,6 +1196,7 @@ $--eve-tree-height: $--eve-height--small;
       color: #fff;
       font-size: $--font-size-medium;
       left: 20px;
+      top: 2px;
     }
   }
 
@@ -1203,15 +1217,15 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   .el-menu-item[style*='padding-left: 40px'] {
-    padding: 0 24px !important;
+    padding: 0 0 0 24px !important;
   }
 
   .el-menu-item[style*='padding-left: 60px'] {
-    padding: 0 40px !important;
+    padding: 0 0 0 0 40px !important;
   }
 
   .el-menu-item[style*='padding-left: 80px'] {
-    padding: 0 60px !important;
+    padding: 0 0 0 60px !important;
   }
 
   .eve-menu__menu-item .el-menu-item.is-active {
