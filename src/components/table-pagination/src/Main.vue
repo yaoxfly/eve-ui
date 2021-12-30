@@ -124,6 +124,7 @@
                     :row="scope.row"
                     :render="item.render"
                     :index="index"
+                    :cur-row-index="scope.$index"
                     :data="data"
                   ></render>
                 </template>
@@ -162,6 +163,7 @@
                     :row="scope.row"
                     :render="item.render"
                     :index="index"
+                    :cur-row-index="scope.$index"
                     :data="data"
                   ></render>
                 </template>

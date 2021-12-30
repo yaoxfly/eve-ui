@@ -388,6 +388,12 @@ export default {
     scrollWidth: {
       type: [String, Number],
       default: ''
+    },
+
+    //在onlyLeaf状态下点击非叶子节点时,是否返回参数 
+    returnParam: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -408,8 +414,6 @@ export default {
   },
 
   methods: {
-
-
     /**@description  节点被点击时的回调
      * @author yx
      * @param  {Object}  data 递给 data 属性的数组中该节点所对应的对象
@@ -419,7 +423,10 @@ export default {
     nodeClick (data, node, indeterminate) {
       // if (this.showCheckbox) return
       this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点
-      if (this.onlyLeaf && data[this.props.children]) return
+      if (this.onlyLeaf && data[this.props.children]) {
+        this.returnParam && this.$emit('node-click', data, node, indeterminate)
+        return
+      }
       this.id = data[this.nodeKey]
       this.label = data[this.props.label]
       this.tempValue = data[this.nodeKey]

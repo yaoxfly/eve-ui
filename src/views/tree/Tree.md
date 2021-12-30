@@ -318,10 +318,13 @@ export default {
 | scroll-height | 开启滚动后树的高度(不包含搜索框的)| string, number | — | 200 |
 | scroll-width |开启滚动后树的默认的宽度(不包含搜索框的)| string, number | — | — |
 | only-leaf |是否只选中、高亮、编辑叶子节点(最底层的节点)| boolean | — | false |
+| return-param |是否在only-leaf状态下点击非叶子节点时,返回参数 | Boolean | — |false|
 | operate |是否显示 添加、删除、编辑等按钮| boolean | — | true |
 | operate-color |设置添加、删除、编辑等按钮的颜色| string | — |  — |
 | is-show-filter |是否开启节点过滤| boolean | — |  true |
 | convert-setting |树形结构数据转换设置；普通数据转树结构数据必须设置的属性；详细参数见下表| object | — |{ convert: false,id: 'id',  pid: 'pid', topmostPid: -1} |
+
+
 
 > 开启滚动后`scroll-height`、`scroll-width`请根据页面布局情况自行调整到合适的值
 

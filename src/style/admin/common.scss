@@ -195,6 +195,7 @@ body {
       font-size: 12px;
       border-radius: 6px;
     }
+
     //表单的标题属性
     .eve-common-form-title {
       height: 32px;
@@ -278,6 +279,28 @@ body {
         font-size: 13px;
       } /* Mozilla Firefox 19+ */
     }
+
+    /*--表格--*/
+    .el-table {
+      min-height: auto !important;
+    }
+
+    .eve-common-formwork__button-table {
+      padding: 0 0 !important;
+      .el-pagination {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .el-table .cell {
+      line-height: 32px;
+    }
+
+    .el-table th,
+    .el-table td > .cell {
+      height: 32px;
+      line-height: 32px;
+    }
   }
   &-form-container-big {
     /*********表单[start]*********/
@@ -332,6 +355,27 @@ body {
       input:-moz-placeholder,textarea:-moz-placeholder {
         font-size: 14px;
       } /* Mozilla Firefox 19+ */
+    }
+    /*--表格--*/
+    .el-table {
+      min-height: auto !important;
+    }
+
+    .eve-common-formwork__button-table {
+      padding: 0 0 !important;
+      .el-pagination {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .el-table .cell {
+      line-height: 40px;
+    }
+
+    .el-table th,
+    .el-table td > .cell {
+      height: 40px;
+      line-height: 40px;
     }
   }
   /*********自定义表单样式开始*小********/
@@ -889,13 +933,9 @@ body {
       }
     }
   }
-
   /*********自定义表单样式结束*********/
 
   /*********模板页面的间距*********/
-  $--table-max-height: calc(100vh - 340px);
-  $--table-body-wrapper-max-height: calc(100vh - 395px);
-  $--table-fixed-body-wrapper-max-height: calc(100vh - 410px);
 
   //查询表单
   &-formwork__select-form {
@@ -905,10 +945,27 @@ body {
   //按钮
   &-formwork__button-table {
     padding: 0 20px;
+    .el-button {
+      margin-bottom: 20px;
+    }
+    .el-pagination {
+      margin-bottom: 20px !important;
+    }
   }
 
   //表格
   &-formwork__table {
+    .el-table {
+      min-height: calc(100vh - 345px);
+    }
+  }
+
+  $--table-max-height: calc(100vh - 340px);
+  $--table-body-wrapper-max-height: calc(100vh - 395px);
+  $--table-fixed-body-wrapper-max-height: calc(100vh - 410px);
+
+  //表格-滚动条版本
+  &-formwork__table-scroll {
     margin: 20px 0;
     .el-table {
       height: calc(100vh - 345px);
@@ -921,10 +978,13 @@ body {
 
     .el-table__fixed-right {
       right: 10px;
+      bottom: 11px;
     }
 
     .el-table__fixed-body-wrapper {
       max-height: $--table-body-wrapper-max-height;
+      bottom: 11px;
+      top: 49.1px !important;
     }
 
     .el-table__body-wrapper {
@@ -960,10 +1020,6 @@ body {
       }
     }
 
-    .el-table__body-wrapper.is-scrolling-left {
-      overflow: scroll;
-    }
-
     .el-table__fixed-right-patch {
       width: 10px !important;
       height: 48px !important;
@@ -974,6 +1030,11 @@ body {
 
     .el-table th.el-table__cell.is-leaf:last-child {
       border-right: 0;
+    }
+
+    //移动横向滚动条到最右边到时候表格和内容的线不对齐修改
+    .el-table__header {
+      margin-right: 12px;
     }
   }
 

@@ -12,7 +12,22 @@
     >
       <template slot="title">
         <i :class="menuData.icon"></i>
-        <span slot="title">{{ menuData[config.text] }}</span>
+        <span slot="title">
+          <el-tooltip
+            v-if="menuData.tooltip"
+            class="item"
+            effect="dark"
+            :content="menuData[config.text]"
+            placement="top-start"
+          >
+            <span>
+              {{ menuData[config.text] }}
+            </span>
+          </el-tooltip>
+          <span v-else>
+            {{ menuData[config.text] }}
+          </span>
+        </span>
       </template>
       <template
         v-if="menuData[config.children] && menuData[config.children].length > 0"
@@ -37,7 +52,22 @@
       >
       <el-menu-item :index="menuData[config.path]" :padding-left="paddingLeft">
         <i :class="menuData.icon"></i>
-        <span slot="title">{{ menuData[config.text] }}</span>
+        <span slot="title">
+          <el-tooltip
+            v-if="menuData.tooltip"
+            class="item"
+            effect="dark"
+            :content="menuData[config.text]"
+            placement="top-start"
+          >
+            <span>
+              {{ menuData[config.text] }}
+            </span>
+          </el-tooltip>
+          <span v-else>
+            {{ menuData[config.text] }}
+          </span>
+        </span>
       </el-menu-item>
     </el-menu-item-group>
   </div>
