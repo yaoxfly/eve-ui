@@ -64,7 +64,6 @@
           :value="item ? item[nodeKey] : ''"
           :label="item ? item[tempProps.label] : ''"
         >
-          {{ item ? [tempProps.label] : '' }}
         </el-option>
       </div>
     </el-select>
