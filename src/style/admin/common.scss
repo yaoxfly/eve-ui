@@ -202,7 +202,7 @@ body {
       padding-left: 20px;
       font-size: $--font-size-content;
       color: $--color-text-primary;
-      background-color: $LabelbgColor;
+      background-color: $--color-primary-light-95;
       font-weight: bolder;
     }
     //带详情css
@@ -221,7 +221,7 @@ body {
       margin-bottom: 0; //去掉form-item默认的底边距
       height: 100%; //很重要，不能去掉，否则form-label无法随form-content的高度变化而变化
       .el-form-item__label {
-        background-color: $LabelbgColor;
+        background-color: $--color-primary-light-95;
         color: $LabelColor;
         font-size: $--font-size-content;
         padding: $LabelPadding;
@@ -258,28 +258,34 @@ body {
           transform: translate(-50%, -50%);
         }
       }
-      input {
+      input,textarea {
         font-size: 13px;
       }
-      input:-ms-input-placeholder {
+      
+      input:-ms-input-placeholder,textarea:-ms-input-placeholder {
         font-size: 13px;
       } /* Internet Explorer 10+ */
 
-      input::-webkit-input-placeholder {
+      input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
         font-size: 13px;
       } /* WebKit browsers */
 
-      input::-moz-placeholder {
+      input::-moz-placeholder,textarea::-moz-placeholder {
         font-size: 13px;
       } /* Mozilla Firefox 4 to 18 */
 
-      input:-moz-placeholder {
+      input:-moz-placeholder,textarea:-moz-placeholder {
         font-size: 13px;
       } /* Mozilla Firefox 19+ */
     }
   }
   &-form-container-big {
     /*********表单[start]*********/
+    .el-form-item {
+      .el-form-item__label {
+        min-height: 40px;
+      }
+    }
     .eve-common-form-content {
       border: 1px solid $tableBorderColor;
     }
@@ -298,7 +304,7 @@ body {
       padding-left: 20px;
       font-size: $--font-size-content;
       color: $--color-text-primary;
-      background-color: $LabelbgColor;
+      background-color: $--color-primary-light-95;
       font-weight: bolder;
     }
     .el-form-item {
@@ -307,22 +313,23 @@ body {
         font-size: 14px;
         line-height: 18px;
       }
-      input {
+      input,textarea {
         font-size: 14px;
       }
-      input:-ms-input-placeholder {
-        font-size: 14px;
+      
+      input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+        font-size: 14x;
       } /* Internet Explorer 10+ */
 
-      input::-webkit-input-placeholder {
+      input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
         font-size: 14px;
       } /* WebKit browsers */
 
-      input::-moz-placeholder {
+      input::-moz-placeholder,textarea::-moz-placeholder {
         font-size: 14px;
       } /* Mozilla Firefox 4 to 18 */
 
-      input:-moz-placeholder {
+      input:-moz-placeholder,textarea:-moz-placeholder {
         font-size: 14px;
       } /* Mozilla Firefox 19+ */
     }
