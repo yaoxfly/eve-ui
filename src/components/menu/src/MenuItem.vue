@@ -20,13 +20,13 @@
             :content="menuData[config.text]"
             placement="top-start"
           >
-            <span>
+            <label>
               {{ menuData[config.text] }}
-            </span>
+            </label>
           </el-tooltip>
-          <span v-else>
+          <label v-else>
             {{ menuData[config.text] }}
-          </span>
+          </label>
         </span>
       </template>
       <template
@@ -60,13 +60,13 @@
             :content="menuData[config.text]"
             placement="top-start"
           >
-            <span>
+            <label>
               {{ menuData[config.text] }}
-            </span>
+            </label>
           </el-tooltip>
-          <span v-else>
+          <label v-else>
             {{ menuData[config.text] }}
-          </span>
+          </label>
         </span>
       </el-menu-item>
     </el-menu-item-group>
