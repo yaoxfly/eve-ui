@@ -8,14 +8,14 @@ $--color-white: #ffffff !default;
 
 // 默认主题
 $default-theme: (
-  color-primary: #2ca7d4,
-  color-primary-light-8: mix($--color-white, #2ca7d4, 80%),
-  color-primary-light-9: mix($--color-white, #2ca7d4, 90%),
-  color-primary-light-2: mix($--color-white, #2ca7d4, 20%),
-  color-primary-light-5: mix($--color-white, #2ca7d4, 50%),
-  color-primary-light-95: mix($--color-white, #2ca7d4, 95%),
+  color-primary: #16b5e9,
+  color-primary-light-8: mix($--color-white, #16b5e9, 80%),
+  color-primary-light-9: mix($--color-white, #16b5e9, 90%),
+  color-primary-light-2: mix($--color-white, #16b5e9, 20%),
+  color-primary-light-5: mix($--color-white, #16b5e9, 50%),
+  color-primary-light-95: mix($--color-white, #16b5e9, 95%),
   eve-header-background: #0a2a87,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-menu-background-gradient: #009ed1,
 );
 
 //日暮主题
