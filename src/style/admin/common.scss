@@ -182,24 +182,29 @@ body {
   }
 
   /*----表单----*/
-  &-form-container {
+  &-form-container, &-form-container-big {
     /*********表单[start]*********/
+    .el-form-item {
+      .el-form-item__label {
+        min-height: 40px;
+      }
+    }
     .eve-common-form-content {
       border: 1px solid $tableBorderColor;
     }
     .eve-common-form-content:not(:last-child) {
       margin: 0 0 -1px 0;
     }
-    .el-button {
-      padding: 6px 8px;
-      font-size: 12px;
-      border-radius: 6px;
-    }
+    // .el-button {
+    //   padding: 6px 8px;
+    //   font-size: $--font-size-content;
+    //   border-radius: 6px;
+    // }
 
     //表单的标题属性
     .eve-common-form-title {
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       padding-left: 20px;
       font-size: $--font-size-content;
       color: $--color-text-primary;
@@ -208,12 +213,12 @@ body {
     }
     //带详情css
     .eve-common-detail-field {
-      font-size: 13px;
+      font-size: $--font-size-content;
       line-height: 18px;
     }
     //带单位描述css
     .eve-common-info-tip {
-      font-size: $--font-size-extra-small;
+      font-size: $--font-size-content;
       color: $--color-info;
       margin-left: 20px;
     }
@@ -259,126 +264,55 @@ body {
           transform: translate(-50%, -50%);
         }
       }
-      input,textarea {
-        font-size: 13px;
+      input,
+      textarea {
+        font-size: $--font-size-content;
       }
-      
-      input:-ms-input-placeholder,textarea:-ms-input-placeholder {
-        font-size: 13px;
+
+      input:-ms-input-placeholder,
+      textarea:-ms-input-placeholder {
+        font-size: $--font-size-content;
       } /* Internet Explorer 10+ */
 
-      input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
-        font-size: 13px;
+      input::-webkit-input-placeholder,
+      textarea::-webkit-input-placeholder {
+        font-size: $--font-size-content;
       } /* WebKit browsers */
 
-      input::-moz-placeholder,textarea::-moz-placeholder {
-        font-size: 13px;
+      input::-moz-placeholder,
+      textarea::-moz-placeholder {
+        font-size: $--font-size-content;
       } /* Mozilla Firefox 4 to 18 */
 
-      input:-moz-placeholder,textarea:-moz-placeholder {
-        font-size: 13px;
+      input:-moz-placeholder,
+      textarea:-moz-placeholder {
+        font-size: $--font-size-content;
       } /* Mozilla Firefox 19+ */
     }
 
     /*--表格--*/
-    .el-table {
-      min-height: auto !important;
-    }
+    // .el-table {
+    //   min-height: auto !important;
+    // }
 
-    .eve-common-formwork__button-table {
-      padding: 0 0 !important;
-      .el-pagination {
-        margin-bottom: 0 !important;
-      }
-    }
+    // .eve-common-formwork__button-table {
+    //   padding: 0 0 !important;
+    //   .el-pagination {
+    //     margin-bottom: 0 !important;
+    //   }
+    // }
 
-    .el-table .cell {
-      line-height: 32px;
-    }
+    // .el-table .cell {
+    //   line-height: 32px;
+    // }
 
-    .el-table th,
-    .el-table td > .cell {
-      height: 32px;
-      line-height: 32px;
-    }
+    // .el-table th,
+    // .el-table td > .cell {
+    //   height: 32px;
+    //   line-height: 32px;
+    // }
   }
-  &-form-container-big {
-    /*********表单[start]*********/
-    .el-form-item {
-      .el-form-item__label {
-        min-height: 40px;
-      }
-    }
-    .eve-common-form-content {
-      border: 1px solid $tableBorderColor;
-    }
-    .eve-common-form-content:not(:last-child) {
-      margin: 0 0 -1px 0;
-    }
-    .el-button {
-      padding: 10px 8px;
-      font-size: 12px;
-      border-radius: 6px;
-    }
-    //表单的标题属性
-    .eve-common-form-title {
-      height: 40px;
-      line-height: 40px;
-      padding-left: 20px;
-      font-size: $--font-size-content;
-      color: $--color-text-primary;
-      background-color: $--color-primary-light-95;
-      font-weight: bolder;
-    }
-    .el-form-item {
-      //带详情css
-      .eve-common-detail-field {
-        font-size: 14px;
-        line-height: 18px;
-      }
-      input,textarea {
-        font-size: 14px;
-      }
-      
-      input:-ms-input-placeholder,textarea:-ms-input-placeholder {
-        font-size: 14x;
-      } /* Internet Explorer 10+ */
-
-      input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
-        font-size: 14px;
-      } /* WebKit browsers */
-
-      input::-moz-placeholder,textarea::-moz-placeholder {
-        font-size: 14px;
-      } /* Mozilla Firefox 4 to 18 */
-
-      input:-moz-placeholder,textarea:-moz-placeholder {
-        font-size: 14px;
-      } /* Mozilla Firefox 19+ */
-    }
-    /*--表格--*/
-    .el-table {
-      min-height: auto !important;
-    }
-
-    .eve-common-formwork__button-table {
-      padding: 0 0 !important;
-      .el-pagination {
-        margin-bottom: 0 !important;
-      }
-    }
-
-    .el-table .cell {
-      line-height: 40px;
-    }
-
-    .el-table th,
-    .el-table td > .cell {
-      height: 40px;
-      line-height: 40px;
-    }
-  }
-  /*********自定义表单样式开始*小********/
+  /*********自定义表单样式开始*小and大********/
   /*********常规input的封装[start]*********/
   &-input {
     &.el-input {
@@ -396,6 +330,7 @@ body {
       }
       .el-input__icon {
         line-height: $eveCommonInputHeight;
+        font-size: $--font-size-content;
       }
     }
     //多行文本框
@@ -424,6 +359,11 @@ body {
         line-height: 1;
       }
     }
+    &.el-input-number--mini .el-input-number__increase,
+    &.el-input-number--mini .el-input-number__decrease {
+      width: 28px;
+      font-size: 16px;
+    }
   }
 
   /*********DatePicker 日期选择器[start]*********/
@@ -435,7 +375,7 @@ body {
       padding: $eveCommonInputPadding !important;
       //input高度
       height: $eveCommonInputHeight !important;
-      line-height: eveCommonInputHeight;
+      line-height: $eveCommonInputHeight;
     }
 
     //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
@@ -444,14 +384,16 @@ body {
       padding-left: $eveCommonInputPrefixSuffix !important;
     }
     &.el-date-editor .el-range-separator {
-      width: 8%;
-      line-height: 25px;
+      width: 10%;
+      line-height: $eveCommonInputHeight;
+      font-size: $--font-size-content;
     }
     .el-input__icon {
       line-height: $eveCommonInputHeight;
+      font-size: $--font-size-content;
     }
     &.el-date-editor .el-range__icon {
-      font-size: $--font-size-small;
+      font-size:  $--font-size-content;
     }
   }
 
@@ -471,17 +413,19 @@ body {
       padding-left: $eveCommonInputPrefixSuffix !important;
     }
     &.el-date-editor .el-range-separator {
-      width: 8%;
-      line-height: 25px;
+      width: 10%;
+      line-height: $eveCommonInputHeight;
+      font-size: $--font-size-content;
     }
     .el-input__icon {
       line-height: $eveCommonInputHeight;
+      font-size: $--font-size-content;
     }
     &.el-range-editor.el-input__inner {
       padding: 0 4px;
     }
     &.el-date-editor .el-range__icon {
-      font-size: $--font-size-small;
+      font-size:   $--font-size-content;
     }
   }
 
@@ -511,7 +455,7 @@ body {
       color: $--color-text-regular;
     }
     .el-radio__label {
-      font-size: $--font-size-small;
+      font-size: $--font-size-content;
       padding-left: 4px;
       color: $--color-text-regular !important;
     }
@@ -530,7 +474,7 @@ body {
   /*********checkbox复选框[start]*********/
   &-checkbox-group {
     .el-checkbox__label {
-      font-size: $--font-size-small;
+      font-size: $--font-size-content;
       padding-left: 4px;
       color: $--color-text-regular !important;
     }
@@ -565,6 +509,16 @@ body {
         //input高度
         height: $eveCommonInputHeight;
         line-height: 1;
+      }
+    }
+    // 下拉多选
+    .el-tag--mini {
+      height: 24px;
+      padding: 0 10px;
+      line-height: 24px;
+      font-size:  $--font-size-content;
+      .el-icon-close {
+        background-color: #c0c4cc;
       }
     }
   }
@@ -644,7 +598,7 @@ body {
 
   /*********icon[start]*********/
   &-icon {
-    font-size: $--font-size-small;
+    font-size: $--font-size-content;
     color: $--color-info; //#909399
     &:hover {
       cursor: pointer;
@@ -662,277 +616,6 @@ body {
     }
   }
 
-  /*********自定义表单样式结束*********/
-
-  /*********自定义表单样式开始*********/
-  &-big {
-    /*********常规input的封装[start]*********/
-    &-input {
-      &.el-input {
-        .el-input__inner {
-          //input内边距
-          padding: $eveCommonInputPadding;
-          //input高度
-          height: $eveCommonInputHeightBig;
-          line-height: 1;
-        }
-        //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
-        .el-input--prefix .el-input__inner,
-        .el-input--suffix .el-input__inner {
-          padding-left: $eveCommonInputPrefixSuffix;
-        }
-        .el-input__icon {
-          line-height: $eveCommonInputHeightBig;
-        }
-      }
-      //多行文本框
-      &.el-textarea {
-        //多行文本框内边距
-        .el-textarea__inner {
-          padding: $eveCommonInputPadding;
-          font-family: Arial; //字体设置
-        }
-        //多行文本框的【计数属性】绝对定位-根据实际情况微调
-        .el-input__count {
-          bottom: 10px;
-        }
-      }
-    }
-
-    /*********InputNumber 计数器[start]*********/
-    &-input-number {
-      &.el-input-number {
-        line-height: 2; //左右按钮根据行高设置
-        .el-input__inner {
-          //input内边距
-          padding: $eveCommonInputPadding;
-          //input高度
-          height: $eveCommonInputHeightBig;
-          line-height: 1;
-        }
-      }
-      &.el-input-number--mini .el-input-number__increase,
-      &.el-input-number--mini .el-input-number__decrease {
-        width: 28px;
-        font-size: 16px;
-      }
-    }
-
-    /*********DatePicker 日期选择器[start]*********/
-    &-date-picker {
-      overflow: hidden;
-      &.el-range-editor.el-input__inner,
-      .el-input__inner {
-        // input内边距
-        padding: $eveCommonInputPadding !important;
-        // input高度
-        height: $eveCommonInputHeightBig !important;
-        line-height: 1;
-      }
-
-      //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
-      &.el-input--prefix .el-input__inner,
-      .el-input--suffix .el-input__inner {
-        padding-left: $eveCommonInputPrefixSuffix !important;
-      }
-      &.el-date-editor .el-range-separator {
-        width: 8%;
-        line-height: $eveCommonInputHeightBig;
-      }
-      .el-input__icon {
-        line-height: $eveCommonInputHeightBig;
-        font-size: 16px;
-      }
-    }
-
-    /*********timePicker 时间选择器[start]*********/
-    &-time-select {
-      overflow: hidden;
-      .el-input__inner {
-        //input内边距
-        padding: $eveCommonInputPadding !important;
-        //input高度
-        height: $eveCommonInputHeightBig !important;
-        line-height: 1;
-      }
-      //改变输入框的默认内边距，前后图标的默认左右边距需要重新设置一下，否则出现图标的时候会出现css异常
-      &.el-input--prefix .el-input__inner,
-      .el-input--suffix .el-input__inner {
-        padding-left: $eveCommonInputPrefixSuffix !important;
-      }
-      &.el-date-editor .el-range-separator {
-        width: 8%;
-        line-height: 25px;
-      }
-      .el-input__icon {
-        font-size: 16px;
-        line-height: $eveCommonInputHeightBig;
-      }
-      &.el-range-editor.el-input__inner {
-        padding: 0 4px;
-      }
-      &.el-date-editor .el-range__icon {
-        font-size: $--font-size-small;
-      }
-    }
-
-    &-radio-group {
-      //radio选中字体不跟随变化（常规文字）-#606266
-      .el-radio__input.is-checked + .el-radio__label {
-        color: $--color-text-regular;
-      }
-      .el-radio__label {
-        font-size: $--font-size-small;
-        padding-left: 4px;
-        color: $--color-text-regular !important;
-      }
-
-      //radio由[实心白]改为[实心蓝]效果
-      .el-radio__input.is-checked .el-radio__inner {
-        background: #fff;
-      }
-      .el-radio__inner::after {
-        width: 5px;
-        height: 5px;
-        background-color: $--color-primary;
-      }
-    }
-
-    /*********checkbox复选框[start]*********/
-    &-checkbox-group {
-      .el-checkbox__label {
-        font-size: $--font-size-small;
-        padding-left: 4px;
-        color: $--color-text-regular !important;
-      }
-
-      //checkbox由[白色勾]改为[蓝色勾]效果
-      .el-checkbox__input.is-checked .el-checkbox__inner,
-      .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-        background-color: #fff;
-        //三级边框-#ebeef5
-        border-color: $--border-color-lighter;
-      }
-      .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
-        background-color: $--color-primary;
-      }
-      .el-checkbox__inner::after {
-        border-color: $--color-primary;
-      }
-      //checkbox选中字体不跟随变化
-      .el-checkbox__input.is-checked + .el-checkbox__label {
-        //常规文字-#606266
-        color: $--color-text-regular;
-      }
-    }
-
-    /*********select下拉框[start]*********/
-    &-select {
-      &.el-select {
-        width: 100%;
-        .el-input__inner {
-          //input内边距
-          padding: $eveCommonInputPadding;
-          //input高度
-          height: $eveCommonInputHeightBig;
-          line-height: 1;
-        }
-      }
-    }
-
-    //多选 select超出
-    &-select-ellipsis {
-      .el-select__tags {
-        flex-wrap: nowrap;
-      }
-      .el-tag:first-child {
-        max-width: 160px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-
-    //单选 select超出
-    &-select-single-ellipsis {
-      &.el-select .el-input__inner {
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-      }
-    }
-
-    /*********select下拉复选框[start]*********/
-    &-cascader {
-      &.el-cascader {
-        width: 100%;
-        .el-input__inner {
-          //input内边距
-          padding: $eveCommonInputPadding;
-          //input高度
-          height: $eveCommonInputHeightBig;
-          line-height: 1;
-        }
-      }
-    }
-
-    /*********autocomplete下拉复选框[start]*********/
-    &-autocomplete {
-      &.el-autocomplete {
-        width: 100%;
-        .el-input__inner {
-          //input内边距
-          padding: $eveCommonInputPadding !important;
-          //input高度
-          height: $eveCommonInputHeightBig !important;
-          line-height: 1 !important;
-        }
-      }
-    }
-
-    /*********slider滑块[start]*********/
-    &-slider {
-      &.el-slider {
-        width: 100% !important;
-        //减小滑块的边距
-        .el-slider__runway {
-          margin: 11px 0;
-        }
-      }
-    }
-
-    /*********下拉树[start]*********/
-    &-drop-down-tree {
-      .el-select {
-        width: 100%;
-        .el-input__inner {
-          //input高度
-          height: $eveCommonInputHeightBig !important;
-          line-height: 1;
-        }
-      }
-    }
-
-    /*********icon[start]*********/
-    &-icon {
-      font-size: $--font-size-small;
-      color: $--color-info; //#909399
-      &:hover {
-        cursor: pointer;
-        color: $--color-warning; //#e6a23c
-      }
-    }
-
-    /*********upload图片上传[start]*********/
-    &-upload {
-      padding: 0px 0 12px 0;
-      line-height: 1;
-      .el-upload-list--picture .el-upload-list__item {
-        //三级边框-#ebeef5
-        border: 1px solid $--border-color-lighter;
-      }
-    }
-  }
   /*********自定义表单样式结束*********/
 
   /*********模板页面的间距*********/

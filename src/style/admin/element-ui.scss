@@ -806,9 +806,9 @@ $--eve-tree-height: $--eve-height--small;
 
 //超小版本下拉单选弹出框样式-高度和边距取input输入框的高度和边距变量
 .el-select-dropdown__item {
-  height: $eveCommonInputHeight;
-  line-height: $eveCommonInputHeight;
-  font-size: $--font-size-small;
+  // height: $eveCommonInputHeight;
+  // line-height: $eveCommonInputHeight;
+  font-size: $--font-size-content;
   padding: $eveCommonInputPadding;
 }
 //超小版本下拉建议搜索弹出框样式-高度和边距取input输入框的高度和边距变量
@@ -817,17 +817,17 @@ $--eve-tree-height: $--eve-height--small;
     padding: 6px 0;
   }
   li {
-    height: $eveCommonInputHeight;
-    line-height: $eveCommonInputHeight;
-    font-size: $--font-size-small;
+    // height: $eveCommonInputHeight;
+    // line-height: $eveCommonInputHeight;
+    font-size: $--font-size-content;
     padding: $eveCommonInputPadding;
   }
 }
 //超小版本下拉多选弹出框样式-高度和边距取input输入框的高度和边距变量
 .el-cascader-node {
-  height: $eveCommonInputHeight;
-  line-height: $eveCommonInputHeight;
-  font-size: $--font-size-small;
+  // height: $eveCommonInputHeight;
+  // line-height: $eveCommonInputHeight;
+  font-size: $--font-size-content;
   padding: $eveCommonInputPadding;
   .el-cascader-node__label {
     padding: $eveCommonInputPadding;
