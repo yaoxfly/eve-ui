@@ -82,14 +82,14 @@ $--color-white: #ffffff !default;
 
 // 默认主题
 $default-theme: (
-  color-primary: #2ca7d4,
-  color-primary-light-8: mix($--color-white, #2ca7d4, 80%),
-  color-primary-light-9: mix($--color-white, #2ca7d4, 90%),
-  color-primary-light-2: mix($--color-white, #2ca7d4, 20%),
-  color-primary-light-5: mix($--color-white, #2ca7d4, 50%),
-  color-primary-light-95: mix($--color-white, #2ca7d4, 95%),
+  color-primary: #16b5e9,
+  color-primary-light-8: mix($--color-white, #16b5e9, 80%),
+  color-primary-light-9: mix($--color-white, #16b5e9, 90%),
+  color-primary-light-2: mix($--color-white, #16b5e9, 20%),
+  color-primary-light-5: mix($--color-white, #16b5e9, 50%),
+  color-primary-light-95: mix($--color-white, #16b5e9, 95%),
   eve-header-background: #0a2a87,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-menu-background-gradient: #009ed1,
 );
 
 //日暮主题
@@ -100,8 +100,8 @@ $orange-theme: (
   color-primary-light-2: mix($--color-white, #c7993f, 20%),
   color-primary-light-5: mix($--color-white, #c7993f, 50%),
   color-primary-light-95: mix($--color-white, #c7993f, 95%),
-  eve-header-background: #593110,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-header-background: #8c4d00,
+  eve-menu-background-gradient: #dfaf41,
 );
 
 //火山主题
@@ -113,7 +113,7 @@ $red-theme: (
   color-primary-light-5: mix($--color-white, #fa541c, 50%),
   color-primary-light-95: mix($--color-white, #fa541c, 95%),
   eve-header-background: #601c17,
-  eve-menu-background-gradient: #2fb1d8,
+  eve-menu-background-gradient: #c72316,
 );
 
 //明青
@@ -415,7 +415,7 @@ $LabelPadding: 8px 10px 8px 10px !default;
 $ContentPadding: 3px 30px 3px 3px !default;
 
 //eve-common-input高度
-$eveCommonInputHeight: 26px !default; // 小表单输入框高度26px
+$eveCommonInputHeight: 34px !default; // 小表单输入框高度26px
 $eveCommonInputHeightBig: 34px !default; //大表单输入框高度34px
 
 //eve-common-input内部边距
@@ -423,4 +423,5 @@ $eveCommonInputPadding: 0 4px !default;
 
 //eve-common-input prefix、suffix图标距离文字间距
 $eveCommonInputPrefixSuffix: 30px !default;
+
 ```
