@@ -512,7 +512,7 @@ body {
       }
     }
     // 下拉多选
-    .el-tag--mini {
+    .el-tag {
       height: 24px;
       padding: 0 10px;
       line-height: 24px;
@@ -555,6 +555,15 @@ body {
         //input高度
         height: $eveCommonInputHeight;
         line-height: 1;
+      }
+    }
+    .el-tag {
+      height: 24px;
+      padding: 0 10px;
+      line-height: 24px;
+      font-size:  $--font-size-content;
+      .el-icon-close {
+        background-color: #c0c4cc;
       }
     }
   }
