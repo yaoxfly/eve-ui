@@ -10,6 +10,7 @@
       placeholder="请选择"
       :style="{ width: `${checkString(width)}` }"
       clearable
+      :disabled="disabled"
       :multiple="multiple"
       :collapse-tags="collapseTags"
       ref="eveDropDownTreeSelect"
@@ -186,6 +187,12 @@ export default {
     option: {
       type: Array,
       default: () => []
+    },
+
+    //是否禁用
+    disabled: {
+      type: Boolean,
+      default: () => false
     }
   },
 

@@ -426,7 +426,7 @@ $--pagination-width-height: 30px;
 .el-table--medium td {
   padding: 0 0;
 }
-
+.el-table--mini .el-table__cell,
 .el-table--medium .el-table__cell {
   padding: 0 0;
 }
@@ -473,7 +473,7 @@ $--pagination-width-height: 30px;
 
 .el-table th,
 .el-table td > .cell {
-  height: $--eve-height;
+  min-height: $--eve-height;
   line-height: $--eve-height;
 }
 
@@ -484,7 +484,7 @@ $--pagination-width-height: 30px;
 
 .el-table--mini td,
  .el-table--mini th  {
-  padding: 0px 0;
+  padding: 0 0;
 }
 
 .el-table__empty-text {
@@ -544,6 +544,10 @@ $--pagination-width-height: 30px;
     background-color: #fff;
     border-radius: 3px;
   }
+}
+
+.el-table th.el-table__cell > .cell {
+  line-height: 18px;
 }
 
 /*-----面包屑------*/
@@ -975,10 +979,6 @@ $--eve-tree-height: $--eve-height--small;
     line-height: 27px;
   }
 
-  .el-date-editor .el-range-separator {
-    line-height: 24px;
-  }
-
   .eve-select-form__pack-up {
     font-size: $--font-size-content;
   }
@@ -989,6 +989,25 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-date-editor .el-range__close-icon {
     margin-top: -15px !important;
+  }
+
+  /*--时间范围--*/
+  .el-date-editor .el-input__icon.el-range__close-icon {
+    margin-top: -5px !important;
+    margin-right: -8px !important;
+  }
+
+  .el-date-editor .el-range-input {
+    width: 82% !important;
+  }
+
+  .el-input__icon {
+    margin-top: 1px !important;
+  }
+
+  .el-date-editor .el-range-separator {
+    line-height: 24px;
+    padding: 0;
   }
 }
 
@@ -1365,4 +1384,9 @@ ul[role='menu'] .eve-header__menu-item .el-menu-item span {
 .el-textarea.is-disabled .el-textarea__inner,
 .el-range-editor.is-disabled input {
   color: $--color-text-regular !important;
+}
+
+/*---表单----*/
+.el-tag {
+  font-size: $--font-size-content;
 }

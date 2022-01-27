@@ -182,7 +182,8 @@ body {
   }
 
   /*----表单----*/
-  &-form-container, &-form-container-big {
+  &-form-container,
+  &-form-container-big {
     /*********表单[start]*********/
     .el-form-item {
       .el-form-item__label {
@@ -393,7 +394,7 @@ body {
       font-size: $--font-size-content;
     }
     &.el-date-editor .el-range__icon {
-      font-size:  $--font-size-content;
+      font-size: $--font-size-content;
     }
   }
 
@@ -425,7 +426,7 @@ body {
       padding: 0 4px;
     }
     &.el-date-editor .el-range__icon {
-      font-size:   $--font-size-content;
+      font-size: $--font-size-content;
     }
   }
 
@@ -516,7 +517,7 @@ body {
       height: 24px;
       padding: 0 10px;
       line-height: 24px;
-      font-size:  $--font-size-content;
+      font-size: $--font-size-content;
       .el-icon-close {
         background-color: #c0c4cc;
       }
@@ -561,7 +562,7 @@ body {
       height: 24px;
       padding: 0 10px;
       line-height: 24px;
-      font-size:  $--font-size-content;
+      font-size: $--font-size-content;
       .el-icon-close {
         background-color: #c0c4cc;
       }
@@ -631,7 +632,8 @@ body {
 
   //查询表单
   &-formwork__select-form {
-    padding: 15px 20px 20px 20px;
+    // padding: 15px 20px 20px 20px;
+    padding: 20px;
   }
 
   //按钮
@@ -648,7 +650,19 @@ body {
   //表格
   &-formwork__table {
     .el-table {
-      min-height: calc(100vh - 345px);
+      min-height: calc(100vh - 348px);
+    }
+    .el-table__body-wrapper {
+      min-height: calc(100vh - 397px);
+    }
+  }
+
+  //表格内容换行的时候的line-height
+  &-table-line-height {
+    .el-table td > .cell {
+      min-height: auto;
+      line-height: 18px;
+      padding: 10px 4px;
     }
   }
 
@@ -825,6 +839,14 @@ body {
     &:hover {
       color: #fff !important;
     }
+  }
+
+  &-operate {
+    background-image: linear-gradient(
+      to right,
+      $--color-primary-light-2,
+      #fff
+    ) !important;
   }
 }
 

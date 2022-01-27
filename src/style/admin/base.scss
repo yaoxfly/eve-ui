@@ -124,6 +124,28 @@ $themes: (
   }
 }
 
+//渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+@mixin themes-linear-gradients($color1, $color2, $direction: false, $value...) {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      @if $direction {
+        background-image: linear-gradient(
+            $direction,
+            map-get($map: $theme, $key: $color1),
+            $color2
+          )
+          $value;
+      } @else {
+        background-image: linear-gradient(
+            map-get($map: $theme, $key: $color1),
+            $color2
+          )
+          $value;
+      }
+    }
+  }
+}
+
 /*element-ui*/
 
 /* -----基础颜色----- */

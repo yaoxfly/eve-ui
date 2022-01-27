@@ -53,16 +53,27 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
  .test{
      border:1px solid $--color-primary
  }
-
 ```
+
+
+渐变颜色
+
+ ```scss
+  // 渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+ @include themes-linear-gradients(color-primary, #fff, to right,!important);
+/*替代以下写法*/
+ .test{
+      background-image: linear-gradient(to right, $--color-primary, #fff) !important ;
+  }
+ ```
+
 
 自定义属性
 
 除了border、color、background之外 其他任意属性也可设置，设置后才能根据主题来切换颜色
 
 ```scss
-//第一个参数是css属性 第二个参数设置主题色，第三个参数css属性:后的任意值
-
+//自定义属性 1.属性值 例如border 2.主题色 例如 color-primary  3.写除了主题色的任意值 例如 1px solid 没有顺序
 @include themes-column-attribute('border',color-primary,1px solid )
 /*以上写法变成下面的写法*/
 .test{
@@ -72,10 +83,6 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 内置的颜色变量
 ```js
-/*
-* @Author: yx
-* @Description: 当前项目颜色主题变量
-*/
 // 白色
 $--color-white: #ffffff !default;
 /***自定义mixin*****/
@@ -162,43 +169,7 @@ $themes: (
   purple-theme: $purple-theme,
 );
 
-//文本颜色
-@mixin themes-text-color() {
-  @each $themeName, $theme in $themes {
-    [data-theme='#{$themeName}'] & {
-      color: map-get($map: $theme, $key: color-primary);
-    }
-  }
-}
 
-//边框颜色
-@mixin themes-border-color() {
-  @each $themeName, $theme in $themes {
-    [data-theme='#{$themeName}'] & {
-      border-color: 1px solid map-get($map: $theme, $key: color-primary);
-    }
-  }
-}
-
-//背景颜色
-@mixin themes-background-color($value...) {
-  @each $themeName, $theme in $themes {
-    [data-theme='#{$themeName}'] & {
-      background: map-get($map: $theme, $key: color-primary);
-    }
-  }
-}
-
-//自定义属性 1.属性值 例如border 2.主题色 例如 color-primary  3.写除了主题色的任意值 例如 1px solid 没有顺序
-@mixin themes-column-attribute($attribute, $color, $value...) {
-  @each $themeName, $theme in $themes {
-    [data-theme='#{$themeName}'] & {
-      #{$attribute}: map-get($map: $theme, $key: $color) $value;
-    }
-  }
-}
-
-/*element-ui*/
 
 /* -----基础颜色----- */
 
