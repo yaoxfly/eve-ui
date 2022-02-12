@@ -659,8 +659,16 @@ body {
 
   //表格内容换行的时候的line-height
   &-table-line-height {
+    //组件的表格
     .el-table td > .cell {
       min-height: auto;
+      height: auto;
+      line-height: 18px;
+      padding: 10px 4px;
+    }
+
+    //动态增减表格
+    .el-form-item .el-form-item__content {
       line-height: 18px;
       padding: 10px 4px;
     }

@@ -473,7 +473,7 @@ $--pagination-width-height: 30px;
 
 .el-table th,
 .el-table td > .cell {
-  min-height: $--eve-height;
+  height: $--eve-height;
   line-height: $--eve-height;
 }
 
