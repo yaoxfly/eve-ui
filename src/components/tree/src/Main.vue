@@ -424,7 +424,7 @@ export default {
       // if (this.showCheckbox) return
       this.setCurrentKey(this.id) //onlyLeaf为true时,在点击父亲爷爷的时候也只高亮叶子节点，
       // 是否只选叶子节点，且当前节点是父节点
-      if (this.onlyLeaf && data[this.props.children] && data[this.tempProps.children].length > 0) {
+      if (this.onlyLeaf && data[this.props.children] && data[this.props.children].length > 0) {
         this.returnParam && this.$emit('node-click', data, node, indeterminate)
         return
       }
