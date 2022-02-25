@@ -786,17 +786,52 @@ $--eve-tree-height: $--eve-height--small;
 }
 
 /*-----header组件------*/
+
 .eve-header {
   background-color: transparent;
   height: 80px !important;
   .el-dialog__body {
     padding: 4px 20px 4px 20px;
   }
+
+  .el-menu-item,
+  .eve-scroll__menu .el-submenu__title {
+    padding: 0 12px;
+  }
+
   @media screen and (max-width: 1366px) {
     //菜单的间距
-    .el-menu-item {
-      padding: 0 12px !important;
+    .el-menu-item,
+    .el-submenu__title {
+      padding: 0 2px !important;
+      padding: 0 2px !important;
     }
+  }
+
+  .el-menu-item,
+  .el-submenu__title {
+    height: 80px;
+    line-height: 76px;
+  }
+
+  .el-menu-item [class^='el-icon-'] {
+    margin-right: -15px;
+    margin-top: 4px;
+  }
+
+  .el-submenu__title i,
+  .el-menu-item i {
+    color: #fff;
+    font-size: $--font-size-content;
+  }
+
+  .el-submenu [class^='el-icon-'] {
+    margin-right: -15px;
+    margin-top: 4px;
+  }
+
+  .el-submenu__icon-arrow.el-icon-arrow-down {
+    color: transparent;
   }
 }
 
@@ -804,6 +839,25 @@ $--eve-tree-height: $--eve-height--small;
   span:first-child {
     letter-spacing: 5.3px;
   }
+}
+
+.eve-scroll__menu.eve-header__menu-item .el-menu-item.is-active span:after {
+  width: 94%;
+  left: 42%;
+}
+
+.eve-scroll__menu.eve-header__menu-item
+  .el-submenu.is-active
+  .el-submenu__title
+  span:after {
+  width: 94%;
+  left: 42%;
+  height: 3px !important;
+  border-radius: 1.5px !important;
+}
+
+.eve-header__icon-item:nth-last-child(2) {
+  margin-right: 30px;
 }
 
 /*-----动态表格------*/
@@ -1108,6 +1162,13 @@ $--eve-tree-height: $--eve-height--small;
 }
 
 /*********菜单*********/
+
+//全局菜单
+.el-menu-item *,
+.el-submenu__title * {
+  cursor: pointer !important;
+}
+
 .eve-menu__main {
   height: calc(100vh - 90px) !important;
   border-right: none;
@@ -1339,30 +1400,90 @@ $--eve-tree-height: $--eve-height--small;
 }
 
 /*header的菜单*/
+
+.el-menu--horizontal {
+  .el-menu--popup {
+    padding: 0;
+    width: 200px;
+  }
+  .el-menu--popup-bottom-start {
+    margin-top: -20px !important;
+    margin-left: -42px !important;
+  }
+
+  .el-menu {
+    background: $--eve-menu-option-background !important;
+    border-radius: $--eve-border-radius;
+  }
+}
+
 ul[role='menu'] .eve-header__menu-item .el-submenu__title:focus,
 ul[role='menu'] .eve-header__menu-item .el-submenu__title:hover {
-  background-color: $--color-primary-light-9 !important;
-  color: $--color-text-regular !important;
+  background-color: $--color-primary !important;
+  color: #fff !important;
 }
 
 ul[role='menu'] .eve-header__menu-item .el-submenu__title {
-  background-color: #fff !important;
+  background-color: $--eve-menu-option-background !important;
+  &:first-child {
+    // border-radius: 10px;
+  }
 }
 
 ul[role='menu'] .eve-header__menu-item .el-submenu__title i,
 ul[role='menu'] .eve-header__menu-item .el-submenu__title span {
-  color: $--color-text-regular !important;
+  color: #fff !important;
   font-weight: normal;
+  text-align: center;
+  line-height: 30px;
 }
 
 ul[role='menu'] .eve-header__menu-item .el-menu-item {
-  background-color: #fff !important;
-  color: $--color-text-regular !important;
+  background-color: $--eve-menu-option-background !important;
+  color: #fff !important;
+  text-align: center;
+  line-height: 30px;
+}
+
+ul[role='menu'] .eve-header__menu-item {
+  user-select: none;
+  &:first-child {
+    .el-menu-item {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+  &:last-child {
+    .el-menu-item {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+
+  &:first-child {
+    .el-menu-item.is-active {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &:last-child {
+    .el-menu-item.is-active {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &:not(:first-child):not(:last-child) {
+    .el-menu-item.is-active {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
 }
 
 ul[role='menu'] .eve-header__menu-item .el-menu-item:focus,
 ul[role='menu'] .eve-header__menu-item .el-menu-item:hover {
-  background-color: $--color-primary-light-9 !important;
+  background-color: $--color-primary !important;
 }
 
 .eve-header__menu-item .el-submenu.is-active .el-submenu__title span {
@@ -1371,11 +1492,11 @@ ul[role='menu'] .eve-header__menu-item .el-menu-item:hover {
 
 .el-menu--horizontal .el-menu .el-menu-item.is-active,
 .el-menu--horizontal .el-menu .el-submenu.is-active > .el-submenu__title {
-  background-color: $--color-primary-light-9 !important;
+  background-color: $--color-primary !important;
 }
 
 ul[role='menu'] .eve-header__menu-item .el-menu-item span {
-  color: $--color-text-regular !important;
+  color: #fff !important;
   font-weight: normal;
 }
 

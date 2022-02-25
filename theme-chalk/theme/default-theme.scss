@@ -11,8 +11,11 @@ $--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
 
 //当前表头的背景色--自定义样式
 $--color-primary-light-95: mix($--color-white, $--color-primary, 95%);
+//当前header菜单的背景色--自定义样式
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%);
 $tableBorderColor: $--color-primary-light-8;
 $--eve-header-background: #0a2a87;
 $--eve-menu-background-gradient: #009ed1;
 $--eve-menu-background: rgba(44, 167, 212, 0.2);
+$--eve-menu-option-background: rgba(0, 31, 109, 0.4);
 @import './base.scss';

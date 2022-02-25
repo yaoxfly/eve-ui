@@ -8,11 +8,13 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%);
 // 3A8EE6-- 鼠标按下
 // A0CFFF-- 禁用
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%);
-
 //当前表头的背景色--自定义样式
 $--color-primary-light-95: mix($--color-white, $--color-primary, 95%);
+//当前header菜单的背景色--自定义样式
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%);
 $tableBorderColor: $--color-primary-light-8;
 $--eve-header-background: #00424e;
 $--eve-menu-background-gradient: #2fb1d8;
 $--eve-menu-background: rgba(19, 194, 194, 0.2);
+$--eve-menu-option-background: rgba(0, 46, 54, 0.4);
 @import './base.scss';

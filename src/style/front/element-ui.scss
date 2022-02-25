@@ -978,6 +978,8 @@ $--pagination-width-height: 30px;
 }
 
 /*表单去除disabled字体置灰*/
-.el-input.is-disabled .el-input__inner,.el-textarea.is-disabled .el-textarea__inner,.el-range-editor.is-disabled input{
+.el-input.is-disabled .el-input__inner,
+.el-textarea.is-disabled .el-textarea__inner,
+.el-range-editor.is-disabled input {
   color: $--color-text-regular !important;
 }

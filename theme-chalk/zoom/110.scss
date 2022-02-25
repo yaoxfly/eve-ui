@@ -1,5 +1,16 @@
 body {
   zoom: 110%;
+  .eve-header {
+    .el-menu-item,
+    .eve-scroll__menu .el-submenu__title {
+      padding: 0 4px;
+    }
+  }
+
+  .eve-container__right {
+    min-width: auto !important;
+  }
+
   @media screen and(-ms-high-contrast:active), (-ms-high-contrast: none) {
     /*ie兼容*/
     .eve-header__right {

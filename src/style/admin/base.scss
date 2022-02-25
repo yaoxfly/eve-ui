@@ -16,6 +16,8 @@ $default-theme: (
   color-primary-light-95: mix($--color-white, #16b5e9, 95%),
   eve-header-background: #0a2a87,
   eve-menu-background-gradient: #009ed1,
+  eve-home-gradient-color-light: #16b5e9,
+  eve-home-gradient-color-deep: #0092dd,
 );
 
 //日暮主题
@@ -28,6 +30,8 @@ $orange-theme: (
   color-primary-light-95: mix($--color-white, #c7993f, 95%),
   eve-header-background: #8c4d00,
   eve-menu-background-gradient: #dfaf41,
+  eve-home-gradient-color-light: #dfaf41,
+  eve-home-gradient-color-deep: #b88b26,
 );
 
 //火山主题
@@ -40,6 +44,8 @@ $red-theme: (
   color-primary-light-95: mix($--color-white, #fa541c, 95%),
   eve-header-background: #601c17,
   eve-menu-background-gradient: #c72316,
+  eve-home-gradient-color-light: #c72316,
+  eve-home-gradient-color-deep: #9b261e,
 );
 
 //明青
@@ -52,6 +58,8 @@ $cyan-theme: (
   color-primary-light-95: mix($--color-white, #13c2c2, 95%),
   eve-header-background: #00424e,
   eve-menu-background-gradient: #2fb1d8,
+  eve-home-gradient-color-light: '#00bcbc',
+  eve-home-gradient-color-deep: #1297b8,
 );
 
 // 极关绿
@@ -64,6 +72,8 @@ $green-theme: (
   color-primary-light-95: mix($--color-white, #52c41a, 95%),
   eve-header-background: #00503a,
   eve-menu-background-gradient: #2fb1d8,
+  eve-home-gradient-color-light: '#00ad69',
+  eve-home-gradient-color-deep: #1297b8,
 );
 
 //酱紫
@@ -76,6 +86,8 @@ $purple-theme: (
   color-primary-light-95: mix($--color-white, #712dce, 95%),
   eve-header-background: #39205b,
   eve-menu-background-gradient: #2fb1d8,
+  eve-home-gradient-color-light: '#5340a2',
+  eve-home-gradient-color-deep: #2097be,
 );
 
 //定义映射集合
@@ -146,10 +158,36 @@ $themes: (
   }
 }
 
+//渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+@mixin themes-linear-two-gradients(
+  $color1,
+  $color2,
+  $direction: false,
+  $value...
+) {
+  @each $themeName, $theme in $themes {
+    [data-theme='#{$themeName}'] & {
+      @if $direction {
+        background-image: linear-gradient(
+            $direction,
+            map-get($map: $theme, $key: $color1),
+            map-get($map: $theme, $key: $color2)
+          )
+          $value;
+      } @else {
+        background-image: linear-gradient(
+            map-get($map: $theme, $key: $color1),
+            map-get($map: $theme, $key: $color2)
+          )
+          $value;
+      }
+    }
+  }
+}
+
 /*element-ui*/
 
 /* -----基础颜色----- */
-
 /*主色*/
 // 主题色
 $--color-primary: #2ca7d4 !default;
@@ -165,6 +203,9 @@ $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
 //f4fbfd--自定义表格的头部
 $--color-primary-light-95: mix($--color-white, $--color-primary, 95%) !default;
+
+//当前header菜单的背景色--自定义样式
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default;
 
 /*辅助色*/
 // 黑色
@@ -326,6 +367,9 @@ $--eve-header-background: #0a2a87 !default;
 // $--eve-menu-background: rgba(236,245,255,.2) !default;
 
 $--eve-menu-background: rgba(44, 167, 212, 0.2) !default;
+
+//菜单移动上去后option的背景色
+$--eve-menu-option-background: rgba(0, 31, 109, 0.4) !default;
 
 /*---各种标准高度----*/
 
