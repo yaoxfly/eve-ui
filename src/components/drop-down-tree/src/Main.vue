@@ -9,7 +9,7 @@
       v-model="tempValue"
       placeholder="请选择"
       :style="{ width: `${checkString(width)}` }"
-      clearable
+      :clearable="clearable"
       :disabled="disabled"
       :multiple="multiple"
       :collapse-tags="collapseTags"
@@ -193,6 +193,11 @@ export default {
     disabled: {
       type: Boolean,
       default: () => false
+    },
+
+    clearable: {
+      type: Boolean,
+      default: () => true
     }
   },
 
@@ -277,7 +282,7 @@ export default {
     clear () {
       this.tempValue = '' //清空真实值
       this.id = null
-      this.option.splice(0, this.option.length)
+      this.option.splice(0, this.option.length) //清空全部option的值
       this.setCurrentKey(null)
       this.setCheckedKeys([])
       this.$emit('clear')
@@ -322,9 +327,8 @@ export default {
       * @author yx
      */
     check (data, checked) {
-      // this.tempValue = checked.checkedKeys
+      this.option.splice(0, this.option.length)
       this.setOption(this.getCheckedNodes(this.onlyLeaf), data)
-      // this.option.push(checked.checkedNodes)
       this.tempValue = []
       this.option.forEach(item => {
         this.tempValue.push(item[this.nodeKey])

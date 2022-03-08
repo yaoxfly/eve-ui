@@ -51,21 +51,33 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @include themes-border-color
 /*替代以下写法*/
  .test{
-     border:1px solid $--color-primary
+     border-color: $--color-primary
  }
 ```
 
-
-渐变颜色
+渐变颜色（只有一种主题色）
 
  ```scss
-  // 渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+  // 渐变颜色 1. 颜色1  2.颜色2  3.渐变方向 如 to right 4.任意值 如!important
  @include themes-linear-gradients(color-primary, #fff, to right,!important);
 /*替代以下写法*/
  .test{
       background-image: linear-gradient(to right, $--color-primary, #fff) !important ;
   }
  ```
+
+渐变颜色2（两种主题色）
+
+ ```scss
+  // 渐变颜色 1. 主题色1  2.主题色2  3.渐变方向 如 to right 4.任意值 如!important
+ @include themes-linear-two-gradients
+(color-primary, color-primary-light-8, to right,!important);
+/*替代以下写法*/
+ .test{
+      background-image: linear-gradient(to right, $--color-primary,  $--color-primary-light-8) !important ;
+  }
+ ```
+ 
 
 
 自定义属性

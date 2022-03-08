@@ -514,6 +514,7 @@ export default {
 | lazy | 是否懒加载子节点，需与 load 方法结合使用 | boolean | — | false |
 | option | 懒加载select回显数据，针对懒加载回显困难加强的属性 | array | — | [{id:id:label:label}]  当前值会依据props和nodeKey变化而变化  |
 | disabled | 是否禁用 | boolean | — | false  |
+| clearable | 是否清空 | boolean | — | true  |
 
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |

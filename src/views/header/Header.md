@@ -133,7 +133,7 @@ export default {
 | background-color |滚动内容背景颜色 | string | — |   transparent |
 | dialog-is-mouseover |鼠标移入开启对话框 |  boolean | — |   true |
 | dialog-prompt-access |对话框快速入口的按钮数据 |  Array | — | [ {text: '更改密码'},{text: '重新绑定手机'}]|
-
+| default-active | 默认选中,当前值设置成navigation-button数组其中一个path值，被设置的那个菜单按钮高亮 | string | — | — |
 
 ### right-content
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

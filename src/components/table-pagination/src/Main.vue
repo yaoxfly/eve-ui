@@ -43,7 +43,6 @@
               :type="item.type"
               :align="item.align"
               v-if="item.type === 'index'"
-              :show-overflow-tooltip="true"
             >
               <template slot-scope="scope">
                 <span> {{ indexMethod(scope.$index) }} </span>
@@ -58,8 +57,8 @@
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
+              :selectable="item.selectable"
               v-else-if="item.type === 'selection'"
-              :show-overflow-tooltip="true"
             >
             </el-table-column>
 

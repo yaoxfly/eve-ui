@@ -113,7 +113,7 @@ $themes: (
 @mixin themes-border-color() {
   @each $themeName, $theme in $themes {
     [data-theme='#{$themeName}'] & {
-      border-color: 1px solid map-get($map: $theme, $key: color-primary);
+      border-color: map-get($map: $theme, $key: color-primary);
     }
   }
 }
@@ -136,7 +136,7 @@ $themes: (
   }
 }
 
-//渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+// 渐变颜色 1. 颜色1  2.颜色2  3.渐变方向 如 to right 4.任意值 如!important
 @mixin themes-linear-gradients($color1, $color2, $direction: false, $value...) {
   @each $themeName, $theme in $themes {
     [data-theme='#{$themeName}'] & {
@@ -158,7 +158,7 @@ $themes: (
   }
 }
 
-//渐变颜色 1. 渐变色1 2.渐变色2  3.渐变方向 如 to right 4.任意值 如!important
+// 渐变颜色 1. 主题色1  2.主题色2  3.渐变方向 如 to right 4.任意值 如!important
 @mixin themes-linear-two-gradients(
   $color1,
   $color2,

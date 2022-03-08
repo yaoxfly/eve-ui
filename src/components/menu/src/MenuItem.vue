@@ -11,7 +11,8 @@
       :index="menuData[config.path] ? menuData[config.path] : getMathFloor()"
     >
       <template slot="title">
-        <i :class="menuData.icon"></i>
+        <i :class="menuData.icon" v-if="menuData.icon"></i>
+        <img v-else :src="menuData.img" />
         <span slot="title">
           <el-tooltip
             v-if="menuData.tooltip"
@@ -51,7 +52,8 @@
         >{{ menuData[config.title] }}</span
       >
       <el-menu-item :index="menuData[config.path]" :padding-left="paddingLeft">
-        <i :class="menuData.icon"></i>
+        <i :class="menuData.icon" v-if="menuData.icon"></i>
+        <img v-else :src="menuData.img" />
         <span slot="title">
           <el-tooltip
             v-if="menuData.tooltip"

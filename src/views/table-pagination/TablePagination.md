@@ -286,6 +286,8 @@ export default {
 
 
 ### columns 
+当前值是对象数组,以下key值代表的是每个对象里面的属性值。
+
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
 | prop   | 表格要渲染的key值  | string  |— | —  |
@@ -299,6 +301,9 @@ export default {
 | sortable  |  对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件 |  boolean, string  | true, false, 'custom' | false  |
 | filters  |  数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 |  Array[{ text, value }] | — | — |
 | filter-method  |  数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 |  Function(value, row, column) | — | — |
+| selectable |  仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选 |  Function(row, index) | — | — |
+
+
 
 >  表头配置属性, 其中 `formatData` 方法只对`type`是普通内容列有效 ,`render`只对普通内容和操作列有效
 
