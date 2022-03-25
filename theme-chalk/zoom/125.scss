@@ -1,5 +1,9 @@
+// //火狐特例
+// @media  screen and (min--moz-device-pixel-ratio: 0) {
+// }
 body {
   zoom: 125%;
+
   .eve-header {
     .el-menu-item,
     .eve-scroll__menu .el-submenu__title {
@@ -78,8 +82,12 @@ $--zoom-height: calc(100vh - 328px) !important;
   $--zoom-width: calc(100vw - 593px) !important;
   $--zoom-height: calc(100vh - 286px) !important;
 
-  .eve-header__center {
-    margin-left: 20px;
+  // .eve-header__center {
+  //   margin-left: 20px;
+  // }
+
+  .eve-header__icon-item:not(:last-child) {
+    margin-right: 6px !important;
   }
 
   .eve-main {

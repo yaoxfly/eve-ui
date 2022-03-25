@@ -106,43 +106,42 @@ $--eve-scroll-color: #fff;
       // border-bottom: $--eve-scroll-border-bottom;
       padding: 0px 10px 10px 10px !important;
       //高亮的透明白
-      position: relative;
-      &:after {
-        display: block;
-        content: '';
-        width: 70%;
-        height: 2px;
-        background: #fff;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-top: 10px;
-        border-radius: 4px;
-        border-bottom: none;
-      }
+    }
+    &:after {
+      display: block;
+      content: '';
+      width: 70%;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 10px;
+      border-radius: 1.5px;
+      border-bottom: none;
     }
   }
 
   .el-menu-item.is-active {
+    position: relative;
     span {
       // border-bottom: $--eve-scroll-border-bottom;
       padding: 0px 10px 10px 10px !important;
-      position: relative;
-      &:after {
-        display: block;
-        content: '';
-        width: 70%;
-        height: 2px;
-        background: #fff;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-top: 10px;
-        border-radius: 4px;
-        border-bottom: none;
-      }
+    }
+    &:after {
+      display: block;
+      content: '';
+      width: 70%;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 10px;
+      border-radius: 1.5px;
+      border-bottom: none;
     }
   }
 }

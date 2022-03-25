@@ -816,8 +816,12 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-menu-item [class^='el-icon-'] {
     margin-right: -15px;
-    margin-top: 4px;
+    height: 14px;
   }
+
+  // // @-moz-document url-prefix() {
+  // //   　　
+  // }
 
   .el-submenu__title i,
   .el-menu-item i {
@@ -827,11 +831,24 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-submenu [class^='el-icon-'] {
     margin-right: -15px;
-    margin-top: 4px;
+    height: 14px;
   }
 
   .el-submenu__icon-arrow.el-icon-arrow-down {
     color: transparent;
+  }
+
+  //火狐特例
+  @media screen and (min--moz-device-pixel-ratio: 0) {
+    .el-menu-item [class^='el-icon-'] {
+      margin-right: -15px;
+      height: 18px;
+    }
+
+    .el-submenu [class^='el-icon-'] {
+      margin-right: -15px;
+      height: 18px;
+    }
   }
 }
 
@@ -841,9 +858,12 @@ $--eve-tree-height: $--eve-height--small;
   }
 }
 
-.eve-scroll__menu.eve-header__menu-item .el-menu-item.is-active span:after {
-  width: 94%;
-  left: 42%;
+.eve-header__logo-title {
+  width: 234px !important;
+}
+
+.eve-header__center {
+  margin-left: 0;
 }
 
 .eve-scroll__menu.eve-header__menu-item
@@ -858,6 +878,18 @@ $--eve-tree-height: $--eve-height--small;
 
 .eve-header__icon-item:nth-last-child(2) {
   margin-right: 30px;
+}
+
+//用户名过长加是三个点
+.eve-header__icon-item {
+  span {
+    width: 54px;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 80px;
+    line-height: 80px;
+    text-overflow: ellipsis;
+  }
 }
 
 /*-----动态表格------*/
@@ -1294,6 +1326,7 @@ $--eve-tree-height: $--eve-height--small;
 
   .el-menu-item[style*='padding-left: 20px'] {
     padding: 0 !important;
+    font-size: $--font-size-title !important;
     background: rgba(255, 255, 255, 0.08) !important;
   }
 
@@ -1318,11 +1351,6 @@ $--eve-tree-height: $--eve-height--small;
   .eve-menu__menu-item .el-menu-item:hover {
     background: $--color-primary !important;
   }
-}
-
-.eve-scroll__menu.eve-header__menu-item .el-menu-item.is-active span:after {
-  height: 3px !important;
-  border-radius: 1.5px !important;
 }
 
 //竖着的菜单
@@ -1400,7 +1428,6 @@ $--eve-tree-height: $--eve-height--small;
 }
 
 /*header的菜单*/
-
 .el-menu--horizontal {
   .el-menu--popup {
     padding: 0;

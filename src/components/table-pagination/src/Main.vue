@@ -929,9 +929,10 @@ export default {
         }
       )
     },
+
     //获取总页数
     getPageCount () {
-      return Math.ceil((this.total - 1) / this.pageSize)
+      return Math.ceil(this.total / this.pageSize)
     }
   }
 }
