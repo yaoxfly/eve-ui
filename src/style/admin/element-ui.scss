@@ -889,6 +889,7 @@ $--eve-tree-height: $--eve-height--small;
     height: 80px;
     line-height: 80px;
     text-overflow: ellipsis;
+    text-align: center;
   }
 }
 
@@ -963,8 +964,9 @@ $--eve-tree-height: $--eve-height--small;
   }
 
   .el-tag.el-tag--info {
-    height: 18px;
-    line-height: 16px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
   }
 
   .el-input__icon.el-icon-date,
