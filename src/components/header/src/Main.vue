@@ -102,7 +102,10 @@
                   <img
                     v-if="item.icon"
                     :src="item.icon"
-                    class="eve-header__icon-img eve-header__icon-img--special"
+                    class="eve-header__icon-img"
+                    :class="[
+                      item.value.length > 2 && 'eve-header__icon-img--special',
+                    ]"
                   />
                   <span>{{ item.value }} </span>
                   <i

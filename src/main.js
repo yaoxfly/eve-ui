@@ -6,7 +6,7 @@ import store from './store'
 import Highlight from './directive/highlight'
 import ElementUI from 'element-ui'
 import '@/assets/style/initialize.scss'
-// import 'element-ui/lib/theme-chalk/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 import './assets/style/index.scss'
 import eveUi from './index.js'
 Vue.use(ElementUI)

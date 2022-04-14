@@ -11,6 +11,51 @@ body {
   );
 }
 
+//在1366下缩放整个网站
+// @media screen and (max-width: 1366px) {
+//   body {
+//     width: 110%;
+//     height: 110%;
+//     transform: scale(0.91);
+//     transform-origin: left top;
+//   }
+//   .eve-header .el-menu-item,
+//   .eve-header .el-submenu__title {
+//     padding: 0px 8px !important;
+//   }
+
+//   .layout__main {
+//     .eve-main {
+//       width: calc(110vw - 256px - 30px) !important;
+//       height: calc(110vh - 80px - 36px - 20px) !important;
+//     }
+
+//     .eve-breadcrumb {
+//       width: calc(110vw - 286px) !important;
+//     }
+
+//     .eve-menu__main {
+//       height: calc(110vh - 90px) !important;
+//     }
+
+//     .eve-container {
+//       height: calc(110vh - 80px - 36px - 20px) !important;
+//     }
+
+//     .layout__collapse.eve-breadcrumb {
+//       width: calc(110vw - 93px) !important;
+//     }
+
+//     .layout__collapse.eve-main {
+//       width: calc(110vw - 65px - 30px) !important;
+//     }
+//   }
+
+//   .eve-common-footer-button {
+//     width: calc(110vw - 256px - 30px) !important;
+//   }
+// }
+
 .mt-form-title {
   margin-top: 20px;
 }
@@ -88,7 +133,6 @@ body {
   }
 
   /*----边框----*/
-
   //常规边框
   &-border {
     border: 1px solid $--border-color-base;
@@ -767,6 +811,9 @@ body {
   /*********卡片*********/
   &-card__button {
     float: right;
+  }
+
+  &-card__button.el-button--text {
     line-height: 1.5;
   }
 
@@ -885,4 +932,11 @@ body {
 input,
 textarea {
   font-family: Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif !important;
+}
+
+//收缩菜单后的表单提交底部按钮
+.layout__collapse {
+  .eve-common-footer-button {
+    width: calc(100vw - 96px); //菜单宽度+间距
+  }
 }

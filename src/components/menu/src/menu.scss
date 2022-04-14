@@ -7,6 +7,7 @@
   visibility: hidden;
   display: inline-block;
 }
+
 .el-menu--collapse .el-submenu__icon-arrow {
   display: none;
 }
@@ -23,6 +24,7 @@
     border-right: 3px solid $--color-primary;
     color: $--color-primary;
   }
+
   /*里面最底层孩子项的颜色 */
   .el-menu-item:focus,
   .el-menu-item:hover {
@@ -30,6 +32,7 @@
     border-right: 3px solid $--color-primary;
     color: $--color-primary;
   }
+
   .el-menu-item.is-active {
     background: #f0f3f6 !important;
     border-right: 3px solid $--color-primary;
@@ -95,6 +98,7 @@
 
 .eve-menu__main {
   border-right: solid 1px #e6e6e6;
+
   &.eve-menu__border-right-none {
     border-right: solid 1px transparent;
   }
@@ -104,3 +108,17 @@
 .el-menu--popup-bottom-start {
   margin-top: -13px !important;
 }
+
+// .eve-menu-item__title,
+// .eve-menu-item__item {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+// }
+
+// .el-menu--collapse {
+//   .eve-menu-item__title,
+//   .eve-menu-item__item {
+//     display: block;
+//   }
+// }

@@ -224,14 +224,14 @@
   &__dialog-content-left {
     width: 58px;
     color: $--color-text-secondary;
-    font-size: $--font-size-small;
+    font-size: $--font-size-base;
   }
 
   &__dialog-content-right {
     padding-left: 4px;
     line-height: 1.2;
     color: $--color-text-regular;
-    font-size: $--font-size-extra-small;
+    font-size: $--font-size-base;
     width: 160px;
     span {
       font-size: $--font-size-base;
