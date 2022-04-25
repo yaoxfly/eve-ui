@@ -1,6 +1,6 @@
 {
   "name": "eve-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "eve-ui",
   "private": false,
   "license": "MIT",
@@ -44,6 +44,7 @@
     "jsonlint": "^1.6.3",
     "lodash": "^4.17.20",
     "script-loader": "^0.7.2",
+    "sortablejs": "^1.15.0",
     "swiper": "^6.3.4",
     "tinymce": "^5.5.1",
     "vue": "^2.6.12",
