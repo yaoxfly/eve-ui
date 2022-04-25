@@ -6,7 +6,9 @@
 <template>
   <div class="eve-table-pagination">
     <el-table
+      :class="`eve-table-pagination${tableKey}`"
       ref="eveTable"
+      :key="`eveTable${tableKey}`"
       :data="tableData"
       :stripe="stripe"
       :border="border"
@@ -191,7 +193,7 @@
   </div>
 </template>
 <script>
-
+import Sortable from 'sortablejs'
 import render from './render.js'
 export default {
   name: 'EveTablePagination',
@@ -604,12 +606,26 @@ export default {
     isShowPageCount: {
       type: Boolean,
       default: false
+    },
+
+    //列是否可以拖拽
+    columnsDrop: {
+      type: Boolean,
+      default: false
+    },
+
+    //行是否可以拖拽
+    rowsDrop: {
+      type: Boolean,
+      default: false
     }
 
   },
 
   data () {
     return {
+      tableKey: `${this.getGenerateMixed(20)}`, //防止多个表格key值重复造成错误
+      key: 0,
       tempDeleteMessageBox: {
         show: false,
         // 删除的内容文本
@@ -643,12 +659,15 @@ export default {
 
   mounted () {
     this.setJump()
+    this.columnDrop()
+    this.rowDrop()
     // this.toggleRowSelection()
   },
 
   components: {
     render: render
   },
+
 
   methods: {
     /* ---------饿了么回调的函数----------- */
@@ -670,8 +689,6 @@ export default {
       // console.log(emit)
       this.$emit('select-all', emit)
     },
-
-
 
     /** @description 自定义序号
      * @author yx
@@ -789,7 +806,10 @@ export default {
         selectionFlag = item.type === 'selection' ? false : selectionFlag
         operateFlag = item.type === 'operate' ? false : operateFlag
         treeFlag = item.type === 'tree' ? true : treeFlag
-        arr.push(item)
+        //配置hidden属性来隐藏
+        if (!item.hidden) {
+          arr.push(item)
+        }
       })
       // 自动添加默认的多选
       this.isShowSelection && selectionFlag && arr.unshift({
@@ -816,8 +836,15 @@ export default {
           item.type = ''
         }
       })
+
+      if (this.columnsDrop || this.$eveTablePagination.columnsDrop) {
+        arr.sort((next, current) => {
+          return next.sort - current.sort //升序 从小到大
+        })
+      }
       return arr
     },
+
 
     /**@description  用来重新格式化传进来的data字段
        * @author yx
@@ -837,6 +864,14 @@ export default {
           --num
         }
       })
+
+      //是否开启行拖拽
+      if (this.rowsDrop) {
+        data.sort((next, current) => {
+          return next.sort - current.sort //升序 从小到大
+        })
+      }
+
       return data
     },
 
@@ -858,6 +893,87 @@ export default {
       this.tempCurrentPage = this.tempCurrentPage < 1 ? 1 : this.tempCurrentPage
       this.$emit('update:currentPage', this.tempCurrentPage)
     },
+
+    //列拖动
+    columnDrop () {
+      if (!this.columnsDrop && !this.$eveTablePagination.columnsDrop) return
+      //拖拽时取消浏览器默认行为，防止火狐浏览器拖拽时打开新的窗口。
+      document.body.ondrop = function (event) { event.preventDefault(); event.stopPropagation() }
+      //防止同个组件出现问题
+      const el = `.eve-table-pagination${this.tableKey} > .el-table__header-wrapper tr`
+      const wrapperTr = document.querySelector(el)
+      Sortable.create(wrapperTr, {
+        animation: 180,
+        delay: 0,
+        onEnd: evt => {
+          const oldItem = this.columnsData[evt.oldIndex]
+          this.columnsData.splice(evt.oldIndex, 1)
+          this.columnsData.splice(evt.newIndex, 0, oldItem)
+          this.columnsData.forEach((item, index) => {
+            item.sort = index + 1
+          })
+          this.reload()
+          this.$emit('columns-drop', this.columnsData)
+        }
+      })
+    },
+
+
+    //行拖拽
+    rowDrop () {
+      if (!this.rowsDrop) return
+      const el = `.eve-table-pagination${this.tableKey} > .el-table__body-wrapper tbody`
+      document.body.ondrop = function (event) { event.preventDefault(); event.stopPropagation() }
+      const tbody = document.querySelector(el)
+      Sortable.create(tbody, {
+        animation: 180,
+        delay: 0,
+        onEnd: evt => {
+          const currRow = this.tableData.splice(evt.oldIndex, 1)[0]
+          this.tableData.splice(evt.newIndex, 0, currRow)
+          this.tableData.forEach((item, index) => {
+            item.sort = index + 1
+          })
+          this.$emit('rows-drop', this.tableData)
+        }
+      })
+    },
+
+
+    /**@description  获取随机数 组件内部写了key 需要个随机数，否则同一个页面使用两个组件key值相同会互相影响
+    * @author yx
+    * @param  {Number}  num 位数
+    */
+    getGenerateMixed (num) {
+      const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      let res = ''
+      for (let i = 0; i < num; i++) {
+        const id = Math.ceil(Math.random() * 35)
+        res += chars[id]
+      }
+      return res
+    },
+
+    /**@description  重新刷新表格组件
+      * @author yx
+    */
+    reload () {
+      let num = parseInt(this.tableKey.substr(this.tableKey.length - 1, 1))
+      const str = this.tableKey.substr(0, this.tableKey.length - 1)
+      //防止key值过大，导致不明错误
+      if (num) {
+        num++
+      } else {
+        this.key++
+        num = this.key
+      }
+      this.tableKey = str + num
+      //防止刷新开启了拖拽功能的表格再无法拖拽。
+      this.$nextTick(() => {
+        this.columnDrop()
+        this.rowDrop()
+      })
+    }
   },
 
   watch: {
@@ -934,6 +1050,7 @@ export default {
     getPageCount () {
       return Math.ceil(this.total / this.pageSize)
     }
+
   }
 }
 </script>

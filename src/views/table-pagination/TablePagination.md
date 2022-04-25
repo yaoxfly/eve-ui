@@ -2,6 +2,8 @@
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比，分页或其他自定义操作。
 
+> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值。
+
 # 基础用法
 
 <template>
@@ -11,11 +13,12 @@
 </template>
 
 <script>
-
 import Example from './Example'
+import DropTablePagination from './DropTablePagination'
 export default {
   components: {
     Example,
+    DropTablePagination
   }
 }
 </script>
@@ -23,7 +26,6 @@ export default {
 # 演示代码
 
 ``` html
-
 <template>
   <div>
     <eve-table-pagination
@@ -34,6 +36,8 @@ export default {
       :columns="columns"
       :data="data"
       :button="button"
+      @sort-change="sortChange"
+      :default-sort="{ prop: 'age', order: 'ascending' }"
     >
     </eve-table-pagination>
   </div>
@@ -42,7 +46,6 @@ export default {
 <script>
 
 export default {
-  name: 'Home',
   data () {
     return {
       pageSize: 20, //一页显示几条
@@ -61,25 +64,6 @@ export default {
             address: 'New York No. 1 Lake Park',
             date: '2016-10-03',
             children: [{
-              id: 313333,
-              name: 'John Brown',
-              age: 200,
-              address: 'New York No. 1 Lake Park',
-              date: '2016-10-03',
-              children: [{
-                id: 3133333333,
-                name: 'John Brown',
-                age: 200,
-                address: 'New York No. 1 Lake Park',
-                date: '2016-10-03',
-              }, {
-                id: 2003344333,
-                name: 'John Brown',
-                age: 18,
-                address: 'New York No. 1 Lake Park',
-                date: '2016-10-03',
-              }]
-            }, {
               id: 2003344,
               name: 'John Brown',
               age: 18,
@@ -93,57 +77,8 @@ export default {
             address: 'New York No. 1 Lake Park',
             date: '2016-10-03',
           }]
+        },
 
-        },
-        {
-          id: 2,
-          name: 'Jim Green',
-          age: 24,
-          address: 'London No. 1 Lake Park',
-          date: '2016-10-01',
-
-        },
-        {
-          id: 3,
-          name: 'Joe Black',
-          age: 30,
-          address: 'Sydney No. 1 Lake Park',
-          date: '2016-10-02'
-        },
-        {
-          id: 4,
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park',
-          date: '2016-10-04'
-        },
-        {
-          id: 5,
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park',
-          date: '2016-10-04'
-        },
-        {
-          id: 6,
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park',
-          date: '2016-10-04',
-          children: [{
-            id: 3133,
-            name: 'John Brown',
-            age: 200,
-            address: 'New York No. 1 Lake Park',
-            date: '2016-10-03',
-          }, {
-            id: 20033,
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park',
-            date: '2016-10-03',
-          }]
-        },
         {
           id: 7,
           name: 'Jon Snow',
@@ -174,28 +109,38 @@ export default {
         {
           label: 'Age',
           prop: 'age',
+          sortable: true,
+          filters: [{ text: 18, value: 18 }, { text: 19, value: 19 }, { text: 26, value: 26 }],
+          filterMethod: (value, row, column) => {
+            const property = column.property
+            return row[property] === value
+          }
         },
-        {
-          label: 'Address',
-          prop: 'address',
-          render: (h, data) => {
-            const { row: { address } = {} } = data
-            return h('div', {
-              //和`v-bind:style`一样的 API
-              style: {
-                fontSize: '14px'
-              },
-              // DOM 属性
-              domProps: {
-                innerHTML: address + '我是被转换的数据1'
-              },
-            })
-          },
-          // formatData: (data) => {
-          //   console.log(data, 11)
-          //   return data + '我是被转换的数据1'
-          // }
-        },
+        {
+          label: 'Address',
+          prop: 'address',
+          render: (h, data) => {
+            const { row: { address } = {} } = data
+            //jsx
+            return <span>`${address}我是被转换的数据`<span>
+            //or 原生写法
+            // return h('div', {
+            //   //和`v-bind:style`一样的 API
+            //   style: {
+            //     fontSize: '14px'
+            //   },
+            //   // DOM 属性
+            //   domProps: {
+            //     innerHTML: address + '我是被转换的数据1'
+            //   },
+            // })
+          },
+          // formatData: (data) => {
+          //   console.log(data, 11)
+          //   return data + '我是被转换的数据1'
+          // }
+        },
+
         {
           label: '操作',
           type: 'operate',
@@ -237,6 +182,193 @@ export default {
     //页面切换
     currentChange (emit) {
       console.log(emit)
+    },
+
+    //排序改变
+    sortChange ({ column, prop, order }) {
+      console.log(column, prop, order)
+    },
+  }
+}
+</script>
+```
+
+# 支持列、行拖拽的表格
+设置`columns-drop`属性,可使得表格的`列`可以进行拖拽,  通过在`columns`数组中添加`sort`来进行排序；设置`rows-drop`属性，可使得表格的`行`可以进行拖拽，通过在`data`数组(表格数据)中添加`sort`来进行排序；拖拽表格`row-key`属性一定要设置，默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值。
+
+
+> 拖拽表格要把所有的列都写出来(包括序号,选择框，操作)，并且设置个唯一值，这里以每个列都设置了`prop`为唯一值为例。
+
+<template>
+  <div>
+    <DropTablePagination/>
+  </div>
+</template>
+
+```html
+<template>
+  <div>
+    <eve-table-pagination
+      :page-size="pageSize"
+      :columns="columns"
+      :data="data"
+      columns-drop
+      rows-drop
+      @columns-drop="columnsDrop"
+      @rows-drop="rowsDrop"
+    >
+    </eve-table-pagination>
+  </div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      pageSize: 20, //一页显示几条
+      //表格数据
+      data: [
+        {
+          id: 1,
+          name: 'John Brown 1',
+          age: 18,
+          address: 'New York No. 1 Lake Park',
+          date: '2016-10-03',
+        },
+        {
+          id: 2,
+          name: 'Jim Green 2',
+          age: 24,
+          address: 'London No. 1 Lake Park',
+          date: '2016-10-01',
+        },
+        {
+          id: 3,
+          name: 'Joe Black 3',
+          age: 30,
+          address: 'Sydney No. 1 Lake Park',
+          date: '2016-10-02'
+        },
+      ],
+
+      //表头 prop 对应着表格数据的key，拖拽表格的时候要把所有的列都写出来，并且设置个唯一值，这里以每个列都设置了一个prop为例
+      columns: [
+        {
+          label: '序号',
+          prop: 'index',
+          type: 'index',
+          width: 100,
+        },
+        {
+          type: 'selection',
+          prop: 'selection',
+          width: 80
+        },
+        {
+          label: 'Name',
+          prop: 'name'
+        },
+        {
+          label: 'Age',
+          prop: 'age',
+        },
+        {
+          label: 'Address',
+          prop: 'address',
+          render: (h, data) => {
+            const { row: { address } = {} } = data
+            return (
+              <div>
+                <span style="fontSize: '14px'">{address}我是被转换的数据1</span>
+              </div >)
+          },
+        },
+        {
+          label: '操作',
+          prop: 'operate',
+          type: 'operate',
+          width: 100,
+          render: (h, data) => {
+            return <span class='eve-table-pagination__button-text'>新增</span>
+          }
+        },
+      ],
+    }
+  },
+
+  mounted () {
+    this.getTableColumns()
+    this.getTableData()
+  },
+
+  methods: {
+    //获取表格列排序数据,回填排序  
+    getTableColumns () {
+      //异步获取数据、模仿ajax 具体的数据需要根据后端数据返回进行回填
+      setTimeout(() => {
+        const arr = []
+        // 单纯修改，组件不会更新,需要给数组重新赋值
+        this.columns.forEach((item, index) => {
+          if (item.prop === 'index') {
+            item.sort = 1
+            arr.push(item)
+          }
+          if (item.prop === 'selection') {
+            item.sort = 3
+            arr.push(item)
+          }
+          if (item.prop === 'name') {
+            item.sort = 2
+            arr.push(item)
+          }
+          if (item.prop === 'address') {
+            item.sort = 4
+            arr.push(item)
+          }
+          if (item.prop === 'age') {
+            item.sort = 5
+            arr.push(item)
+          }
+          if (item.prop === 'operate') {
+            item.sort = 6
+            arr.push(item)
+          }
+        })
+        this.columns = arr
+      }, 1000)
+    },
+
+    //获取表格数据,回填排序
+    getTableData () {
+      //异步获取数据、模仿ajax，具体的数据需要根据后端数据返回进行回填
+      setTimeout(() => {
+        const arr = []
+        // 单纯修改，组件不会更新,需要给数组重新赋值
+        this.data.forEach((item, index) => {
+          if (item.id === 1) {
+            item.sort = 2
+            arr.push(item)
+          }
+          if (item.id === 2) {
+            item.sort = 1
+            arr.push(item)
+          }
+          if (item.id === 3) {
+            item.sort = 3
+            arr.push(item)
+          }
+        })
+        this.data = arr
+      }, 1000)
+    },
+
+    // 拖拽列数据回调
+    columnsDrop (columns) {
+      console.log(columns, '拖拽后，新的列')
+    },
+
+    // 拖拽行数据回调
+    rowsDrop (rows) {
+      console.log(rows, '拖拽后，新的行')
     }
   }
 }
@@ -246,7 +378,6 @@ export default {
 > 当前组件扩展了所有`element-ui的Table组件`的属性,目前文档记录的只是常用的属性和事件,更多的属性和事件请参考`element-ui`官方文档。
 
 ### Table Attributes
-
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
 | data  | 显示的数据 |array| —| — |
@@ -283,6 +414,8 @@ export default {
 | is-show-operate  | 是否显示默认的操作(增删改查等按钮) |boolean| — |true|
 | z-index | 代表数据在第n层，当传进来的数据是树结构时，并开启了表格数据转换时要配置的一个属性，默认是zIndex | string| — |zIndex|
 | is-format-data | 是否开启表格数据转换，主要用于树结构数据添加zIndex时用 | boolean| — |false|
+| columns-drop | 是否开启表格列拖拽, 也可在注册组件的时候全局设置`eveTablePagination`，详细参数看下表 | boolean| — |false|
+| rows-drop | 是否开启表格行拖拽  | boolean | — | false |
 
 
 ### columns 
@@ -302,11 +435,26 @@ export default {
 | filters  |  数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 |  Array[{ text, value }] | — | — |
 | filter-method  |  数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 |  Function(value, row, column) | — | — |
 | selectable |  仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选 |  Function(row, index) | — | — |
-
+| hidden  | 是否隐藏列 | boolean | — | false |
 
 
 >  表头配置属性, 其中 `formatData` 方法只对`type`是普通内容列有效 ,`render`只对普通内容和操作列有效
 
+### eveTablePagination 
+注册组件的时候可以传递参数，进行全局设置。
+
+```js
+import eveUi from 'eve-ui'
+import 'eve-ui/lib/eve-ui.css'
+Vue.use(eveUi, {
+  eveTablePagination: {
+    layout: 'prev,pager,next,jumper', //分页的上一页，下一页、总页数等布局展示
+    jumpText:"前往", //前往的文本修改
+    isShowPageCount:true, //是否显示总页数
+    columnsDrop:true //是否支持表格列拖拽
+  }
+})
+```
 ###  Pagination Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
@@ -366,6 +514,8 @@ export default {
 | current-row-change  | 当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性 |currentRow, oldCurrentRow|
 | sort-change  |当表格的排序条件发生变化的时候会触发该事件 |{ column, prop, order }|
 | filter-change  |当表格的筛选条件发生变化的时候会触发该事件，参数的值是一个对象，对象的 key 是 column 的 columnKey，对应的 value 为用户选择的筛选条件的数组。 |filters|
+| columns-drop |当表格列触发拖动的时候会触发该事件,返回一个新的排序的`columns`数组,排序属性`sort`。 |  [{prop:'index',sort:1,type:"index",width: 60}] 当前只是展示范例数组中其中一个数据某些重要字段，实际返回，以传入的数据为准。|
+| rows-drop |当表格行触发拖动的时候会触发该事件,返回一个新的排序的表格数组,排序属性为`sort`。 |  [{id:'1',sort:1}] 当前只是展示范例数组中其中一个数据某些重要字段，实际返回，以传入的数据为准。|
 
 
 ###  Pagination Event
@@ -380,7 +530,7 @@ export default {
 | ----| ----| --- | 
 | getElTableRef  | 当前方法可获取element-ui的Table组件的ref,可使用table组件的所有方法 | — |
 | backPreviousPage | 删除最后一条数据并跳到上一个页面，防止删除后显示空数据 | — |
-
+| reload | 重新刷新组件  | — |
 
 
 ###  Slot

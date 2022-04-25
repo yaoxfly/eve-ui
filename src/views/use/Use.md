@@ -17,8 +17,10 @@ Vue.use(ElementUI)
 //引入eve-ui
 import eveUi from 'eve-ui'
 import 'eve-ui/lib/eve-ui.css'
+
 Vue.use(eveUi)
 ```
+
 
 接着在`store`目录的`index.js`文件里引入组件插件里的`store`
 
@@ -31,6 +33,28 @@ export default new Vuex.Store({
 })
 ```
 > 组件库里`store`不管是完整引入还是按需，都需要引入，否则某些组件的功能会不完整,比如`Menu`和`TagViews`等组件的联动功能，由于组件是基于`element-ui`的所以`element-ui`也要引入。
+
+
+
+
+### 引入自定义样式(美化eve-ui)
+当前组件是基于`element-ui`组件进行开发，原本的样式不符合业务需求，所以专门写了一套样式进行美化，配搭脚手架工程，如果有需要可以引入。
+
+```js
+import eveUi from 'eve-ui'
+import 'eve-ui/lib/eve-ui.css'
+//要在eve-ui.css 样式之后引入
+//后台管理自定义样式1--需要配合脚手架工程切换主题功能用的，当前样式未进行编译，引入后本地开发编译会变慢，上线后不影响。
+import 'eve-ui/src/style/admin/index.scss'
+//后台管理自定义样式2--不需要配合脚手架工程切换主题的 
+import 'eve-ui/style/admin/eve-common.css'
+//互联网端自定义样式
+import 'eve-ui/style/front/eve-common.css'
+Vue.use(eveUi)
+```
+
+> 特别注意：样式要在`eve-ui`样式之后引入，否则样式无法覆盖，以上自定义样式只需要引入一个就行，否则会相互覆盖。
+
 
 ## 按需引入(全局)
 

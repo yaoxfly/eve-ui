@@ -8,11 +8,13 @@ export const setEveTablePagination = (Vue, option) => {
       layout,
       jumpText,
       isShowPageCount,
+      columnsDrop,
     } = {}
   } = option || {}
   Vue.prototype.$eveTablePagination = {
-    layout: layout, //布局
-    jumpText: jumpText, //前往的文本修改
-    isShowPageCount: isShowPageCount, //是否显示总页数
+    layout, //布局
+    jumpText, //前往的文本修改
+    isShowPageCount, //是否显示总页数
+    columnsDrop //是否支持拖拽
   }
 }
