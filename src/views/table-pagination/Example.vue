@@ -4,6 +4,7 @@
       class="home-table-pagination"
       @btn-operate="btnOperate"
       @current-change="currentChange"
+      :current-page="currentPage"
       :page-size="pageSize"
       :columns="columns"
       :data="data"
@@ -20,7 +21,8 @@
 export default {
   data () {
     return {
-      pageSize: 20, //一页显示几条
+      pageSize: 10, //一页显示几条
+      currentPage: 1,
       //表格数据
       data: [
         {
@@ -65,6 +67,34 @@ export default {
           address: 'Ottawa No. 2 Lake Park',
           date: '2016-10-04'
         },
+        {
+          id: 9,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 10,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 11,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 12,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        }
       ],
 
       //表头 prop 对应着表格数据的key，序号和操作默认都有可不需添加。
@@ -144,6 +174,7 @@ export default {
 
     //页面切换
     currentChange (emit) {
+      this.currentPage = emit
       console.log(emit)
     },
 

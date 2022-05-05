@@ -2,7 +2,8 @@
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比，分页或其他自定义操作。
 
-> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值。
+> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值； 
+使用`render`自定义行的时候，如果出现特殊图标 ，在`columns`属性中设置`showOverflowTooltip` 为`false`。
 
 # 基础用法
 
@@ -32,6 +33,7 @@ export default {
       class="home-table-pagination"
       @btn-operate="btnOperate"
       @current-change="currentChange"
+      :current-page="currentPage"
       :page-size="pageSize"
       :columns="columns"
       :data="data"
@@ -44,11 +46,12 @@ export default {
 </template>
 
 <script>
-
+// @ is an alias to /src
 export default {
   data () {
     return {
-      pageSize: 20, //一页显示几条
+      pageSize: 10, //一页显示几条
+      currentPage: 1,
       //表格数据
       data: [
         {
@@ -93,6 +96,34 @@ export default {
           address: 'Ottawa No. 2 Lake Park',
           date: '2016-10-04'
         },
+        {
+          id: 9,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 10,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 11,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        },
+        {
+          id: 12,
+          name: 'Jon Snow',
+          age: 26,
+          address: 'Ottawa No. 2 Lake Park',
+          date: '2016-10-04'
+        }
       ],
 
       //表头 prop 对应着表格数据的key，序号和操作默认都有可不需添加。
@@ -116,30 +147,23 @@ export default {
             return row[property] === value
           }
         },
-        {
-          label: 'Address',
-          prop: 'address',
-          render: (h, data) => {
-            const { row: { address } = {} } = data
-            //jsx
-            return <span>`${address}我是被转换的数据`<span>
-            //or 原生写法
-            // return h('div', {
-            //   //和`v-bind:style`一样的 API
-            //   style: {
-            //     fontSize: '14px'
-            //   },
-            //   // DOM 属性
-            //   domProps: {
-            //     innerHTML: address + '我是被转换的数据1'
-            //   },
-            // })
-          },
-          // formatData: (data) => {
-          //   console.log(data, 11)
-          //   return data + '我是被转换的数据1'
-          // }
-        },
+      
+        {
+          label: 'Address',
+          prop: 'address',
+          //使用render自定义行的时候，如果出现特殊图标 ，在columns属性中设置showOverflowTooltip 为false。
+          render: (h, data) => {
+            const { row: { address } = {} } = data
+            return (
+              <div>
+                <span style="fontSize: '14px'">{address}我是被转换的数据1</span>
+              </div >)
+          },
+          // formatData: (data) => {
+          //   console.log(data, 11)
+          //   return data + '我是被转换的数据1'
+          // }
+        },
 
         {
           label: '操作',
@@ -173,6 +197,7 @@ export default {
   },
 
   methods: {
+
     //操作按钮  
     btnOperate (emit) {
       console.log(emit)
@@ -181,6 +206,7 @@ export default {
 
     //页面切换
     currentChange (emit) {
+      this.currentPage = emit
       console.log(emit)
     },
 
@@ -188,6 +214,7 @@ export default {
     sortChange ({ column, prop, order }) {
       console.log(column, prop, order)
     },
+
   }
 }
 </script>

@@ -368,11 +368,13 @@ Tree 内部使用了 Node 类型的对象来包装用户传入的数据，用来
 | setCheckedNodes|设置目前勾选的节点，使用此方法必须设置 node-key 属性|(nodes) 接收勾选节点数据的数组 |
 | setCheckedKeys|通过 keys 设置目前勾选的节点，使用此方法必须设置 node-key 属性|(keys, leafOnly) 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，若为 true 则仅设置叶子节点的选中状态，默认值为 false |
 
+
 ### Function (自定义)
 | 方法名 | 说明 | 参数  |
 | ----| ----| --- | 
 | addNode| 添加节点数据--外部添加节点数据(默认添加孩子节点数据) | (data,newChild) 接收两个object类型的参数 1.当前节点的数据 2.新的节点数据 格式 {label:'',children:''} ,label和children属性值要和以上属性props的值一致|
 | resetChecked| 清空节点 | — |
+| clearFilterText| 清空过滤的文本 | — |
 
  ###  Scoped Slot
  | name | 说明 | 

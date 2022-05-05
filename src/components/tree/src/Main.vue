@@ -601,9 +601,18 @@ export default {
    */
     getElTreeRef () {
       return this.$refs.tree
-    }
-  },
+    },
 
+
+    /**@description 清空过滤的文本
+         * @author yx
+    */
+    clearFilterText () {
+      this.filterText = ''
+    }
+
+
+  },
   watch: {
     filterText (val) {
       this.$refs.tree.filter(val)
