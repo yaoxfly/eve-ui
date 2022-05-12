@@ -406,7 +406,7 @@ export default {
 | margin-top |右边查询等按钮距离顶部的距离，用于当checkbox和radio有换行的情况下使用| number、string | — | — |
 | label-suffix  | 表单域标签的后缀  | string | — | — |
 | label-padding-left  | 表单域标签距离左边的距离,当前面的表单有表单验证时，标签名可能会被遮住,可用当前属性设置为20，当前属性是全局性的，data参数的属性中有局部的  | string、number | — | — |
-
+| disabled-style  | 禁用样式，默认是灰色的样式，设置`false`,恢复表单原本的颜色  | boolean | — | true |
 
 > `SelectForm`组件的`adaptiveExpand`(自适应收缩)会因为 `left-form-width`、`right-button-width`、`right-button-data`、`form-width` 、`label-width` 5个属性值以及插槽所影响，其中`left-form-width`、`right-button-width`属性影响较大，这两个值还会受到插槽和`right-button-data`属性影响，如果默认值无法满足自适应收缩功能，请手动设置这两个值。
 
@@ -431,7 +431,8 @@ export default {
 | multiple | 当表单类型为select时,可设置select为多选,同时model双向绑定值要改为[] | boolean | — | false |
 | collapseTags | 当表单类型为select时,多选时是否将选中值按文字的形式展示 | boolean | — | false |
 | multipleLimit | 当表单类型为select时,多选时用户最多可以选择的项目数，为 0 则不限制 | number | — | 0 |
-
+| clearable | 当表单类型为select、input时,可设置是否可清空，默认可清空 | boolean | — | true |
+| disabled | 当表单类型为select、input时,可设置是否可禁用 | boolean | — | false |
 
 ### right-button-data
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

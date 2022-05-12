@@ -13,7 +13,7 @@
       :disabled="tempDisabled"
       @onClick="onClick"
       @onBlur="onBlur"
-      :key="key"
+      :key="`richText${keyPrefix}${key}`"
       v-bind="$attrs"
       v-on="$listeners"
     >
@@ -25,7 +25,7 @@
 import tinymce from 'tinymce/tinymce' //tinymce默认hidden，不引入不显示
 import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver'
-import 'tinymce/skins/ui/oxide/skin.css'//引入皮肤
+import 'tinymce/skins/ui/oxide/skin.min.css'//引入皮肤，以下配置false了，当前一定要引入，不然报错
 import languageUrl from '../../../assets/tinymce/lang/zh_CN.js'
 import '../../../assets/tinymce/plugins/ax_wordlimit/plugin.min.js' //字数限制
 /* 富文本plugins */
@@ -43,7 +43,7 @@ import 'tinymce/plugins/code' //为TinyMCE添加基于BBCode的输入输出功�
 import 'tinymce/plugins/charmap' //特殊字符插件。
 import 'tinymce/plugins/codesample' //代码示例插件
 import 'tinymce/plugins/directionality' //文字方向
-// import "tinymce/plugins/emoticons"; //可在内容区插入unicode字符表情。--没有表情会报错
+import 'tinymce/plugins/emoticons' //可在内容区插入unicode字符表情。--没有表情会报错
 import 'tinymce/plugins/fullpage' //文档属性
 import 'tinymce/plugins/fullscreen' //全屏
 import 'tinymce/plugins/help' //帮助
@@ -101,6 +101,7 @@ export default {
     }
   },
 
+
   data () {
     return {
       //默认初始化
@@ -111,15 +112,15 @@ export default {
         language_url: languageUrl,
         //语言   
         language: 'zh_CN',
-        // //皮肤地址
-        // skin_url: this.skinUrl,
-        // skin_url: 'tinymce/skins/ui/oxide-dark',//暗色系
+        //皮肤地址--默认不设置，直接引入，不设置false，浏览器会报错
+        skin: false,
+        content_css: false,
         //高度
         height: 300,
         //使用的插件
         plugins: ['wordcount', 'ax_wordlimit', 'help'],
         //工具栏展示的插件
-        toolbar: 'undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat | anchor | restoredraft | code | charmap | codesample | ltr rtl  | fullpage | fullscreen | help | hr | insertdatetime | link | nonbreaking | pagebreak | paste | preview | print | save | searchreplace | template | toc | visualblocks | visualchars | wordcount',
+        toolbar: 'undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat | anchor | restoredraft | code | charmap | codesample | ltr rtl  | fullpage | fullscreen | help | hr | insertdatetime | link | nonbreaking | pagebreak | paste | preview | print | save | searchreplace | template | toc | visualblocks | visualchars | wordcount | emoticons',
         // 去水印
         branding: false,
         // 允许粘贴图像
@@ -199,7 +200,8 @@ export default {
       },
       myValue: this.value, //富文本的值(内部用)
       tempDisabled: false, //禁用(内部用)
-      key: 0 //更新富文本
+      key: 0, //更新富文本
+      keyPrefix: this.getGenerateMixed(20) //没有随机数key值会重复
     }
   },
 
@@ -239,7 +241,7 @@ export default {
      * @author yx
     */
     initialize () {
-      tinymce.init({})
+      // tinymce.init({})
       this.$nextTick(() => {
         setTimeout(() => {
           document.getElementsByClassName('tox-statusbar__wordcount')[0].click()
@@ -338,16 +340,16 @@ export default {
     //初始化
     init: {
       handler (newValue) {
-        this.$nextTick(() => {
-          const init = this.deepClone(newValue)
-          this.setProperty(this.tempInit, [
-            'selector',
-          ])
-          const { plugins } = this.tempInit
-          Object.assign(this.tempInit, init)
-          this.tempInit.plugins.push(...plugins)
-          this.update()
-        })
+
+        const init = this.deepClone(newValue)
+        this.setProperty(this.tempInit, [
+          'selector',
+        ])
+        const { plugins } = this.tempInit
+        Object.assign(this.tempInit, init)
+        this.tempInit.plugins.push(...plugins)
+        this.update()
+
       },
       immediate: true,
       deep: true

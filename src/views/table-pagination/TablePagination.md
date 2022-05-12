@@ -2,8 +2,7 @@
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比，分页或其他自定义操作。
 
-> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值； 
-使用`render`自定义行的时候，如果出现特殊图标 ，在`columns`属性中设置`showOverflowTooltip` 为`false`。
+> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值；由于表格默认不能换行，使用`render`自定义行的时候，如果出现特殊图标 ，在`columns`属性中设置`showOverflowTooltip` 为`false`。 
 
 # 基础用法
 
@@ -427,6 +426,7 @@ export default {
 | load   | 加载子节点数据的函数,lazy为true时生效,函数第二个参数包含了节点的层级信息--树懒加载用   | Function | — | — |
 | default-sort   | 默认的排序列的 prop 和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序   | Object | order: ascending, descending | 如果只指定了prop, 没有指定order, 则默认顺序是ascending |
 
+
 ###  Table  Attributes (自定义)
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | ----| ----| --- | ---- | ----- |
@@ -443,7 +443,7 @@ export default {
 | is-format-data | 是否开启表格数据转换，主要用于树结构数据添加zIndex时用 | boolean| — |false|
 | columns-drop | 是否开启表格列拖拽, 也可在注册组件的时候全局设置`eveTablePagination`，详细参数看下表 | boolean| — |false|
 | rows-drop | 是否开启表格行拖拽  | boolean | — | false |
-
+| line-feed |是否可以换行，需`columns`属性中的`showOverflowTooltip`属性配合,哪一行需要换行，哪一行就设置showOverflowTooltip:false|  boolean | — | false |
 
 ### columns 
 当前值是对象数组,以下key值代表的是每个对象里面的属性值。
@@ -452,6 +452,7 @@ export default {
 | ----| ----| --- | ---- | ----- |
 | prop   | 表格要渲染的key值  | string  |— | —  |
 | label  | 表头显示的值   | number | — | 24  |
+| renderHeader  | 列标题 Label 区域渲染使用的 Function，可自定义表头内容 | Function(h, { column, $index }) | — | — |
 | width  | 当前列的宽度   | number | — | —  |
 | fixed  | 列是否固定在左侧或者右侧，true 表示固定在左侧   | string, boolean | true, left, right | — |
 | type   | 列的类型 | string |  selection(选择框)、index(序号)、operate(操作)、tree(下拉树)  | 普通内容 |
@@ -460,10 +461,11 @@ export default {
 | render  |  使用render函数自定义内容 |  Function(h,data)  | — | —  |
 | sortable  |  对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件 |  boolean, string  | true, false, 'custom' | false  |
 | filters  |  数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 |  Array[{ text, value }] | — | — |
-| filter-method  |  数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 |  Function(value, row, column) | — | — |
+| filterMethod  |  数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 |  Function(value, row, column) | — | — |
 | selectable |  仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选 |  Function(row, index) | — | — |
 | hidden  | 是否隐藏列 | boolean | — | false |
-
+| align  | 对齐方式 | string |	left/center/right | left |
+| headerAlign  | 表头对齐方式，若不设置该项，则使用表格的对齐方式 (`align`属性)| string |	left/center/right | — |
 
 >  表头配置属性, 其中 `formatData` 方法只对`type`是普通内容列有效 ,`render`只对普通内容和操作列有效
 

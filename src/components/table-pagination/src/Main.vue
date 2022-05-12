@@ -4,9 +4,12 @@
 * @Date: 2020-09-24
 -->
 <template>
-  <div class="eve-table-pagination">
+  <div
+    class="eve-table-pagination"
+    :class="[{ 'eve-table-pagination__line-height': lineFeed }]"
+  >
     <el-table
-      :class="`eve-table-pagination${tableKey}`"
+      :class="[`eve-table-pagination${tableKey}`]"
       ref="eveTable"
       :key="`eveTable${tableKey}`"
       :data="tableData"
@@ -44,7 +47,14 @@
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
+              :header-align="item.headerAlign"
+              :render-header="item.renderHeader"
               v-if="item.type === 'index'"
+              :show-overflow-tooltip="
+                item.showOverflowTooltip !== undefined
+                  ? item.showOverflowTooltip
+                  : true
+              "
             >
               <template slot-scope="scope">
                 <span> {{ indexMethod(scope.$index) }} </span>
@@ -59,7 +69,9 @@
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
+              :header-align="item.headerAlign"
               :selectable="item.selectable"
+              :render-header="item.renderHeader"
               v-else-if="item.type === 'selection'"
             >
             </el-table-column>
@@ -72,6 +84,8 @@
               :fixed="item.fixed"
               :type="item.type"
               :align="item.align"
+              :header-align="item.headerAlign"
+              :render-header="item.renderHeader"
               v-else-if="item.type === 'operate'"
             >
               <template slot-scope="scope">
@@ -144,6 +158,9 @@
               :sortable="item.sortable"
               :filters="item.filters"
               :filter-method="item.filterMethod"
+              :align="item.align"
+              :header-align="item.headerAlign"
+              :render-header="item.renderHeader"
               :show-overflow-tooltip="
                 item.showOverflowTooltip !== undefined
                   ? item.showOverflowTooltip
@@ -578,6 +595,24 @@ export default {
       default: false
     },
 
+    //列是否可以拖拽
+    columnsDrop: {
+      type: Boolean,
+      default: false
+    },
+
+    //行是否可以拖拽
+    rowsDrop: {
+      type: Boolean,
+      default: false
+    },
+
+    //是否可以换行
+    lineFeed: {
+      type: Boolean,
+      default: false
+    },
+
     // 分页-是否显示分页
     isShowPagination: {
       type: Boolean,
@@ -607,18 +642,6 @@ export default {
       type: Boolean,
       default: false
     },
-
-    //列是否可以拖拽
-    columnsDrop: {
-      type: Boolean,
-      default: false
-    },
-
-    //行是否可以拖拽
-    rowsDrop: {
-      type: Boolean,
-      default: false
-    }
 
   },
 

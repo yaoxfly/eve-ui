@@ -106,6 +106,12 @@ export default {
 | charmap |自定义该窗口中可选的特殊字符 |  array |  —  | —|
 | ax_wordlimit_num |字数限制最大值 |  number |  —  | 0(无限制) |
 | ax_wordlimit_callback |字数限制的回调 |  function |  —  | — |
+| skin |是否开启皮肤配置，开启后可更换皮肤 |  boolean |  —  | false |
+| skin_url | 皮肤的路径 |  string |  —  | — |
+| emoticons_database_url | 需开启表情插件；  因表情很多，直接写在配置中是不现实的，此参数用于直接指定表情数据存放的文件路径 |  string |  —  | —  |
+
+> 换皮肤，可以复制`node_modules/tinymce`下的`skins`文件夹，在`public`文件夹新建`tinymce`文件夹，把`skins`文件夹放进去,在`init`设置`skin_url`为`/tinymce/skins/ui/oxide-dark/` ,可以变成暗色主题 ； 表情地址 可以复制`node_modules/tinymce/plugins/`下的`emoticons`文件夹,放置位置同上， 在`init`设置`emoticons_database_url`为`/tinymce/emoticons/js/emojis.min.js`; 注意：需要根据部署的路径来设置地址，如果是带二级目录的部署，需要加上这个二级目录，防止打包上线后找不到。
+
 
 ### plugins
 | 插件   | 说明 | 
@@ -142,6 +148,7 @@ export default {
 | visualblocks | 显示块元素范围 |
 | visualchars | 显示不可见字符 |
 | wordcount | 字数统计插件 |
+| emoticons | 表情插件，需配置表情地址。 |
 
 ### Events
 | 事件名称 | 说明 | 回调参数  |

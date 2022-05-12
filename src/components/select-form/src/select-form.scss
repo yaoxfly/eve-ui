@@ -99,4 +99,10 @@
     z-index: 1;
     right: -18px;
   }
+
+  &__disabled {
+    .el-input.is-disabled .el-input__inner {
+      background-color: transparent;
+    }
+  }
 }

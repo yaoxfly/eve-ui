@@ -4,7 +4,10 @@
 * @Date: 2020-09-29
 -->
 <template>
-  <div class="eve-select-form">
+  <div
+    class="eve-select-form"
+    :class="[{ 'eve-select-form__disabled': !disabledStyle }]"
+  >
     <!-- el-form-item 和 el-form 配套使用 -->
     <el-form
       ref="formValidate"
@@ -97,7 +100,10 @@
                     v-model.trim="model[item.prop]"
                     :placeholder="item.placeholder || '请输入'"
                     :maxlength="item.maxlength || 32"
-                    clearable
+                    :disabled="item.disabled"
+                    :clearable="
+                      item.clearable !== undefined ? item.clearable : true
+                    "
                     @clear="clear"
                   ></el-input>
                 </slot>
@@ -289,17 +295,20 @@
                 :style="{ width: `${getFormWidth(item.formWidth)}px` }"
                 :class="[checkHidden(index)]"
               >
-                <!-- 核心代码 -->
+                <!--下拉菜单 -->
                 <slot :name="item.prop" :row="item" :data="data">
                   <el-select
                     style="width: 100%"
                     v-model="model[item.prop]"
                     :placeholder="item.placeholder || '请选择'"
-                    clearable
+                    :clearable="
+                      item.clearable !== undefined ? item.clearable : true
+                    "
                     filterable
                     :multiple="item.multiple"
                     :collapse-tags="item.collapseTags"
                     :multiple-limit="item.multipleLimit || 0"
+                    :disabled="item.disabled"
                     @clear="clear"
                   >
                     <el-option
@@ -712,7 +721,6 @@ export default {
       default: () => ''
     },
 
-
     //表单域标签的后缀
     labelSuffix: {
       type: String,
@@ -723,8 +731,13 @@ export default {
     labelPaddingLeft: {
       type: [Number, String],
       default: () => ''
-    }
+    },
 
+    //禁用样式，默认是灰色的样式
+    disabledStyle: {
+      type: Boolean,
+      default: true
+    }
   },
 
   data () {
