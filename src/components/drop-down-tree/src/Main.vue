@@ -370,7 +370,6 @@ export default {
     },
 
 
-
     /**@description 多选--若节点可被选择（即 show-checkbox 为 true），则返回目前被选中的节点所组成的数组
       * @author yx
       * @param  {Boolean}  leafOnly 是否只是叶子节点
@@ -519,13 +518,16 @@ export default {
           newValue = newValue || null
           this.tempValue = newValue
           this.id = newValue
-          this.setCurrentKey(newValue)
-          this.$nextTick(() => {
-            //非懒加载的时候
+          this.$nextTick(async () => {
+            this.setCurrentKey(newValue)
+            //非懒加载的时候 --去掉第一次加载的null
+            this.option.forEach((item, index) => {
+              this.option.splice(index, 1)
+            })
+
             if (this.option.length <= 0) {
               this.option.push(this.getCurrentNode())
             }
-            this.setCurrentKey(newValue)
           })
           this.currentNodeKey = newValue //懒加载必须
         }
