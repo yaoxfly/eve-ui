@@ -518,27 +518,25 @@ export default {
           newValue = newValue || null
           this.tempValue = newValue
           this.id = newValue
-          this.$nextTick(async () => {
-            this.setCurrentKey(newValue)
-            //非懒加载的时候 --去掉第一次加载的null
+          this.$nextTick(() => {
+            this.setCurrentKey(this.tempValue)
+            //非懒加载的时候 --去掉第一次加载的null 当 value比树的数据赋值慢的时候，赋值option，否则无法回填
             this.option.forEach((item, index) => {
               this.option.splice(index, 1)
             })
-
             if (this.option.length <= 0) {
               this.option.push(this.getCurrentNode())
             }
           })
-          this.currentNodeKey = newValue //懒加载必须
+          this.currentNodeKey = newValue //value比树的数据赋值快的时候必须
         }
         //多选
         const checkbox = () => {
           newValue = newValue || []
           this.tempValue = newValue
-          this.setCheckedKeys(this.tempValue)
           this.$nextTick(() => {
-            this.setOption(this.getCheckedNodes(this.onlyLeaf))
             this.setCheckedKeys(this.tempValue)
+            this.setOption(this.getCheckedNodes(this.onlyLeaf))
           })
           setTimeout(() => { this.columnCollapseTags && this.selfAdaption() }, 200)
         }
@@ -576,6 +574,25 @@ export default {
         } else {
           this.tempData = newValue
           this.$emit('update:data', this.tempData)
+        }
+
+        //当 value比树的数据赋值快的时候，赋值option，否则无法回填
+        if (this.multiple) {
+          this.$nextTick(() => {
+            this.setOption(this.getCheckedNodes(this.onlyLeaf))
+          })
+        } else {
+          this.$nextTick(() => {
+            this.setCurrentKey(this.tempValue)
+            //非懒加载的时候 --去掉第一次加载的null
+            this.option.forEach((item, index) => {
+              this.option.splice(index, 1)
+            })
+            if (this.option.length <= 0) {
+              this.option.push(this.getCurrentNode())
+            }
+          })
+          this.currentNodeKey = this.tempValue
         }
       },
       immediate: true
