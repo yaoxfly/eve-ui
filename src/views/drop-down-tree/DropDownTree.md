@@ -517,6 +517,7 @@ export default {
 | option | 懒加载select回显数据，针对懒加载回显困难加强的属性 | array | — | [{id:id:label:label}]  当前值会依据props和nodeKey变化而变化  |
 | disabled | 是否禁用 | boolean | — | false  |
 | clearable | 是否清空 | boolean | — | true  |
+| placeholder | 占位文本| string | — | —  |
 
 ### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |

@@ -7,7 +7,7 @@
   <div class="eve-drop-down-tree">
     <el-select
       v-model="tempValue"
-      placeholder="请选择"
+      :placeholder="placeholder"
       :style="{ width: `${checkString(width)}` }"
       :clearable="clearable"
       :disabled="disabled"
@@ -198,6 +198,11 @@ export default {
     clearable: {
       type: Boolean,
       default: () => true
+    },
+
+    placeholder: {
+      type: String,
+      default: '请选择'
     }
   },
 

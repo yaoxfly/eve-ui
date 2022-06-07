@@ -1,8 +1,8 @@
 # TablePagination 表格分页
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比，分页或其他自定义操作。
-
-> 由于封装的表格内部有根据`id`进行操作，`row-key`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值；由于表格默认不能换行，使用`render`自定义行的时候，如果出现特殊图标 ，在`columns`属性中设置`showOverflowTooltip` 为`false`。 
+> 由于封装的表格内部有根据`id`进行操作，`id`属性一定要设置,默认是`id`，可根据后端返回的唯一值进行修改，或者自定义添加唯一值；
+由于表格默认不能换行，使用`render`自定义行的时候，如果出现特殊图标 ，在`columns`属性中设置`showOverflowTooltip` 为`false`。 
 
 # 基础用法
 
@@ -420,7 +420,7 @@ export default {
 | header-row-class-name  | 表头行的 className 的回调方法   | Function({row, rowIndex})/String   | — | —  |
 | header-cell-class-name  | 表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。  | Function({row, column, rowIndex, columnIndex})/String   | — | —  |
 | empty-text  | 空数据时显示的文本内容，也可以通过 slot="empty" 设置 | string  | —  | 暂无数据  |
-| row-key   | 行数据的 Key，用来优化 Table 的渲染--一般传主键值，在使用 reserve-selection 功能与显示树形数据时，该属性是必填的   | String, Function | — | id  |
+| row-key   | 行数据的 Key，用来优化 Table 的渲染--一般传主键值，在使用 reserve-selection 功能与显示树形数据时和行列拖拽时，该属性是必填的   | String, Function | — | id  |
 | tree-props   | 渲染嵌套数据(树)的配置选项,hasChildren用来懒加载   | Object | — | { children: 'children', hasChildren: 'hasChildren' }  |
 | lazy   | 是否懒加载子节点数据   | Boolean | — | false |
 | load   | 加载子节点数据的函数,lazy为true时生效,函数第二个参数包含了节点的层级信息--树懒加载用   | Function | — | — |

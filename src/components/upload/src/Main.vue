@@ -421,7 +421,7 @@ export default {
   computed: {
     //当uploadType类型是picture-card的时候, 超过限制张数，隐藏新增按钮,注意:要对fileLists赋值才会监听到
     isHideAdd () {
-      return this.fileLists.length >= this.limit || this.disabled
+      return (this.limit !== 0 && this.fileLists.length >= this.limit) || this.disabled
     },
     //路径列表
     srcList () {

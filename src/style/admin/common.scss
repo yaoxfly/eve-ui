@@ -261,10 +261,11 @@ body {
       font-size: $--font-size-content;
       line-height: 18px;
     }
+
     //带单位描述css
     .eve-common-info-tip {
       font-size: $--font-size-content;
-      color: $--color-info;
+      color: $--color-text-regular;
       margin-left: 20px;
     }
 
@@ -514,6 +515,21 @@ body {
       height: 5px;
       background-color: $--color-primary;
     }
+
+    /*---禁用时外圈圆颜色加深--*/
+    .el-radio__input.is-disabled.is-checked .el-radio__inner {
+      border-color: $--color-text-placeholder;
+    }
+
+    //禁用背景填充背景色
+    .el-radio__input.is-checked.is-disabled .el-radio__inner {
+      background: #f5f7fa;
+    }
+
+    .el-radio__input.is-disabled.is-checked .el-radio__inner::after {
+      background-color: $--color-text-secondary;
+    }
+    /*---禁用时外圈圆颜色加深-end---*/
   }
 
   /*********checkbox复选框[start]*********/
@@ -529,7 +545,7 @@ body {
     .el-checkbox__input.is-indeterminate .el-checkbox__inner {
       background-color: #fff;
       //三级边框-#ebeef5
-      border-color: $--border-color-lighter;
+      // border-color: $--border-color-lighter;
     }
     .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
       background-color: $--color-primary;
@@ -537,11 +553,28 @@ body {
     .el-checkbox__inner::after {
       border-color: $--color-primary;
     }
+
     //checkbox选中字体不跟随变化
     .el-checkbox__input.is-checked + .el-checkbox__label {
       //常规文字-#606266
       color: $--color-text-regular;
     }
+
+    /*---禁用时外边框颜色加深--*/
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+      border-color: $--color-text-placeholder;
+    }
+
+    // 禁用时打钩加深
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner::after {
+      border-color: $--color-text-secondary;
+    }
+
+    .el-checkbox__input.is-checked.is-disabled .el-checkbox__inner,
+    .el-checkbox__input.is-indeterminate.is-disabled .el-checkbox__inner {
+      background-color: $--checkbox-disabled-input-fill;
+    }
+    /*---禁用时外边框颜色加深--*/
   }
 
   /*********select下拉框[start]*********/
