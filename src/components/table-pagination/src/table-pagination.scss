@@ -42,4 +42,14 @@
       padding: 10px 4px;
     }
   }
+
+  /**---解决360极速等其他浏览器表格错位问题，主要是列------**/
+  .el-table th.gutter {
+    display: table-cell !important;
+  }
+
+  //空数据时，列少的情况，暂无数据居中展示
+  .el-table__empty-block {
+    width: 100% !important;
+  }
 }
