@@ -6,6 +6,7 @@
       :data="data"
       columns-drop
       rows-drop
+      :total="20"
       @columns-drop="columnsDrop"
       @rows-drop="rowsDrop"
     >
@@ -14,9 +15,10 @@
 </template>
 <script>
 export default {
-  data () {
+  name: 'DropTablePaginations',
+  data() {
     return {
-      pageSize: 20, //一页显示几条
+      pageSize: 10, //一页显示几条
       //表格数据
       data: [
         {
@@ -24,14 +26,14 @@ export default {
           name: 'John Brown 1',
           age: 18,
           address: 'New York No. 1 Lake Park',
-          date: '2016-10-03',
+          date: '2016-10-03'
         },
         {
           id: 2,
           name: 'Jim Green 2',
           age: 24,
           address: 'London No. 1 Lake Park',
-          date: '2016-10-01',
+          date: '2016-10-01'
         },
         {
           id: 3,
@@ -39,7 +41,7 @@ export default {
           age: 30,
           address: 'Sydney No. 1 Lake Park',
           date: '2016-10-02'
-        },
+        }
       ],
 
       //表头 prop 对应着表格数据的key，拖拽表格的时候要把所有的列都写出来，并且设置个唯一值，这里以每个列都设置了一个prop为例
@@ -48,7 +50,7 @@ export default {
           label: '序号',
           prop: 'index',
           type: 'index',
-          width: 100,
+          width: 100
         },
         {
           type: 'selection',
@@ -61,7 +63,7 @@ export default {
         },
         {
           label: 'Age',
-          prop: 'age',
+          prop: 'age'
         },
         {
           label: 'Address',
@@ -71,8 +73,9 @@ export default {
             return (
               <div>
                 <span style="fontSize: '14px'">{address}我是被转换的数据1</span>
-              </div >)
-          },
+              </div>
+            )
+          }
         },
         {
           label: '操作',
@@ -80,21 +83,21 @@ export default {
           type: 'operate',
           width: 100,
           render: (h, data) => {
-            return <span class='eve-table-pagination__button-text'>新增</span>
+            return <span class="eve-table-pagination__button-text">新增</span>
           }
-        },
-      ],
+        }
+      ]
     }
   },
 
-  mounted () {
+  mounted() {
     this.getTableColumns()
     this.getTableData()
   },
 
   methods: {
-    //获取表格列排序数据,回填排序  
-    getTableColumns () {
+    //获取表格列排序数据,回填排序
+    getTableColumns() {
       //异步获取数据、模仿ajax 具体的数据需要根据后端数据返回进行回填
       setTimeout(() => {
         const arr = []
@@ -130,7 +133,7 @@ export default {
     },
 
     //获取表格数据,回填排序
-    getTableData () {
+    getTableData() {
       //异步获取数据、模仿ajax，具体的数据需要根据后端数据返回进行回填
       setTimeout(() => {
         const arr = []
@@ -154,12 +157,12 @@ export default {
     },
 
     // 拖拽列数据回调
-    columnsDrop (columns) {
+    columnsDrop(columns) {
       console.log(columns, '拖拽后，新的列')
     },
 
     // 拖拽行数据回调
-    rowsDrop (rows) {
+    rowsDrop(rows) {
       console.log(rows, '拖拽后，新的行')
     }
   }

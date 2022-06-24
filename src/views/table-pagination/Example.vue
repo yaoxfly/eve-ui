@@ -9,6 +9,7 @@
       :columns="columns"
       :data="data"
       :button="button"
+      :total="20"
       @sort-change="sortChange"
       :default-sort="{ prop: 'age', order: 'ascending' }"
     >
@@ -19,7 +20,7 @@
 <script>
 // @ is an alias to /src
 export default {
-  data () {
+  data() {
     return {
       pageSize: 10, //一页显示几条
       currentPage: 1,
@@ -31,26 +32,31 @@ export default {
           age: 18,
           address: 'New York No. 1 Lake Park',
           date: '2016-10-03',
-          children: [{
-            id: 31,
-            name: 'John Brown',
-            age: 200,
-            address: 'New York No. 1 Lake Park',
-            date: '2016-10-03',
-            children: [{
-              id: 2003344,
+          children: [
+            {
+              id: 31,
+              name: 'John Brown',
+              age: 200,
+              address: 'New York No. 1 Lake Park',
+              date: '2016-10-03',
+              children: [
+                {
+                  id: 2003344,
+                  name: 'John Brown',
+                  age: 18,
+                  address: 'New York No. 1 Lake Park',
+                  date: '2016-10-03'
+                }
+              ]
+            },
+            {
+              id: 200,
               name: 'John Brown',
               age: 18,
               address: 'New York No. 1 Lake Park',
-              date: '2016-10-03',
-            }]
-          }, {
-            id: 200,
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park',
-            date: '2016-10-03',
-          }]
+              date: '2016-10-03'
+            }
+          ]
         },
 
         {
@@ -102,7 +108,7 @@ export default {
         {
           type: 'index', // 序号
           width: 75,
-          label: '序号',
+          label: '序号'
         },
         {
           label: 'Name',
@@ -112,7 +118,11 @@ export default {
           label: 'Age',
           prop: 'age',
           sortable: true,
-          filters: [{ text: 18, value: 18 }, { text: 19, value: 19 }, { text: 26, value: 26 }],
+          filters: [
+            { text: 18, value: 18 },
+            { text: 19, value: 19 },
+            { text: 26, value: 26 }
+          ],
           filterMethod: (value, row, column) => {
             const property = column.property
             return row[property] === value
@@ -126,8 +136,9 @@ export default {
             return (
               <div>
                 <span style="fontSize: '14px'">{address}我是被转换的数据1</span>
-              </div >)
-          },
+              </div>
+            )
+          }
           // formatData: (data) => {
           //   console.log(data, 11)
           //   return data + '我是被转换的数据1'
@@ -137,7 +148,7 @@ export default {
           label: '操作',
           type: 'operate',
           width: 285
-        },
+        }
       ],
 
       //按钮--组件内部已经内置了这四个按钮,而且样式统一,以下只是范例,需要修改文本、颜色时再传这个数组
@@ -165,26 +176,22 @@ export default {
   },
 
   methods: {
-
-    //操作按钮  
-    btnOperate (emit) {
+    //操作按钮
+    btnOperate(emit) {
       console.log(emit)
       // this.visible = !this.visible
     },
 
     //页面切换
-    currentChange (emit) {
+    currentChange(emit) {
       this.currentPage = emit
       console.log(emit)
     },
 
     //排序改变
-    sortChange ({ column, prop, order }) {
+    sortChange({ column, prop, order }) {
       console.log(column, prop, order)
-    },
-
+    }
   }
 }
 </script>
-
-

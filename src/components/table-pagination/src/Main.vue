@@ -104,7 +104,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
-                          curRowIndex: scope.$index,
+                          curRowIndex: scope.$index
                         })
                       "
                     >
@@ -124,7 +124,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
-                          curRowIndex: scope.$index,
+                          curRowIndex: scope.$index
                         })
                       "
                     >
@@ -266,7 +266,6 @@ export default {
         //     address: 'New York No. 1 Lake Park',
         //     date: '2016-10-03',
         //   }]
-
         // },
         // {
         //   id: 2,
@@ -274,7 +273,6 @@ export default {
         //   age: 24,
         //   address: 'London No. 1 Lake Park',
         //   date: '2016-10-01',
-
         // },
         // {
         //   id: 3,
@@ -447,7 +445,7 @@ export default {
     // 分页-总数
     total: {
       type: Number,
-      default: () => 100
+      default: () => 0
     },
 
     // 分页-在空间有限的情况下，可以使用简单的小型分页。
@@ -479,7 +477,6 @@ export default {
       type: Boolean,
       default: () => false
     },
-
 
     /* ----------自定义属性----------- */
     // 后端返回的数据的id的key,默认是id
@@ -529,40 +526,42 @@ export default {
     // 按钮数组 type ：text是文本， 不设置或者primary(等其他参考element-ui的按钮类型)是按钮
     button: {
       type: Array,
-      default: () => [{
-        value: '查看',
-        // type: 'primary',
-        // plain: false,
-        // round: false,
-        // icon: ''
-      },
-      {
-        value: '新增',
-        // type: 'primary',
-        // plain: false,
-        // round: false,
-        // icon: ''
-      },
-      {
-        value: '修改',
-        // type: 'primary',
-        // plain: false,
-        // round: false,
-        // icon: ''
-      },
-      {
-        value: '删除',
-        // type: 'primary',
-        // plain: false,
-        // round: false,
-        // icon: ''
-      }]
+      default: () => [
+        {
+          value: '查看'
+          // type: 'primary',
+          // plain: false,
+          // round: false,
+          // icon: ''
+        },
+        {
+          value: '新增'
+          // type: 'primary',
+          // plain: false,
+          // round: false,
+          // icon: ''
+        },
+        {
+          value: '修改'
+          // type: 'primary',
+          // plain: false,
+          // round: false,
+          // icon: ''
+        },
+        {
+          value: '删除'
+          // type: 'primary',
+          // plain: false,
+          // round: false,
+          // icon: ''
+        }
+      ]
     },
 
     // 删除弹出框设置
     deleteMessageBox: {
       type: Object,
-      default: () => { }
+      default: () => {}
     },
 
     // 是否显示默认的序号
@@ -641,11 +640,10 @@ export default {
     isShowPageCount: {
       type: Boolean,
       default: false
-    },
-
+    }
   },
 
-  data () {
+  data() {
     return {
       tableKey: `${this.getGenerateMixed(20)}`, //防止多个表格key值重复造成错误
       key: 0,
@@ -680,7 +678,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.setJump()
     this.columnDrop()
     this.rowDrop()
@@ -691,23 +689,22 @@ export default {
     render: render
   },
 
-
   methods: {
     /* ---------饿了么回调的函数----------- */
     // 选中当前行,饿了么自带方法，自定义包装，防止和下面的分页的方法冲突
-    currentRowChange (currentRow, oldCurrentRow) {
+    currentRowChange(currentRow, oldCurrentRow) {
       // console.log(val)
       this.$emit('current-row-change', currentRow, oldCurrentRow)
     },
 
     // 当用户手动勾选数据行的 Checkbox 时触发的事件
-    select (emit) {
+    select(emit) {
       emit = this.isOnlyGetIdArr ? this.getIdArr(emit) : emit
       // console.log(emit)
       this.$emit('select', emit)
     },
     // 当用户手动勾选全选 Checkbox 时触发的事件
-    selectAll (emit) {
+    selectAll(emit) {
       emit = this.isOnlyGetIdArr ? this.getIdArr(emit) : emit
       // console.log(emit)
       this.$emit('select-all', emit)
@@ -717,7 +714,7 @@ export default {
      * @author yx
      * @param  {Number} index //数组下标
      */
-    indexMethod (index) {
+    indexMethod(index) {
       return index + (this.tempCurrentPage - 1) * this.pageSize + 1
     },
 
@@ -726,21 +723,19 @@ export default {
      * @param  {Number}  val 页面切换的条数
      */
 
-    sizeChange (val) {
+    sizeChange(val) {
       // console.log(`每页 ${val} 条`)
       this.$emit('size-change', val)
     },
 
     /** @description 分页-当前页切换
-       * @author yx
-       * @param  {Number}  val 当前页
-    */
-    currentChange (val) {
+     * @author yx
+     * @param  {Number}  val 当前页
+     */
+    currentChange(val) {
       // console.log(`当前页: ${val}`)
       this.$emit('current-change', val)
     },
-
-
 
     /* ---------自定义的函数----------- */
 
@@ -748,11 +743,11 @@ export default {
      * @author yx
      * @param  {Array}  value 从这个数组中获取id
      */
-    getIdArr (value) {
+    getIdArr(value) {
       let arr
       if (Array.isArray(value)) {
         arr = []
-        value.forEach(item => arr.push(item[this.id]))
+        value.forEach((item) => arr.push(item[this.id]))
       } else {
         arr = value[this.id]
       }
@@ -763,7 +758,7 @@ export default {
      * @author yx
      * @param  {Object}  param 参数
      */
-    btnOperate (param) {
+    btnOperate(param) {
       let { value, data } = param || {}
       param.data = this.isOnlyGetId ? this.getIdArr(data) : param.data
       const {
@@ -791,15 +786,18 @@ export default {
               closeOnClickModal: closeOnClickModal,
               closeOnPressEscape: closeOnPressEscape,
               center: center
-            }).then(() => {
-              this.$emit('btn-operate', param)
-              this.backPreviousPage()
-            }).catch(() => {
-              isCanclePrompt && this.$message({
-                type: 'info',
-                message: '已取消删除'
-              })
             })
+              .then(() => {
+                this.$emit('btn-operate', param)
+                this.backPreviousPage()
+              })
+              .catch(() => {
+                isCanclePrompt &&
+                  this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                  })
+              })
           } else {
             this.$emit('btn-operate', param)
             this.backPreviousPage()
@@ -813,18 +811,17 @@ export default {
       keyMap[value]()
     },
 
-
     /**@description  用来重新格式化传进来的columns字段
      * @author yx
      * @param  {Array}  columns 表头数据
      */
-    formatColumns (columns) {
+    formatColumns(columns) {
       const arr = []
       let indexFlag = true //是否自动添加序号
       let selectionFlag = true //是否自动添加全选
       let operateFlag = true //是否自动添加操作
       let treeFlag = false //是否有下拉树类型
-      columns.forEach(item => {
+      columns.forEach((item) => {
         indexFlag = item.type === 'index' ? false : indexFlag
         selectionFlag = item.type === 'selection' ? false : selectionFlag
         operateFlag = item.type === 'operate' ? false : operateFlag
@@ -835,30 +832,37 @@ export default {
         }
       })
       // 自动添加默认的多选
-      this.isShowSelection && selectionFlag && arr.unshift({
-        type: 'selection', // 多选
-        width: 55
-      })
+      this.isShowSelection &&
+        selectionFlag &&
+        arr.unshift({
+          type: 'selection', // 多选
+          width: 55
+        })
       // 自动添加默认的序号
-      this.isShowIndex && indexFlag && arr.unshift({
-        type: 'index', // 序号
-        width: 55,
-        label: '序号',
-      })
+      this.isShowIndex &&
+        indexFlag &&
+        arr.unshift({
+          type: 'index', // 序号
+          width: 55,
+          label: '序号'
+        })
       // 自动添加默认的操作
-      this.isShowOperate && operateFlag && arr.push({
-        label: '操作',
-        type: 'operate',
-      })
+      this.isShowOperate &&
+        operateFlag &&
+        arr.push({
+          label: '操作',
+          type: 'operate'
+        })
       //下拉树箭头位置不能在操作，序号，全选前
-      treeFlag && arr.forEach(item => {
-        if (item.type === 'tree') {
-          //没有type这个字段，那么tree展开的箭头就会在那列
-          delete item.type
-        } else if (!item.type) {
-          item.type = ''
-        }
-      })
+      treeFlag &&
+        arr.forEach((item) => {
+          if (item.type === 'tree') {
+            //没有type这个字段，那么tree展开的箭头就会在那列
+            delete item.type
+          } else if (!item.type) {
+            item.type = ''
+          }
+        })
 
       if (this.columnsDrop || this.$eveTablePagination.columnsDrop) {
         arr.sort((next, current) => {
@@ -868,25 +872,25 @@ export default {
       return arr
     },
 
-
     /**@description  用来重新格式化传进来的data字段
-       * @author yx
-       * @param  {Array}  data 表格数据
-       * @param  {Boolean}  flag 是否添加孩子id--孩子id等于当前行的id，主要用来表示是否是孩子的
-       * @param  {Number}  num 层级
-       */
-    formatData (data, flag = false, num = 1) {
+     * @author yx
+     * @param  {Array}  data 表格数据
+     * @param  {Boolean}  flag 是否添加孩子id--孩子id等于当前行的id，主要用来表示是否是孩子的
+     * @param  {Number}  num 层级
+     */
+    formatData(data, flag = false, num = 1) {
       const { children } = this.treeProps || {}
-      this.isFormatData && data.forEach(item => {
-        item[this.zIndex] = num
-        if (flag) {
+      this.isFormatData &&
+        data.forEach((item) => {
           item[this.zIndex] = num
-        }
-        if (item[children]) {
-          this.formatData(item[children], true, ++num)
-          --num
-        }
-      })
+          if (flag) {
+            item[this.zIndex] = num
+          }
+          if (item[children]) {
+            this.formatData(item[children], true, ++num)
+            --num
+          }
+        })
 
       //是否开启行拖拽
       if (this.rowsDrop) {
@@ -898,37 +902,45 @@ export default {
       return data
     },
 
-    setJump () {
+    setJump() {
       if (!this.isShowPagination) return
-      document.querySelectorAll('.el-pagination__jump').forEach(item => {
-        item.childNodes[0].nodeValue = this.tempIsShowPageCount ? `共${this.getPageCount}页， ${this.tempJumpText}` : this.tempJumpText
+      document.querySelectorAll('.el-pagination__jump').forEach((item) => {
+        item.childNodes[0].nodeValue = this.tempIsShowPageCount
+          ? `共${this.getPageCount}页， ${this.tempJumpText}`
+          : this.tempJumpText
       })
     },
 
     //获取element-ui table的ref
-    getElTableRef () {
+    getElTableRef() {
       return this.$refs.eveTable
     },
 
     // 删除最后一条数据并跳到上一个页面，防止空数据
-    backPreviousPage () {
-      this.tempCurrentPage = this.tempCurrentPage > this.getPageCount ? this.getPageCount : this.tempCurrentPage
+    backPreviousPage() {
+      this.tempCurrentPage =
+        this.tempCurrentPage > this.getPageCount
+          ? this.getPageCount
+          : this.tempCurrentPage
       this.tempCurrentPage = this.tempCurrentPage < 1 ? 1 : this.tempCurrentPage
       this.$emit('update:currentPage', this.tempCurrentPage)
     },
 
     //列拖动
-    columnDrop () {
+    columnDrop() {
       if (!this.columnsDrop && !this.$eveTablePagination.columnsDrop) return
       //拖拽时取消浏览器默认行为，防止火狐浏览器拖拽时打开新的窗口。
-      document.body.ondrop = function (event) { event.preventDefault(); event.stopPropagation() }
+      document.body.ondrop = function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
       //防止同个组件出现问题
       const el = `.eve-table-pagination${this.tableKey} > .el-table__header-wrapper tr`
       const wrapperTr = document.querySelector(el)
       Sortable.create(wrapperTr, {
         animation: 180,
         delay: 0,
-        onEnd: evt => {
+        onEnd: (evt) => {
           const oldItem = this.columnsData[evt.oldIndex]
           this.columnsData.splice(evt.oldIndex, 1)
           this.columnsData.splice(evt.newIndex, 0, oldItem)
@@ -941,17 +953,19 @@ export default {
       })
     },
 
-
     //行拖拽
-    rowDrop () {
+    rowDrop() {
       if (!this.rowsDrop) return
       const el = `.eve-table-pagination${this.tableKey} > .el-table__body-wrapper tbody`
-      document.body.ondrop = function (event) { event.preventDefault(); event.stopPropagation() }
+      document.body.ondrop = function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
       const tbody = document.querySelector(el)
       Sortable.create(tbody, {
         animation: 180,
         delay: 0,
-        onEnd: evt => {
+        onEnd: (evt) => {
           const currRow = this.tableData.splice(evt.oldIndex, 1)[0]
           this.tableData.splice(evt.newIndex, 0, currRow)
           this.tableData.forEach((item, index) => {
@@ -962,13 +976,49 @@ export default {
       })
     },
 
-
     /**@description  获取随机数 组件内部写了key 需要个随机数，否则同一个页面使用两个组件key值相同会互相影响
-    * @author yx
-    * @param  {Number}  num 位数
-    */
-    getGenerateMixed (num) {
-      const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+     * @author yx
+     * @param  {Number}  num 位数
+     */
+    getGenerateMixed(num) {
+      const chars = [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+      ]
       let res = ''
       for (let i = 0; i < num; i++) {
         const id = Math.ceil(Math.random() * 35)
@@ -978,9 +1028,9 @@ export default {
     },
 
     /**@description  重新刷新表格组件
-      * @author yx
-    */
-    reload () {
+     * @author yx
+     */
+    reload() {
       let num = parseInt(this.tableKey.substr(this.tableKey.length - 1, 1))
       const str = this.tableKey.substr(0, this.tableKey.length - 1)
       //防止key值过大，导致不明错误
@@ -1001,84 +1051,83 @@ export default {
 
   watch: {
     deleteMessageBox: {
-      handler (newValue) {
+      handler(newValue) {
         Object.assign(this.tempDeleteMessageBox, newValue)
       },
       immediate: true
     },
 
     layout: {
-      handler (newValue) {
-        this.tempLayout = newValue || this.$eveTablePagination.layout || this.tempLayout
+      handler(newValue) {
+        this.tempLayout =
+          newValue || this.$eveTablePagination.layout || this.tempLayout
       },
       immediate: true
     },
 
     jumpText: {
-      handler (newValue) {
-        this.tempJumpText = newValue || this.$eveTablePagination.jumpText || this.tempJumpText
+      handler(newValue) {
+        this.tempJumpText =
+          newValue || this.$eveTablePagination.jumpText || this.tempJumpText
       },
       immediate: true
     },
 
     isShowPageCount: {
-      handler (newValue) {
-        this.tempIsShowPageCount = newValue || this.$eveTablePagination.isShowPageCount || this.tempIsShowPageCount
+      handler(newValue) {
+        this.tempIsShowPageCount =
+          newValue ||
+          this.$eveTablePagination.isShowPageCount ||
+          this.tempIsShowPageCount
       },
       immediate: true
     },
 
     total: {
-      handler () {
+      handler() {
         this.setJump()
       },
       immediate: true
     },
 
     currentPage: {
-      handler (val) {
+      handler(val) {
         this.tempCurrentPage = val
       },
       immediate: true
     }
-
   },
 
   computed: {
     // 新的表格表头, 用来重新格式化传进来的columns字段，
-    columnsData () {
+    columnsData() {
       return this.formatColumns(this.columns)
     },
     //新的表格数据，用来重新格式化传进来的Data字段，
-    tableData () {
+    tableData() {
       //用了jSON.parse 会导致toggleRowSelection失效
       // const arr = Array.from(JSON.parse(JSON.stringify(this.data)))
       const arr = this.data
       return this.formatData(arr)
     },
 
-    new$listeners () {
-      return Object.assign(
-        {},
-        this.$listeners,
-        {
-          'current-change': this.currentRowChange,
-          select: this.select,
-          'select-all': this.selectAll
-        }
-      )
+    new$listeners() {
+      return Object.assign({}, this.$listeners, {
+        'current-change': this.currentRowChange,
+        select: this.select,
+        'select-all': this.selectAll
+      })
     },
 
     //获取总页数
-    getPageCount () {
+    getPageCount() {
       return Math.ceil(this.total / this.pageSize)
     }
-
   }
 }
 </script>
 
-<style  lang='scss' scoped>
+<style lang="scss" scoped>
 ::v-deep .el-button {
   padding: 0;
   padding: 10px;
@@ -1099,7 +1148,7 @@ export default {
 //   color: white;
 // }
 </style>
-<style lang='scss'>
+<style lang="scss">
 @import 'eve-ui/src/assets/style/base.scss';
 @import './table-pagination.scss';
 </style>

@@ -14,11 +14,11 @@
 
 <script>
 import Example from './Example'
-import DropTablePagination from './DropTablePagination'
+import Drop from './Drop'
 export default {
   components: {
     Example,
-    DropTablePagination
+    Drop
   }
 }
 </script>
@@ -37,6 +37,7 @@ export default {
       :columns="columns"
       :data="data"
       :button="button"
+      :total="20"
       @sort-change="sortChange"
       :default-sort="{ prop: 'age', order: 'ascending' }"
     >
@@ -227,7 +228,7 @@ export default {
 
 <template>
   <div>
-    <DropTablePagination/>
+    <Drop/>
   </div>
 </template>
 
@@ -240,6 +241,7 @@ export default {
       :data="data"
       columns-drop
       rows-drop
+      :total="20"
       @columns-drop="columnsDrop"
       @rows-drop="rowsDrop"
     >
@@ -250,7 +252,7 @@ export default {
 export default {
   data () {
     return {
-      pageSize: 20, //一页显示几条
+      pageSize: 10, //一页显示几条
       //表格数据
       data: [
         {
