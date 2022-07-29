@@ -491,8 +491,11 @@ $--pagination-width-height: 30px;
   font-size: $--font-size-content;
 }
 
-.el-table__empty-block {
-  width: 100% !important;
+// 空数据时，列少的情况，暂无数据居中展示(360浏览器有兼容问题，有横向滚动条的不设置)
+.el-table__body-wrapper.is-scrolling-none {
+  .el-table__empty-block {
+    width: 100% !important;
+  }
 }
 
 .el-table {
