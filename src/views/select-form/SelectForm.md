@@ -433,6 +433,8 @@ export default {
 | multipleLimit | 当表单类型为select时,多选时用户最多可以选择的项目数，为 0 则不限制 | number | — | 0 |
 | clearable | 当表单类型为select、input时,可设置是否可清空，默认可清空 | boolean | — | true |
 | disabled | 当表单类型为select、input时,可设置是否可禁用 | boolean | — | false |
+| labelSuffix  | 表单域标签的后缀  | string、boolean，设为false就隐藏了 | — | — |
+
 
 ### right-button-data
 | 参数   | 说明 | 类型  | 可选值 | 默认值 |

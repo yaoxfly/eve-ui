@@ -30,7 +30,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -41,7 +41,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -75,7 +77,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -86,7 +88,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -138,7 +142,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -149,7 +153,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -210,7 +216,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -221,7 +227,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
 
               <el-form-item
@@ -276,7 +284,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -287,7 +295,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -347,7 +357,7 @@
               <label
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
@@ -359,7 +369,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -410,7 +422,7 @@
               <label
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
                 }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
@@ -422,7 +434,9 @@
                   *
                 </span>
                 <span class="eve-select-form__label">{{ item.label }}</span>
-                <span>{{ labelSuffix }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
               </label>
               <el-form-item
                 :prop="item.prop"
@@ -495,8 +509,8 @@
                   :type="item.buttonType"
                   v-if="
                     !item.type ||
-                    item.type !== 'pack-up' ||
-                    (item.type === 'pack-up' && isShowExpand)
+                      item.type !== 'pack-up' ||
+                      (item.type === 'pack-up' && isShowExpand)
                   "
                   :class="item.buttonClassName"
                   :key="`rightButtonData_${index}`"
@@ -504,7 +518,7 @@
                     rightButtonEvent({
                       index: index,
                       value: item.value,
-                      type: item.type,
+                      type: item.type
                     })
                   "
                 >
@@ -554,7 +568,7 @@ export default {
         {
           label: '统一社会信用代码：',
           prop: 'name',
-          type: 'input',
+          type: 'input'
         },
         {
           label: '所属部门：',
@@ -616,18 +630,18 @@ export default {
         {
           label: '日期：',
           prop: 'date',
-          type: 'date',
+          type: 'date'
           // pickerType: 'datetime', //类型可选为:date、datetime
           // valueFormat: 'yyyy-MM', //输出值的格式转换
-          // format: 'yyyy-MM'//显示在输入框中的格式 
+          // format: 'yyyy-MM'//显示在输入框中的格式
         },
         {
           label: '时间：',
           prop: 'time',
           type: 'time',
-          pickerOptions: { selectableRange: '15:30:00 - 20:30:00' },
+          pickerOptions: { selectableRange: '15:30:00 - 20:30:00' }
           // valueFormat: 'mm:ss', //输出值的格式转换
-          // format: 'mm:ss'// 显示在输入框中的格式 
+          // format: 'mm:ss'// 显示在输入框中的格式
         }
       ]
     },
@@ -641,7 +655,7 @@ export default {
         status: [], //checkbox是多选的时候，声明时一定要写成数组形式，否则会出现选一个全部勾选情况。
         address: '',
         date: '',
-        time: '',
+        time: ''
       })
     },
 
@@ -676,13 +690,13 @@ export default {
     // 所有右边表单的宽度--名字有变更之前是itemWidth
     formWidth: {
       type: [Number, String],
-      default: 200 // 1093 
+      default: 200 // 1093
     },
 
     // 所有左边label的宽度
     labelWidth: {
       type: [Number, String],
-      default: 128 // 1093 
+      default: 128 // 1093
     },
 
     // 当参数为空时是否过滤参数
@@ -723,7 +737,7 @@ export default {
 
     //表单域标签的后缀
     labelSuffix: {
-      type: String,
+      type: [String, Boolean],
       default: () => ''
     },
 
@@ -740,7 +754,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       winWidth: '', // 当前内容区域的宽度
       num: '', //当前的个数
@@ -748,7 +762,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     window.addEventListener('resize', this.getWidth)
     this.getWidth()
   },
@@ -758,7 +772,7 @@ export default {
      *  @author yx
      *  @param  {String}  name 表单的ref名称
      */
-    handleSubmit (name) {
+    handleSubmit(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
           const model = this.filterParams(this.model)
@@ -770,23 +784,35 @@ export default {
     /** @description 根据当前分辨率获取要显示的表单个数
      *  @author yx
      */
-    getNum (param) {
-      const left = this.$refs.formValidate ? this.offset(this.$refs.formValidate.$el).left : 275 //自动计算的左边的间距
+    getNum(param) {
+      const left = this.$refs.formValidate
+        ? this.offset(this.$refs.formValidate.$el).left
+        : 275 //自动计算的左边的间距
       const {
-        winWidth, formWidth, labelWidth,
+        winWidth,
+        formWidth,
+        labelWidth,
         leftWidth = this.leftFormWidth !== 0 ? this.leftFormWidth : left,
-        rightWidth = this.$refs.reset ? this.offset(this.$refs.reset.$el).right : 0 //自动计算的右边的间距
+        rightWidth = this.$refs.reset
+          ? this.offset(this.$refs.reset.$el).right
+          : 0 //自动计算的右边的间距
       } = param || {}
       // 250是左边导航的宽度  230:右边查询重置收起等按钮的宽度  288:formWidth 120:label   1366-250-200/408=2.24 Math.floor()
-      return Math.floor((winWidth - leftWidth - this.rightButtonWidth - rightWidth) / (formWidth + labelWidth))
+      return Math.floor(
+        (winWidth - leftWidth - this.rightButtonWidth - rightWidth) /
+          (formWidth + labelWidth)
+      )
     },
 
     /**@description 获取距离body的偏移量
      * @author yx
      * @param  {String}  curEle 要获取偏移量的dom元素
      */
-    offset (curEle) {
-      const width = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth
+    offset(curEle) {
+      const width =
+        window.innerWidth ||
+        document.body.clientWidth ||
+        document.documentElement.clientWidth
       return {
         left: curEle.getBoundingClientRect().left,
         top: curEle.getBoundingClientRect().top,
@@ -798,7 +824,7 @@ export default {
      * @author yx
      * @param  {String}  name 表单的ref名称
      */
-    handleReset (name) {
+    handleReset(name) {
       // console.log(this.$refs[name])
       this.$refs[name].resetFields()
       this.clear()
@@ -808,7 +834,7 @@ export default {
     /** @description  展开或收起
      * @author yx
      */
-    packUp () {
+    packUp() {
       this.isHidden = !this.isHidden
       this.$emit('pack-up', this.isHidden)
     },
@@ -816,7 +842,7 @@ export default {
     /** @description  获取当前内容区域的宽度
      * @author yx
      */
-    getWidth () {
+    getWidth() {
       let winWidth
       if (window.innerWidth) {
         winWidth = window.innerWidth
@@ -837,21 +863,25 @@ export default {
      *  @author yx
      *  @param  {Object}  model //要过滤的对象
      */
-    filterParams (model) {
+    filterParams(model) {
       model = JSON.parse(JSON.stringify(model))
-      this.filterParam && Object.keys(model).some(item => {
-        if (!model[item] || (Array.isArray(model[item]) && model[item].length <= 0)) {
-          delete model[item]
-        }
-      })
+      this.filterParam &&
+        Object.keys(model).some(item => {
+          if (
+            !model[item] ||
+            (Array.isArray(model[item]) && model[item].length <= 0)
+          ) {
+            delete model[item]
+          }
+        })
       return model
     },
 
     /** @description  右边按钮事件
-      * @author yx
-      * @param  {Object}  param //事件回调
-      */
-    rightButtonEvent (param) {
+     * @author yx
+     * @param  {Object}  param //事件回调
+     */
+    rightButtonEvent(param) {
       const { type, index, value } = param || {}
       const emitParam = {}
       const keyMap = {
@@ -865,7 +895,7 @@ export default {
         'pack-up': () => {
           this.isHidden = !this.isHidden
           Object.assign(emitParam, {
-            isHidden: this.isHidde,
+            isHidden: this.isHidde
           })
         },
         search: () => {
@@ -887,50 +917,51 @@ export default {
       this.$emit('right-button-event', emitParam)
     },
 
-    change (value) {
+    change(value) {
       if (!value) {
         this.clear()
       }
     },
 
     //清空值
-    clear () {
+    clear() {
       this.$emit('clear', this.model)
     }
   },
 
   computed: {
     // 是否显示展开/收起按钮
-    isShowExpand () {
+    isShowExpand() {
       return this.adaptiveExpand && this.data.length > this.num
     },
     // 判断是否隐藏或显示输入框，select等表单  true隐藏 false显示
-    checkHidden () {
+    checkHidden() {
       // 闭包传值
-      return function (index) {
-        return (index === this.num && this.isHidden) || (index > this.num && this.isHidden)
+      return function(index) {
+        return (index === this.num && this.isHidden) ||
+          (index > this.num && this.isHidden)
           ? 'eve-select-form__display-none'
           : 'eve-select-form__display-block'
       }
     },
     //获取表单左边lable局部或全局的宽度--用户在局部有传labelWidth就使用局部的，局部覆盖全局
-    getLabelWidth () {
+    getLabelWidth() {
       // 如果有局部的就用局部的宽，没有就用全局的，改变局部的宽可能对自适应收缩展开功能有一定影响
-      return function (width) {
+      return function(width) {
         return width || this.labelWidth
       }
     },
 
     //获取表单局部或全局的宽度--用户在局部有传formWidth就使用局部的，局部覆盖全局
-    getFormWidth () {
-      return function (width) {
+    getFormWidth() {
+      return function(width) {
         return width || this.formWidth
       }
     },
 
     //日期/时间 输出格式
-    pickerFormat () {
-      return function (valueFormat, pickerType = 'date', type) {
+    pickerFormat() {
+      return function(valueFormat, pickerType = 'date', type) {
         if (valueFormat) {
           return valueFormat
         }
@@ -950,22 +981,23 @@ export default {
     },
 
     //该字段是否必填,显示*号
-    checkAsterisk () {
-      return function (prop, rules) {
+    checkAsterisk() {
+      return function(prop, rules) {
         let flag = false
-        rules[prop] && rules[prop].some(item => {
-          if (item.required) {
-            flag = true
-            return true
-          }
-        })
+        rules[prop] &&
+          rules[prop].some(item => {
+            if (item.required) {
+              flag = true
+              return true
+            }
+          })
         return flag
       }
     }
   }
 }
 </script>
-<style lang="scss" >
+<style lang="scss">
 @import 'eve-ui/src/assets/style/base.scss';
 @import './select-form.scss';
 </style>
