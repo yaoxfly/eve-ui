@@ -43,6 +43,7 @@
             <el-table-column
               :label="item.label"
               :width="item.width"
+              :min-width="item.minWidth"
               :key="`eve-table-pagination${index}`"
               :fixed="item.fixed"
               :type="item.type"
@@ -65,6 +66,7 @@
             <el-table-column
               :label="item.label"
               :width="item.width"
+              :min-width="item.minWidth"
               :key="`eve-table-pagination-check${index}`"
               :fixed="item.fixed"
               :type="item.type"
@@ -79,7 +81,8 @@
             <!-- 操作 -->
             <el-table-column
               :label="item.label"
-              :width="item.width ? item.width : 186"
+              :width="item.width ? item.width : item.minWidth ? 'auto' : 186"
+              :min-width="item.minWidth"
               :key="`eve-table-pagination-operate${index}`"
               :fixed="item.fixed"
               :type="item.type"
@@ -152,6 +155,7 @@
               :prop="item.prop"
               :label="item.label"
               :width="item.width"
+              :min-width="item.minWidth"
               :key="`eve-table-pagination-content${index}`"
               :fixed="item.fixed"
               :type="item.type"
@@ -747,7 +751,7 @@ export default {
       let arr
       if (Array.isArray(value)) {
         arr = []
-        value.forEach((item) => arr.push(item[this.id]))
+        value.forEach(item => arr.push(item[this.id]))
       } else {
         arr = value[this.id]
       }
@@ -821,7 +825,7 @@ export default {
       let selectionFlag = true //是否自动添加全选
       let operateFlag = true //是否自动添加操作
       let treeFlag = false //是否有下拉树类型
-      columns.forEach((item) => {
+      columns.forEach(item => {
         indexFlag = item.type === 'index' ? false : indexFlag
         selectionFlag = item.type === 'selection' ? false : selectionFlag
         operateFlag = item.type === 'operate' ? false : operateFlag
@@ -855,7 +859,7 @@ export default {
         })
       //下拉树箭头位置不能在操作，序号，全选前
       treeFlag &&
-        arr.forEach((item) => {
+        arr.forEach(item => {
           if (item.type === 'tree') {
             //没有type这个字段，那么tree展开的箭头就会在那列
             delete item.type
@@ -881,7 +885,7 @@ export default {
     formatData(data, flag = false, num = 1) {
       const { children } = this.treeProps || {}
       this.isFormatData &&
-        data.forEach((item) => {
+        data.forEach(item => {
           item[this.zIndex] = num
           if (flag) {
             item[this.zIndex] = num
@@ -904,7 +908,7 @@ export default {
 
     setJump() {
       if (!this.isShowPagination) return
-      document.querySelectorAll('.el-pagination__jump').forEach((item) => {
+      document.querySelectorAll('.el-pagination__jump').forEach(item => {
         item.childNodes[0].nodeValue = this.tempIsShowPageCount
           ? `共${this.getPageCount}页， ${this.tempJumpText}`
           : this.tempJumpText
@@ -930,7 +934,7 @@ export default {
     columnDrop() {
       if (!this.columnsDrop && !this.$eveTablePagination.columnsDrop) return
       //拖拽时取消浏览器默认行为，防止火狐浏览器拖拽时打开新的窗口。
-      document.body.ondrop = function (event) {
+      document.body.ondrop = function(event) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -940,7 +944,7 @@ export default {
       Sortable.create(wrapperTr, {
         animation: 180,
         delay: 0,
-        onEnd: (evt) => {
+        onEnd: evt => {
           const oldItem = this.columnsData[evt.oldIndex]
           this.columnsData.splice(evt.oldIndex, 1)
           this.columnsData.splice(evt.newIndex, 0, oldItem)
@@ -957,7 +961,7 @@ export default {
     rowDrop() {
       if (!this.rowsDrop) return
       const el = `.eve-table-pagination${this.tableKey} > .el-table__body-wrapper tbody`
-      document.body.ondrop = function (event) {
+      document.body.ondrop = function(event) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -965,7 +969,7 @@ export default {
       Sortable.create(tbody, {
         animation: 180,
         delay: 0,
-        onEnd: (evt) => {
+        onEnd: evt => {
           const currRow = this.tableData.splice(evt.oldIndex, 1)[0]
           this.tableData.splice(evt.newIndex, 0, currRow)
           this.tableData.forEach((item, index) => {

@@ -456,6 +456,7 @@ export default {
 | label  | 表头显示的值   | number | — | 24  |
 | renderHeader  | 列标题 Label 区域渲染使用的 Function，可自定义表头内容 | Function(h, { column, $index }) | — | — |
 | width  | 当前列的宽度   | number | — | —  |
+| minWidth  | 对应列的最小宽度，与 width 的区别是 width 是固定的，min-width 会把剩余宽度按比例分配给设置了 min-width 的列   | string | — | —  |
 | fixed  | 列是否固定在左侧或者右侧，true 表示固定在左侧   | string, boolean | true, left, right | — |
 | type   | 列的类型 | string |  selection(选择框)、index(序号)、operate(操作)、tree(下拉树)  | 普通内容 |
 | showOverflowTooltip  | 当内容过长被隐藏时显示 tooltip   | boolean |  — | true  |
