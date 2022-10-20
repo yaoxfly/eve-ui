@@ -105,4 +105,10 @@
       background-color: transparent;
     }
   }
+
+  &__date-range-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

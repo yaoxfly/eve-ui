@@ -955,6 +955,23 @@ $--eve-tree-height: $--eve-height--small;
     @extend .el-button--mini;
   }
 
+  //自定义时间范围
+  &__date-range {
+    .el-input__icon.el-icon-date {
+      display: none;
+    }
+
+    &.eve-select-form__formItem {
+      .el-date-editor .el-input__inner {
+        padding-left: 6px;
+      }
+    }
+
+    .el-input__icon {
+      width: 8px;
+    }
+  }
+
   &__label {
     color: $--color-text-regular;
   }

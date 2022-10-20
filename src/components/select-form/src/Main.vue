@@ -206,6 +206,115 @@
               </section>
             </section>
 
+            <!--dateRange 自定义时间范围 -->
+            <section
+              class="eve-select-form__flex-row-center"
+              :key="`date-picker${index}`"
+              v-if="item.type === 'dateRange'"
+            >
+              <label
+                class="eve-select-form__from-lable"
+                :style="{
+                  width: `${getLabelWidth(item.labelWidth)}px`,
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                }"
+                :class="[checkHidden(index)]"
+              >
+                <span
+                  class="eve-select-form__asterisk"
+                  v-if="checkAsterisk(item.prop, rules)"
+                >
+                  *
+                </span>
+                <span class="eve-select-form__label">{{ item.label }}</span>
+                <span v-show="item.labelSuffix !== false">{{
+                  item.labelSuffix || labelSuffix
+                }}</span>
+              </label>
+              <el-form-item
+                :prop="item.prop"
+                class="eve-select-form__formItem eve-select-form__date-range"
+                :style="{ width: `${getFormWidth(item.formWidth)}px` }"
+                :class="[checkHidden(index)]"
+              >
+                <slot :name="item.prop" :row="item" :data="data">
+                  <section class="eve-select-form__date-range-flex">
+                    <el-date-picker
+                      :type="item.pickerType || 'date'"
+                      v-model="model[item.prop][0]"
+                      :placeholder="item.placeholder || '开始时间'"
+                      style="width: 50%"
+                      :value-format="
+                        pickerFormat(
+                          item.valueFormat,
+                          item.pickerType,
+                          item.type
+                        )
+                      "
+                      :format="
+                        pickerFormat(item.format, item.pickerType, item.type)
+                      "
+                      :range-separator="item.rangeSeparator"
+                      :start-placeholder="
+                        item.startPlaceholder
+                          ? item.startPlaceholder
+                          : '开始日期'
+                      "
+                      :end-placeholder="
+                        item.endPlaceholder ? item.endPlaceholder : '结束日期'
+                      "
+                      @change="change(model[item.prop])"
+                    ></el-date-picker>
+                    <span style="margin:0 2px">-</span>
+                    <el-date-picker
+                      :type="item.pickerType || 'date'"
+                      v-model="model[item.prop][1]"
+                      :placeholder="item.placeholder || '结束时间'"
+                      style="width: 50%"
+                      :value-format="
+                        pickerFormat(
+                          item.valueFormat,
+                          item.pickerType,
+                          item.type
+                        )
+                      "
+                      :format="
+                        pickerFormat(item.format, item.pickerType, item.type)
+                      "
+                      :range-separator="item.rangeSeparator"
+                      :start-placeholder="
+                        item.startPlaceholder
+                          ? item.startPlaceholder
+                          : '开始日期'
+                      "
+                      :end-placeholder="
+                        item.endPlaceholder ? item.endPlaceholder : '结束日期'
+                      "
+                      @change="change(model[item.prop])"
+                    ></el-date-picker>
+                  </section>
+                </slot>
+
+                <!-- 自定义表单错误提示 -->
+                <template #error="scope">
+                  <el-tooltip
+                    :content="scope.error"
+                    class="eve-select-form__error-tip"
+                  >
+                    <i class="el-icon-warning-outline"></i>
+                  </el-tooltip>
+                </template>
+              </el-form-item>
+
+              <section :class="[checkHidden(index)]">
+                <slot name="date-picker"></slot>
+              </section>
+
+              <section :class="[checkHidden(index)]">
+                <slot :name="`date-picker-${item.prop}`"></slot>
+              </section>
+            </section>
+
             <!--time-picker -->
             <section
               class="eve-select-form__flex-row-center"
@@ -865,15 +974,19 @@ export default {
      */
     filterParams(model) {
       model = JSON.parse(JSON.stringify(model))
-      this.filterParam &&
-        Object.keys(model).some(item => {
-          if (
-            !model[item] ||
-            (Array.isArray(model[item]) && model[item].length <= 0)
-          ) {
-            delete model[item]
-          }
-        })
+      Object.keys(model).some(item => {
+        //数组情况清空null值
+        // if (Array.isArray(model[item])) {
+        //   model[item] = model[item].filter(item => item && item.trim())
+        // }
+        if (
+          this.filterParam &&
+          (!model[item] ||
+            (Array.isArray(model[item]) && model[item].length === 0))
+        ) {
+          delete model[item]
+        }
+      })
       return model
     },
 
@@ -918,7 +1031,10 @@ export default {
     },
 
     change(value) {
-      if (!value) {
+      if (Array.isArray(value)) {
+        value = value.filter(item => item && item.trim())
+      }
+      if (!value || (Array.isArray(value) && value.length === 0)) {
         this.clear()
       }
     },
@@ -961,7 +1077,7 @@ export default {
 
     //日期/时间 输出格式
     pickerFormat() {
-      return function(valueFormat, pickerType = 'date', type) {
+      return function(valueFormat = '', pickerType = 'date', type) {
         if (valueFormat) {
           return valueFormat
         }
@@ -972,6 +1088,11 @@ export default {
           datetime: () => {
             return 'yyyy-MM-dd HH:mm:ss'
           },
+
+          daterange: () => {
+            return 'yyyy-MM-dd'
+          },
+
           date: () => {
             return 'yyyy-MM-dd'
           }
