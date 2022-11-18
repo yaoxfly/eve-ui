@@ -1547,7 +1547,11 @@ $--eve-tree-height: $--eve-height--small;
   .el-menu--popup {
     padding: 0;
     width: 200px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    overflow-x: hidden;
   }
+
   .el-menu--popup-bottom-start {
     margin-top: -20px !important;
     margin-left: -42px !important;
