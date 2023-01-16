@@ -42,7 +42,7 @@
               ]"
               :node-key="nodeKey"
               :highlight-current="true"
-              :expand-on-click-node="false"
+              :expand-on-click-node="expandOnClickNode"
               :default-expand-all="defaultExpandAll"
               :filter-node-method="filterNodeMethod"
               :show-checkbox="showCheckbox"
@@ -203,6 +203,12 @@ export default {
     placeholder: {
       type: String,
       default: '请选择'
+    },
+
+    //点击节点的时候展开或者收缩节点
+    expandOnClickNode: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -270,7 +276,7 @@ export default {
       })
     },
 
-    /**@description 设置选中值 
+    /**@description 设置选中值
      * @author yx
      * @param  {Array}  keys //节点的key数组一般是id数组
      * @param  {Boolean}  leafOnly //是否仅设置叶子节点的选中状态
