@@ -107,7 +107,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
-                          curRowIndex: scope.$index
+                          curRowIndex: scope.$index,
                         })
                       "
                     >
@@ -127,7 +127,7 @@
                           index: index,
                           value: element.value,
                           data: scope.row,
-                          curRowIndex: scope.$index
+                          curRowIndex: scope.$index,
                         })
                       "
                     >
@@ -489,7 +489,7 @@ export default {
       default: 'id'
     },
 
-    /* 表格表头，通过给列 columns 设置字段;  
+    /* 表格表头，通过给列 columns 设置字段;
     这个字段里值如果有index、selection、operate类型的值,
     会覆盖: isShowIndex、isShowSelection、isShowOperate的判断*/
     columns: {
@@ -565,7 +565,7 @@ export default {
     // 删除弹出框设置
     deleteMessageBox: {
       type: Object,
-      default: () => {}
+      default: () => { }
     },
 
     // 是否显示默认的序号
@@ -647,7 +647,7 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       tableKey: `${this.getGenerateMixed(20)}`, //防止多个表格key值重复造成错误
       key: 0,
@@ -682,7 +682,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     this.setJump()
     this.columnDrop()
     this.rowDrop()
@@ -696,19 +696,19 @@ export default {
   methods: {
     /* ---------饿了么回调的函数----------- */
     // 选中当前行,饿了么自带方法，自定义包装，防止和下面的分页的方法冲突
-    currentRowChange(currentRow, oldCurrentRow) {
+    currentRowChange (currentRow, oldCurrentRow) {
       // console.log(val)
       this.$emit('current-row-change', currentRow, oldCurrentRow)
     },
 
     // 当用户手动勾选数据行的 Checkbox 时触发的事件
-    select(emit) {
+    select (emit) {
       emit = this.isOnlyGetIdArr ? this.getIdArr(emit) : emit
       // console.log(emit)
       this.$emit('select', emit)
     },
     // 当用户手动勾选全选 Checkbox 时触发的事件
-    selectAll(emit) {
+    selectAll (emit) {
       emit = this.isOnlyGetIdArr ? this.getIdArr(emit) : emit
       // console.log(emit)
       this.$emit('select-all', emit)
@@ -718,7 +718,7 @@ export default {
      * @author yx
      * @param  {Number} index //数组下标
      */
-    indexMethod(index) {
+    indexMethod (index) {
       return index + (this.tempCurrentPage - 1) * this.pageSize + 1
     },
 
@@ -727,7 +727,7 @@ export default {
      * @param  {Number}  val 页面切换的条数
      */
 
-    sizeChange(val) {
+    sizeChange (val) {
       // console.log(`每页 ${val} 条`)
       this.$emit('size-change', val)
     },
@@ -736,7 +736,7 @@ export default {
      * @author yx
      * @param  {Number}  val 当前页
      */
-    currentChange(val) {
+    currentChange (val) {
       // console.log(`当前页: ${val}`)
       this.$emit('current-change', val)
     },
@@ -747,7 +747,7 @@ export default {
      * @author yx
      * @param  {Array}  value 从这个数组中获取id
      */
-    getIdArr(value) {
+    getIdArr (value) {
       let arr
       if (Array.isArray(value)) {
         arr = []
@@ -762,7 +762,7 @@ export default {
      * @author yx
      * @param  {Object}  param 参数
      */
-    btnOperate(param) {
+    btnOperate (param) {
       let { value, data } = param || {}
       param.data = this.isOnlyGetId ? this.getIdArr(data) : param.data
       const {
@@ -819,7 +819,7 @@ export default {
      * @author yx
      * @param  {Array}  columns 表头数据
      */
-    formatColumns(columns) {
+    formatColumns (columns) {
       const arr = []
       let indexFlag = true //是否自动添加序号
       let selectionFlag = true //是否自动添加全选
@@ -882,7 +882,7 @@ export default {
      * @param  {Boolean}  flag 是否添加孩子id--孩子id等于当前行的id，主要用来表示是否是孩子的
      * @param  {Number}  num 层级
      */
-    formatData(data, flag = false, num = 1) {
+    formatData (data, flag = false, num = 1) {
       const { children } = this.treeProps || {}
       this.isFormatData &&
         data.forEach(item => {
@@ -906,7 +906,7 @@ export default {
       return data
     },
 
-    setJump() {
+    setJump () {
       if (!this.isShowPagination) return
       document.querySelectorAll('.el-pagination__jump').forEach(item => {
         item.childNodes[0].nodeValue = this.tempIsShowPageCount
@@ -916,25 +916,25 @@ export default {
     },
 
     //获取element-ui table的ref
-    getElTableRef() {
+    getElTableRef () {
       return this.$refs.eveTable
     },
 
     // 删除最后一条数据并跳到上一个页面，防止空数据
-    backPreviousPage() {
+    backPreviousPage () {
       this.tempCurrentPage =
-        this.tempCurrentPage > this.getPageCount
-          ? this.getPageCount
+        this.tempCurrentPage > this.delPageCount
+          ? this.delPageCount
           : this.tempCurrentPage
       this.tempCurrentPage = this.tempCurrentPage < 1 ? 1 : this.tempCurrentPage
       this.$emit('update:currentPage', this.tempCurrentPage)
     },
 
     //列拖动
-    columnDrop() {
+    columnDrop () {
       if (!this.columnsDrop && !this.$eveTablePagination.columnsDrop) return
       //拖拽时取消浏览器默认行为，防止火狐浏览器拖拽时打开新的窗口。
-      document.body.ondrop = function(event) {
+      document.body.ondrop = function (event) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -958,10 +958,10 @@ export default {
     },
 
     //行拖拽
-    rowDrop() {
+    rowDrop () {
       if (!this.rowsDrop) return
       const el = `.eve-table-pagination${this.tableKey} > .el-table__body-wrapper tbody`
-      document.body.ondrop = function(event) {
+      document.body.ondrop = function (event) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -984,7 +984,7 @@ export default {
      * @author yx
      * @param  {Number}  num 位数
      */
-    getGenerateMixed(num) {
+    getGenerateMixed (num) {
       const chars = [
         '0',
         '1',
@@ -1034,7 +1034,7 @@ export default {
     /**@description  重新刷新表格组件
      * @author yx
      */
-    reload() {
+    reload () {
       let num = parseInt(this.tableKey.substr(this.tableKey.length - 1, 1))
       const str = this.tableKey.substr(0, this.tableKey.length - 1)
       //防止key值过大，导致不明错误
@@ -1055,14 +1055,14 @@ export default {
 
   watch: {
     deleteMessageBox: {
-      handler(newValue) {
+      handler (newValue) {
         Object.assign(this.tempDeleteMessageBox, newValue)
       },
       immediate: true
     },
 
     layout: {
-      handler(newValue) {
+      handler (newValue) {
         this.tempLayout =
           newValue || this.$eveTablePagination.layout || this.tempLayout
       },
@@ -1070,7 +1070,7 @@ export default {
     },
 
     jumpText: {
-      handler(newValue) {
+      handler (newValue) {
         this.tempJumpText =
           newValue || this.$eveTablePagination.jumpText || this.tempJumpText
       },
@@ -1078,7 +1078,7 @@ export default {
     },
 
     isShowPageCount: {
-      handler(newValue) {
+      handler (newValue) {
         this.tempIsShowPageCount =
           newValue ||
           this.$eveTablePagination.isShowPageCount ||
@@ -1088,14 +1088,14 @@ export default {
     },
 
     total: {
-      handler() {
+      handler () {
         this.setJump()
       },
       immediate: true
     },
 
     currentPage: {
-      handler(val) {
+      handler (val) {
         this.tempCurrentPage = val
       },
       immediate: true
@@ -1104,18 +1104,18 @@ export default {
 
   computed: {
     // 新的表格表头, 用来重新格式化传进来的columns字段，
-    columnsData() {
+    columnsData () {
       return this.formatColumns(this.columns)
     },
     //新的表格数据，用来重新格式化传进来的Data字段，
-    tableData() {
+    tableData () {
       //用了jSON.parse 会导致toggleRowSelection失效
       // const arr = Array.from(JSON.parse(JSON.stringify(this.data)))
       const arr = this.data
       return this.formatData(arr)
     },
 
-    new$listeners() {
+    new$listeners () {
       return Object.assign({}, this.$listeners, {
         'current-change': this.currentRowChange,
         select: this.select,
@@ -1124,8 +1124,13 @@ export default {
     },
 
     //获取总页数
-    getPageCount() {
+    getPageCount () {
       return Math.ceil(this.total / this.pageSize)
+    },
+
+    //删除完当前页面数据后的总页数
+    delPageCount () {
+      return Math.ceil(this.total - 1 / this.pageSize)
     }
   }
 }
