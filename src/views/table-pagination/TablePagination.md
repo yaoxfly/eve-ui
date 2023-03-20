@@ -476,8 +476,8 @@ export default {
 注册组件的时候可以传递参数，进行全局设置。
 
 ```js
-import eveUi from 'eve-ui'
-import 'eve-ui/lib/eve-ui.css'
+import eveUi from '@yaoxfly/eve-ui'
+import '@yaoxfly/eve-ui/lib/eve-ui.css'
 Vue.use(eveUi, {
   eveTablePagination: {
     layout: 'prev,pager,next,jumper', //分页的上一页，下一页、总页数等布局展示

@@ -4,7 +4,7 @@ utils工具类主要作用于规范表单的正则验证，开发人员针对不
 # 引用方式-全局
 在`main.js`文件中引入
 ```js
-import utils from 'eve-ui/tools/eve-utils.umd.min.js'
+import utils from '@yaoxfly/eve-ui/tools/eve-utils.umd.min.js'
 Vue.prototype.$utils = utils 
 ```
 接着在页面中使用,比如电话号码验证
@@ -55,7 +55,7 @@ export default {
 # 引用方式-按需
 在页面中引入，电话号码验证
 ```js
-import { checkMobilePhone } from 'eve-ui/tools/eve-utils.umd.min.js' 
+import { checkMobilePhone } from '@yaoxfly/eve-ui/tools/eve-utils.umd.min.js' 
 ```
 在页面中使用
 ```js
@@ -84,7 +84,7 @@ import { checkMobilePhone } from 'eve-ui/tools/eve-utils.umd.min.js'
 ```
 
 ```js
-import { checkMobilePhone } from 'eve-ui/tools/eve-utils.umd.min.js' 
+import { checkMobilePhone } from '@yaoxfly/eve-ui/tools/eve-utils.umd.min.js' 
 export default {
   data () {
     return {

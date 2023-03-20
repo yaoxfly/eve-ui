@@ -1,10 +1,8 @@
 # 简介
 
- eve-ui,基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增自定义的属性、事件、方法、slot等。
+ 基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增自定义的属性、事件、方法、slot等。
 
 # 链接
 
- [组件文档](http://192.168.208.9:9080/eve-ui/)
-
- 组件文档和组件都是部署在内网中，请在内网环境中打开与安装。
+ [组件文档](https://yaoxfly.github.io/eve-ui/)
 

@@ -1,8 +1,8 @@
 # 自定义主题
-`eve-ui` 默认提供一套主题，`CSS` 命名采用 `BEM` 的风格，方便使用者覆盖样式。
+`@yaoxfly/eve-ui` 默认提供一套主题，`CSS` 命名采用 `BEM` 的风格，方便使用者覆盖样式。
 
 ### 在项目中改变 `SCSS` 变量切换主题
-`eve-ui` 的 `theme-chalk` 使用 `SCSS` 编写，如果你的项目也使用了`SCSS`，那么可以直接在项目中改变 `eve-ui` 的样式变量。新建一个样式文件,例如`eve-ui-variables.scss`把它放进`src/assets/style`，没有当前目录就创建目录，写入以下内容：
+`@yaoxfly/eve-ui` 的 `theme-chalk` 使用 `SCSS` 编写，如果你的项目也使用了`SCSS`，那么可以直接在项目中改变 `@yaoxfly/eve-ui` 的样式变量。新建一个样式文件,例如`eve-ui-variables.scss`把它放进`src/assets/style`，没有当前目录就创建目录，写入以下内容：
 
 ```js
 /* 改变主题色变量 */
@@ -11,8 +11,8 @@ $--color-primary: teal;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 /* element-ui样式 */
 @import "~element-ui/packages/theme-chalk/src/index";
-/* eve-ui样式 */
-@import "~eve-ui/src/assets/style/theme-chalk/index";
+/* @yaoxfly/eve-ui样式 */
+@import "~@yaoxfly/eve-ui/src/assets/style/theme-chalk/index";
 ```
 
 > 注意使用`scss`变量改变主题，需要安装`node-sass`和`sass-loader` 
