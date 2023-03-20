@@ -4,7 +4,7 @@
       <div class="layout__header">
         <div class="layout__header-main">
           <span class="layout__header-title"
-            >eve-ui
+            >@yaoxfly/eve-ui
             <label class="layout__header-vision"
               >最新版本{{ version }}</label
             ></span
@@ -93,7 +93,7 @@ export default {
   }
 }
 </script>
- 
+
 <style lang='scss' scoped>
 .layout {
   width: 100%;
