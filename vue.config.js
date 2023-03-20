@@ -12,7 +12,7 @@ module.exports = {
       // 输出文件名
       filename: 'index.html',
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      title: 'eve-ui',
+      title: '@yaoxfly/eve-ui',
     }
   },
   transpileDependencies: ['element-ui'],

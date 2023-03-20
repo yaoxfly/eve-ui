@@ -1,7 +1,7 @@
 {
   "name": "@yaoxfly/eve-ui",
   "version": "1.0.3",
-  "description": "eve-ui",
+  "description": "基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增新的属性、事件、方法、slot等",
   "private": false,
   "license": "MIT",
   "author": "yaoxfly",
@@ -16,6 +16,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "vue",
+    "element-ui"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -33,6 +37,9 @@
     "node:pa": "node ./build/node.publish.after.js",
     "prepublishOnly": "npm run lib",
     "publish": "npm run node:pa & npm version patch -f"
+  },
+  "peerDependencies": {
+    "element-ui": ">=2.15.0"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "3.2.3",
