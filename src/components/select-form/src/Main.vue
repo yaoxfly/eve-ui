@@ -30,7 +30,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -77,7 +77,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -142,7 +142,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -216,7 +216,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -265,7 +265,7 @@
                       "
                       @change="change(model[item.prop])"
                     ></el-date-picker>
-                    <span style="margin:0 2px">-</span>
+                    <span style="margin: 0 2px">-</span>
                     <el-date-picker
                       :type="item.pickerType || 'date'"
                       v-model="model[item.prop][1]"
@@ -325,7 +325,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -393,7 +393,7 @@
                 class="eve-select-form__from-lable"
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 :class="[checkHidden(index)]"
               >
@@ -466,7 +466,7 @@
               <label
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
@@ -531,7 +531,7 @@
               <label
                 :style="{
                   width: `${getLabelWidth(item.labelWidth)}px`,
-                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`
+                  paddingLeft: `${item.labelPaddingLeft || labelPaddingLeft}px`,
                 }"
                 class="eve-select-form__from-lable"
                 :class="[checkHidden(index)]"
@@ -618,8 +618,8 @@
                   :type="item.buttonType"
                   v-if="
                     !item.type ||
-                      item.type !== 'pack-up' ||
-                      (item.type === 'pack-up' && isShowExpand)
+                    item.type !== 'pack-up' ||
+                    (item.type === 'pack-up' && isShowExpand)
                   "
                   :class="item.buttonClassName"
                   :key="`rightButtonData_${index}`"
@@ -627,7 +627,7 @@
                     rightButtonEvent({
                       index: index,
                       value: item.value,
-                      type: item.type
+                      type: item.type,
                     })
                   "
                 >
@@ -863,7 +863,7 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       winWidth: '', // 当前内容区域的宽度
       num: '', //当前的个数
@@ -871,7 +871,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     window.addEventListener('resize', this.getWidth)
     this.getWidth()
   },
@@ -881,7 +881,7 @@ export default {
      *  @author yx
      *  @param  {String}  name 表单的ref名称
      */
-    handleSubmit(name) {
+    handleSubmit (name) {
       this.$refs[name].validate(valid => {
         if (valid) {
           const model = this.filterParams(this.model)
@@ -893,7 +893,7 @@ export default {
     /** @description 根据当前分辨率获取要显示的表单个数
      *  @author yx
      */
-    getNum(param) {
+    getNum (param) {
       const left = this.$refs.formValidate
         ? this.offset(this.$refs.formValidate.$el).left
         : 275 //自动计算的左边的间距
@@ -909,7 +909,7 @@ export default {
       // 250是左边导航的宽度  230:右边查询重置收起等按钮的宽度  288:formWidth 120:label   1366-250-200/408=2.24 Math.floor()
       return Math.floor(
         (winWidth - leftWidth - this.rightButtonWidth - rightWidth) /
-          (formWidth + labelWidth)
+        (formWidth + labelWidth)
       )
     },
 
@@ -917,7 +917,7 @@ export default {
      * @author yx
      * @param  {String}  curEle 要获取偏移量的dom元素
      */
-    offset(curEle) {
+    offset (curEle) {
       const width =
         window.innerWidth ||
         document.body.clientWidth ||
@@ -933,7 +933,7 @@ export default {
      * @author yx
      * @param  {String}  name 表单的ref名称
      */
-    handleReset(name) {
+    handleReset (name) {
       // console.log(this.$refs[name])
       this.$refs[name].resetFields()
       this.clear()
@@ -943,7 +943,7 @@ export default {
     /** @description  展开或收起
      * @author yx
      */
-    packUp() {
+    packUp () {
       this.isHidden = !this.isHidden
       this.$emit('pack-up', this.isHidden)
     },
@@ -951,7 +951,7 @@ export default {
     /** @description  获取当前内容区域的宽度
      * @author yx
      */
-    getWidth() {
+    getWidth () {
       let winWidth
       if (window.innerWidth) {
         winWidth = window.innerWidth
@@ -972,7 +972,7 @@ export default {
      *  @author yx
      *  @param  {Object}  model //要过滤的对象
      */
-    filterParams(model) {
+    filterParams (model) {
       model = JSON.parse(JSON.stringify(model))
       Object.keys(model).some(item => {
         //数组情况清空null值
@@ -994,7 +994,7 @@ export default {
      * @author yx
      * @param  {Object}  param //事件回调
      */
-    rightButtonEvent(param) {
+    rightButtonEvent (param) {
       const { type, index, value } = param || {}
       const emitParam = {}
       const keyMap = {
@@ -1030,7 +1030,7 @@ export default {
       this.$emit('right-button-event', emitParam)
     },
 
-    change(value) {
+    change (value) {
       if (Array.isArray(value)) {
         value = value.filter(item => item && item.trim())
       }
@@ -1040,20 +1040,20 @@ export default {
     },
 
     //清空值
-    clear() {
+    clear () {
       this.$emit('clear', this.model)
     }
   },
 
   computed: {
     // 是否显示展开/收起按钮
-    isShowExpand() {
+    isShowExpand () {
       return this.adaptiveExpand && this.data.length > this.num
     },
     // 判断是否隐藏或显示输入框，select等表单  true隐藏 false显示
-    checkHidden() {
+    checkHidden () {
       // 闭包传值
-      return function(index) {
+      return function (index) {
         return (index === this.num && this.isHidden) ||
           (index > this.num && this.isHidden)
           ? 'eve-select-form__display-none'
@@ -1061,23 +1061,23 @@ export default {
       }
     },
     //获取表单左边lable局部或全局的宽度--用户在局部有传labelWidth就使用局部的，局部覆盖全局
-    getLabelWidth() {
+    getLabelWidth () {
       // 如果有局部的就用局部的宽，没有就用全局的，改变局部的宽可能对自适应收缩展开功能有一定影响
-      return function(width) {
+      return function (width) {
         return width || this.labelWidth
       }
     },
 
     //获取表单局部或全局的宽度--用户在局部有传formWidth就使用局部的，局部覆盖全局
-    getFormWidth() {
-      return function(width) {
+    getFormWidth () {
+      return function (width) {
         return width || this.formWidth
       }
     },
 
     //日期/时间 输出格式
-    pickerFormat() {
-      return function(valueFormat = '', pickerType = 'date', type) {
+    pickerFormat () {
+      return function (valueFormat = '', pickerType = 'date', type) {
         if (valueFormat) {
           return valueFormat
         }
@@ -1102,8 +1102,8 @@ export default {
     },
 
     //该字段是否必填,显示*号
-    checkAsterisk() {
-      return function(prop, rules) {
+    checkAsterisk () {
+      return function (prop, rules) {
         let flag = false
         rules[prop] &&
           rules[prop].some(item => {
@@ -1119,6 +1119,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './select-form.scss';
 </style>

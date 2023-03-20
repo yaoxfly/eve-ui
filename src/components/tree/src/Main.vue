@@ -390,7 +390,7 @@ export default {
       default: ''
     },
 
-    //在onlyLeaf状态下点击非叶子节点时,是否返回参数 
+    //在onlyLeaf状态下点击非叶子节点时,是否返回参数
     returnParam: {
       type: Boolean,
       default: false
@@ -445,7 +445,7 @@ export default {
     /**@description  通过key获取节点
      * @param  {Boolean}  leafOnly 是否仅返回被选中的叶子节点的 keys
      * @author yx
-     * 
+     *
      */
     getCheckedKeys (leafOnly = false) {
       return this.$refs.tree.getCheckedKeys(leafOnly)
@@ -460,7 +460,7 @@ export default {
     },
 
     /**@description  通过 keys 设置目前勾选的节点，使用此方法必须设置 node-key 属性
-      * @param  {Array}  keys  勾选节点的 key 的数组 
+      * @param  {Array}  keys  勾选节点的 key 的数组
       * @param  {Boolean }  leafOnly 是否仅设置叶子节点的选中状态
       * @author yx
     */
@@ -670,6 +670,6 @@ export default {
 </style>
 
 <style lang="scss">
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './tree.scss';
 </style>

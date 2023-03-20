@@ -212,7 +212,7 @@
   </div>
 </template>
 <script>
-import mixins from 'eve-ui/src/components/scroll/src/mixins.js'
+import mixins from '@yaoxfly/eve-ui/src/components/scroll/src/mixins.js'
 export default {
   name: 'EveHeader',
   mixins: [mixins],
@@ -247,7 +247,7 @@ export default {
       default: 210
     },
 
-    //header 背景 
+    //header 背景
     background: {
       type: String,
       default: ''
@@ -512,7 +512,7 @@ export default {
 
     /**@description  查找最底层的菜单--配合linkageTagMenu联动用
       * @author yx
-      * @param  {Aarray}  menu 
+      * @param  {Aarray}  menu
       */
     findlowestMenu (menu = this.linkageTagMenu) {
       let obj = {}
@@ -602,7 +602,6 @@ export default {
 }
 </script>
 <style lang='scss'>
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './header.scss';
 </style>
- 

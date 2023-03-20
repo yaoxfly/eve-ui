@@ -243,7 +243,7 @@ export default {
     },
 
     //TODO:这里的联动，目前只是手动的设置，后期改成自动化
-    /**@description 更新组件--配合header联动用 
+    /**@description 更新组件--配合header联动用
       * @author yx
      */
     update () {
@@ -351,7 +351,7 @@ export default {
 </style>
 
  <style lang="scss" >
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './menu.scss';
 </style>
 

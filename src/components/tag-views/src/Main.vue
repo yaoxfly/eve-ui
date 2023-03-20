@@ -54,7 +54,7 @@
 </template>
 <script>
 import { SwiperSlide } from 'vue-awesome-swiper'
-import BreadcrumbIcon from 'eve-ui/src/components/breadcrumb/src/BreadcrumbIcon.vue'
+import BreadcrumbIcon from '@yaoxfly/eve-ui/src/components/breadcrumb/src/BreadcrumbIcon.vue'
 export default {
   name: 'EveTagViews',
   components: {

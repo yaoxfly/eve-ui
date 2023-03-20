@@ -30,7 +30,7 @@ module.exports = {
       .options({
         raw: true
       })
-    config.resolve.alias.set('eve-ui', resolve('./'))
+    config.resolve.alias.set('@yaoxfly/eve-ui', resolve('./'))
   },
 
   css: {

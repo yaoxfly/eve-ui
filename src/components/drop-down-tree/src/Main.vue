@@ -626,7 +626,7 @@ export default {
 </script>
 
 <style lang='scss'>
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './drop-down-tree.scss';
 </style>
 

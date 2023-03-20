@@ -286,7 +286,7 @@ export default {
   created () { },
   mounted () { },
   methods: {
-    /** @description   点击文件列表中已上传的文件时的钩子(回调) 
+    /** @description   点击文件列表中已上传的文件时的钩子(回调)
       * @author yx
       * @param  {Object}  file  文件详细信息
      */
@@ -390,7 +390,7 @@ export default {
       this.$refs.upload.clearFiles()
     },
 
-    /** @description 取消上传请求 , file: fileList 中的 file 对象 
+    /** @description 取消上传请求 , file: fileList 中的 file 对象
        * @author yx
      */
     abort (file) {
@@ -488,6 +488,6 @@ export default {
 </style>
 
 <style lang="scss">
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './upload.scss';
 </style>

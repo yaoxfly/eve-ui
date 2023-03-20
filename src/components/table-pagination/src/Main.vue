@@ -1158,6 +1158,6 @@ export default {
 // }
 </style>
 <style lang="scss">
-@import 'eve-ui/src/assets/style/base.scss';
+@import '@yaoxfly/eve-ui/src/assets/style/base.scss';
 @import './table-pagination.scss';
 </style>
