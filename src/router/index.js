@@ -22,11 +22,11 @@ const routes = [
         component: () => import('../views/use/Use.vue'),
       },
 
-      {
-        path: '/cli',
-        name: '脚手架',
-        component: () => import('../views/eve-cli/EveCli.vue'),
-      },
+      // {
+      //   path: '/cli',
+      //   name: '脚手架',
+      //   component: () => import('../views/eve-cli/EveCli.vue'),
+      // },
 
       {
         path: '/custom-theme',
