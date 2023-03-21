@@ -1,11 +1,13 @@
 {
   "name": "@yaoxfly/eve-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增新的属性、事件、方法、slot等",
   "private": false,
   "license": "MIT",
   "author": "yaoxfly",
   "main": "src/index.js",
+  "unpkg": "lib/eve-ui.umd.min",
+  "jsdelivr": "lib/eve-ui.umd.min",
   "files": [
     "src",
     "lib",
