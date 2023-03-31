@@ -38,7 +38,8 @@
     "node:edp": "node ./build/node.edit.package.js",
     "node:pa": "node ./build/node.publish.after.js",
     "prepublishOnly": "npm run lib",
-    "publish": "npm run node:pa & npm version patch -f"
+    "publish": "npm run node:pa & npm version patch -f",
+    "deploy":"bash deploy.sh"
   },
   "peerDependencies": {
     "element-ui": ">=2.15.0"
