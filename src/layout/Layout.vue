@@ -5,13 +5,17 @@
         <div class="layout__header-main">
           <span class="layout__header-title"
             >@yaoxfly/eve-ui
-            <label class="layout__header-vision"
-              >最新版本{{ version }}</label
-            ></span
-          >
+            <label class="layout__header-vision">最新版本{{ version }}</label>
+          </span>
         </div>
         <div class="layout__header-introduce">
           基于element-ui二次封装的高级组件，对element-ui做了个性化需求调整，新增新的属性、事件、方法、slot等；
+          <span
+            style="margin-left: 10px"
+            @click="jump"
+            class="layout__header-code"
+            >代码仓库</span
+          >
         </div>
       </div>
     </div>
@@ -90,6 +94,10 @@ export default {
         this.$refs.routerView.scrollTop = 0
       }, 100)
     },
+
+    jump () {
+      window.open('https://github.com/yaoxfly/eve-ui')
+    }
   }
 }
 </script>
@@ -179,6 +187,11 @@ export default {
     &:hover {
       background: #f2f6fc;
     }
+  }
+
+  &__header-code {
+    cursor: pointer;
+    color: #409eff;
   }
 }
 
